@@ -44,31 +44,31 @@ export default function Home() {
 
           {/* --- TECH VISUALS (CSS BASED) --- */}
 
-          {/* 1. Top Right: SYSTEM STATUS */}
-          <div className="absolute top-24 right-10 md:right-32 opacity-90 hidden md:block border border-gray-800 bg-[#0A0A0A]/80 backdrop-blur-sm p-4 rounded-lg rotate-6 animate-pulse-slow z-0 shadow-lg hover:border-accent/50 transition-colors cursor-default">
+          {/* 1. Top Right: SYSTEM STATUS - Visible on mobile for 'live' feel but smaller */}
+          <div className="absolute top-24 right-4 md:right-32 opacity-90 border border-gray-800 bg-[#0A0A0A]/80 backdrop-blur-sm p-3 md:p-4 rounded-lg rotate-6 animate-pulse-slow z-0 shadow-lg cursor-default">
             <div className="flex items-center gap-2 mb-2">
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-              <div className="text-[10px] font-mono text-gray-400 uppercase tracking-widest">SYSTEM_READY</div>
+              <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
+              <div className="text-[9px] md:text-[10px] font-mono text-gray-400 uppercase tracking-widest">SYSTEM_READY</div>
             </div>
-            <div className="text-accent text-xs font-mono font-bold tracking-wider">● ONLINE</div>
+            <div className="text-accent text-[10px] md:text-xs font-mono font-bold tracking-wider">● ONLINE</div>
           </div>
 
-          {/* 2. Bottom Left: REVENUE METRICS */}
-          <div className="absolute bottom-32 left-8 md:left-24 opacity-80 hidden md:block border border-gray-800 bg-[#0A0A0A]/80 backdrop-blur-sm p-5 rounded-lg -rotate-3 z-0 shadow-lg hover:border-accent/50 transition-colors cursor-default">
-            <div className="text-[10px] font-mono text-gray-500 border-b border-gray-800 pb-1 mb-2 uppercase flex justify-between gap-4">
+          {/* 2. Bottom Left: REVENUE METRICS - Hidden on very small screens, visible on md+ */}
+          <div className="absolute bottom-32 left-8 md:left-24 opacity-80 hidden sm:block border border-gray-800 bg-[#0A0A0A]/80 backdrop-blur-sm p-4 md:p-5 rounded-lg -rotate-3 z-0 shadow-lg hover:border-accent/50 transition-colors cursor-default">
+            <div className="text-[9px] md:text-[10px] font-mono text-gray-500 border-b border-gray-800 pb-1 mb-2 uppercase flex justify-between gap-4">
               <span>REVENUE_TRACKER</span>
               <span className="text-gray-600">v2.1</span>
             </div>
-            <div className="flex justify-between items-end gap-8 text-xs font-mono">
+            <div className="flex justify-between items-end gap-6 md:gap-8 text-xs font-mono">
               <div className="flex flex-col text-left">
-                <span className="text-gray-400 text-[10px] mb-1">Run Rate</span>
-                <span className="text-white font-bold text-lg">$2.4M</span>
+                <span className="text-gray-400 text-[9px] md:text-[10px] mb-1">Run Rate</span>
+                <span className="text-white font-bold text-base md:text-lg">$2.4M</span>
               </div>
-              <span className="text-green-400 bg-green-400/10 px-1 rounded">+12%</span>
+              <span className="text-green-400 bg-green-400/10 px-1 rounded text-[10px]">+12%</span>
             </div>
           </div>
 
-          {/* 3. Top Left: AUDIT PROTOCOL (Full) */}
+          {/* 3. Top Left: AUDIT PROTOCOL (Full) - Visible on lg+ */}
           <div className="absolute top-32 left-10 md:left-32 opacity-80 hidden xl:block z-0 border border-gray-800 bg-[#0A0A0A]/80 p-4 rounded-lg -rotate-2 backdrop-blur-sm hover:border-accent/50 transition-colors cursor-default">
             <div className="text-[10px] font-mono text-gray-500 border-b border-gray-800 pb-1 mb-2">INIT_PROTOCOL</div>
             <div className="font-mono text-[10px] text-left space-y-2 text-gray-400">
@@ -83,8 +83,8 @@ export default function Home() {
             </div>
           </div>
 
-          {/* 4. Bottom Right: SCALE VELOCITY */}
-          <div className="absolute bottom-24 right-10 md:right-20 opacity-70 hidden lg:block border border-gray-800 bg-[#0A0A0A]/80 backdrop-blur-sm p-4 rounded-lg rotate-2 z-0 shadow-lg hover:border-accent/50 transition-colors cursor-default">
+          {/* 4. Bottom Right: SCALE VELOCITY - Visible on lg+ */}
+          <div className="absolute bottom-24 right-10 md:right-20 opacity-70 hidden lg:block border border-gray-800 bg-[#0A0A0A]/80 backdrop-blur-sm p-4 rounded-lg rotate-2 z-0 shadow-lg cursor-default">
             <div className="flex justify-between items-center mb-3 border-b border-gray-800 pb-1">
               <span className="text-[10px] font-mono text-gray-400 uppercase">SCALE_VELOCITY</span>
               <Bot className="w-3 h-3 text-accent" />
@@ -98,42 +98,14 @@ export default function Home() {
             </div>
           </div>
 
-          {/* 5. NEW: Middle Left - TRAFFIC SOURCE */}
-          <div className="absolute top-1/2 left-4 -translate-y-1/2 opacity-60 hidden xl:block border border-gray-800 bg-[#0A0A0A]/80 backdrop-blur-sm p-3 rounded-lg z-0 hover:border-accent/50 transition-colors cursor-default">
-            <div className="text-[9px] font-mono text-gray-500 mb-2 uppercase">Traffic Source</div>
-            <div className="space-y-1">
-              <div className="flex items-center gap-2">
-                <div className="w-1 h-1 bg-blue-500 rounded-full"></div>
-                <span className="text-[10px] font-mono text-gray-300">Organic Search</span>
-                <span className="text-[10px] font-mono text-gray-500 ml-auto">45%</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-1 h-1 bg-accent rounded-full"></div>
-                <span className="text-[10px] font-mono text-gray-300">Direct</span>
-                <span className="text-[10px] font-mono text-gray-500 ml-auto">30%</span>
-              </div>
-            </div>
-          </div>
 
-          {/* 6. NEW: Bottom Center/Right - AI NODES */}
-          <div className="absolute bottom-10 right-1/4 opacity-60 hidden xl:block border border-gray-800 bg-[#0A0A0A]/80 backdrop-blur-sm p-3 rounded-lg rotate-1 z-0 hover:border-accent/50 transition-colors cursor-default">
-            <div className="flex items-center gap-2 mb-2">
-              <Activity className="w-3 h-3 text-accent" />
-              <span className="text-[9px] font-mono text-gray-400 uppercase">ACTIVE_NODES</span>
-            </div>
-            <div className="font-mono text-xs text-white font-bold">
-              842 <span className="text-gray-600 text-[9px] font-normal">/ 1024</span>
-            </div>
-          </div>
-
-
-          {/* Main Logo ONLY - Centered */}
-          <div className="relative w-full max-w-4xl h-40 md:h-64 animate-fade-in-up z-10 flex items-center justify-center">
+          {/* Main Logo ONLY - Centered - Optimized size for mobile */}
+          <div className="relative w-full max-w-[80vw] md:max-w-4xl h-32 sm:h-48 md:h-64 animate-fade-in-up z-10 flex items-center justify-center">
             <Image
               src="/logo-full.png"
               fill
               alt="Visual & Growth"
-              className="object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+              className="object-contain drop-shadow-[0_0_15px_rgba(255,195,0,0.1)]"
               priority
             />
           </div>
@@ -151,9 +123,9 @@ export default function Home() {
         </section>
 
         {/* THE ECOSYSTEM */}
-        <section id="ecosistema" className="py-32 px-6">
+        <section id="ecosistema" className="py-24 md:py-32 px-6">
           <div className="max-w-7xl mx-auto">
-            <div className="flex flex-col md:flex-row justify-between items-end mb-20">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:bottom-20 gap-6">
               <div className="max-w-2xl">
                 <span className="text-accent font-mono text-sm mb-4 block uppercase tracking-widest">El Ecosistema</span>
                 <h2 className="text-4xl md:text-6xl font-display font-bold mb-6">
@@ -168,7 +140,7 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 md:gap-1 border border-gray-900 md:border-none">
               <BoutiqueCard
                 title="Estrategia & Consultoría"
                 subtitle="Growth Machines"
@@ -204,29 +176,28 @@ export default function Home() {
         </section>
 
         {/* METHODOLOGY */}
-        <section id="metodologia" className="py-32 px-6 bg-[#080808] border-t border-gray-900">
+        <section id="metodologia" className="py-24 md:py-32 px-6 bg-[#080808] border-t border-gray-900">
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16">
               <div>
-                <h2 className="text-4xl md:text-5xl font-display font-bold mb-8 sticky top-32">
+                <h2 className="text-3xl md:text-5xl font-display font-bold mb-8 sticky top-32">
                   El Método <span className="text-accent">V&G</span>.
-                  <br /><span className="text-gray-600 text-3xl">Del Caos al Sistema.</span>
+                  <br /><span className="text-gray-600 text-2xl md:text-3xl">Del Caos al Sistema.</span>
                 </h2>
 
                 {/* TEAM OFFICE PHOTO - CLEAN, NO FILTERS */}
-                <div className="mt-12 relative h-80 w-full rounded-sm overflow-hidden border border-gray-800 sticky top-80 hidden lg:block shadow-2xl">
+                <div className="mt-12 relative h-64 md:h-80 w-full rounded-sm overflow-hidden border border-gray-800 sticky top-80 hidden lg:block shadow-2xl">
                   <Image
                     src="/team-office.jpg"
                     fill
                     alt="Visual & Growth Team"
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    priority
                   />
                 </div>
 
               </div>
-              <div className="space-y-12">
+              <div className="space-y-10 md:space-y-12">
                 <StepItem num="01" title="Discovery & Audit" desc="Radiografía total. No tocamos una línea de código sin entender tus unit economics. Auditamos tus fugas de dinero y tiempo." />
                 <StepItem num="02" title="Hypothesis & Roadmap" desc="Diseñamos el plan de ataque. Priorizamos acciones por 'Impacto vs Esfuerzo' (ICE Score). Nada de paja, solo tracción." />
                 <StepItem num="03" title="Sprint Execution" desc="Despliegue rápido. Lanzamos, medimos y ajustamos en ciclos cortos. Velocidad de startup para validar resultados en semanas." />
@@ -237,16 +208,16 @@ export default function Home() {
         </section>
 
         {/* PARTNERS */}
-        <section id="partnership" className="py-32 px-6 border-t border-gray-900">
+        <section id="partnership" className="py-24 md:py-32 px-6 border-t border-gray-900">
           <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-20">
-              <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">Partners, no Proveedores.</h2>
+            <div className="text-center mb-16 md:bottom-20">
+              <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">Partners, no Proveedores.</h2>
               <p className="text-text-secondary text-lg max-w-2xl mx-auto">
                 Lideramos tu crecimiento implicándonos en el negocio.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
               <TeamMember
                 name="Pablo Pérez"
                 role="Co-CEO & Growth Strategist"
@@ -264,16 +235,16 @@ export default function Home() {
         </section>
 
         {/* LEAD MAGNET */}
-        <section id="audit" className="py-32 px-6 relative overflow-hidden">
+        <section id="audit" className="py-24 md:py-32 px-6 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-black to-[#050505]"></div>
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[120px] pointer-events-none"></div>
 
           <div className="max-w-5xl mx-auto relative z-10">
-            <div className="text-center mb-16">
+            <div className="text-center mb-12 md:bottom-16">
               <h2 className="text-3xl md:text-5xl font-display font-bold mb-6 text-white">
                 ¿Tu empresa escala o <span className="text-gray-500">sobrevive</span>?
               </h2>
-              <p className="text-lg text-text-secondary max-w-2xl mx-auto mb-12">
+              <p className="text-base md:text-lg text-text-secondary max-w-2xl mx-auto mb-12">
                 Rellena este diagnóstico. Analizaremos tu caso gratis y te propondremos un roadmap.
               </p>
             </div>
@@ -282,13 +253,12 @@ export default function Home() {
           </div>
         </section>
 
-        <footer className="py-12 border-t border-gray-900 bg-black text-center text-gray-600 text-sm">
+        <footer className="py-12 border-t border-gray-900 bg-black text-center text-gray-400 text-xs md:text-sm">
           <div className="flex justify-center mb-8">
-            <div className="relative w-32 h-10 opacity-50 grayscale hover:grayscale-0 transition-all">
+            <div className="relative w-24 h-8 md:w-32 md:h-10 opacity-50 grayscale hover:grayscale-0 transition-all">
               <Image src="/logo-full.png" fill className="object-contain" alt="Logo" />
             </div>
           </div>
-          {/* SOCIAL LINKS REMOVED */}
           <p>&copy; 2026 Visual & Growth. All rights reserved.</p>
         </footer>
 
@@ -301,22 +271,22 @@ export default function Home() {
 function Stat({ label, value, sub }: { label: string, value: string, sub: string }) {
   return (
     <div className="text-center">
-      <div className="text-xs font-mono text-gray-500 mb-2 uppercase tracking-wider">{label}</div>
-      <div className="text-3xl md:text-4xl font-bold text-white mb-1 font-display">{value}</div>
-      <div className="text-xs text-accent">{sub}</div>
+      <div className="text-[10px] md:text-xs font-mono text-gray-500 mb-2 uppercase tracking-wider">{label}</div>
+      <div className="text-2xl md:text-4xl font-bold text-white mb-1 font-display">{value}</div>
+      <div className="text-[10px] md:text-xs text-accent">{sub}</div>
     </div>
   )
 }
 
 function BoutiqueCard({ title, subtitle, desc, highlight = false }: { title: string, subtitle: string, desc: string, highlight?: boolean }) {
   return (
-    <div className={`p-10 border-r border-b border-gray-900 group relative overflow-hidden transition-all hover:bg-white/5 ${highlight ? 'bg-white/5' : ''}`}>
-      <div className="text-xs font-mono text-gray-500 mb-6 uppercase tracking-widest group-hover:text-accent transition-colors">{subtitle}</div>
-      <h3 className="text-2xl font-bold font-display mb-4 text-white">{title}</h3>
-      <p className="text-text-secondary text-sm leading-relaxed mb-8 border-l-2 border-transparent pl-0 group-hover:border-accent group-hover:pl-4 transition-all duration-300">
+    <div className={`p-8 md:p-10 border-b md:border-r md:border-b border-gray-900 group relative overflow-hidden transition-all hover:bg-white/5 ${highlight ? 'bg-white/5' : ''}`}>
+      <div className="text-[10px] md:text-xs font-mono text-gray-500 mb-6 uppercase tracking-widest group-hover:text-accent transition-colors">{subtitle}</div>
+      <h3 className="text-xl md:text-2xl font-bold font-display mb-4 text-white">{title}</h3>
+      <p className="text-text-secondary text-sm leading-relaxed mb-6 md:mb-8 border-l-2 border-transparent pl-0 md:group-hover:border-accent md:group-hover:pl-4 transition-all duration-300">
         {desc}
       </p>
-      <div className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-4 group-hover:translate-x-0 duration-300">
+      <div className="absolute bottom-6 right-6 opacity-0 md:group-hover:opacity-100 transition-opacity transform translate-x-4 group-hover:translate-x-0 duration-300">
         <ArrowRight className="w-5 h-5 text-accent" />
       </div>
     </div>
@@ -325,12 +295,12 @@ function BoutiqueCard({ title, subtitle, desc, highlight = false }: { title: str
 
 function StepItem({ num, title, desc }: { num: string, title: string, desc: string }) {
   return (
-    <div className="flex gap-6 group">
-      <div className="font-mono text-xl text-gray-700 group-hover:text-accent transition-colors pt-1">
+    <div className="flex gap-4 md:gap-6 group">
+      <div className="font-mono text-lg md:text-xl text-gray-700 group-hover:text-accent transition-colors pt-1">
         {num}/
       </div>
       <div>
-        <h3 className="text-xl font-bold text-white mb-3 group-hover:translate-x-2 transition-transform duration-300">{title}</h3>
+        <h3 className="text-lg md:text-xl font-bold text-white mb-2 md:mb-3 group-hover:translate-x-2 transition-transform duration-300">{title}</h3>
         <p className="text-text-secondary text-sm leading-relaxed border-l border-gray-800 pl-4 group-hover:border-accent transition-colors">
           {desc}
         </p>
@@ -341,16 +311,16 @@ function StepItem({ num, title, desc }: { num: string, title: string, desc: stri
 
 function TeamMember({ name, role, bio, quote }: { name: string, role: string, bio: string, quote: string }) {
   return (
-    <div className="bg-bg-secondary/30 p-8 border border-gray-800 rounded-sm hover:border-accent/50 transition-colors group">
+    <div className="bg-bg-secondary/30 p-6 md:p-8 border border-gray-800 rounded-sm hover:border-accent/50 transition-colors group">
       <div className="mb-6">
-        <h3 className="text-2xl font-bold text-white mb-1 group-hover:text-accent transition-colors">{name}</h3>
-        <p className="text-xs font-mono text-gray-500 uppercase tracking-widest">{role}</p>
+        <h3 className="text-xl md:text-2xl font-bold text-white mb-1 group-hover:text-accent transition-colors">{name}</h3>
+        <p className="text-[10px] md:text-xs font-mono text-gray-500 uppercase tracking-widest">{role}</p>
       </div>
       <p className="text-text-secondary text-sm mb-6 leading-relaxed">
         {bio}
       </p>
       <div className="pt-6 border-t border-gray-800">
-        <p className="text-white italic text-sm font-medium">"{quote}"</p>
+        <p className="text-white italic text-xs md:text-sm font-medium">"{quote}"</p>
       </div>
     </div>
   )
