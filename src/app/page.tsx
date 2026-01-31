@@ -9,9 +9,12 @@ import ContactForm from "@/components/ContactForm";
 import LeadCaptureModal from "@/components/LeadCaptureModal";
 import { NumberTicker } from "@/components/NumberTicker";
 import { TextAnimate } from "@/components/TextAnimate";
+import { BorderBeam } from "@/components/BorderBeam";
+import { cn } from "@/lib/utils";
 
 export default function Home() {
   const [showNavbar, setShowNavbar] = useState(false);
+  const [activeId, setActiveId] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,9 +23,28 @@ export default function Home() {
       } else {
         setShowNavbar(false);
       }
+
+      // Scroll Lighting logic
+      const elements = document.querySelectorAll("[data-scroll-item]");
+      let closestId = null;
+      let minDistance = Infinity;
+
+      elements.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        const centerY = window.innerHeight / 2;
+        const elementCenterY = rect.top + rect.height / 2;
+        const distance = Math.abs(elementCenterY - centerY);
+
+        if (distance < minDistance && distance < 250) {
+          minDistance = distance;
+          closestId = el.getAttribute("data-scroll-id");
+        }
+      });
+      setActiveId(closestId);
     };
 
     window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Initial check
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -41,7 +63,7 @@ export default function Home() {
 
       <main className="relative z-10 w-full">
 
-        {/* HERO SECTION - LOGO ONLY + TECH WIDGETS */}
+        {/* HERO SECTION - LOGO BOX + TECH WIDGETS */}
         <section className="min-h-screen flex flex-col items-center justify-center px-6 py-20 relative text-center overflow-hidden">
 
           {/* --- TECH VISUALS (CSS BASED) --- */}
@@ -108,16 +130,29 @@ export default function Home() {
             </div>
           </div>
 
+          {/* Main Logo BOX - Refined with BorderBeam and Sparkle */}
+          <div className="relative w-full max-w-[95vw] md:max-w-4xl flex flex-col items-center justify-center animate-fade-in-up z-10 pt-20 pb-10 md:pt-32 md:pb-20 scale-[0.85] sm:scale-95 md:scale-100">
+            {/* Sparkle Icon on top with float animation */}
+            <div className="absolute top-0 w-14 h-14 md:w-20 md:h-20 opacity-90 animate-pulse z-20">
+              <Image src="/logo-icon.png" fill alt="Icon" className="object-contain" priority />
+            </div>
 
-          {/* Main Logo ONLY - Centered */}
-          <div className="relative w-full max-w-[80vw] md:max-w-4xl h-32 sm:h-48 md:h-64 animate-fade-in-up z-10 flex items-center justify-center">
-            <Image
-              src="/logo-full.png"
-              fill
-              alt="Visual & Growth"
-              className="object-contain drop-shadow-[0_0_15px_rgba(255,195,0,0.1)]"
-              priority
-            />
+            {/* The Box */}
+            <div className="relative w-full p-8 sm:p-12 md:p-16 border border-white/10 bg-[#050505]/40 backdrop-blur-xl rounded-2xl md:rounded-[2.5rem] shadow-[0_0_80px_rgba(0,0,0,0.8)] flex items-center justify-center overflow-hidden">
+              <div className="relative w-full h-24 sm:h-32 md:h-56">
+                <Image
+                  src="/logo-full.png"
+                  fill
+                  alt="Visual & Growth"
+                  className="object-contain drop-shadow-[0_0_25px_rgba(255,198,0,0.15)]"
+                  priority
+                />
+              </div>
+
+              {/* Border Beams - Premium Glowing Effect */}
+              <BorderBeam duration={6} size={400} className="from-transparent via-accent to-transparent" />
+              <BorderBeam duration={6} delay={3} size={400} borderWidth={2} className="from-transparent via-accent/60 to-transparent" />
+            </div>
           </div>
 
         </section>
@@ -138,9 +173,11 @@ export default function Home() {
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:bottom-20 gap-6">
               <div className="max-w-2xl">
                 <span className="text-accent font-mono text-sm mb-4 block uppercase tracking-widest">El Ecosistema</span>
-                <TextAnimate animation="blurInUp" by="word" as="h2" className="text-4xl md:text-6xl font-display font-bold mb-6">
-                  Ingeniería de Crecimiento.
-                </TextAnimate>
+                <div className="pb-2 overflow-hidden">
+                  <TextAnimate animation="blurInUp" by="word" as="h2" className="text-4xl md:text-6xl font-display font-bold mb-6">
+                    Ingeniería de Crecimiento.
+                  </TextAnimate>
+                </div>
                 <TextAnimate animation="fadeIn" by="line" delay={0.3} className="text-text-secondary text-lg">
                   No hacemos acciones sueltas. Construimos sistemas interconectados.
                 </TextAnimate>
@@ -152,31 +189,37 @@ export default function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 md:gap-1 border border-gray-900 md:border-none">
               <BoutiqueCard
+                id="eco-1" activeId={activeId}
                 title="Estrategia & Consultoría"
                 subtitle="Growth Machines"
                 desc="Olvídate del marketing tradicional. Como consultora estratégica, analizamos tu modelo y diseñamos la hoja de ruta para escalar tu facturación."
               />
               <BoutiqueCard
+                id="eco-2" activeId={activeId}
                 title="Hyper-Automation"
                 subtitle="AI & Operations"
                 desc="Automatización inteligente para mejorar la eficiencia operativa. Conectamos sistemas, optimizamos flujos de trabajo y digitalizamos procesos para maximizar productividad y escalabilidad."
               />
               <BoutiqueCard
+                id="eco-3" activeId={activeId}
                 title="Market Authority"
                 subtitle="SEO & Positioning"
                 desc="No buscamos visitas, buscamos intención de compra. Posicionamiento quirúrgico para dominar los términos que realmente convierten."
               />
               <BoutiqueCard
+                id="eco-4" activeId={activeId}
                 title="Product Boutique"
                 subtitle="UI/UX & Branding"
                 desc="Diseños que venden solos. Estética 'Mendesaltaren' con conversión 'Amazon'. Elevamos tu percepción de valor al infinito."
               />
               <BoutiqueCard
+                id="eco-5" activeId={activeId}
                 title="Smart Structure"
                 subtitle="Legal & Tax"
                 desc="El crecimiento trae complejidad. Optimizamos tu estructura fiscal y legal para que cada euro generado se maximice."
               />
               <BoutiqueCard
+                id="eco-6" activeId={activeId}
                 title="Content Studio"
                 subtitle="Media Production"
                 desc="Tu marca es una productora de medios. Creamos contenido vertical y narrativas visuales que atrapan a la Gen-Z y C-Levels por igual."
@@ -191,9 +234,11 @@ export default function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16">
               <div>
                 <div className="sticky top-32">
-                  <TextAnimate animation="blurInUp" by="word" as="h2" className="text-3xl md:text-5xl font-display font-bold mb-8">
-                    El Método V&G.
-                  </TextAnimate>
+                  <div className="pb-2 overflow-hidden">
+                    <TextAnimate animation="blurInUp" by="word" as="h2" className="text-3xl md:text-5xl font-display font-bold mb-8">
+                      El Método V&G.
+                    </TextAnimate>
+                  </div>
                   <TextAnimate animation="fadeIn" by="word" delay={0.4} className="text-gray-600 text-2xl md:text-3xl font-display font-medium">
                     Del Caos al Sistema.
                   </TextAnimate>
@@ -212,10 +257,10 @@ export default function Home() {
 
               </div>
               <div className="space-y-10 md:space-y-12">
-                <StepItem num="01" title="Discovery & Audit" desc="Radiografía total. No tocamos una línea de código sin entender tus unit economics. Auditamos tus fugas de dinero y tiempo." />
-                <StepItem num="02" title="Hypothesis & Roadmap" desc="Diseñamos el plan de ataque. Priorizamos acciones por 'Impacto vs Esfuerzo' (ICE Score). Nada de paja, solo tracción." />
-                <StepItem num="03" title="Sprint Execution" desc="Despliegue rápido. Lanzamos, medimos y ajustamos en ciclos cortos. Velocidad de startup para validar resultados en semanas." />
-                <StepItem num="04" title="Scale Up" desc="Cuando algo funciona, echamos gasolina. Automatizamos lo validado y escalamos la inversión publicitaria y operativa." />
+                <StepItem id="step-1" activeId={activeId} num="01" title="Discovery & Audit" desc="Radiografía total. No tocamos una línea de código sin entender tus unit economics. Auditamos tus fugas de dinero y tiempo." />
+                <StepItem id="step-2" activeId={activeId} num="02" title="Hypothesis & Roadmap" desc="Diseñamos el plan de ataque. Priorizamos acciones por 'Impacto vs Esfuerzo' (ICE Score). Nada de paja, solo tracción." />
+                <StepItem id="step-3" activeId={activeId} num="03" title="Sprint Execution" desc="Despliegue rápido. Lanzamos, medimos y ajustamos en ciclos cortos. Velocidad de startup para validar resultados en semanas." />
+                <StepItem id="step-4" activeId={activeId} num="04" title="Scale Up" desc="Cuando algo funciona, echamos gasolina. Automatizamos lo validado y escalamos la inversión publicitaria y operativa." />
               </div>
             </div>
           </div>
@@ -303,30 +348,49 @@ function Stat({ label, value, sub, suffix = "" }: { label: string, value: string
   )
 }
 
-function BoutiqueCard({ title, subtitle, desc, highlight = false }: { title: string, subtitle: string, desc: string, highlight?: boolean }) {
+function BoutiqueCard({ id, activeId, title, subtitle, desc }: { id: string, activeId: string | null, title: string, subtitle: string, desc: string }) {
+  const isActive = activeId === id;
   return (
-    <div className={`p-8 md:p-10 border-b md:border-r md:border-b border-gray-900 group relative overflow-hidden transition-all hover:bg-white/5 ${highlight ? 'bg-white/5' : ''}`}>
-      <div className="text-[10px] md:text-xs font-mono text-gray-500 mb-6 uppercase tracking-widest group-hover:text-accent transition-colors">{subtitle}</div>
+    <div
+      data-scroll-item
+      data-scroll-id={id}
+      className={cn(
+        "p-8 md:p-10 border-b md:border-r md:border-b border-gray-900 group relative overflow-hidden transition-all duration-700",
+        isActive ? "bg-white/10 opacity-100 scale-100 shadow-[inset_0_0_20px_rgba(255,198,0,0.05)]" : "opacity-30 md:opacity-100 md:hover:bg-white/5"
+      )}
+    >
+      <div className={cn(
+        "text-[10px] md:text-xs font-mono mb-6 uppercase tracking-widest transition-colors duration-500",
+        isActive ? "text-accent" : "text-gray-500 md:group-hover:text-accent"
+      )}>{subtitle}</div>
       <h3 className="text-xl md:text-2xl font-bold font-display mb-4 text-white">{title}</h3>
-      <p className="text-text-secondary text-sm leading-relaxed mb-6 md:mb-8 border-l-2 border-transparent pl-0 md:group-hover:border-accent md:group-hover:pl-4 transition-all duration-300">
+      <p className="text-text-secondary text-sm leading-relaxed mb-6 md:mb-8 border-l-2 border-transparent pl-0 transition-all duration-300">
         {desc}
       </p>
-      <div className="absolute bottom-6 right-6 opacity-0 md:group-hover:opacity-100 transition-opacity transform translate-x-4 group-hover:translate-x-0 duration-300">
+      <div className={cn(
+        "absolute bottom-6 right-6 transition-all duration-500 transform",
+        isActive ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4 md:group-hover:opacity-100 md:group-hover:translate-x-0"
+      )}>
         <ArrowRight className="w-5 h-5 text-accent" />
       </div>
     </div>
   )
 }
 
-function StepItem({ num, title, desc }: { num: string, title: string, desc: string }) {
+function StepItem({ id, activeId, num, title, desc }: { id: string, activeId: string | null, num: string, title: string, desc: string }) {
+  const isActive = activeId === id;
   return (
-    <div className="flex gap-4 md:gap-6 group">
-      <div className="font-mono text-lg md:text-xl text-gray-700 group-hover:text-accent transition-colors pt-1">
+    <div
+      data-scroll-item
+      data-scroll-id={id}
+      className={cn("flex gap-4 md:gap-6 group transition-all duration-700", isActive ? "opacity-100 translate-x-2 md:translate-x-4" : "opacity-30 md:opacity-100")}
+    >
+      <div className={cn("font-mono text-lg md:text-xl transition-colors duration-500 pt-1", isActive ? "text-accent" : "text-gray-700 md:group-hover:text-accent")}>
         {num}/
       </div>
       <div>
-        <h3 className="text-lg md:text-xl font-bold text-white mb-2 md:mb-3 group-hover:translate-x-2 transition-transform duration-300">{title}</h3>
-        <p className="text-text-secondary text-sm leading-relaxed border-l border-gray-800 pl-4 group-hover:border-accent transition-colors">
+        <h3 className={cn("text-lg md:text-xl font-bold text-white mb-2 md:mb-3 transition-colors duration-500", isActive ? "text-accent" : "md:group-hover:text-white")}>{title}</h3>
+        <p className={cn("text-text-secondary text-sm leading-relaxed border-l pl-4 transition-all duration-500", isActive ? "border-accent text-white" : "border-gray-800 md:group-hover:border-accent")}>
           {desc}
         </p>
       </div>
