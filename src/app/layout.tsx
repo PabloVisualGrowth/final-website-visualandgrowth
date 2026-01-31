@@ -3,18 +3,35 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
-  variable: "--font-inter",
   subsets: ["latin"],
+  variable: '--font-inter',
 });
 
 const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space",
   subsets: ["latin"],
+  variable: '--font-space',
 });
 
 export const metadata: Metadata = {
-  title: "Visual & Growth | The Growth Partner",
-  description: "Accelerate your future with cutting-edge tech and growth strategies.",
+  title: "Visual & Growth | Ingeniería de Crecimiento para Empresas a un Nivel Superior",
+  description: "Consultoría estratégica de Growth, IA y Operaciones. Ayudamos a empresas a escalar mediante automatización inteligente, diseño premium y estrategias de adquisición validadas.",
+  keywords: ["Growth Marketing", "Automatización IA", "Consultoría Estratégica", "Digitalización de Procesos", "Diseño UX/UI", "Escalabilidad de Negocio"],
+  authors: [{ name: "Visual & Growth" }],
+  viewport: "width=device-width, initial-scale=1",
+  robots: "index, follow",
+  openGraph: {
+    title: "Visual & Growth | Tu Socio de Crecimiento",
+    description: "Transformamos negocios mediante tecnología y estrategia visual de alto impacto.",
+    url: "https://visualandgrowth.com",
+    siteName: "Visual & Growth",
+    locale: "es_ES",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Visual & Growth",
+    description: "Sistemas interconectados de ingeniería de crecimiento.",
+  },
 };
 
 export default function RootLayout({
@@ -23,10 +40,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${inter.variable} ${spaceGrotesk.variable} antialiased bg-primary text-text-primary`}
-      >
+    <html lang="es" className="scroll-smooth">
+      <body className={`${inter.variable} ${spaceGrotesk.variable} antialiased`}>
         {children}
       </body>
     </html>
