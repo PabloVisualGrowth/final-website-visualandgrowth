@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+:root {
+  /* Option C: Awwwards Winner Palette */
+  --bg-primary: #050505;
+  --bg-secondary: #0A0A0A;
+  --accent-yellow: #FFC600;
+  --text-primary: #EDEDED;
+  --text-secondary: #9CA3AF;
+
+  /* Gradients */
+  --gradient-surface: radial-gradient(circle at center, rgba(255, 195, 0, 0.15) 0%, rgba(5, 5, 5, 0) 70%);
+}
+
+/* Animations (Must be outside :root) */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-custom {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(0.95);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+.animate-pulse-slow {
+  animation: pulse-custom 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@theme inline {
+  --color-primary: var(--bg-primary);
+  --color-secondary: var(--bg-secondary);
+  --color-accent: var(--accent-yellow);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-space);
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-inter);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+/* FORM FIXES */
+/* Force options to be dark in select dropdowns to match theme */
+select option {
+  background-color: #050505;
+  color: #EDEDED;
+}
