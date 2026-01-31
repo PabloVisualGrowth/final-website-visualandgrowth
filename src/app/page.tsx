@@ -7,6 +7,8 @@ import CookieConsent from "@/components/CookieConsent";
 import Navbar from "@/components/Navbar";
 import ContactForm from "@/components/ContactForm";
 import LeadCaptureModal from "@/components/LeadCaptureModal";
+import { NumberTicker } from "@/components/NumberTicker";
+import { TextAnimate } from "@/components/TextAnimate";
 
 export default function Home() {
   const [showNavbar, setShowNavbar] = useState(false);
@@ -44,7 +46,7 @@ export default function Home() {
 
           {/* --- TECH VISUALS (CSS BASED) --- */}
 
-          {/* 1. Top Right: SYSTEM STATUS - Visible on mobile for 'live' feel but smaller */}
+          {/* 1. Top Right: SYSTEM STATUS */}
           <div className="absolute top-24 right-4 md:right-32 opacity-90 border border-gray-800 bg-[#0A0A0A]/80 backdrop-blur-sm p-3 md:p-4 rounded-lg rotate-6 animate-pulse-slow z-0 shadow-lg cursor-default">
             <div className="flex items-center gap-2 mb-2">
               <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
@@ -53,7 +55,7 @@ export default function Home() {
             <div className="text-accent text-[10px] md:text-xs font-mono font-bold tracking-wider">● ONLINE</div>
           </div>
 
-          {/* 2. Bottom Left: REVENUE METRICS - Hidden on very small screens, visible on md+ */}
+          {/* 2. Bottom Left: REVENUE METRICS */}
           <div className="absolute bottom-32 left-8 md:left-24 opacity-80 hidden sm:block border border-gray-800 bg-[#0A0A0A]/80 backdrop-blur-sm p-4 md:p-5 rounded-lg -rotate-3 z-0 shadow-lg hover:border-accent/50 transition-colors cursor-default">
             <div className="text-[9px] md:text-[10px] font-mono text-gray-500 border-b border-gray-800 pb-1 mb-2 uppercase flex justify-between gap-4">
               <span>REVENUE_TRACKER</span>
@@ -62,13 +64,21 @@ export default function Home() {
             <div className="flex justify-between items-end gap-6 md:gap-8 text-xs font-mono">
               <div className="flex flex-col text-left">
                 <span className="text-gray-400 text-[9px] md:text-[10px] mb-1">Run Rate</span>
-                <span className="text-white font-bold text-base md:text-lg">$2.4M</span>
+                <div className="flex items-center text-white">
+                  <span className="font-bold text-base md:text-lg">$</span>
+                  <NumberTicker value={2.4} decimalPlaces={1} className="font-bold text-base md:text-lg text-white" />
+                  <span className="font-bold text-base md:text-lg ml-0.5">M</span>
+                </div>
               </div>
-              <span className="text-green-400 bg-green-400/10 px-1 rounded text-[10px]">+12%</span>
+              <div className="text-green-400 bg-green-400/10 px-1 rounded text-[10px] flex items-center">
+                <span>+</span>
+                <NumberTicker value={12} className="text-green-400 text-[10px]" />
+                <span>%</span>
+              </div>
             </div>
           </div>
 
-          {/* 3. Top Left: AUDIT PROTOCOL (Full) - Visible on lg+ */}
+          {/* 3. Top Left: AUDIT PROTOCOL (Full) */}
           <div className="absolute top-32 left-10 md:left-32 opacity-80 hidden xl:block z-0 border border-gray-800 bg-[#0A0A0A]/80 p-4 rounded-lg -rotate-2 backdrop-blur-sm hover:border-accent/50 transition-colors cursor-default">
             <div className="text-[10px] font-mono text-gray-500 border-b border-gray-800 pb-1 mb-2">INIT_PROTOCOL</div>
             <div className="font-mono text-[10px] text-left space-y-2 text-gray-400">
@@ -83,7 +93,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* 4. Bottom Right: SCALE VELOCITY - Visible on lg+ */}
+          {/* 4. Bottom Right: SCALE VELOCITY */}
           <div className="absolute bottom-24 right-10 md:right-20 opacity-70 hidden lg:block border border-gray-800 bg-[#0A0A0A]/80 backdrop-blur-sm p-4 rounded-lg rotate-2 z-0 shadow-lg cursor-default">
             <div className="flex justify-between items-center mb-3 border-b border-gray-800 pb-1">
               <span className="text-[10px] font-mono text-gray-400 uppercase">SCALE_VELOCITY</span>
@@ -99,7 +109,7 @@ export default function Home() {
           </div>
 
 
-          {/* Main Logo ONLY - Centered - Optimized size for mobile */}
+          {/* Main Logo ONLY - Centered */}
           <div className="relative w-full max-w-[80vw] md:max-w-4xl h-32 sm:h-48 md:h-64 animate-fade-in-up z-10 flex items-center justify-center">
             <Image
               src="/logo-full.png"
@@ -115,8 +125,8 @@ export default function Home() {
         {/* INSIGHTS STRIP */}
         <section className="py-12 border-y border-gray-900 bg-bg-secondary/50 backdrop-blur-sm relative z-20">
           <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
-            <Stat label="Enfoque Growth" value="100%" sub="Negocio 360" />
-            <Stat label="Time to Market" value="2 Sem" sub="Validación Rápida" />
+            <Stat label="Enfoque Growth" value={100} suffix="%" sub="Negocio 360" />
+            <Stat label="Time to Market" value={2} suffix=" Sem" sub="Validación Rápida" />
             <Stat label="Integración IA" value="Nativa" sub="Automatización" />
             <Stat label="Diseño" value="A+" sub="Calidad Boutique" />
           </div>
@@ -128,12 +138,12 @@ export default function Home() {
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:bottom-20 gap-6">
               <div className="max-w-2xl">
                 <span className="text-accent font-mono text-sm mb-4 block uppercase tracking-widest">El Ecosistema</span>
-                <h2 className="text-4xl md:text-6xl font-display font-bold mb-6">
-                  Ingeniería de <span className="text-gray-500">Crecimiento.</span>
-                </h2>
-                <p className="text-text-secondary text-lg">
+                <TextAnimate animation="blurInUp" by="word" as="h2" className="text-4xl md:text-6xl font-display font-bold mb-6">
+                  Ingeniería de Crecimiento.
+                </TextAnimate>
+                <TextAnimate animation="fadeIn" by="line" delay={0.3} className="text-text-secondary text-lg">
                   No hacemos acciones sueltas. Construimos sistemas interconectados.
-                </p>
+                </TextAnimate>
               </div>
               <a href="#audit" className="hidden md:flex items-center gap-2 text-white border-b border-accent pb-1 hover:text-accent transition-colors">
                 Ver Roadmap Completo <ArrowRight className="w-4 h-4" />
@@ -180,10 +190,14 @@ export default function Home() {
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16">
               <div>
-                <h2 className="text-3xl md:text-5xl font-display font-bold mb-8 sticky top-32">
-                  El Método <span className="text-accent">V&G</span>.
-                  <br /><span className="text-gray-600 text-2xl md:text-3xl">Del Caos al Sistema.</span>
-                </h2>
+                <div className="sticky top-32">
+                  <TextAnimate animation="blurInUp" by="word" as="h2" className="text-3xl md:text-5xl font-display font-bold mb-8">
+                    El Método V&G.
+                  </TextAnimate>
+                  <TextAnimate animation="fadeIn" by="word" delay={0.4} className="text-gray-600 text-2xl md:text-3xl font-display font-medium">
+                    Del Caos al Sistema.
+                  </TextAnimate>
+                </div>
 
                 {/* TEAM OFFICE PHOTO - CLEAN, NO FILTERS */}
                 <div className="mt-12 relative h-64 md:h-80 w-full rounded-sm overflow-hidden border border-gray-800 sticky top-80 hidden lg:block shadow-2xl">
@@ -209,12 +223,14 @@ export default function Home() {
 
         {/* PARTNERS */}
         <section id="partnership" className="py-24 md:py-32 px-6 border-t border-gray-900">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16 md:bottom-20">
-              <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">Partners, no Proveedores.</h2>
-              <p className="text-text-secondary text-lg max-w-2xl mx-auto">
+          <div className="max-w-7xl mx-auto text-center">
+            <div className="mb-16 md:bottom-20">
+              <TextAnimate animation="blurInUp" by="word" as="h2" className="text-3xl md:text-5xl font-display font-bold mb-6">
+                Partners, no Proveedores.
+              </TextAnimate>
+              <TextAnimate animation="fadeIn" by="line" delay={0.3} className="text-text-secondary text-lg max-w-2xl mx-auto">
                 Lideramos tu crecimiento implicándonos en el negocio.
-              </p>
+              </TextAnimate>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
@@ -268,11 +284,20 @@ export default function Home() {
 }
 
 // COMPONENTS (Stat, BoutiqueCard, StepItem, TeamMember)
-function Stat({ label, value, sub }: { label: string, value: string, sub: string }) {
+function Stat({ label, value, sub, suffix = "" }: { label: string, value: string | number, sub: string, suffix?: string }) {
   return (
     <div className="text-center">
       <div className="text-[10px] md:text-xs font-mono text-gray-500 mb-2 uppercase tracking-wider">{label}</div>
-      <div className="text-2xl md:text-4xl font-bold text-white mb-1 font-display">{value}</div>
+      <div className="text-2xl md:text-4xl font-bold text-white mb-1 font-display flex items-center justify-center">
+        {typeof value === 'number' ? (
+          <>
+            <NumberTicker value={value} className="text-2xl md:text-4xl font-bold text-white" />
+            {suffix && <span>{suffix}</span>}
+          </>
+        ) : (
+          <span>{value}</span>
+        )}
+      </div>
       <div className="text-[10px] md:text-xs text-accent">{sub}</div>
     </div>
   )
