@@ -363,7 +363,7 @@ function BoutiqueCard({ id, activeId, isMobile, title, subtitle, desc }: { id: s
     >
       <div className={cn(
         "text-[10px] md:text-xs font-mono mb-6 uppercase tracking-widest transition-colors duration-500",
-        (isActive || (!isMobile)) ? "text-accent" : "text-gray-500 group-hover:text-accent"
+        isActive ? "text-accent" : (isMobile ? "text-gray-500" : "text-gray-500 group-hover:text-accent")
       )}>{subtitle}</div>
       <h3 className="text-xl md:text-2xl font-bold font-display mb-4 text-white">{title}</h3>
       <p className="text-text-secondary text-sm leading-relaxed mb-6 md:mb-8 border-l-2 border-transparent pl-0 transition-all duration-300">
@@ -387,12 +387,12 @@ function StepItem({ id, activeId, isMobile, num, title, desc }: { id: string, ac
       data-scroll-id={id}
       className={cn("flex gap-4 md:gap-6 group transition-all duration-700", isActive ? "opacity-100 translate-x-2 md:translate-x-4" : (isMobile ? "opacity-30" : "opacity-100"))}
     >
-      <div className={cn("font-mono text-lg md:text-xl transition-colors duration-500 pt-1", (isActive || (!isMobile)) ? "text-accent" : "text-gray-700 group-hover:text-accent")}>
+      <div className={cn("font-mono text-lg md:text-xl transition-colors duration-500 pt-1", isActive ? "text-accent" : (isMobile ? "text-gray-700" : "text-gray-700 group-hover:text-accent"))}>
         {num}/
       </div>
       <div>
-        <h3 className={cn("text-lg md:text-xl font-bold text-white mb-2 md:mb-3 transition-colors duration-500", (isActive || (!isMobile)) ? "text-accent" : "group-hover:text-white")}>{title}</h3>
-        <p className={cn("text-text-secondary text-sm leading-relaxed border-l pl-4 transition-all duration-500", (isActive || (!isMobile)) ? "border-accent text-white" : "border-gray-800 group-hover:border-accent")}>
+        <h3 className={cn("text-lg md:text-xl font-bold text-white mb-2 md:mb-3 transition-colors duration-500", isActive ? "text-accent" : (isMobile ? "text-white/80" : "group-hover:text-accent"))}>{title}</h3>
+        <p className={cn("text-text-secondary text-sm leading-relaxed border-l pl-4 transition-all duration-500", isActive ? "border-accent text-white" : "border-gray-800 group-hover:border-accent")}>
           {desc}
         </p>
       </div>
