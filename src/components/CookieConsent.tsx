@@ -36,7 +36,10 @@ export default function CookieConsent() {
                     <h3 className="text-white font-bold text-lg mb-2">Valoramos tu privacidad</h3>
                     <p className="text-gray-400 text-sm leading-relaxed">
                         Usamos cookies para mejorar su experiencia de navegación, mostrarle contenidos personalizados y analizar nuestro tráfico.
-                        Al hacer clic en "Aceptar todo" usted da su consentimiento a nuestro uso de las cookies.
+                        - [x] Corregir vulnerabilidad de seguridad (CVE-2025-66478) <!-- id: 46 -->
+                        - [x] Actualizar Next.js a 15.1.11 <!-- id: 47 -->
+                        - [x] Re-generar build estática y subir a GitHub <!-- id: 48 -->
+                        su consentimiento a nuestro uso de las cookies.
                     </p>
                 </div>
                 <div className="flex gap-4 min-w-max">

@@ -63,7 +63,7 @@ export default function Home() {
 
       <main className="relative z-10 w-full">
 
-        {/* HERO SECTION - LOGO BOX + TECH WIDGETS */}
+        {/* HERO SECTION - REFINED LAYOUT */}
         <section className="min-h-screen flex flex-col items-center justify-center px-6 py-20 relative text-center overflow-hidden">
 
           {/* --- TECH VISUALS (CSS BASED) --- */}
@@ -130,24 +130,40 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Main Logo BOX - Refined with BorderBeam and Sparkle */}
-          <div className="relative w-full max-w-[95vw] md:max-w-4xl flex flex-col items-center justify-center animate-fade-in-up z-10 pt-20 pb-10 md:pt-32 md:pb-20 scale-[0.85] sm:scale-95 md:scale-100">
+          {/* Main Logo - Simple & Elegant */}
+          <div className="relative w-full max-w-[80vw] md:max-w-2xl h-16 sm:h-24 md:h-32 mb-12 animate-fade-in-up z-20">
+            <Image
+              src="/logo-full.png"
+              fill
+              alt="Visual & Growth"
+              className="object-contain drop-shadow-[0_0_15px_rgba(255,195,0,0.15)]"
+              priority
+            />
+          </div>
+
+          {/* HERO CTA BOX - With BorderBeam and Sparkle */}
+          <div className="relative w-full max-w-[90vw] md:max-w-xl flex flex-col items-center justify-center animate-fade-in-up z-10 pt-12">
+
             {/* Sparkle Icon on top with float animation */}
-            <div className="absolute top-0 w-14 h-14 md:w-20 md:h-20 opacity-90 animate-pulse z-20">
+            <div className="absolute -top-6 w-12 h-12 md:w-16 md:h-16 opacity-100 animate-pulse z-20">
               <Image src="/logo-icon.png" fill alt="Icon" className="object-contain" priority />
             </div>
 
             {/* The Box */}
-            <div className="relative w-full p-8 sm:p-12 md:p-16 border border-white/10 bg-[#050505]/40 backdrop-blur-xl rounded-2xl md:rounded-[2.5rem] shadow-[0_0_80px_rgba(0,0,0,0.8)] flex items-center justify-center overflow-hidden">
-              <div className="relative w-full h-24 sm:h-32 md:h-56">
-                <Image
-                  src="/logo-full.png"
-                  fill
-                  alt="Visual & Growth"
-                  className="object-contain drop-shadow-[0_0_25px_rgba(255,198,0,0.15)]"
-                  priority
-                />
-              </div>
+            <div className="relative w-full p-8 md:p-10 border border-white/10 bg-[#050505]/40 backdrop-blur-xl rounded-2xl md:rounded-[2rem] shadow-[0_0_60px_rgba(0,0,0,0.7)] flex flex-col items-center justify-center overflow-hidden">
+              <h2 className="text-xl md:text-3xl font-display font-bold text-white mb-4 relative z-10">
+                Consultoría de Growth Gratuita
+              </h2>
+              <p className="text-sm md:text-base text-text-secondary mb-8 relative z-10 max-w-sm mx-auto">
+                Plazas limitadas. Déjanos tus datos y te contactaremos para una sesión estratégica de 30 min.
+              </p>
+
+              <a
+                href="#audit"
+                className="relative z-10 bg-accent text-black font-bold px-8 py-3 rounded-sm hover:bg-white transition-all transform hover:scale-105 active:scale-95 duration-300 uppercase tracking-wider text-sm"
+              >
+                Solicitar Reserva
+              </a>
 
               {/* Border Beams - Premium Glowing Effect */}
               <BorderBeam duration={6} size={400} className="from-transparent via-accent to-transparent" />
