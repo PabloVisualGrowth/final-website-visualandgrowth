@@ -63,11 +63,12 @@ export default function Home() {
 
       <main className="relative z-10 w-full">
 
-        {/* HERO SECTION - REFINED LAYOUT */}
+        {/* HERO SECTION - ULTRA MINIMALIST */}
         <section className="min-h-screen flex flex-col items-center justify-center px-6 py-20 relative text-center overflow-hidden">
 
           {/* --- TECH VISUALS --- */}
-          {/* System Status */}
+
+          {/* SYSTEM_READY (Top Right) */}
           <div className="absolute top-24 right-4 md:right-32 opacity-90 border border-gray-800 bg-[#0A0A0A]/80 backdrop-blur-sm p-3 md:p-4 rounded-lg rotate-6 animate-pulse-slow z-0 shadow-lg cursor-default">
             <div className="flex items-center gap-2 mb-2">
               <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
@@ -76,7 +77,7 @@ export default function Home() {
             <div className="text-accent text-[10px] md:text-xs font-mono font-bold tracking-wider">● ONLINE</div>
           </div>
 
-          {/* Revenue metrics (Bottom Left) */}
+          {/* REVENUE_TRACKER (Bottom Left) */}
           <div className="absolute bottom-32 left-8 md:left-24 opacity-80 hidden sm:block border border-gray-800 bg-[#0A0A0A]/80 backdrop-blur-sm p-4 md:p-5 rounded-lg -rotate-3 z-0 shadow-lg hover:border-accent/50 transition-colors cursor-default">
             <div className="text-[9px] md:text-[10px] font-mono text-gray-500 border-b border-gray-800 pb-1 mb-2 uppercase flex justify-between gap-4">
               <span>REVENUE_TRACKER</span>
@@ -99,7 +100,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Audit Protocol (Top Left) */}
+          {/* INIT_PROTOCOL (Top Left) */}
           <div className="absolute top-32 left-10 md:left-32 opacity-80 hidden xl:block z-0 border border-gray-800 bg-[#0A0A0A]/80 p-4 rounded-lg -rotate-2 backdrop-blur-sm hover:border-accent/50 transition-colors cursor-default">
             <div className="text-[10px] font-mono text-gray-500 border-b border-gray-800 pb-1 mb-2">INIT_PROTOCOL</div>
             <div className="font-mono text-[10px] text-left space-y-2 text-gray-400">
@@ -114,7 +115,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Scale Velocity (Bottom Right) */}
+          {/* SCALE_VELOCITY (Bottom Right) */}
           <div className="absolute bottom-24 right-10 md:right-20 opacity-70 hidden lg:block border border-gray-800 bg-[#0A0A0A]/80 backdrop-blur-sm p-4 rounded-lg rotate-2 z-0 shadow-lg cursor-default">
             <div className="flex justify-between items-center mb-3 border-b border-gray-800 pb-1">
               <span className="text-[10px] font-mono text-gray-400 uppercase">SCALE_VELOCITY</span>
@@ -129,8 +130,8 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Main Logo - NO BOX, CLEAN */}
-          <div className="relative w-full max-w-[85vw] md:max-w-2xl h-12 sm:h-20 md:h-28 mb-16 animate-fade-in-up z-20">
+          {/* Main Logo - THE ONLY THING IN THE CENTER */}
+          <div className="relative w-full max-w-[85vw] md:max-w-3xl h-16 sm:h-28 md:h-40 animate-fade-in-up z-20">
             <Image
               src="/logo-full.png"
               fill
@@ -138,36 +139,6 @@ export default function Home() {
               className="object-contain"
               priority
             />
-          </div>
-
-          {/* HERO CTA BOX - The Box with BorderBeam and Sparkle */}
-          <div className="relative w-full max-w-[90vw] md:max-w-xl flex flex-col items-center justify-center animate-fade-in-up z-10">
-
-            {/* Sparkle Icon on top with float animation */}
-            <div className="absolute -top-8 w-14 h-14 md:w-20 md:h-20 opacity-100 animate-pulse z-20">
-              <Image src="/logo-icon.png" fill alt="Icon" className="object-contain" priority />
-            </div>
-
-            {/* The CTA Box */}
-            <div className="relative w-full p-8 md:p-12 border border-white/5 bg-[#050505]/60 backdrop-blur-2xl rounded-2xl md:rounded-[2.5rem] shadow-[0_0_80px_rgba(0,0,0,0.8)] flex flex-col items-center justify-center overflow-hidden">
-              <h2 className="text-xl md:text-3xl font-display font-bold text-white mb-4 relative z-10 leading-tight">
-                Consultoría de Growth Gratuita
-              </h2>
-              <p className="text-sm md:text-base text-text-secondary mb-8 relative z-10 max-w-sm mx-auto leading-relaxed">
-                Plazas limitadas. Déjanos tus datos y te contactaremos para una sesión estratégica de 30 min.
-              </p>
-
-              <a
-                href="#audit"
-                className="relative z-10 bg-accent text-black font-bold px-10 py-4 rounded-sm hover:bg-white transition-all transform hover:scale-105 active:scale-95 duration-300 uppercase tracking-widest text-sm"
-              >
-                Solicitar Reserva
-              </a>
-
-              {/* Border Beams - Premium Glowing Effect */}
-              <BorderBeam duration={8} size={400} className="from-transparent via-accent to-transparent" />
-              <BorderBeam duration={8} delay={4} size={400} borderWidth={2} className="from-transparent via-white/40 to-transparent" />
-            </div>
           </div>
 
         </section>
