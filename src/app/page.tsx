@@ -365,13 +365,13 @@ function BoutiqueCard({ id, activeId, isMobile, title, subtitle, desc }: { id: s
         "text-[10px] md:text-xs font-mono mb-6 uppercase tracking-widest transition-colors duration-500",
         isActive ? "text-accent" : (isMobile ? "text-gray-500" : "text-gray-500 group-hover:text-accent")
       )}>{subtitle}</div>
-      <h3 className="text-xl md:text-2xl font-bold font-display mb-4 text-white">{title}</h3>
+      <h3 className={cn("text-xl md:text-2xl font-bold font-display mb-4 transition-colors duration-500", (isActive || (!isMobile)) ? "text-white" : "text-white/80 group-hover:text-white")}>{title}</h3>
       <p className="text-text-secondary text-sm leading-relaxed mb-6 md:mb-8 border-l-2 border-transparent pl-0 transition-all duration-300">
         {desc}
       </p>
       <div className={cn(
         "absolute bottom-6 right-6 transition-all duration-500 transform",
-        isActive || (!isMobile) ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0"
+        isActive ? "opacity-100 translate-x-0" : (isMobile ? "opacity-0 translate-x-4" : "opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0")
       )}>
         <ArrowRight className="w-5 h-5 text-accent" />
       </div>
