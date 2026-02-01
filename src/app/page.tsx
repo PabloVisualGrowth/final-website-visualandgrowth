@@ -15,8 +15,13 @@ import { cn } from "@/lib/utils";
 export default function Home() {
   const [showNavbar, setShowNavbar] = useState(false);
   const [activeId, setActiveId] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
     const handleScroll = () => {
       if (window.scrollY > window.innerHeight * 0.8) {
         setShowNavbar(true);
@@ -24,28 +29,39 @@ export default function Home() {
         setShowNavbar(false);
       }
 
-      // Scroll Lighting logic
-      const elements = document.querySelectorAll("[data-scroll-item]");
-      let closestId = null;
-      let minDistance = Infinity;
+      // Scroll Lighting logic - ONLY FOR MOBILE
+      if (window.innerWidth < 768) {
+        const elements = document.querySelectorAll("[data-scroll-item]");
+        let closestId = null;
+        let minDistance = Infinity;
 
-      elements.forEach((el) => {
-        const rect = el.getBoundingClientRect();
-        const centerY = window.innerHeight / 2;
-        const elementCenterY = rect.top + rect.height / 2;
-        const distance = Math.abs(elementCenterY - centerY);
+        elements.forEach((el) => {
+          const rect = el.getBoundingClientRect();
+          const centerY = window.innerHeight / 2;
+          const elementCenterY = rect.top + rect.height / 2;
+          const distance = Math.abs(elementCenterY - centerY);
 
-        if (distance < minDistance && distance < 250) {
-          minDistance = distance;
-          closestId = el.getAttribute("data-scroll-id");
-        }
-      });
-      setActiveId(closestId);
+          if (distance < minDistance && distance < 250) {
+            minDistance = distance;
+            closestId = el.getAttribute("data-scroll-id");
+          }
+        });
+        setActiveId(closestId);
+      } else {
+        setActiveId(null);
+      }
     };
 
+    window.addEventListener("resize", checkMobile);
     window.addEventListener("scroll", handleScroll);
+
+    checkMobile();
     handleScroll(); // Initial check
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("resize", checkMobile);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
@@ -175,37 +191,37 @@ export default function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 md:gap-1 border border-gray-900 md:border-none">
               <BoutiqueCard
-                id="eco-1" activeId={activeId}
+                id="eco-1" activeId={activeId} isMobile={isMobile}
                 title="Estrategia & Consultoría"
                 subtitle="Growth Machines"
                 desc="Olvídate del marketing tradicional. Como consultora estratégica, analizamos tu modelo y diseñamos la hoja de ruta para escalar tu facturación."
               />
               <BoutiqueCard
-                id="eco-2" activeId={activeId}
+                id="eco-2" activeId={activeId} isMobile={isMobile}
                 title="Hyper-Automation"
                 subtitle="AI & Operations"
                 desc="Automatización inteligente para mejorar la eficiencia operativa. Conectamos sistemas, optimizamos flujos de trabajo y digitalizamos procesos para maximizar productividad y escalabilidad."
               />
               <BoutiqueCard
-                id="eco-3" activeId={activeId}
+                id="eco-3" activeId={activeId} isMobile={isMobile}
                 title="Market Authority"
                 subtitle="SEO & Positioning"
                 desc="No buscamos visitas, buscamos intención de compra. Posicionamiento quirúrgico para dominar los términos que realmente convierten."
               />
               <BoutiqueCard
-                id="eco-4" activeId={activeId}
+                id="eco-4" activeId={activeId} isMobile={isMobile}
                 title="Product Boutique"
                 subtitle="UI/UX & Branding"
                 desc="Diseños que venden solos. Estética 'Mendesaltaren' con conversión 'Amazon'. Elevamos tu percepción de valor al infinito."
               />
               <BoutiqueCard
-                id="eco-5" activeId={activeId}
+                id="eco-5" activeId={activeId} isMobile={isMobile}
                 title="Smart Structure"
                 subtitle="Legal & Tax"
                 desc="El crecimiento trae complejidad. Optimizamos tu estructura fiscal y legal para que cada euro generado se maximice."
               />
               <BoutiqueCard
-                id="eco-6" activeId={activeId}
+                id="eco-6" activeId={activeId} isMobile={isMobile}
                 title="Content Studio"
                 subtitle="Media Production"
                 desc="Tu marca es una productora de medios. Creamos contenido vertical y narrativas visuales que atrapan a la Gen-Z y C-Levels por igual."
@@ -243,10 +259,10 @@ export default function Home() {
 
               </div>
               <div className="space-y-10 md:space-y-12">
-                <StepItem id="step-1" activeId={activeId} num="01" title="Discovery & Audit" desc="Radiografía total. No tocamos una línea de código sin entender tus unit economics. Auditamos tus fugas de dinero y tiempo." />
-                <StepItem id="step-2" activeId={activeId} num="02" title="Hypothesis & Roadmap" desc="Diseñamos el plan de ataque. Priorizamos acciones por 'Impacto vs Esfuerzo' (ICE Score). Nada de paja, solo tracción." />
-                <StepItem id="step-3" activeId={activeId} num="03" title="Sprint Execution" desc="Despliegue rápido. Lanzamos, medimos y ajustamos en ciclos cortos. Velocidad de startup para validar resultados en semanas." />
-                <StepItem id="step-4" activeId={activeId} num="04" title="Scale Up" desc="Cuando algo funciona, echamos gasolina. Automatizamos lo validado y escalamos la inversión publicitaria y operativa." />
+                <StepItem id="step-1" activeId={activeId} isMobile={isMobile} num="01" title="Discovery & Audit" desc="Radiografía total. No tocamos una línea de código sin entender tus unit economics. Auditamos tus fugas de dinero y tiempo." />
+                <StepItem id="step-2" activeId={activeId} isMobile={isMobile} num="02" title="Hypothesis & Roadmap" desc="Diseñamos el plan de ataque. Priorizamos acciones por 'Impacto vs Esfuerzo' (ICE Score). Nada de paja, solo tracción." />
+                <StepItem id="step-3" activeId={activeId} isMobile={isMobile} num="03" title="Sprint Execution" desc="Despliegue rápido. Lanzamos, medimos y ajustamos en ciclos cortos. Velocidad de startup para validar resultados en semanas." />
+                <StepItem id="step-4" activeId={activeId} isMobile={isMobile} num="04" title="Scale Up" desc="Cuando algo funciona, echamos gasolina. Automatizamos lo validado y escalamos la inversión publicitaria y operativa." />
               </div>
             </div>
           </div>
@@ -334,20 +350,20 @@ function Stat({ label, value, sub, suffix = "" }: { label: string, value: string
   )
 }
 
-function BoutiqueCard({ id, activeId, title, subtitle, desc }: { id: string, activeId: string | null, title: string, subtitle: string, desc: string }) {
-  const isActive = activeId === id;
+function BoutiqueCard({ id, activeId, isMobile, title, subtitle, desc }: { id: string, activeId: string | null, isMobile: boolean, title: string, subtitle: string, desc: string }) {
+  const isActive = isMobile && activeId === id;
   return (
     <div
       data-scroll-item
       data-scroll-id={id}
       className={cn(
         "p-8 md:p-10 border-b md:border-r md:border-b border-gray-900 group relative overflow-hidden transition-all duration-700",
-        isActive ? "bg-white/10 opacity-100 scale-100 shadow-[inset_0_0_20px_rgba(255,198,0,0.05)]" : "opacity-30 md:opacity-100 md:hover:bg-white/5"
+        isActive ? "bg-white/10 opacity-100 scale-100 shadow-[inset_0_0_20px_rgba(255,198,0,0.05)]" : (isMobile ? "opacity-30" : "opacity-100 hover:bg-white/5")
       )}
     >
       <div className={cn(
         "text-[10px] md:text-xs font-mono mb-6 uppercase tracking-widest transition-colors duration-500",
-        isActive ? "text-accent" : "text-gray-500 md:group-hover:text-accent"
+        (isActive || (!isMobile)) ? "text-accent" : "text-gray-500 group-hover:text-accent"
       )}>{subtitle}</div>
       <h3 className="text-xl md:text-2xl font-bold font-display mb-4 text-white">{title}</h3>
       <p className="text-text-secondary text-sm leading-relaxed mb-6 md:mb-8 border-l-2 border-transparent pl-0 transition-all duration-300">
@@ -355,7 +371,7 @@ function BoutiqueCard({ id, activeId, title, subtitle, desc }: { id: string, act
       </p>
       <div className={cn(
         "absolute bottom-6 right-6 transition-all duration-500 transform",
-        isActive ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4 md:group-hover:opacity-100 md:group-hover:translate-x-0"
+        isActive || (!isMobile) ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0"
       )}>
         <ArrowRight className="w-5 h-5 text-accent" />
       </div>
@@ -363,20 +379,20 @@ function BoutiqueCard({ id, activeId, title, subtitle, desc }: { id: string, act
   )
 }
 
-function StepItem({ id, activeId, num, title, desc }: { id: string, activeId: string | null, num: string, title: string, desc: string }) {
-  const isActive = activeId === id;
+function StepItem({ id, activeId, isMobile, num, title, desc }: { id: string, activeId: string | null, isMobile: boolean, num: string, title: string, desc: string }) {
+  const isActive = isMobile && activeId === id;
   return (
     <div
       data-scroll-item
       data-scroll-id={id}
-      className={cn("flex gap-4 md:gap-6 group transition-all duration-700", isActive ? "opacity-100 translate-x-2 md:translate-x-4" : "opacity-30 md:opacity-100")}
+      className={cn("flex gap-4 md:gap-6 group transition-all duration-700", isActive ? "opacity-100 translate-x-2 md:translate-x-4" : (isMobile ? "opacity-30" : "opacity-100"))}
     >
-      <div className={cn("font-mono text-lg md:text-xl transition-colors duration-500 pt-1", isActive ? "text-accent" : "text-gray-700 md:group-hover:text-accent")}>
+      <div className={cn("font-mono text-lg md:text-xl transition-colors duration-500 pt-1", (isActive || (!isMobile)) ? "text-accent" : "text-gray-700 group-hover:text-accent")}>
         {num}/
       </div>
       <div>
-        <h3 className={cn("text-lg md:text-xl font-bold text-white mb-2 md:mb-3 transition-colors duration-500", isActive ? "text-accent" : "md:group-hover:text-white")}>{title}</h3>
-        <p className={cn("text-text-secondary text-sm leading-relaxed border-l pl-4 transition-all duration-500", isActive ? "border-accent text-white" : "border-gray-800 md:group-hover:border-accent")}>
+        <h3 className={cn("text-lg md:text-xl font-bold text-white mb-2 md:mb-3 transition-colors duration-500", (isActive || (!isMobile)) ? "text-accent" : "group-hover:text-white")}>{title}</h3>
+        <p className={cn("text-text-secondary text-sm leading-relaxed border-l pl-4 transition-all duration-500", (isActive || (!isMobile)) ? "border-accent text-white" : "border-gray-800 group-hover:border-accent")}>
           {desc}
         </p>
       </div>
