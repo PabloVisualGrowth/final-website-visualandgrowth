@@ -11,6 +11,7 @@ import { NumberTicker } from "@/components/NumberTicker";
 import { TextAnimate } from "@/components/TextAnimate";
 import { BorderBeam } from "@/components/BorderBeam";
 import { InteractiveGridPattern } from "@/components/InteractiveGridPattern";
+import { VelocityScroll } from "@/components/VelocityScroll";
 import { cn } from "@/lib/utils";
 
 export default function Home() {
@@ -182,14 +183,22 @@ export default function Home() {
 
         </section>
 
-        {/* INSIGHTS STRIP */}
-        <section className="py-12 border-y border-gray-900 bg-bg-secondary/50 backdrop-blur-sm relative z-20">
-          <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
-            <Stat label="Enfoque Growth" value={100} suffix="%" sub="Negocio 360" />
-            <Stat label="Time to Market" value={2} suffix=" Sem" sub="Validación Rápida" />
-            <Stat label="Integración IA" value="Nativa" sub="Automatización" />
-            <Stat label="Diseño" value="A+" sub="Calidad Boutique" />
+        {/* INSIGHTS STRIP - VELOCITY SCROLL */}
+        <section className="py-8 border-y border-gray-900 bg-bg-secondary/30 backdrop-blur-sm relative z-20 overflow-hidden">
+          <div className="w-full flex flex-col gap-4">
+            <VelocityScroll
+              text="ENFOQUE GROWTH 100% NEGOCIO 360 • INTEGRACIÓN IA NATIVA • AUTOMATIZACIÓN"
+              default_velocity={3}
+              className="text-white/40 tracking-tighter"
+            />
+            <VelocityScroll
+              text="TIME TO MARKET 2 SEM • VALIDACIÓN RÁPIDA • DISEÑO A+ CALIDAD BOUTIQUE"
+              default_velocity={-3}
+              className="text-accent/60 tracking-tighter"
+            />
           </div>
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-bg-primary to-transparent z-10" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-bg-primary to-transparent z-10" />
         </section>
 
         {/* THE ECOSYSTEM */}
