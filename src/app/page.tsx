@@ -80,86 +80,96 @@ export default function Home() {
 
       <main className="relative z-10 w-full">
 
-        {/* HERO SECTION - ULTRA MINIMALIST */}
+        {/* HERO SECTION - REFINED TECHNOLOGICAL */}
         <section className="min-h-screen flex flex-col items-center justify-center px-6 py-20 relative text-center overflow-hidden">
 
-          {/* INTERACTIVE GRID PATTERN */}
+          {/* INTERACTIVE GRID PATTERN - ZOOMED IN EFFECT */}
           <InteractiveGridPattern
+            width={120}
+            height={120}
+            squares={[20, 20]}
             className={cn(
-              "[mask-image:radial-gradient(400px_circle_at_center,white,transparent)]",
+              "[mask-image:radial-gradient(500px_circle_at_center,white,transparent)]",
               "inset-x-0 inset-y-[-30%] h-[200%] skew-y-12 z-0"
             )}
           />
 
           {/* --- TECH VISUALS (SKEWED PERSPECTIVE) --- */}
           <div className="absolute inset-0 z-10 pointer-events-none skew-y-12">
-            <div className="relative w-full h-full max-w-7xl mx-auto">
+            <div className="relative w-full h-full max-w-7xl mx-auto overflow-visible">
 
-              {/* SYSTEM_READY (Top Right) */}
-              <div className="absolute top-24 right-4 md:right-32 opacity-90 border border-gray-800 bg-[#0A0A0A]/80 backdrop-blur-sm p-3 md:p-4 rounded-lg animate-pulse-slow shadow-lg cursor-default pointer-events-auto">
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
-                  <div className="text-[9px] md:text-[10px] font-mono text-gray-400 uppercase tracking-widest">SYSTEM_READY</div>
-                </div>
-                <div className="text-accent text-[10px] md:text-xs font-mono font-bold tracking-wider">● ONLINE</div>
-              </div>
+              {/* ORIGINAL 4 CARDS - UNIFIED STYLE */}
+              <TechProtocolCard
+                title="SYSTEM_READY"
+                className="top-[15%] right-[5%] md:right-[10%]"
+                lines={[
+                  { label: "STATUS", value: "ONLINE", status: "ok" },
+                  { label: "UPTIME", value: "99.9%", status: "ok" }
+                ]}
+              />
 
-              {/* REVENUE_TRACKER (Bottom Left) */}
-              <div className="absolute bottom-32 left-8 md:left-24 opacity-80 hidden sm:block border border-gray-800 bg-[#0A0A0A]/80 backdrop-blur-sm p-4 md:p-5 rounded-lg z-0 shadow-lg hover:border-accent/50 transition-colors cursor-default pointer-events-auto">
-                <div className="text-[9px] md:text-[10px] font-mono text-gray-500 border-b border-gray-800 pb-1 mb-2 uppercase flex justify-between gap-4">
-                  <span>REVENUE_TRACKER</span>
-                  <span className="text-gray-600">v2.1</span>
-                </div>
-                <div className="flex justify-between items-end gap-6 md:gap-8 text-xs font-mono">
-                  <div className="flex flex-col text-left">
-                    <span className="text-gray-400 text-[9px] md:text-[10px] mb-1">Run Rate</span>
-                    <div className="flex items-center text-white">
-                      <span className="font-bold text-base md:text-lg">$</span>
-                      <NumberTicker value={2.4} decimalPlaces={1} className="font-bold text-base md:text-lg text-white" />
-                      <span className="font-bold text-base md:text-lg ml-0.5">M</span>
-                    </div>
-                  </div>
-                  <div className="text-green-400 bg-green-400/10 px-1 rounded text-[10px] flex items-center">
-                    <span>+</span>
-                    <NumberTicker value={12} className="text-green-400 text-[10px]" />
-                    <span>%</span>
-                  </div>
-                </div>
-              </div>
+              <TechProtocolCard
+                title="REVENUE_TRACKER"
+                className="bottom-[20%] left-[5%] md:left-[8%]"
+                lines={[
+                  { label: "RUN_RATE", value: "$2.4M", status: "accent" },
+                  { label: "GROWTH", value: "+12%", status: "ok" }
+                ]}
+              />
 
-              {/* INIT_PROTOCOL (Top Left) */}
-              <div className="absolute top-32 left-10 md:left-32 opacity-80 hidden xl:block z-0 border border-gray-800 bg-[#0A0A0A]/80 p-4 rounded-lg backdrop-blur-sm hover:border-accent/50 transition-colors cursor-default pointer-events-auto">
-                <div className="text-[10px] font-mono text-gray-500 border-b border-gray-800 pb-1 mb-2">INIT_PROTOCOL</div>
-                <div className="font-mono text-[10px] text-left space-y-2 text-gray-400">
-                  <div className="flex items-center justify-between gap-4">
-                    <span>CONNECTING_AGENTS...</span>
-                    <span className="text-green-500 font-bold">OK</span>
-                  </div>
-                  <div className="flex items-center justify-between gap-4">
-                    <span>SCALING_V3...</span>
-                    <span className="animate-pulse text-accent">PENDING</span>
-                  </div>
-                </div>
-              </div>
+              <TechProtocolCard
+                title="INIT_PROTOCOL"
+                className="top-[25%] left-[5%] md:left-[10%]"
+                lines={[
+                  { label: "AGENTS", value: "CONNECTED", status: "ok" },
+                  { label: "SYNC", value: "PENDING", status: "pulse" }
+                ]}
+              />
 
-              {/* SCALE_VELOCITY (Bottom Right) */}
-              <div className="absolute bottom-24 right-10 md:right-20 opacity-70 hidden lg:block border border-gray-800 bg-[#0A0A0A]/80 backdrop-blur-sm p-4 rounded-lg z-0 shadow-lg cursor-default pointer-events-auto">
-                <div className="flex justify-between items-center mb-3 border-b border-gray-800 pb-1">
-                  <span className="text-[10px] font-mono text-gray-400 uppercase">SCALE_VELOCITY</span>
-                  <Bot className="w-3 h-3 text-accent" />
-                </div>
-                <div className="flex items-end gap-1 h-12">
-                  <div className="w-2 bg-gray-800 h-4 rounded-t-sm"></div>
-                  <div className="w-2 bg-gray-800 h-6 rounded-t-sm"></div>
-                  <div className="w-2 bg-gray-700 h-5 rounded-t-sm"></div>
-                  <div className="w-2 bg-gray-600 h-8 rounded-t-sm"></div>
-                  <div className="w-2 bg-accent h-10 rounded-t-sm animate-pulse"></div>
-                </div>
-              </div>
+              <TechProtocolCard
+                title="SCALE_VELOCITY"
+                className="bottom-[15%] right-[5%] md:right-[12%]"
+                lines={[
+                  { label: "LOAD", value: "OPTIMAL", status: "ok" },
+                  { label: "OPS", value: "SCALING", status: "accent" }
+                ]}
+              />
+
+              {/* EXTRA CARDS FOR DEPTH */}
+              <TechProtocolCard
+                title="NEURAL_LINK"
+                className="top-[10%] left-[25%] opacity-40 scale-75 hidden md:block"
+                lines={[{ label: "CORE", value: "ACTIVE", status: "ok" }]}
+              />
+
+              <TechProtocolCard
+                title="CLOUD_SYNC"
+                className="top-[45%] right-[5%] opacity-30 scale-90 hidden lg:block"
+                lines={[{ label: "DATA", value: "STREAMING", status: "pulse" }]}
+              />
+
+              <TechProtocolCard
+                title="SECURITY_H"
+                className="bottom-[40%] left-[15%] opacity-40 scale-75 hidden xl:block"
+                lines={[{ label: "ENC", value: "AES-256", status: "ok" }]}
+              />
+
+              <TechProtocolCard
+                title="ANALYTICS_V4"
+                className="bottom-[10%] left-[30%] opacity-30 scale-90 hidden md:block"
+                lines={[{ label: "VARS", value: "TRACKED", status: "accent" }]}
+              />
+
+              <TechProtocolCard
+                title="CORE_ENGINE"
+                className="top-[40%] left-[0%] opacity-20 scale-110 hidden 2xl:block"
+                lines={[{ label: "MOD", value: "V2.1.0", status: "ok" }]}
+              />
+
             </div>
           </div>
 
-          {/* Main Logo - FLAT AND CENTERED */}
+          {/* Main Logo - CENTERED */}
           <div className="relative w-full max-w-[85vw] md:max-w-3xl h-16 sm:h-28 md:h-40 animate-fade-in-up z-20">
             <Image
               src="/logo-full.png"
@@ -343,7 +353,31 @@ export default function Home() {
   );
 }
 
-// COMPONENTS
+// HELPERS
+function TechProtocolCard({ title, lines, className }: { title: string, lines: { label: string, value: string, status: 'ok' | 'pulse' | 'accent' }[], className?: string }) {
+  return (
+    <div className={cn(
+      "absolute border border-gray-800 bg-[#0A0A0A]/80 p-4 rounded-lg backdrop-blur-sm hover:border-accent/40 transition-all duration-500 shadow-xl pointer-events-auto",
+      className
+    )}>
+      <div className="text-[10px] font-mono text-gray-500 border-b border-gray-800 pb-1 mb-2 tracking-widest uppercase">{title}</div>
+      <div className="font-mono text-[9px] md:text-[10px] text-left space-y-1.5 min-w-[120px]">
+        {lines.map((line, i) => (
+          <div key={i} className="flex items-center justify-between gap-4">
+            <span className="text-gray-400 uppercase tracking-tighter">{line.label}</span>
+            <span className={cn(
+              "font-bold",
+              line.status === 'ok' ? "text-green-500" :
+                line.status === 'pulse' ? "text-accent animate-pulse" :
+                  "text-accent"
+            )}>{line.value}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 function Stat({ label, value, sub, suffix = "" }: { label: string, value: string | number, sub: string, suffix?: string }) {
   return (
     <div className="text-center">
