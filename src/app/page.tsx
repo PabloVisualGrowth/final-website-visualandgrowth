@@ -10,6 +10,7 @@ import LeadCaptureModal from "@/components/LeadCaptureModal";
 import { NumberTicker } from "@/components/NumberTicker";
 import { TextAnimate } from "@/components/TextAnimate";
 import { BorderBeam } from "@/components/BorderBeam";
+import { InteractiveGridPattern } from "@/components/InteractiveGridPattern";
 import { cn } from "@/lib/utils";
 
 export default function Home() {
@@ -82,71 +83,83 @@ export default function Home() {
         {/* HERO SECTION - ULTRA MINIMALIST */}
         <section className="min-h-screen flex flex-col items-center justify-center px-6 py-20 relative text-center overflow-hidden">
 
-          {/* --- TECH VISUALS --- */}
+          {/* INTERACTIVE GRID PATTERN */}
+          <InteractiveGridPattern
+            className={cn(
+              "[mask-image:radial-gradient(400px_circle_at_center,white,transparent)]",
+              "inset-x-0 inset-y-[-30%] h-[200%] skew-y-12 z-0"
+            )}
+          />
 
-          {/* SYSTEM_READY (Top Right) */}
-          <div className="absolute top-24 right-4 md:right-32 opacity-90 border border-gray-800 bg-[#0A0A0A]/80 backdrop-blur-sm p-3 md:p-4 rounded-lg rotate-6 animate-pulse-slow z-0 shadow-lg cursor-default">
-            <div className="flex items-center gap-2 mb-2">
-              <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
-              <div className="text-[9px] md:text-[10px] font-mono text-gray-400 uppercase tracking-widest">SYSTEM_READY</div>
-            </div>
-            <div className="text-accent text-[10px] md:text-xs font-mono font-bold tracking-wider">● ONLINE</div>
-          </div>
+          {/* --- TECH VISUALS (SKEWED PERSPECTIVE) --- */}
+          <div className="absolute inset-0 z-10 pointer-events-none skew-y-12">
+            <div className="relative w-full h-full max-w-7xl mx-auto">
 
-          {/* REVENUE_TRACKER (Bottom Left) */}
-          <div className="absolute bottom-32 left-8 md:left-24 opacity-80 hidden sm:block border border-gray-800 bg-[#0A0A0A]/80 backdrop-blur-sm p-4 md:p-5 rounded-lg -rotate-3 z-0 shadow-lg hover:border-accent/50 transition-colors cursor-default">
-            <div className="text-[9px] md:text-[10px] font-mono text-gray-500 border-b border-gray-800 pb-1 mb-2 uppercase flex justify-between gap-4">
-              <span>REVENUE_TRACKER</span>
-              <span className="text-gray-600">v2.1</span>
-            </div>
-            <div className="flex justify-between items-end gap-6 md:gap-8 text-xs font-mono">
-              <div className="flex flex-col text-left">
-                <span className="text-gray-400 text-[9px] md:text-[10px] mb-1">Run Rate</span>
-                <div className="flex items-center text-white">
-                  <span className="font-bold text-base md:text-lg">$</span>
-                  <NumberTicker value={2.4} decimalPlaces={1} className="font-bold text-base md:text-lg text-white" />
-                  <span className="font-bold text-base md:text-lg ml-0.5">M</span>
+              {/* SYSTEM_READY (Top Right) */}
+              <div className="absolute top-24 right-4 md:right-32 opacity-90 border border-gray-800 bg-[#0A0A0A]/80 backdrop-blur-sm p-3 md:p-4 rounded-lg animate-pulse-slow shadow-lg cursor-default pointer-events-auto">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
+                  <div className="text-[9px] md:text-[10px] font-mono text-gray-400 uppercase tracking-widest">SYSTEM_READY</div>
+                </div>
+                <div className="text-accent text-[10px] md:text-xs font-mono font-bold tracking-wider">● ONLINE</div>
+              </div>
+
+              {/* REVENUE_TRACKER (Bottom Left) */}
+              <div className="absolute bottom-32 left-8 md:left-24 opacity-80 hidden sm:block border border-gray-800 bg-[#0A0A0A]/80 backdrop-blur-sm p-4 md:p-5 rounded-lg z-0 shadow-lg hover:border-accent/50 transition-colors cursor-default pointer-events-auto">
+                <div className="text-[9px] md:text-[10px] font-mono text-gray-500 border-b border-gray-800 pb-1 mb-2 uppercase flex justify-between gap-4">
+                  <span>REVENUE_TRACKER</span>
+                  <span className="text-gray-600">v2.1</span>
+                </div>
+                <div className="flex justify-between items-end gap-6 md:gap-8 text-xs font-mono">
+                  <div className="flex flex-col text-left">
+                    <span className="text-gray-400 text-[9px] md:text-[10px] mb-1">Run Rate</span>
+                    <div className="flex items-center text-white">
+                      <span className="font-bold text-base md:text-lg">$</span>
+                      <NumberTicker value={2.4} decimalPlaces={1} className="font-bold text-base md:text-lg text-white" />
+                      <span className="font-bold text-base md:text-lg ml-0.5">M</span>
+                    </div>
+                  </div>
+                  <div className="text-green-400 bg-green-400/10 px-1 rounded text-[10px] flex items-center">
+                    <span>+</span>
+                    <NumberTicker value={12} className="text-green-400 text-[10px]" />
+                    <span>%</span>
+                  </div>
                 </div>
               </div>
-              <div className="text-green-400 bg-green-400/10 px-1 rounded text-[10px] flex items-center">
-                <span>+</span>
-                <NumberTicker value={12} className="text-green-400 text-[10px]" />
-                <span>%</span>
+
+              {/* INIT_PROTOCOL (Top Left) */}
+              <div className="absolute top-32 left-10 md:left-32 opacity-80 hidden xl:block z-0 border border-gray-800 bg-[#0A0A0A]/80 p-4 rounded-lg backdrop-blur-sm hover:border-accent/50 transition-colors cursor-default pointer-events-auto">
+                <div className="text-[10px] font-mono text-gray-500 border-b border-gray-800 pb-1 mb-2">INIT_PROTOCOL</div>
+                <div className="font-mono text-[10px] text-left space-y-2 text-gray-400">
+                  <div className="flex items-center justify-between gap-4">
+                    <span>CONNECTING_AGENTS...</span>
+                    <span className="text-green-500 font-bold">OK</span>
+                  </div>
+                  <div className="flex items-center justify-between gap-4">
+                    <span>SCALING_V3...</span>
+                    <span className="animate-pulse text-accent">PENDING</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* SCALE_VELOCITY (Bottom Right) */}
+              <div className="absolute bottom-24 right-10 md:right-20 opacity-70 hidden lg:block border border-gray-800 bg-[#0A0A0A]/80 backdrop-blur-sm p-4 rounded-lg z-0 shadow-lg cursor-default pointer-events-auto">
+                <div className="flex justify-between items-center mb-3 border-b border-gray-800 pb-1">
+                  <span className="text-[10px] font-mono text-gray-400 uppercase">SCALE_VELOCITY</span>
+                  <Bot className="w-3 h-3 text-accent" />
+                </div>
+                <div className="flex items-end gap-1 h-12">
+                  <div className="w-2 bg-gray-800 h-4 rounded-t-sm"></div>
+                  <div className="w-2 bg-gray-800 h-6 rounded-t-sm"></div>
+                  <div className="w-2 bg-gray-700 h-5 rounded-t-sm"></div>
+                  <div className="w-2 bg-gray-600 h-8 rounded-t-sm"></div>
+                  <div className="w-2 bg-accent h-10 rounded-t-sm animate-pulse"></div>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* INIT_PROTOCOL (Top Left) */}
-          <div className="absolute top-32 left-10 md:left-32 opacity-80 hidden xl:block z-0 border border-gray-800 bg-[#0A0A0A]/80 p-4 rounded-lg -rotate-2 backdrop-blur-sm hover:border-accent/50 transition-colors cursor-default">
-            <div className="text-[10px] font-mono text-gray-500 border-b border-gray-800 pb-1 mb-2">INIT_PROTOCOL</div>
-            <div className="font-mono text-[10px] text-left space-y-2 text-gray-400">
-              <div className="flex items-center justify-between gap-4">
-                <span>CONNECTING_AGENTS...</span>
-                <span className="text-green-500 font-bold">OK</span>
-              </div>
-              <div className="flex items-center justify-between gap-4">
-                <span>SCALING_V3...</span>
-                <span className="animate-pulse text-accent">PENDING</span>
-              </div>
-            </div>
-          </div>
-
-          {/* SCALE_VELOCITY (Bottom Right) */}
-          <div className="absolute bottom-24 right-10 md:right-20 opacity-70 hidden lg:block border border-gray-800 bg-[#0A0A0A]/80 backdrop-blur-sm p-4 rounded-lg rotate-2 z-0 shadow-lg cursor-default">
-            <div className="flex justify-between items-center mb-3 border-b border-gray-800 pb-1">
-              <span className="text-[10px] font-mono text-gray-400 uppercase">SCALE_VELOCITY</span>
-              <Bot className="w-3 h-3 text-accent" />
-            </div>
-            <div className="flex items-end gap-1 h-12">
-              <div className="w-2 bg-gray-800 h-4 rounded-t-sm"></div>
-              <div className="w-2 bg-gray-800 h-6 rounded-t-sm"></div>
-              <div className="w-2 bg-gray-700 h-5 rounded-t-sm"></div>
-              <div className="w-2 bg-gray-600 h-8 rounded-t-sm"></div>
-              <div className="w-2 bg-accent h-10 rounded-t-sm animate-pulse"></div>
-            </div>
-          </div>
-
-          {/* Main Logo - THE ONLY THING IN THE CENTER */}
+          {/* Main Logo - FLAT AND CENTERED */}
           <div className="relative w-full max-w-[85vw] md:max-w-3xl h-16 sm:h-28 md:h-40 animate-fade-in-up z-20">
             <Image
               src="/logo-full.png"
