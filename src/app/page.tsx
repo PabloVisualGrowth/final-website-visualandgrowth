@@ -83,19 +83,19 @@ export default function Home() {
         {/* HERO SECTION - REFINED TECHNOLOGICAL */}
         <section className="min-h-screen flex flex-col items-center justify-center px-6 py-20 relative text-center overflow-hidden">
 
-          {/* INTERACTIVE GRID PATTERN - ZOOMED IN EFFECT */}
+          {/* INTERACTIVE GRID PATTERN - ZOOMED IN EFFECT (HIDDEN ON MOBILE) */}
           <InteractiveGridPattern
             width={120}
             height={120}
             squares={[20, 20]}
             className={cn(
               "[mask-image:radial-gradient(500px_circle_at_center,white,transparent)]",
-              "inset-x-0 inset-y-[-30%] h-[200%] skew-y-12 z-0"
+              "inset-x-0 inset-y-[-30%] h-[200%] md:skew-y-12 z-0 hidden md:block"
             )}
           />
 
-          {/* --- TECH VISUALS (SKEWED PERSPECTIVE ON DESKTOP) --- */}
-          <div className="absolute inset-0 z-10 pointer-events-none md:skew-y-12">
+          {/* --- TECH VISUALS (SKEWED PERSPECTIVE ON DESKTOP - HIDDEN ON MOBILE) --- */}
+          <div className="absolute inset-0 z-10 pointer-events-none md:skew-y-12 hidden md:block">
             <div className="relative w-full h-full max-w-7xl mx-auto overflow-visible">
 
               {/* ORIGINAL 4 CARDS - UNIFIED STYLE - OPTIMIZED FOR MOBILE */}
