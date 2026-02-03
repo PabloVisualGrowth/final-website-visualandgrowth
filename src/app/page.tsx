@@ -184,19 +184,14 @@ export default function Home() {
         </section>
 
         {/* INSIGHTS STRIP - VELOCITY SCROLL */}
-        <section className="py-8 border-y border-gray-900 bg-bg-secondary/30 backdrop-blur-sm relative z-20 overflow-hidden">
-          <div className="w-full flex flex-col gap-4">
-            <VelocityScroll
-              text="ENFOQUE GROWTH 100% NEGOCIO 360 • INTEGRACIÓN IA NATIVA • AUTOMATIZACIÓN"
-              default_velocity={3}
-              className="text-white/40 tracking-tighter"
-            />
-            <VelocityScroll
-              text="TIME TO MARKET 2 SEM • VALIDACIÓN RÁPIDA • DISEÑO A+ CALIDAD BOUTIQUE"
-              default_velocity={-3}
-              className="text-accent/60 tracking-tighter"
-            />
-          </div>
+        <section className="py-20 border-y border-gray-900 bg-bg-secondary/30 backdrop-blur-sm relative z-20 overflow-hidden">
+          <VelocityScroll default_velocity={3} numRows={1}>
+            <Stat label="Enfoque Growth" value={100} suffix="%" sub="Negocio 360" />
+            <Stat label="Time to Market" value={2} suffix=" Sem" sub="Validación Rápida" />
+            <Stat label="Integración IA" value="Nativa" sub="Automatización" />
+            <Stat label="Diseño" value="A+" sub="Calidad Boutique" />
+          </VelocityScroll>
+
           <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-bg-primary to-transparent z-10" />
           <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-bg-primary to-transparent z-10" />
         </section>
@@ -389,19 +384,19 @@ function TechProtocolCard({ title, lines, className }: { title: string, lines: {
 
 function Stat({ label, value, sub, suffix = "" }: { label: string, value: string | number, sub: string, suffix?: string }) {
   return (
-    <div className="text-center">
-      <div className="text-[10px] md:text-xs font-mono text-gray-500 mb-2 uppercase tracking-wider">{label}</div>
-      <div className="text-2xl md:text-4xl font-bold text-white mb-1 font-display flex items-center justify-center">
+    <div className="text-center min-w-[200px] md:min-w-[300px]">
+      <div className="text-[10px] md:text-xs font-mono text-gray-500 mb-4 uppercase tracking-widest">{label}</div>
+      <div className="text-4xl md:text-7xl font-bold text-white mb-4 font-display flex items-center justify-center tracking-tighter">
         {typeof value === 'number' ? (
           <>
-            <NumberTicker value={value} className="text-2xl md:text-4xl font-bold text-white" />
+            <NumberTicker value={value} className="text-4xl md:text-7xl font-bold text-white tracking-tighter" />
             {suffix && <span>{suffix}</span>}
           </>
         ) : (
           <span>{value}</span>
         )}
       </div>
-      <div className="text-[10px] md:text-xs text-accent">{sub}</div>
+      <div className="text-xs md:text-sm text-accent font-medium uppercase tracking-wide">{sub}</div>
     </div>
   )
 }
