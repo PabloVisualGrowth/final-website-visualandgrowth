@@ -94,14 +94,14 @@ export default function Home() {
             )}
           />
 
-          {/* --- TECH VISUALS (SKEWED PERSPECTIVE) --- */}
-          <div className="absolute inset-0 z-10 pointer-events-none skew-y-12">
+          {/* --- TECH VISUALS (SKEWED PERSPECTIVE ON DESKTOP) --- */}
+          <div className="absolute inset-0 z-10 pointer-events-none md:skew-y-12">
             <div className="relative w-full h-full max-w-7xl mx-auto overflow-visible">
 
-              {/* ORIGINAL 4 CARDS - UNIFIED STYLE */}
+              {/* ORIGINAL 4 CARDS - UNIFIED STYLE - OPTIMIZED FOR MOBILE */}
               <TechProtocolCard
                 title="SYSTEM_READY"
-                className="top-[15%] right-[5%] md:right-[10%]"
+                className="top-[5%] md:top-[15%] right-[2%] md:right-[10%]"
                 lines={[
                   { label: "STATUS", value: "ONLINE", status: "ok" },
                   { label: "UPTIME", value: "99.9%", status: "ok" }
@@ -110,7 +110,7 @@ export default function Home() {
 
               <TechProtocolCard
                 title="REVENUE_TRACKER"
-                className="bottom-[20%] left-[5%] md:left-[8%]"
+                className="bottom-[5%] md:bottom-[20%] left-[2%] md:left-[8%]"
                 lines={[
                   { label: "RUN_RATE", value: "$2.4M", status: "accent" },
                   { label: "GROWTH", value: "+12%", status: "ok" }
@@ -119,7 +119,7 @@ export default function Home() {
 
               <TechProtocolCard
                 title="INIT_PROTOCOL"
-                className="top-[25%] left-[5%] md:left-[10%]"
+                className="top-[12%] md:top-[25%] left-[2%] md:left-[10%]"
                 lines={[
                   { label: "AGENTS", value: "CONNECTED", status: "ok" },
                   { label: "SYNC", value: "PENDING", status: "pulse" }
@@ -128,7 +128,7 @@ export default function Home() {
 
               <TechProtocolCard
                 title="SCALE_VELOCITY"
-                className="bottom-[15%] right-[5%] md:right-[12%]"
+                className="bottom-[10%] md:bottom-[15%] right-[2%] md:right-[12%]"
                 lines={[
                   { label: "LOAD", value: "OPTIMAL", status: "ok" },
                   { label: "OPS", value: "SCALING", status: "accent" }
@@ -357,13 +357,13 @@ export default function Home() {
 function TechProtocolCard({ title, lines, className }: { title: string, lines: { label: string, value: string, status: 'ok' | 'pulse' | 'accent' }[], className?: string }) {
   return (
     <div className={cn(
-      "absolute border border-gray-800 bg-[#0A0A0A]/80 p-4 rounded-lg backdrop-blur-sm hover:border-accent/40 transition-all duration-500 shadow-xl pointer-events-auto",
+      "absolute border border-gray-800 bg-[#0A0A0A]/80 p-3 md:p-4 rounded-lg backdrop-blur-sm hover:border-accent/40 transition-all duration-500 shadow-xl pointer-events-auto scale-90 md:scale-100",
       className
     )}>
-      <div className="text-[10px] font-mono text-gray-500 border-b border-gray-800 pb-1 mb-2 tracking-widest uppercase">{title}</div>
-      <div className="font-mono text-[9px] md:text-[10px] text-left space-y-1.5 min-w-[120px]">
+      <div className="text-[8px] md:text-[10px] font-mono text-gray-500 border-b border-gray-800 pb-1 mb-2 tracking-widest uppercase">{title}</div>
+      <div className="font-mono text-[7px] md:text-[10px] text-left space-y-1 md:space-y-1.5 min-w-[100px] md:min-w-[120px]">
         {lines.map((line, i) => (
-          <div key={i} className="flex items-center justify-between gap-4">
+          <div key={i} className="flex items-center justify-between gap-2 md:gap-4">
             <span className="text-gray-400 uppercase tracking-tighter">{line.label}</span>
             <span className={cn(
               "font-bold",
