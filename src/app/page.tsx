@@ -415,7 +415,7 @@ function BoutiqueCard({ id, activeId, isMobile, title, subtitle, desc }: { id: s
       data-scroll-id={id}
       className={cn(
         "p-8 md:p-10 border-b md:border-r md:border-b border-gray-900 group relative overflow-hidden transition-all duration-700",
-        isActive ? "bg-white/10 opacity-100 scale-100 shadow-[inset_0_0_20px_rgba(255,198,0,0.05)]" : (isMobile ? "opacity-30" : "opacity-100 hover:bg-white/5")
+        isActive ? "bg-white/10 opacity-100 scale-100 shadow-[inset_0_0_20px_rgba(255,198,0,0.05)]" : (isMobile ? "opacity-30" : "opacity-100 hover:bg-white/5 md:hover:scale-[1.02] md:hover:z-10 md:hover:shadow-2xl md:hover:border-accent/20")
       )}
     >
       <div className={cn(
@@ -442,7 +442,10 @@ function StepItem({ id, activeId, isMobile, num, title, desc }: { id: string, ac
     <div
       data-scroll-item
       data-scroll-id={id}
-      className={cn("flex gap-4 md:gap-6 group transition-all duration-700", isActive ? "opacity-100 translate-x-2 md:translate-x-4" : (isMobile ? "opacity-30" : "opacity-100"))}
+      className={cn(
+        "flex gap-4 md:gap-6 group transition-all duration-700",
+        isActive ? "opacity-100 translate-x-2 md:translate-x-4" : (isMobile ? "opacity-30" : "opacity-100 md:hover:scale-[1.03] md:hover:translate-x-2")
+      )}
     >
       <div className={cn("font-mono text-lg md:text-xl transition-colors duration-500 pt-1", isActive ? "text-accent" : (isMobile ? "text-gray-700" : "text-gray-700 group-hover:text-accent"))}>
         {num}/
