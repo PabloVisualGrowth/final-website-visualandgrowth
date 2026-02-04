@@ -276,7 +276,7 @@ export default function Home() {
                 {/* TEAM OFFICE PHOTO */}
                 <div className="mt-12 relative h-64 md:h-80 w-full rounded-sm overflow-hidden border border-gray-800 sticky top-80 hidden lg:block shadow-2xl">
                   <Image
-                    src="/team-office-new.jpg?v=2"
+                    src="/team-office-final.jpg?v=7"
                     fill
                     alt="Visual & Growth Team"
                     className="object-cover"
