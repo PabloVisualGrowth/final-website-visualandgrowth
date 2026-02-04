@@ -176,7 +176,7 @@ export default function Home() {
               src="/logo-full.png"
               fill
               alt="Visual & Growth"
-              className="object-contain"
+              className="object-contain drop-shadow-[0_0_15px_rgba(255,198,0,0.4)] md:drop-shadow-[0_0_25px_rgba(255,198,0,0.5)]"
               priority
             />
           </div>
@@ -309,12 +309,18 @@ export default function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
               <TeamMember
+                id="partner-pablo"
+                activeId={activeId}
+                isMobile={isMobile}
                 name="Pablo Pérez"
                 role="Co-CEO & Growth Strategist"
                 bio="Ex-Google Cloud Business Strategist. Experto en transformar empresas tradicionales mediante IA y Cloud. Su obsesión: que la tecnología resuelva problemas de negocio reales."
                 quote="La tecnología sin estrategia es solo gasto."
               />
               <TeamMember
+                id="partner-ignacio"
+                activeId={activeId}
+                isMobile={isMobile}
                 name="Ignacio Viñas"
                 role="Co-CEO & Brand Director"
                 bio="Filmmaker y Estratega Visual. Ha ayudado a marcas a encontrar su voz y estética en un mercado saturado. Su enfoque: convertir la identidad visual en un activo financiero."
@@ -451,18 +457,34 @@ function StepItem({ id, activeId, isMobile, num, title, desc }: { id: string, ac
   )
 }
 
-function TeamMember({ name, role, bio, quote }: { name: string, role: string, bio: string, quote: string }) {
+function TeamMember({ id, activeId, isMobile, name, role, bio, quote }: { id: string, activeId: string | null, isMobile: boolean, name: string, role: string, bio: string, quote: string }) {
+  const isActive = isMobile && activeId === id;
   return (
-    <div className="bg-bg-secondary/30 p-6 md:p-8 border border-gray-800 rounded-sm hover:border-accent/50 transition-colors group">
+    <div
+      data-scroll-item
+      data-scroll-id={id}
+      className={cn(
+        "bg-bg-secondary/30 p-6 md:p-8 border rounded-sm transition-all duration-500 group relative",
+        isActive
+          ? "border-accent/60 shadow-[0_0_15px_rgba(255,198,0,0.1)] opacity-100"
+          : "border-gray-800 hover:border-accent/50 opacity-100" // Always 100 opacity for partners otherwise it looks weird
+      )}
+    >
       <div className="mb-6">
-        <h3 className="text-xl md:text-2xl font-bold text-white mb-1 group-hover:text-accent transition-colors">{name}</h3>
+        <h3 className={cn(
+          "text-xl md:text-2xl font-bold mb-1 transition-colors",
+          isActive ? "text-accent" : "text-white group-hover:text-accent"
+        )}>{name}</h3>
         <p className="text-[10px] md:text-xs font-mono text-gray-500 uppercase tracking-widest">{role}</p>
       </div>
       <p className="text-text-secondary text-sm mb-6 leading-relaxed">
         {bio}
       </p>
       <div className="pt-6 border-t border-gray-800">
-        <p className="text-white italic text-xs md:text-sm font-medium">"{quote}"</p>
+        <p className={cn(
+          "italic text-xs md:text-sm font-medium transition-colors",
+          isActive ? "text-white" : "text-white/80"
+        )}>"{quote}"</p>
       </div>
     </div>
   )
