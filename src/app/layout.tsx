@@ -21,10 +21,10 @@ export const metadata: Metadata = {
   robots: "index, follow",
   icons: {
     icon: [
-      { url: "/icon.png?v=4", type: "image/png" },
-      { url: "/favicon.ico?v=4", rel: "icon" }
+      { url: "/icon.png?v=5", type: "image/png" },
+      { url: "/favicon.ico?v=5", rel: "icon" }
     ],
-    apple: "/icon.png?v=4",
+    apple: "/icon.png?v=5",
   },
   openGraph: {
     title: "Visual & Growth | Tu Socio de Crecimiento",
