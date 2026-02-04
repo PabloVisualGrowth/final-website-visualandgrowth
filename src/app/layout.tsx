@@ -19,14 +19,6 @@ export const metadata: Metadata = {
   authors: [{ name: "Visual & Growth" }],
   viewport: "width=device-width, initial-scale=1",
   robots: "index, follow",
-  icons: {
-    icon: [
-      { url: "/icon.png" },
-      { url: "/favicon.ico", rel: "shortcut icon" }
-    ],
-    apple: "/icon.png",
-  },
-
   openGraph: {
     title: "Visual & Growth | Tu Socio de Crecimiento",
     description: "Transformamos negocios mediante tecnología y estrategia visual de alto impacto.",
