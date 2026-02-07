@@ -276,7 +276,7 @@ export default function Home() {
                 <div className="mt-12 relative h-64 md:h-80 w-full rounded-sm overflow-hidden border border-gray-800 sticky top-80 hidden lg:block shadow-2xl">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src="/office-v10.png"
+                    src="/office-real.png"
                     alt="Visual & Growth Team"
                     className="w-full h-full object-cover"
                     loading="eager"
