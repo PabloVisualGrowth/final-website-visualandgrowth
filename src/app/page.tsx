@@ -12,6 +12,7 @@ import { TextAnimate } from "@/components/TextAnimate";
 import { BorderBeam } from "@/components/BorderBeam";
 import { InteractiveGridPattern } from "@/components/InteractiveGridPattern";
 import { VelocityScroll } from "@/components/VelocityScroll";
+import { AuroraText } from "@/components/AuroraText";
 import { cn } from "@/lib/utils";
 
 export default function Home() {
@@ -338,7 +339,7 @@ export default function Home() {
           <div className="max-w-5xl mx-auto relative z-10">
             <div className="text-center mb-12 md:bottom-16">
               <h2 className="text-3xl md:text-5xl font-display font-bold mb-6 text-white">
-                ¿Tu empresa escala o <span className="text-gray-500">sobrevive</span>?
+                <AuroraText>Tu empresa escala</AuroraText>
               </h2>
               <p className="text-base md:text-lg text-text-secondary max-w-2xl mx-auto mb-12">
                 Rellena este diagnóstico. Analizaremos tu caso gratis y te propondremos un roadmap.
