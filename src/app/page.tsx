@@ -208,7 +208,7 @@ export default function Home() {
                     Ingeniería de Crecimiento.
                   </TextAnimate>
                 </div>
-                <TextAnimate animation="fadeIn" by="line" delay={0.3} className="text-text-secondary text-lg">
+                <TextAnimate animation="fadeIn" by="line" delay={0.3} className="text-gray-600 text-2xl md:text-3xl font-display font-medium">
                   No hacemos acciones sueltas. Construimos sistemas interconectados.
                 </TextAnimate>
               </div>
@@ -303,7 +303,7 @@ export default function Home() {
               <TextAnimate animation="blurInUp" by="word" as="h2" className="text-3xl md:text-5xl font-display font-bold mb-6">
                 Partners, no Proveedores.
               </TextAnimate>
-              <TextAnimate animation="fadeIn" by="line" delay={0.3} className="text-text-secondary text-lg max-w-2xl mx-auto">
+              <TextAnimate animation="fadeIn" by="line" delay={0.3} className="text-gray-600 text-2xl md:text-3xl font-display font-medium max-w-4xl mx-auto">
                 Lideramos tu crecimiento implicándonos en el negocio.
               </TextAnimate>
             </div>
@@ -341,7 +341,7 @@ export default function Home() {
               <h2 className="text-3xl md:text-5xl font-display font-bold mb-6 text-white">
                 ¿<AuroraText>Tu empresa escala</AuroraText> o <span className="text-gray-500">sobrevive</span>?
               </h2>
-              <p className="text-base md:text-lg text-text-secondary max-w-2xl mx-auto mb-12">
+              <p className="text-gray-600 text-2xl md:text-3xl font-display font-medium max-w-4xl mx-auto mb-12">
                 Rellena este diagnóstico. Analizaremos tu caso gratis y te propondremos un roadmap.
               </p>
             </div>
