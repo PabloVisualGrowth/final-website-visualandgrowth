@@ -273,16 +273,7 @@ export default function Home() {
                   </TextAnimate>
                 </div>
 
-                {/* TEAM OFFICE PHOTO */}
-                <div className="mt-12 relative h-64 md:h-80 w-full rounded-sm overflow-hidden border border-gray-800 sticky top-80 hidden lg:block shadow-2xl">
-                  <Image
-                    src="/office-v8.jpg"
-                    fill
-                    alt="Visual & Growth Team"
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                </div>
+
 
               </div>
               <div className="space-y-10 md:space-y-12">
