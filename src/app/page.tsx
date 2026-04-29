@@ -217,7 +217,7 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 md:gap-1 border border-gray-900 md:border-none">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
               <BoutiqueCard
                 id="eco-1" activeId={activeId} isMobile={isMobile}
                 title="Estrategia & Consultoría"
@@ -292,41 +292,6 @@ export default function Home() {
                 <StepItem id="step-3" activeId={activeId} isMobile={isMobile} num="03" title="Sprint Execution" desc="Despliegue rápido. Lanzamos, medimos y ajustamos en ciclos cortos. Velocidad de startup para validar resultados en semanas." />
                 <StepItem id="step-4" activeId={activeId} isMobile={isMobile} num="04" title="Scale Up" desc="Cuando algo funciona, echamos gasolina. Automatizamos lo validado y escalamos la inversión publicitaria y operativa." />
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* PARTNERS */}
-        <section id="partnership" className="py-24 md:py-32 px-6 border-t border-gray-900">
-          <div className="max-w-7xl mx-auto text-center">
-            <div className="mb-16 md:bottom-20">
-              <TextAnimate animation="blurInUp" by="word" as="h2" className="text-3xl md:text-5xl font-display font-bold mb-6">
-                Partners, no Proveedores.
-              </TextAnimate>
-              <TextAnimate animation="fadeIn" by="line" delay={0.3} className="text-gray-600 text-2xl md:text-3xl font-display font-medium max-w-4xl mx-auto">
-                Lideramos tu crecimiento implicándonos en el negocio.
-              </TextAnimate>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-              <TeamMember
-                id="partner-pablo"
-                activeId={activeId}
-                isMobile={isMobile}
-                name="Pablo Pérez"
-                role="Co-CEO & Growth Strategist"
-                bio="Ex-Google Cloud Business Strategist. Experto en transformar empresas tradicionales mediante IA y Cloud. Su obsesión: que la tecnología resuelva problemas de negocio reales."
-                quote="La tecnología sin estrategia es solo gasto."
-              />
-              <TeamMember
-                id="partner-ignacio"
-                activeId={activeId}
-                isMobile={isMobile}
-                name="Ignacio Viñas"
-                role="Co-CEO & Brand Director"
-                bio="Filmmaker y Estratega Visual. Ha ayudado a marcas a encontrar su voz y estética en un mercado saturado. Su enfoque: convertir la identidad visual en un activo financiero."
-                quote="El diseño es el embajador silencioso de tu marca."
-              />
             </div>
           </div>
         </section>
@@ -415,8 +380,8 @@ function BoutiqueCard({ id, activeId, isMobile, title, subtitle, desc }: { id: s
       data-scroll-item
       data-scroll-id={id}
       className={cn(
-        "p-8 md:p-10 border-b md:border-r md:border-b border-gray-900 group relative overflow-hidden transition-all duration-700",
-        isActive ? "bg-white/10 opacity-100 scale-100 shadow-[inset_0_0_20px_rgba(255,198,0,0.05)]" : (isMobile ? "opacity-30" : "opacity-100 hover:bg-white/5 md:hover:scale-[1.02] md:hover:z-10 md:hover:shadow-2xl md:hover:border-accent/20")
+        "p-8 md:p-10 group relative overflow-hidden transition-all duration-700",
+        isActive ? "bg-white/10 opacity-100 scale-100 shadow-[inset_0_0_20px_rgba(255,198,0,0.05)]" : (isMobile ? "opacity-30" : "opacity-100 hover:bg-white/5 md:hover:scale-[1.02] md:hover:z-10 md:hover:shadow-2xl")
       )}
     >
       <div className={cn(
@@ -456,39 +421,6 @@ function StepItem({ id, activeId, isMobile, num, title, desc }: { id: string, ac
         <p className={cn("text-text-secondary text-sm leading-relaxed border-l pl-4 transition-all duration-500", isActive ? "border-accent text-white" : "border-gray-800 group-hover:border-accent")}>
           {desc}
         </p>
-      </div>
-    </div>
-  )
-}
-
-function TeamMember({ id, activeId, isMobile, name, role, bio, quote }: { id: string, activeId: string | null, isMobile: boolean, name: string, role: string, bio: string, quote: string }) {
-  const isActive = isMobile && activeId === id;
-  return (
-    <div
-      data-scroll-item
-      data-scroll-id={id}
-      className={cn(
-        "bg-bg-secondary/30 p-6 md:p-8 border rounded-sm transition-all duration-500 group relative",
-        isActive
-          ? "border-accent/60 shadow-[0_0_15px_rgba(255,198,0,0.1)] opacity-100"
-          : "border-gray-800 hover:border-accent/50 opacity-100" // Always 100 opacity for partners otherwise it looks weird
-      )}
-    >
-      <div className="mb-6">
-        <h3 className={cn(
-          "text-xl md:text-2xl font-bold mb-1 transition-colors",
-          isActive ? "text-accent" : "text-white group-hover:text-accent"
-        )}>{name}</h3>
-        <p className="text-[10px] md:text-xs font-mono text-gray-500 uppercase tracking-widest">{role}</p>
-      </div>
-      <p className="text-text-secondary text-sm mb-6 leading-relaxed">
-        {bio}
-      </p>
-      <div className="pt-6 border-t border-gray-800">
-        <p className={cn(
-          "italic text-xs md:text-sm font-medium transition-colors",
-          isActive ? "text-white" : "text-white/80"
-        )}>"{quote}"</p>
       </div>
     </div>
   )
