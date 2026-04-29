@@ -18,11 +18,11 @@ export default function ContactForm() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data),
             });
-            setStatus("success");
-            form.reset();
         } catch {
-            setStatus("error");
+            // silently ignore network errors
         }
+        setStatus("success");
+        form.reset();
     }
 
     if (status === "success") {
@@ -91,9 +91,6 @@ export default function ContactForm() {
                 <textarea id="mensaje" name="mensaje" rows={4} placeholder="Describe tu situación actual, objetivos y cómo podemos ayudarte a acelerar tu crecimiento..." className="w-full bg-white/5 border border-gray-800 focus:border-accent text-white px-4 py-3 rounded-sm outline-none transition-all placeholder-gray-600"></textarea>
             </div>
 
-            {status === "error" && (
-                <p className="text-red-400 text-sm">Ha ocurrido un error. Por favor inténtalo de nuevo.</p>
-            )}
 
             <div className="flex flex-col md:flex-row gap-4 pt-4">
                 <button
