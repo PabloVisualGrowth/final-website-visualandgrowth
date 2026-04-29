@@ -74,12 +74,12 @@ export default function ContactForm() {
                 <div className="relative">
                     <select id="servicios_interes" name="servicios_interes" className="w-full bg-white/5 border border-gray-800 focus:border-accent text-white px-4 py-3 rounded-sm outline-none transition-all appearance-none cursor-pointer">
                         <option value="">¿En qué podemos ayudarte?</option>
-                        <option value="automatizacion">Automatización Comercial</option>
-                        <option value="agentes-ia">Agentes Virtuales con IA</option>
-                        <option value="seo">Posicionamiento SEO</option>
-                        <option value="fiscal">Asesoramiento Fiscal</option>
-                        <option value="contenido">Generación de Contenido</option>
-                        <option value="consultoria">Consultoría Estratégica</option>
+                        <option value="estrategia-consultoria">Estrategia &amp; Consultoría</option>
+                        <option value="hyper-automation">Hyper-Automation</option>
+                        <option value="market-authority">Market Authority — SEO</option>
+                        <option value="product-boutique">Product Boutique — Diseño &amp; UX</option>
+                        <option value="smart-structure">Smart Structure — Fiscal &amp; Legal</option>
+                        <option value="content-studio">Content Studio</option>
                         <option value="todo">Solución Integral</option>
                     </select>
                     <div className="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none text-accent">▼</div>
