@@ -295,12 +295,11 @@ function BoutiqueCard({
       data-scroll-id={id}
       className={cn(
         "group relative flex flex-col p-8 md:p-10 overflow-hidden transition-all duration-500",
-        "border-l-2",
         isActive
-          ? "bg-white/[0.04] border-accent opacity-100"
+          ? "bg-white/[0.05] opacity-100"
           : isMobile
-            ? "opacity-30 border-transparent"
-            : "border-transparent hover:border-accent hover:bg-white/[0.025] opacity-100"
+            ? "opacity-30"
+            : "hover:bg-white/[0.03] opacity-100"
       )}
     >
       <div className="flex items-center justify-between mb-8">
