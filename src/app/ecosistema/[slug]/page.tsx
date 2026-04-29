@@ -200,7 +200,7 @@ const services: Record<string, ServiceData> = {
       { value: "20–40%", label: "Ahorro fiscal medio tras optimización" },
       { value: "1 mes", label: "Para tener la estructura rediseñada" },
     ],
-    quote: "El crecimiento sin estructura es una bomba de tiempo.",
+    quote: "El crecimiento sin estructura es una bomba de relojería.",
     quoteAuthor: "Visual & Growth",
     Icon: Zap,
     nextSlug: "content-studio",
