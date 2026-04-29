@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
-    const [visible, setVisible] = useState(false);
+    const [logoVisible, setLogoVisible] = useState(false);
     const lastScrollY = useRef(0);
 
     useEffect(() => {
@@ -17,12 +17,8 @@ export default function Navbar() {
             const scrollingUp = currentY < lastScrollY.current;
             const pastHero = currentY > heroHeight * 0.9;
 
-            if (pastHero && scrollingUp) {
-                setVisible(true);
-            } else {
-                setVisible(false);
-                if (!pastHero) setIsOpen(false);
-            }
+            setLogoVisible(pastHero && scrollingUp);
+            if (!pastHero) setIsOpen(false);
 
             lastScrollY.current = currentY;
         };
@@ -41,46 +37,46 @@ export default function Navbar() {
 
     return (
         <>
-            {/* Navbar bar — slides in from top on scroll up, past hero */}
+            {/* Logo — appears only on scroll up past hero */}
             <AnimatePresence>
-                {visible && (
-                    <motion.div
-                        initial={{ y: -64, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        exit={{ y: -64, opacity: 0 }}
-                        transition={{ duration: 0.28, ease: [0.76, 0, 0.24, 1] }}
-                        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 bg-black/80 backdrop-blur-md border-b border-white/5"
+                {logoVisible && (
+                    <motion.a
+                        href="#"
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.25, ease: [0.76, 0, 0.24, 1] }}
+                        className="fixed top-5 left-6 z-50 block w-32 md:w-36 h-9 relative"
                     >
-                        <a href="#" className="block w-32 md:w-36 h-9 relative">
-                            <Image
-                                src="/logo-full.png"
-                                alt="Visual & Growth"
-                                fill
-                                className="object-contain object-left"
-                                priority
-                            />
-                        </a>
-
-                        <button
-                            onClick={toggleMenu}
-                            className="w-10 h-10 flex items-center justify-center text-white hover:text-accent transition-colors"
-                            aria-label="Toggle Menu"
-                        >
-                            <AnimatePresence mode="wait" initial={false}>
-                                {isOpen ? (
-                                    <motion.span key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.15 }}>
-                                        <X className="w-5 h-5" />
-                                    </motion.span>
-                                ) : (
-                                    <motion.span key="menu" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.15 }}>
-                                        <Menu className="w-5 h-5" />
-                                    </motion.span>
-                                )}
-                            </AnimatePresence>
-                        </button>
-                    </motion.div>
+                        <Image
+                            src="/logo-full.png"
+                            alt="Visual & Growth"
+                            fill
+                            className="object-contain object-left"
+                            priority
+                        />
+                    </motion.a>
                 )}
             </AnimatePresence>
+
+            {/* Burger — always visible */}
+            <button
+                onClick={toggleMenu}
+                className="fixed top-5 right-6 z-50 w-10 h-10 flex items-center justify-center text-white hover:text-accent transition-colors"
+                aria-label="Toggle Menu"
+            >
+                <AnimatePresence mode="wait" initial={false}>
+                    {isOpen ? (
+                        <motion.span key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.15 }}>
+                            <X className="w-5 h-5" />
+                        </motion.span>
+                    ) : (
+                        <motion.span key="menu" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.15 }}>
+                            <Menu className="w-5 h-5" />
+                        </motion.span>
+                    )}
+                </AnimatePresence>
+            </button>
 
             {/* Full-screen menu overlay */}
             <AnimatePresence>
