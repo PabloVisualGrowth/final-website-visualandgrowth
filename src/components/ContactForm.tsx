@@ -13,7 +13,7 @@ export default function ContactForm() {
         const data = Object.fromEntries(new FormData(form));
 
         try {
-            await fetch("https://n8n-n8n.d4s5yj.easypanel.host/webhook-test/1ae503d6-4f94-4cb6-ac0e-88b50c666eef", {
+            await fetch("https://n8n-n8n.d4s5yj.easypanel.host/webhook/1ae503d6-4f94-4cb6-ac0e-88b50c666eef", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data),
