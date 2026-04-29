@@ -7,7 +7,6 @@ import { useState, useEffect } from "react";
 import CookieConsent from "@/components/CookieConsent";
 import Navbar from "@/components/Navbar";
 import ContactForm from "@/components/ContactForm";
-import LeadCaptureModal from "@/components/LeadCaptureModal";
 import { NumberTicker } from "@/components/NumberTicker";
 import { TextAnimate } from "@/components/TextAnimate";
 import { InteractiveGridPattern } from "@/components/InteractiveGridPattern";
@@ -56,7 +55,6 @@ export default function Home() {
   return (
     <div className="bg-primary text-text-primary selection:bg-accent selection:text-primary overflow-x-hidden font-sans min-h-screen">
       <CookieConsent />
-      <LeadCaptureModal />
       <Navbar />
 
       {/* Background Gradient */}
