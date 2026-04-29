@@ -14,7 +14,6 @@ export default function Navbar() {
     const navLinks = [
         { name: "Ecosistema", href: "#ecosistema" },
         { name: "Método V&G", href: "#metodologia" },
-        { name: "Partnership", href: "#partnership" },
     ];
 
     return (
