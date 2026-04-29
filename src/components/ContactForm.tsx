@@ -2,9 +2,10 @@
 
 export default function ContactForm() {
     return (
-        <form action="https://formspree.io/f/mldwkpyn" method="POST" id="contactForm" className="max-w-2xl mx-auto space-y-6 text-left">
+        <form action="https://n8n-n8n.d4s5yj.easypanel.host/webhook-test/1ae503d6-4f94-4cb6-ac0e-88b50c666eef" method="POST" id="contactForm" className="max-w-2xl mx-auto space-y-6 text-left">
 
             <input type="hidden" name="_subject" value="Nueva consulta desde Visual&Growth" />
+            <input type="hidden" name="origen" value="web" />
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="form-group">
