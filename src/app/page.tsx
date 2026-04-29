@@ -94,7 +94,7 @@ export default function Home() {
         </section>
 
         {/* VELOCITY STRIP */}
-        <section className="py-20 border-y border-gray-900 bg-bg-secondary/30 backdrop-blur-sm relative z-20 overflow-hidden">
+        <section className="py-20 bg-bg-secondary/30 backdrop-blur-sm relative z-20 overflow-hidden">
           <VelocityScroll default_velocity={3} numRows={1}>
             <Stat label="Enfoque Growth" value={100} suffix="%" sub="Negocio 360" />
             <Stat label="Time to Market" value={2} suffix=" Sem" sub="Validación Rápida" />
