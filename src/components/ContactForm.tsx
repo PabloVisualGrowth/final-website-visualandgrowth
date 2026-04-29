@@ -31,60 +31,9 @@ export default function ContactForm() {
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="form-group">
-                    <label htmlFor="sector" className="block text-sm font-bold text-gray-300 mb-2">Sector de tu empresa</label>
-                    <div className="relative">
-                        <select id="sector" name="sector" className="w-full bg-white/5 border border-gray-800 focus:border-accent text-white px-4 py-3 rounded-sm outline-none transition-all appearance-none cursor-pointer">
-                            <option value="">Selecciona tu sector</option>
-                            <option value="tecnologia">Tecnología</option>
-                            <option value="consultoria">Consultoría</option>
-                            <option value="servicios">Servicios Profesionales</option>
-                            <option value="e-commerce">E-commerce</option>
-                            <option value="manufacturing">Manufacturing</option>
-                            <option value="retail">Retail</option>
-                            <option value="inmobiliario">Inmobiliario</option>
-                            <option value="construccion">Construcción</option>
-                            <option value="salud">Salud y Bienestar</option>
-                            <option value="educacion">Educación</option>
-                            <option value="fintech">Fintech</option>
-                            <option value="seguros">Seguros</option>
-                            <option value="logistica">Logística y Transporte</option>
-                            <option value="alimentacion">Alimentación</option>
-                            <option value="turismo">Turismo y Hostelería</option>
-                            <option value="automocion">Automoción</option>
-                            <option value="telecomunicaciones">Telecomunicaciones</option>
-                            <option value="farmaceutico">Farmacéutico</option>
-                            <option value="agricultura">Agricultura</option>
-                            <option value="legal">Legal</option>
-                            <option value="otros">Otros</option>
-                        </select>
-                        <div className="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none text-accent">▼</div>
-                    </div>
-                </div>
-
-                <div className="form-group">
-                    <label htmlFor="facturacion" className="block text-sm font-bold text-gray-300 mb-2">Facturación anual aproximada</label>
-                    <div className="relative">
-                        <select id="facturacion" name="facturacion" className="w-full bg-white/5 border border-gray-800 focus:border-accent text-white px-4 py-3 rounded-sm outline-none transition-all appearance-none cursor-pointer">
-                            <option value="">Selecciona rango</option>
-                            <option value="startup">Startup / Pre-revenue</option>
-                            <option value="menos-50k">Menos de 50K€</option>
-                            <option value="50k-100k">50K€ - 100K€</option>
-                            <option value="100k-250k">100K€ - 250K€</option>
-                            <option value="250k-500k">250K€ - 500K€</option>
-                            <option value="500k-750k">500K€ - 750K€</option>
-                            <option value="750k-1M">750K€ - 1M€</option>
-                            <option value="1M-2M">1M€ - 2M€</option>
-                            <option value="2M-5M">2M€ - 5M€</option>
-                            <option value="5M-10M">5M€ - 10M€</option>
-                            <option value="10M-25M">10M€ - 25M€</option>
-                            <option value="25M-50M">25M€ - 50M€</option>
-                            <option value="mas-50M">Más de 50M€</option>
-                        </select>
-                        <div className="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none text-accent">▼</div>
-                    </div>
-                </div>
+            <div className="form-group">
+                <label htmlFor="web" className="block text-sm font-bold text-gray-300 mb-2">Web de tu empresa</label>
+                <input type="url" id="web" name="web" placeholder="https://tuempresa.com" className="w-full bg-white/5 border border-gray-800 focus:border-accent text-white px-4 py-3 rounded-sm outline-none transition-all placeholder-gray-600" />
             </div>
 
             <div className="form-group">
