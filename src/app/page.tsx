@@ -128,7 +128,7 @@ export default function Home() {
             </div>
 
             {/* Cards grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 divide-y divide-x-0 md:divide-x md:divide-y divide-gray-900/60">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
               <BoutiqueCard id="eco-1" activeId={activeId} isMobile={isMobile} num="01" Icon={Rocket} href="/ecosistema/estrategia-consultoria"
                 title="Estrategia & Consultoría" subtitle="Growth Machines"
                 desc="Olvídate del marketing tradicional. Como consultora estratégica, analizamos tu modelo y diseñamos la hoja de ruta para escalar tu facturación."
