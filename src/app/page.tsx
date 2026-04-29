@@ -178,7 +178,7 @@ export default function Home() {
 
                   <div className="mt-12 relative h-64 md:h-80 w-full rounded-sm overflow-hidden border border-gray-800/50 hidden lg:block shadow-2xl">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src="/office-real.png" alt="Visual & Growth Team" className="w-full h-full object-cover opacity-80" loading="eager" />
+                    <img src="/methodology-office-vg.png" alt="Visual & Growth Team" className="w-full h-full object-cover" loading="eager" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   </div>
                 </div>
