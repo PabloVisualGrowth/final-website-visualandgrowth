@@ -2,12 +2,22 @@
 
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X, ArrowRight, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+
+const ecosistemaLinks = [
+    { name: "Estrategia & Consultoría", href: "/ecosistema/estrategia-consultoria" },
+    { name: "Hyper-Automation", href: "/ecosistema/hyper-automation" },
+    { name: "Market Authority", href: "/ecosistema/market-authority" },
+    { name: "Product Boutique", href: "/ecosistema/product-boutique" },
+    { name: "Smart Structure", href: "/ecosistema/smart-structure" },
+    { name: "Content Studio", href: "/ecosistema/content-studio" },
+];
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [logoVisible, setLogoVisible] = useState(false);
+    const [ecoOpen, setEcoOpen] = useState(false);
     const lastScrollY = useRef(0);
 
     useEffect(() => {
@@ -18,7 +28,10 @@ export default function Navbar() {
             const pastHero = currentY > heroHeight * 0.9;
 
             setLogoVisible(pastHero && scrollingUp);
-            if (!pastHero) setIsOpen(false);
+            if (!pastHero) {
+                setIsOpen(false);
+                setEcoOpen(false);
+            }
 
             lastScrollY.current = currentY;
         };
@@ -27,11 +40,20 @@ export default function Navbar() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    const toggleMenu = () => setIsOpen(!isOpen);
-    const closeMenu = () => setIsOpen(false);
+    const toggleMenu = () => {
+        setIsOpen((prev) => {
+            if (prev) setEcoOpen(false);
+            return !prev;
+        });
+    };
+
+    const closeMenu = () => {
+        setIsOpen(false);
+        setEcoOpen(false);
+    };
 
     const navLinks = [
-        { name: "Ecosistema", href: "#ecosistema" },
+        { name: "Home", href: "#" },
         { name: "Método V&G", href: "#metodologia" },
     ];
 
@@ -89,30 +111,109 @@ export default function Navbar() {
                         className="fixed inset-0 z-40 bg-bg-primary/98 backdrop-blur-xl flex flex-col justify-center px-10 md:px-20"
                     >
                         <div className="flex flex-col gap-6 md:gap-8">
-                            {navLinks.map((link, i) => (
-                                <motion.a
-                                    key={link.name}
-                                    href={link.href}
-                                    onClick={closeMenu}
-                                    initial={{ opacity: 0, x: 60 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: 0.12 + i * 0.08, ease: [0.76, 0, 0.24, 1] }}
-                                    className="text-4xl md:text-6xl font-bold text-white hover:text-accent flex items-center justify-between group transition-colors duration-200"
+
+                            {/* ── Regular links before Ecosistema ── */}
+                            <motion.a
+                                href="#"
+                                onClick={closeMenu}
+                                initial={{ opacity: 0, x: 60 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: 0.12, ease: [0.76, 0, 0.24, 1] }}
+                                className="text-4xl md:text-6xl font-bold text-white hover:text-accent flex items-center justify-between group transition-colors duration-200"
+                            >
+                                Home
+                                <ArrowRight className="w-6 h-6 text-accent opacity-0 group-hover:opacity-100 transition-opacity" />
+                            </motion.a>
+
+                            {/* ── Ecosistema accordion ── */}
+                            <motion.div
+                                initial={{ opacity: 0, x: 60 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: 0.20, ease: [0.76, 0, 0.24, 1] }}
+                            >
+                                {/* Ecosistema toggle row */}
+                                <button
+                                    onClick={() => setEcoOpen((prev) => !prev)}
+                                    className="w-full text-4xl md:text-6xl font-bold text-white hover:text-accent flex items-center justify-between group transition-colors duration-200"
                                 >
-                                    {link.name}
-                                    <ArrowRight className="w-6 h-6 text-accent opacity-0 group-hover:opacity-100 transition-opacity" />
-                                </motion.a>
-                            ))}
+                                    Ecosistema
+                                    <motion.span
+                                        animate={{ rotate: ecoOpen ? 180 : 0 }}
+                                        transition={{ duration: 0.25 }}
+                                        className="text-accent"
+                                    >
+                                        <ChevronDown className="w-7 h-7" />
+                                    </motion.span>
+                                </button>
+
+                                {/* Sub-links */}
+                                <AnimatePresence initial={false}>
+                                    {ecoOpen && (
+                                        <motion.div
+                                            key="eco-sub"
+                                            initial={{ height: 0, opacity: 0 }}
+                                            animate={{ height: "auto", opacity: 1 }}
+                                            exit={{ height: 0, opacity: 0 }}
+                                            transition={{ duration: 0.35, ease: [0.76, 0, 0.24, 1] }}
+                                            className="overflow-hidden"
+                                        >
+                                            <div className="mt-4 ml-4 flex flex-col gap-3 border-l border-accent/30 pl-6">
+                                                {ecosistemaLinks.map((sub, idx) => (
+                                                    <motion.a
+                                                        key={sub.href}
+                                                        href={sub.href}
+                                                        onClick={closeMenu}
+                                                        initial={{ opacity: 0, x: 20 }}
+                                                        animate={{ opacity: 1, x: 0 }}
+                                                        transition={{ delay: idx * 0.05 }}
+                                                        className="text-lg md:text-2xl font-medium text-gray-400 hover:text-accent transition-colors duration-150 flex items-center gap-2 group"
+                                                    >
+                                                        <span className="text-accent/60 text-sm font-mono">
+                                                            0{idx + 1}
+                                                        </span>
+                                                        {sub.name}
+                                                        <ArrowRight className="w-4 h-4 text-accent opacity-0 group-hover:opacity-100 transition-opacity ml-auto" />
+                                                    </motion.a>
+                                                ))}
+                                                {/* También se puede ir a la sección general */}
+                                                <a
+                                                    href="#ecosistema"
+                                                    onClick={closeMenu}
+                                                    className="text-sm font-medium text-gray-600 hover:text-accent transition-colors mt-1"
+                                                >
+                                                    → Ver todo el ecosistema
+                                                </a>
+                                            </div>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+                            </motion.div>
+
+                            {/* ── Método V&G ── */}
+                            <motion.a
+                                href="#metodologia"
+                                onClick={closeMenu}
+                                initial={{ opacity: 0, x: 60 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: 0.28, ease: [0.76, 0, 0.24, 1] }}
+                                className="text-4xl md:text-6xl font-bold text-white hover:text-accent flex items-center justify-between group transition-colors duration-200"
+                            >
+                                Método V&G
+                                <ArrowRight className="w-6 h-6 text-accent opacity-0 group-hover:opacity-100 transition-opacity" />
+                            </motion.a>
+
+                            {/* ── CTA ── */}
                             <motion.a
                                 href="#audit"
                                 onClick={closeMenu}
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.28 }}
+                                transition={{ delay: 0.36 }}
                                 className="mt-6 px-8 py-4 text-sm font-bold bg-accent text-black hover:bg-white transition-all rounded-sm self-start"
                             >
                                 Audita tu Growth
                             </motion.a>
+
                         </div>
                     </motion.div>
                 )}
