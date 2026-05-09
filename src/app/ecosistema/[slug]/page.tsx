@@ -1,6 +1,7 @@
 import { ArrowLeft, ArrowRight, CheckCircle2, XCircle, Rocket, Bot, BarChart3, Layout, Zap, Activity } from "lucide-react";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
+import ShineCard from "@/components/ShineCard";
 
 type Problem = { title: string; desc: string };
 type ServiceData = {
@@ -363,10 +364,10 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {includes.map((item, i) => (
-              <div key={i} className="flex items-center gap-4 p-5 border border-gray-900/80 rounded-sm hover:border-gray-700 hover:bg-white/[0.02] transition-all group">
+              <ShineCard key={i} className="flex items-center gap-4 p-5 border border-gray-900/80 rounded-sm hover:border-gray-700 hover:bg-white/[0.02] transition-all group">
                 <span className="font-mono text-[10px] text-gray-700 w-5 flex-shrink-0">{String(i + 1).padStart(2, "0")}</span>
                 <p className="text-gray-300 text-sm">{item}</p>
-              </div>
+              </ShineCard>
             ))}
           </div>
         </div>
