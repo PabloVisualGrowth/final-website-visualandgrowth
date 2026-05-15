@@ -161,7 +161,7 @@ export default function GrowthMarketingB2BPage() {
               <div className="flex items-start gap-4 p-6 border border-gray-800 mb-10 max-w-2xl">
                 <div className="w-12 h-12 rounded-full bg-[#FFC600] flex items-center justify-center text-sm font-bold text-[#050505] flex-shrink-0">PP</div>
                 <div>
-                  <p className="font-bold text-white mb-1">Pablo Pérez — Co-CEO, Visual & Growth</p>
+                  <p className="font-bold text-white mb-1">Pablo Pérez — CEO, Visual & Growth</p>
                   <p className="text-xs text-gray-500 leading-relaxed mb-2">
                     Ex-Google Cloud Business Strategist. Ha auditado procesos de crecimiento en más de 80 empresas B2B en España, desde startups de 5 personas hasta grupos con 300 empleados.
                   </p>
