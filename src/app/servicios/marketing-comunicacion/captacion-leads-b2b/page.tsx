@@ -125,7 +125,7 @@ export default function CaptacionLeadsB2BPage() {
               <div className="w-9 h-9 rounded-full bg-[#FFC600] flex items-center justify-center text-xs font-bold text-[#050505]">PP</div>
               <div>
                 <p className="text-sm font-bold text-white">Pablo Pérez</p>
-                <p className="text-xs text-gray-500">Co-CEO · Visual & Growth · Ex-Google Cloud Business Strategist</p>
+                <p className="text-xs text-gray-500">CEO · Visual & Growth · Ex-Google Cloud Business Strategist</p>
               </div>
             </div>
           </section>
