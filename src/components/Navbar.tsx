@@ -63,7 +63,7 @@ export default function Navbar() {
             <AnimatePresence>
                 {logoVisible && (
                     <motion.a
-                        href="#"
+                        href="/"
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
@@ -114,7 +114,7 @@ export default function Navbar() {
 
                             {/* ── Regular links before Ecosistema ── */}
                             <motion.a
-                                href="#"
+                                href="/"
                                 onClick={closeMenu}
                                 initial={{ opacity: 0, x: 60 }}
                                 animate={{ opacity: 1, x: 0 }}
@@ -177,7 +177,7 @@ export default function Navbar() {
                                                 ))}
                                                 {/* También se puede ir a la sección general */}
                                                 <a
-                                                    href="#ecosistema"
+                                                    href="/#ecosistema"
                                                     onClick={closeMenu}
                                                     className="text-sm font-medium text-gray-600 hover:text-accent transition-colors mt-1"
                                                 >
@@ -191,7 +191,7 @@ export default function Navbar() {
 
                             {/* ── Método V&G ── */}
                             <motion.a
-                                href="#metodologia"
+                                href="/#metodologia"
                                 onClick={closeMenu}
                                 initial={{ opacity: 0, x: 60 }}
                                 animate={{ opacity: 1, x: 0 }}
@@ -204,7 +204,7 @@ export default function Navbar() {
 
                             {/* ── CTA ── */}
                             <motion.a
-                                href="#audit"
+                                href="/#audit"
                                 onClick={closeMenu}
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
