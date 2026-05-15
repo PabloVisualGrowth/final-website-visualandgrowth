@@ -189,7 +189,7 @@ const pabloSchema = {
   "@type": "Person",
   "@id": "https://visualandgrowth.com/#pablo-perez",
   "name": "Pablo Pérez",
-  "jobTitle": "Co-CEO & Growth Strategist",
+  "jobTitle": "CEO & Growth Strategist",
   "worksFor": { "@id": "https://visualandgrowth.com/#organization" },
   "description": "Ex-Google Cloud Business Strategist. Experto en growth marketing B2B, automatización IA y estrategia de crecimiento para PYMES en España.",
   "sameAs": ["https://www.linkedin.com/in/pabloperez"],
