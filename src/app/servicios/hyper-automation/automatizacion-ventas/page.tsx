@@ -71,9 +71,9 @@ const faqSchema = {
 const scenarios = [
   {
     tag: "Captación",
-    title: "Extracción de leads desde Google Maps",
-    desc: "Extraemos automáticamente datos de empresas de cualquier sector y zona geográfica: nombre, web, teléfono, valoración y número de reseñas. Base de prospección actualizada sin trabajo manual.",
-    time: "Despliegue: 3-5 días"
+    title: "Inteligencia de Prospectos B2B — Sistema Inhouse",
+    desc: "Nuestro sistema propio extrae el perfil completo de cada prospecto y su empresa: email directo, teléfono, cargo, tamaño, tecnología, descripción y señales de crecimiento. No es scraping superficial — son datos de primera calidad listos para personalizar cada contacto.",
+    time: "Despliegue: 1 semana"
   },
   {
     tag: "Cualificación",
