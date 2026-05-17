@@ -56,8 +56,8 @@ export default function Home() {
 
       <main className="relative z-10 w-full">
 
-        {/* ── HERO ─────────────────────────────────────────────────────────── */}
-        <section className="min-h-screen flex flex-col items-center justify-center px-6 py-24 relative text-center overflow-hidden">
+        {/* ── HERO (logo only) ─────────────────────────────────────────────── */}
+        <section className="min-h-screen flex flex-col items-center justify-center px-6 py-20 relative text-center overflow-hidden">
           <InteractiveGridPattern
             width={120} height={120} squares={[20, 20]}
             className={cn(
@@ -65,55 +65,53 @@ export default function Home() {
               "inset-x-0 inset-y-[-30%] h-[200%] md:skew-y-12 z-0 hidden md:block"
             )}
           />
-
-          {/* Floating tech cards */}
           <div className="absolute inset-0 z-10 pointer-events-none md:skew-y-12 hidden md:block">
             <div className="relative w-full h-full max-w-7xl mx-auto overflow-visible">
-              <TechProtocolCard title="REVENUE_TRACKER" className="top-[15%] right-[10%]"
+              <TechProtocolCard title="SYSTEM_READY" className="top-[15%] right-[10%]"
+                lines={[{ label: "STATUS", value: "ONLINE", status: "ok" }, { label: "UPTIME", value: "99.9%", status: "ok" }]} />
+              <TechProtocolCard title="REVENUE_TRACKER" className="bottom-[20%] left-[8%]"
                 lines={[{ label: "RUN_RATE", value: "$2.4M", status: "accent" }, { label: "GROWTH", value: "+12%", status: "ok" }]} />
-              <TechProtocolCard title="NEURAL_LINK" className="top-[25%] left-[10%]"
-                lines={[{ label: "AGENTS", value: "CONNECTED", status: "ok" }, { label: "STATUS", value: "ONLINE", status: "ok" }]} />
-              <TechProtocolCard title="LEADS_SYSTEM" className="bottom-[20%] left-[8%]"
-                lines={[{ label: "CAPTACIÓN", value: "ACTIVA", status: "ok" }, { label: "CAC", value: "−38%", status: "accent" }]} />
+              <TechProtocolCard title="INIT_PROTOCOL" className="top-[25%] left-[10%]"
+                lines={[{ label: "AGENTS", value: "CONNECTED", status: "ok" }, { label: "SYNC", value: "PENDING", status: "pulse" }]} />
               <TechProtocolCard title="SCALE_VELOCITY" className="bottom-[15%] right-[12%]"
                 lines={[{ label: "LOAD", value: "OPTIMAL", status: "ok" }, { label: "OPS", value: "SCALING", status: "accent" }]} />
-              <TechProtocolCard title="ICE_SCORE" className="top-[10%] left-[25%] opacity-40 scale-75 hidden md:block"
-                lines={[{ label: "SPRINT", value: "ACTIVO", status: "pulse" }]} />
+              <TechProtocolCard title="NEURAL_LINK" className="top-[10%] left-[25%] opacity-40 scale-75 hidden md:block"
+                lines={[{ label: "CORE", value: "ACTIVE", status: "ok" }]} />
               <TechProtocolCard title="CLOUD_SYNC" className="top-[45%] right-[5%] opacity-30 scale-90 hidden lg:block"
                 lines={[{ label: "DATA", value: "STREAMING", status: "pulse" }]} />
-              <TechProtocolCard title="ACTIVOS_BLINDADOS" className="bottom-[40%] left-[15%] opacity-40 scale-75 hidden xl:block"
-                lines={[{ label: "STRUCT", value: "SMART", status: "ok" }]} />
+              <TechProtocolCard title="SECURITY_H" className="bottom-[40%] left-[15%] opacity-40 scale-75 hidden xl:block"
+                lines={[{ label: "ENC", value: "AES-256", status: "ok" }]} />
               <TechProtocolCard title="ANALYTICS_V4" className="bottom-[10%] left-[30%] opacity-30 scale-90 hidden md:block"
                 lines={[{ label: "VARS", value: "TRACKED", status: "accent" }]} />
+              <TechProtocolCard title="CORE_ENGINE" className="top-[40%] left-[0%] opacity-20 scale-110 hidden 2xl:block"
+                lines={[{ label: "MOD", value: "V2.1.0", status: "ok" }]} />
             </div>
           </div>
+          <div className="relative w-full max-w-[85vw] md:max-w-3xl h-16 sm:h-28 md:h-40 animate-fade-in-up z-20">
+            <Image src="/logo-full.png" fill alt="Visual & Growth"
+              className="object-contain drop-shadow-[0_0_15px_rgba(255,198,0,0.4)] md:drop-shadow-[0_0_25px_rgba(255,198,0,0.5)]" priority />
+          </div>
+        </section>
 
-          {/* Content */}
-          <div className="relative z-20 flex flex-col items-center gap-7 max-w-4xl">
-            <div className="relative w-[68vw] md:w-72 h-11 md:h-14 animate-fade-in-up">
-              <Image src="/logo-full.png" fill alt="Visual & Growth"
-                className="object-contain drop-shadow-[0_0_15px_rgba(255,198,0,0.4)]" priority />
-            </div>
-
-            {/* Headline */}
-            <div className="animate-fade-in-up" style={{ animationDelay: "0.15s" }}>
+        {/* ── HOOK + CTA ───────────────────────────────────────────────────── */}
+        <section className="min-h-screen flex flex-col items-center justify-center px-6 py-24 relative text-center overflow-hidden border-t border-gray-900/60">
+          <div className="absolute inset-0 bg-gradient-to-b from-[#060606] to-black pointer-events-none" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
+          <div className="relative z-10 flex flex-col items-center gap-8 max-w-4xl">
+            <div className="animate-fade-in-up">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.4rem] font-display font-bold text-white leading-tight tracking-tight">
                 ¿Frustrado por no escalar tu facturación pese a invertir en{" "}
                 <AuroraText>sistemas y marketing</AuroraText> de alto nivel?
               </h1>
             </div>
-
-            {/* Subheadline */}
             <p className="text-gray-400 text-lg md:text-xl max-w-2xl leading-relaxed animate-fade-in-up"
-              style={{ animationDelay: "0.3s" }}>
+              style={{ animationDelay: "0.15s" }}>
               Responde 15 preguntas clave para descubrir{" "}
               <span className="text-white font-medium">por qué tu empresa no escala</span>{" "}
               y obtén un roadmap personalizado de qué hacer al respecto.
             </p>
-
-            {/* CTA */}
             <div className="flex flex-col sm:flex-row items-center gap-4 animate-fade-in-up"
-              style={{ animationDelay: "0.45s" }}>
+              style={{ animationDelay: "0.3s" }}>
               <a href="#diagnostico"
                 className="inline-flex items-center gap-2 bg-accent text-black font-bold text-sm md:text-base px-8 py-4 rounded-sm hover:bg-white transition-colors uppercase tracking-widest font-mono">
                 Obtén tu diagnóstico gratuito (3 min)
@@ -124,34 +122,7 @@ export default function Home() {
                 Ver el ecosistema →
               </a>
             </div>
-
-            {/* Revenue Tracker widget */}
-            <div className="animate-fade-in-up w-full max-w-sm" style={{ animationDelay: "0.6s" }}>
-              <div className="border border-gray-800 bg-[#0A0A0A]/90 rounded-lg px-5 py-4 backdrop-blur-sm">
-                <div className="text-[9px] font-mono text-gray-600 uppercase tracking-widest mb-3 border-b border-gray-800 pb-2">
-                  Revenue Tracker · Ecosistema V&G
-                </div>
-                <div className="grid grid-cols-3 gap-4">
-                  {[
-                    { label: "Run-Rate", value: "$2.4M", status: "accent" },
-                    { label: "Growth",   value: "+12%",  status: "ok"     },
-                    { label: "Agents",   value: "Online",status: "pulse"  },
-                  ].map((m) => (
-                    <div key={m.label} className="text-center">
-                      <div className="text-[8px] font-mono text-gray-600 uppercase mb-1">{m.label}</div>
-                      <div className={cn(
-                        "text-sm font-bold font-mono",
-                        m.status === "ok" ? "text-green-500" :
-                        m.status === "pulse" ? "text-accent animate-pulse" : "text-accent"
-                      )}>{m.value}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Trust badges */}
-            <div className="flex flex-wrap justify-center gap-6 animate-fade-in-up" style={{ animationDelay: "0.75s" }}>
+            <div className="flex flex-wrap justify-center gap-6 animate-fade-in-up" style={{ animationDelay: "0.45s" }}>
               {["Sin compromiso", "Respuesta en 24h", "Roadmap personalizado"].map((b) => (
                 <div key={b} className="flex items-center gap-2 text-[10px] font-mono text-gray-600 uppercase tracking-wider">
                   <span className="w-1 h-1 rounded-full bg-accent inline-block" />
