@@ -20,7 +20,6 @@ export default function Home() {
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
-
     const handleScroll = () => {
       if (window.innerWidth < 768) {
         const elements = document.querySelectorAll("[data-scroll-item]");
@@ -28,9 +27,7 @@ export default function Home() {
         let minDistance = Infinity;
         elements.forEach((el) => {
           const rect = el.getBoundingClientRect();
-          const centerY = window.innerHeight / 2;
-          const elementCenterY = rect.top + rect.height / 2;
-          const distance = Math.abs(elementCenterY - centerY);
+          const distance = Math.abs(rect.top + rect.height / 2 - window.innerHeight / 2);
           if (distance < minDistance && distance < 250) {
             minDistance = distance;
             closestId = el.getAttribute("data-scroll-id");
@@ -41,7 +38,6 @@ export default function Home() {
         setActiveId(null);
       }
     };
-
     window.addEventListener("resize", checkMobile);
     window.addEventListener("scroll", handleScroll);
     checkMobile();
@@ -56,141 +52,107 @@ export default function Home() {
     <div className="bg-primary text-text-primary selection:bg-accent selection:text-primary overflow-x-hidden font-sans min-h-screen">
       <CookieConsent />
       <Navbar />
-
-      {/* Background Gradient */}
       <div className="fixed inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,195,0,0.1)_0%,rgba(5,5,5,0)_50%)] pointer-events-none z-0" />
 
       <main className="relative z-10 w-full">
 
         {/* ── HERO ─────────────────────────────────────────────────────────── */}
-        <section className="min-h-screen flex flex-col items-center justify-center px-6 py-20 relative text-center overflow-hidden">
+        <section className="min-h-screen flex flex-col items-center justify-center px-6 py-24 relative text-center overflow-hidden">
           <InteractiveGridPattern
-            width={120}
-            height={120}
-            squares={[20, 20]}
+            width={120} height={120} squares={[20, 20]}
             className={cn(
               "[mask-image:radial-gradient(500px_circle_at_center,white,transparent)]",
               "inset-x-0 inset-y-[-30%] h-[200%] md:skew-y-12 z-0 hidden md:block"
             )}
           />
 
-          {/* Decorative tech cards */}
+          {/* Floating tech cards */}
           <div className="absolute inset-0 z-10 pointer-events-none md:skew-y-12 hidden md:block">
             <div className="relative w-full h-full max-w-7xl mx-auto overflow-visible">
-              <TechProtocolCard
-                title="REVENUE_TRACKER"
-                className="top-[15%] right-[10%]"
-                lines={[
-                  { label: "RUN_RATE", value: "$2.4M", status: "accent" },
-                  { label: "GROWTH", value: "+12%", status: "ok" },
-                ]}
-              />
-              <TechProtocolCard
-                title="LEADS_SYSTEM"
-                className="bottom-[20%] left-[8%]"
-                lines={[
-                  { label: "CAPTACIÓN", value: "ACTIVA", status: "ok" },
-                  { label: "CAC", value: "−38%", status: "accent" },
-                ]}
-              />
-              <TechProtocolCard
-                title="INIT_PROTOCOL"
-                className="top-[25%] left-[10%]"
-                lines={[
-                  { label: "AGENTS", value: "CONNECTED", status: "ok" },
-                  { label: "SYNC", value: "PENDING", status: "pulse" },
-                ]}
-              />
-              <TechProtocolCard
-                title="SCALE_VELOCITY"
-                className="bottom-[15%] right-[12%]"
-                lines={[
-                  { label: "LOAD", value: "OPTIMAL", status: "ok" },
-                  { label: "OPS", value: "SCALING", status: "accent" },
-                ]}
-              />
-              <TechProtocolCard
-                title="OPS_AUTOMATOR"
-                className="top-[10%] left-[25%] opacity-40 scale-75 hidden md:block"
-                lines={[{ label: "AHORRO", value: "15H/SEM", status: "ok" }]}
-              />
-              <TechProtocolCard
-                title="CLOUD_SYNC"
-                className="top-[45%] right-[5%] opacity-30 scale-90 hidden lg:block"
-                lines={[{ label: "DATA", value: "STREAMING", status: "pulse" }]}
-              />
-              <TechProtocolCard
-                title="ACTIVOS_BLINDADOS"
-                className="bottom-[40%] left-[15%] opacity-40 scale-75 hidden xl:block"
-                lines={[{ label: "STRUCT", value: "SMART", status: "ok" }]}
-              />
-              <TechProtocolCard
-                title="ANALYTICS_V4"
-                className="bottom-[10%] left-[30%] opacity-30 scale-90 hidden md:block"
-                lines={[{ label: "VARS", value: "TRACKED", status: "accent" }]}
-              />
+              <TechProtocolCard title="REVENUE_TRACKER" className="top-[15%] right-[10%]"
+                lines={[{ label: "RUN_RATE", value: "$2.4M", status: "accent" }, { label: "GROWTH", value: "+12%", status: "ok" }]} />
+              <TechProtocolCard title="NEURAL_LINK" className="top-[25%] left-[10%]"
+                lines={[{ label: "AGENTS", value: "CONNECTED", status: "ok" }, { label: "STATUS", value: "ONLINE", status: "ok" }]} />
+              <TechProtocolCard title="LEADS_SYSTEM" className="bottom-[20%] left-[8%]"
+                lines={[{ label: "CAPTACIÓN", value: "ACTIVA", status: "ok" }, { label: "CAC", value: "−38%", status: "accent" }]} />
+              <TechProtocolCard title="SCALE_VELOCITY" className="bottom-[15%] right-[12%]"
+                lines={[{ label: "LOAD", value: "OPTIMAL", status: "ok" }, { label: "OPS", value: "SCALING", status: "accent" }]} />
+              <TechProtocolCard title="ICE_SCORE" className="top-[10%] left-[25%] opacity-40 scale-75 hidden md:block"
+                lines={[{ label: "SPRINT", value: "ACTIVO", status: "pulse" }]} />
+              <TechProtocolCard title="CLOUD_SYNC" className="top-[45%] right-[5%] opacity-30 scale-90 hidden lg:block"
+                lines={[{ label: "DATA", value: "STREAMING", status: "pulse" }]} />
+              <TechProtocolCard title="ACTIVOS_BLINDADOS" className="bottom-[40%] left-[15%] opacity-40 scale-75 hidden xl:block"
+                lines={[{ label: "STRUCT", value: "SMART", status: "ok" }]} />
+              <TechProtocolCard title="ANALYTICS_V4" className="bottom-[10%] left-[30%] opacity-30 scale-90 hidden md:block"
+                lines={[{ label: "VARS", value: "TRACKED", status: "accent" }]} />
             </div>
           </div>
 
-          {/* Hero content */}
-          <div className="relative z-20 flex flex-col items-center gap-8 max-w-4xl">
-            {/* Logo */}
-            <div className="relative w-[70vw] md:w-80 h-12 md:h-16 animate-fade-in-up">
-              <Image
-                src="/logo-full.png"
-                fill
-                alt="Visual & Growth"
-                className="object-contain drop-shadow-[0_0_15px_rgba(255,198,0,0.4)]"
-                priority
-              />
+          {/* Content */}
+          <div className="relative z-20 flex flex-col items-center gap-7 max-w-4xl">
+            <div className="relative w-[68vw] md:w-72 h-11 md:h-14 animate-fade-in-up">
+              <Image src="/logo-full.png" fill alt="Visual & Growth"
+                className="object-contain drop-shadow-[0_0_15px_rgba(255,198,0,0.4)]" priority />
             </div>
 
-            {/* Frustration hook headline */}
+            {/* Headline */}
             <div className="animate-fade-in-up" style={{ animationDelay: "0.15s" }}>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white leading-tight tracking-tight">
-                ¿Frustrado porque su marketing atrae{" "}
-                <span className="text-gray-500">clics</span> pero no{" "}
-                <AuroraText>clientes</AuroraText>?
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.4rem] font-display font-bold text-white leading-tight tracking-tight">
+                ¿Frustrado por no escalar tu facturación pese a invertir en{" "}
+                <AuroraText>sistemas y marketing</AuroraText> de alto nivel?
               </h1>
             </div>
 
             {/* Subheadline */}
-            <p
-              className="text-gray-400 text-lg md:text-xl max-w-2xl leading-relaxed animate-fade-in-up"
-              style={{ animationDelay: "0.3s" }}
-            >
-              Mida y mejore 3 áreas clave de su negocio:{" "}
-              <span className="text-white font-medium">Eficiencia Operativa (IA)</span>,{" "}
-              <span className="text-white font-medium">Autoridad de Mercado (SEO)</span> y{" "}
-              <span className="text-white font-medium">Estructura Fiscal (Legal)</span>.
+            <p className="text-gray-400 text-lg md:text-xl max-w-2xl leading-relaxed animate-fade-in-up"
+              style={{ animationDelay: "0.3s" }}>
+              Responde 15 preguntas clave para descubrir{" "}
+              <span className="text-white font-medium">por qué tu empresa no escala</span>{" "}
+              y obtén un roadmap personalizado de qué hacer al respecto.
             </p>
 
             {/* CTA */}
-            <div
-              className="flex flex-col sm:flex-row items-center gap-4 animate-fade-in-up"
-              style={{ animationDelay: "0.45s" }}
-            >
-              <a
-                href="#diagnostico"
-                className="inline-flex items-center gap-2 bg-accent text-black font-bold text-sm md:text-base px-8 py-4 rounded-sm hover:bg-white transition-colors uppercase tracking-widest font-mono"
-              >
-                Iniciar Diagnóstico Gratuito (3 min)
+            <div className="flex flex-col sm:flex-row items-center gap-4 animate-fade-in-up"
+              style={{ animationDelay: "0.45s" }}>
+              <a href="#diagnostico"
+                className="inline-flex items-center gap-2 bg-accent text-black font-bold text-sm md:text-base px-8 py-4 rounded-sm hover:bg-white transition-colors uppercase tracking-widest font-mono">
+                Obtén tu diagnóstico gratuito (3 min)
                 <ArrowRight className="w-4 h-4" />
               </a>
-              <a
-                href="#ecosistema"
-                className="text-gray-500 hover:text-white text-sm font-mono uppercase tracking-widest transition-colors"
-              >
+              <a href="#ecosistema"
+                className="text-gray-500 hover:text-white text-sm font-mono uppercase tracking-widest transition-colors">
                 Ver el ecosistema →
               </a>
             </div>
 
+            {/* Revenue Tracker widget */}
+            <div className="animate-fade-in-up w-full max-w-sm" style={{ animationDelay: "0.6s" }}>
+              <div className="border border-gray-800 bg-[#0A0A0A]/90 rounded-lg px-5 py-4 backdrop-blur-sm">
+                <div className="text-[9px] font-mono text-gray-600 uppercase tracking-widest mb-3 border-b border-gray-800 pb-2">
+                  Revenue Tracker · Ecosistema V&G
+                </div>
+                <div className="grid grid-cols-3 gap-4">
+                  {[
+                    { label: "Run-Rate", value: "$2.4M", status: "accent" },
+                    { label: "Growth",   value: "+12%",  status: "ok"     },
+                    { label: "Agents",   value: "Online",status: "pulse"  },
+                  ].map((m) => (
+                    <div key={m.label} className="text-center">
+                      <div className="text-[8px] font-mono text-gray-600 uppercase mb-1">{m.label}</div>
+                      <div className={cn(
+                        "text-sm font-bold font-mono",
+                        m.status === "ok" ? "text-green-500" :
+                        m.status === "pulse" ? "text-accent animate-pulse" : "text-accent"
+                      )}>{m.value}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
             {/* Trust badges */}
-            <div
-              className="flex flex-wrap justify-center gap-6 animate-fade-in-up"
-              style={{ animationDelay: "0.6s" }}
-            >
-              {["Sin compromiso", "Respuesta en 24h", "Hoja de ruta personalizada"].map((b) => (
+            <div className="flex flex-wrap justify-center gap-6 animate-fade-in-up" style={{ animationDelay: "0.75s" }}>
+              {["Sin compromiso", "Respuesta en 24h", "Roadmap personalizado"].map((b) => (
                 <div key={b} className="flex items-center gap-2 text-[10px] font-mono text-gray-600 uppercase tracking-wider">
                   <span className="w-1 h-1 rounded-full bg-accent inline-block" />
                   {b}
@@ -203,10 +165,10 @@ export default function Home() {
         {/* ── VELOCITY STRIP ───────────────────────────────────────────────── */}
         <section className="py-20 bg-bg-secondary/30 backdrop-blur-sm relative z-20 overflow-hidden">
           <VelocityScroll default_velocity={3} numRows={1}>
-            <Stat label="Horas recuperadas/semana" value={15} suffix="+" sub="Automatización IA" />
-            <Stat label="Time to Market" value={2} suffix=" Sem" sub="Validación Rápida" />
-            <Stat label="Reducción de CAC" value={38} suffix="%" sub="Captación Orgánica" />
-            <Stat label="Diseño" value="A+" sub="Calidad Boutique" />
+            <Stat label="Horas liberadas/semana" value={20} suffix="+"  sub="AI & Operations"    />
+            <Stat label="Time to Market"          value={2}  suffix=" Sem" sub="Validación rápida" />
+            <Stat label="Reducción de CAC"        value={38} suffix="%"  sub="Captación orgánica" />
+            <Stat label="Diseño"                  value="A+"             sub="Calidad boutique"   />
           </VelocityScroll>
           <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-bg-primary to-transparent z-10" />
           <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-bg-primary to-transparent z-10" />
@@ -215,17 +177,16 @@ export default function Home() {
         {/* ── ECOSISTEMA ───────────────────────────────────────────────────── */}
         <section id="ecosistema" className="py-24 md:py-36 px-6">
           <div className="max-w-7xl mx-auto">
-
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-6">
               <div className="max-w-2xl">
                 <span className="text-accent font-mono text-xs mb-4 block uppercase tracking-widest">El Ecosistema</span>
                 <div className="pb-2 overflow-hidden">
                   <TextAnimate animation="blurInUp" by="word" as="h2" className="text-4xl md:text-6xl font-display font-bold mb-6">
-                    Sistemas de captación y escalado.
+                    6 verticales. Un sistema.
                   </TextAnimate>
                 </div>
                 <TextAnimate animation="fadeIn" by="line" delay={0.3} className="text-gray-500 text-xl md:text-2xl font-display">
-                  Para PYMES que facturan +1M€ y quieren crecer de forma predecible.
+                  Construido para convertir tu empresa en una máquina de crecimiento predecible.
                 </TextAnimate>
               </div>
               <a href="#diagnostico" className="hidden md:flex items-center gap-2 text-sm text-white border-b border-accent pb-1 hover:text-accent transition-colors font-mono tracking-wide">
@@ -234,68 +195,55 @@ export default function Home() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-              <BoutiqueCard
-                id="eco-1" activeId={activeId} isMobile={isMobile}
+              <BoutiqueCard id="eco-1" activeId={activeId} isMobile={isMobile}
                 num="01" Icon={Rocket} href="/ecosistema/estrategia-consultoria"
-                title="Su Hoja de Ruta al Escalamiento" subtitle="Growth Machines"
+                title="Growth Machines" subtitle="Estrategia & Consultoría"
                 bullets={[
-                  "Identifique fugas de dinero en sus unit economics",
-                  "Priorice acciones por impacto real (ICE Score)",
-                  "Diseñe un sistema predecible, no acciones sueltas",
-                ]}
-              />
-              <BoutiqueCard
-                id="eco-2" activeId={activeId} isMobile={isMobile}
+                  "Roadmap 90 días: identifica fugas en tus Unit Economics y desbloquea el cuello de botella principal",
+                  "Auditoría de tracción real: elimina métricas de vanidad y analiza rentabilidad por canal",
+                  "Ingeniería de procesos para una facturación predecible, no acciones sueltas",
+                ]} />
+              <BoutiqueCard id="eco-2" activeId={activeId} isMobile={isMobile}
                 num="02" Icon={Bot} href="/ecosistema/hyper-automation"
-                title="Operativa en Piloto Automático" subtitle="AI & Operations"
+                title="AI & Operations" subtitle="Hyper-Automation"
                 bullets={[
-                  "Recupere 15+ horas semanales de gestión",
-                  "Elimine el error humano en su CRM",
-                  "Conecte todos sus procesos en un panel centralizado",
-                ]}
-              />
-              <BoutiqueCard
-                id="eco-3" activeId={activeId} isMobile={isMobile}
+                  "Arquitectura Neural Link: flujos multi-agente y rastreadores de ingresos automatizados",
+                  "Ops Scaling: automatización de procesos críticos para liberar +20h semanales al equipo C-Level",
+                  "Dashboards V4 en tiempo real con sincronización completa de todos tus sistemas",
+                ]} />
+              <BoutiqueCard id="eco-3" activeId={activeId} isMobile={isMobile}
                 num="03" Icon={BarChart3} href="/ecosistema/market-authority"
-                title="Captación Quirúrgica de Leads" subtitle="Market Authority"
+                title="Market Authority" subtitle="SEO & Posicionamiento"
                 bullets={[
-                  "Capture tráfico con alta intención de compra",
-                  "Elimine la dependencia de anuncios caros",
-                  "Posicione su marca como autoridad líder en su nicho",
-                ]}
-              />
-              <BoutiqueCard
-                id="eco-4" activeId={activeId} isMobile={isMobile}
+                  "Arquitectura de Silos 2026: estructura técnica citada por IA Overviews y motores generativos",
+                  "Dominio de intención de compra: términos que generan transacciones, no solo tráfico",
+                  "Author Score Entity: vincula cada activo de contenido con entidades autoritativas para Google",
+                ]} />
+              <BoutiqueCard id="eco-4" activeId={activeId} isMobile={isMobile}
                 num="04" Icon={Layout} href="/ecosistema/product-boutique"
-                title="Interfaz de Alta Conversión" subtitle="Product Boutique"
+                title="Product Boutique" subtitle="UI/UX & Branding"
                 bullets={[
-                  "Eleve su percepción de valor al instante",
-                  "Diseño de nivel boutique con usabilidad de Amazon",
-                  "Reduzca la tasa de rebote con carga ultrarrápida",
-                ]}
-              />
-              <BoutiqueCard
-                id="eco-5" activeId={activeId} isMobile={isMobile}
+                  "Conversión Amazon-Style: interfaces de baja carga cognitiva que eliminan la fricción de compra",
+                  "Time-to-Market: prototipado funcional en 0 semanas para testear hipótesis de mercado de inmediato",
+                  "Estética boutique A+ que eleva la percepción de valor del producto al nivel premium",
+                ]} />
+              <BoutiqueCard id="eco-5" activeId={activeId} isMobile={isMobile}
                 num="05" Icon={Zap} href="/ecosistema/smart-structure"
-                title="Blindaje de Beneficios" subtitle="Smart Structure"
+                title="Smart Structure" subtitle="Legal & Tax"
                 bullets={[
-                  "Maximice cada euro generado legalmente",
-                  "Proteja su patrimonio personal y empresarial",
-                  "Reduzca la carga administrativa del crecimiento",
-                ]}
-              />
-              <BoutiqueCard
-                id="eco-6" activeId={activeId} isMobile={isMobile}
+                  "Roadmap de eficiencia fiscal: optimiza tu estructura corporativa para maximizar el beneficio neto",
+                  "Protección de activos digitales: blindaje legal de propiedad intelectual y estructuras de datos",
+                  "Compliance de crecimiento: gestiona la complejidad legal del escalado internacional",
+                ]} />
+              <BoutiqueCard id="eco-6" activeId={activeId} isMobile={isMobile}
                 num="06" Icon={Activity} href="/ecosistema/content-studio"
-                title="Su Marca como Autoridad Visual" subtitle="Content Studio"
+                title="Content Studio" subtitle="Media Production"
                 bullets={[
-                  "Contenido vertical que atrapa a C-Levels",
-                  "Narrativas que convierten seguidores en clientes",
-                  "Producción de alta fidelidad con enfoque en ventas",
-                ]}
-              />
+                  "Narrativa vertical C-Level: contenido de alta retención diseñado para capturar decisores",
+                  "Indexación de momentos clave: Google extrae fragmentos directos de tu vídeo en los resultados de búsqueda",
+                  "Content Factory: activos visuales que posicionan tu marca como líder de opinión en 24h",
+                ]} />
             </div>
-
           </div>
         </section>
 
@@ -303,7 +251,6 @@ export default function Home() {
         <section id="metodologia" className="py-24 md:py-36 px-6 bg-[#060606] border-t border-gray-900/60">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24">
-
               <div>
                 <div className="sticky top-32">
                   <span className="text-accent font-mono text-xs mb-6 block uppercase tracking-widest">El Método V&amp;G</span>
@@ -313,9 +260,8 @@ export default function Home() {
                     </TextAnimate>
                   </div>
                   <TextAnimate animation="fadeIn" by="word" delay={0.3} className="text-gray-500 text-xl md:text-2xl font-display">
-                    Cuatro fases para convertir su empresa en una máquina de crecimiento predecible.
+                    Cuatro fases para convertir tu empresa en una máquina de crecimiento predecible.
                   </TextAnimate>
-
                   <div className="mt-12 relative h-64 md:h-80 w-full rounded-sm overflow-hidden border border-gray-800/50 hidden lg:block shadow-2xl">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src="/methodology-office-vg.png" alt="Visual & Growth Team" className="w-full h-full object-cover" loading="eager" />
@@ -323,22 +269,24 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-
               <div className="relative">
                 <div className="absolute left-4 top-4 bottom-4 w-px bg-gradient-to-b from-accent/40 via-gray-800 to-transparent hidden md:block" />
                 <div className="space-y-0">
-                  <StepItem id="step-1" activeId={activeId} isMobile={isMobile} num="01" title="Discovery & Audit" desc="Radiografía total. No tocamos una línea de código sin entender sus unit economics. Auditamos sus fugas de dinero y tiempo." />
-                  <StepItem id="step-2" activeId={activeId} isMobile={isMobile} num="02" title="Hypothesis & Roadmap" desc="Diseñamos el plan de ataque. Priorizamos acciones por 'Impacto vs Esfuerzo' (ICE Score). Nada de paja, solo tracción." />
-                  <StepItem id="step-3" activeId={activeId} isMobile={isMobile} num="03" title="Sprint Execution" desc="Despliegue rápido. Lanzamos, medimos y ajustamos en ciclos cortos. Velocidad de startup para validar resultados en semanas." />
-                  <StepItem id="step-4" activeId={activeId} isMobile={isMobile} num="04" title="Scale Up" desc="Cuando algo funciona, echamos gasolina. Automatizamos lo validado y escalamos la inversión publicitaria y operativa." />
+                  <StepItem id="step-1" activeId={activeId} isMobile={isMobile} num="01" title="Discovery & Audit"
+                    desc="Radiografía total. No tocamos una línea de código sin entender tus unit economics. Auditamos tus fugas de dinero y tiempo." />
+                  <StepItem id="step-2" activeId={activeId} isMobile={isMobile} num="02" title="Hypothesis & Roadmap"
+                    desc="Diseñamos el plan de ataque. Priorizamos acciones por ICE Score (Impacto, Confianza, Esfuerzo). Nada de paja, solo tracción." />
+                  <StepItem id="step-3" activeId={activeId} isMobile={isMobile} num="03" title="Sprint Execution"
+                    desc="Despliegue rápido. Lanzamos, medimos y ajustamos en ciclos cortos de máximo 4 semanas. Velocidad de startup para validar resultados de inmediato." />
+                  <StepItem id="step-4" activeId={activeId} isMobile={isMobile} num="04" title="Scale Up"
+                    desc="Cuando algo funciona, echamos gasolina. Automatizamos lo validado y escalamos la inversión publicitaria y operativa." />
                 </div>
               </div>
-
             </div>
           </div>
         </section>
 
-        {/* ── SCORECARD / DIAGNÓSTICO ───────────────────────────────────────── */}
+        {/* ── DIAGNÓSTICO / SCORECARD ───────────────────────────────────────── */}
         <section id="diagnostico" className="py-24 md:py-36 px-6 relative overflow-hidden border-t border-gray-900/60">
           <div className="absolute inset-0 bg-gradient-to-b from-[#060606] to-black" />
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
@@ -347,14 +295,13 @@ export default function Home() {
             <div className="text-center mb-14">
               <span className="text-accent font-mono text-xs mb-6 block uppercase tracking-widest">Diagnóstico Gratuito · 3 minutos</span>
               <h2 className="text-4xl md:text-6xl font-display font-bold mb-6 text-white leading-tight">
-                ¿Su empresa <AuroraText>escala</AuroraText> o{" "}
+                ¿Tu empresa <AuroraText>escala</AuroraText> o{" "}
                 <span className="text-gray-600">sobrevive</span>?
               </h2>
               <p className="text-gray-500 text-lg md:text-xl font-display max-w-2xl mx-auto">
-                Responda 15 preguntas y obtenga su índice de capacidad de escalamiento con una hoja de ruta personalizada.
+                Responde 15 preguntas basadas en el Método V&G y descubre exactamente qué está bloqueando tu crecimiento.
               </p>
             </div>
-
             <Scorecard />
           </div>
         </section>
@@ -363,13 +310,11 @@ export default function Home() {
         <section className="py-16 px-6 border-t border-gray-900/40 bg-black">
           <div className="max-w-3xl mx-auto text-center">
             <p className="text-gray-600 text-sm font-mono leading-relaxed">
-              <span className="text-gray-400 font-bold">PS:</span>{" "}
-              Este diagnóstico y nuestro ecosistema{" "}
-              <span className="text-white">NO</span> son para empresas que buscan resultados sin inversión,
-              ni para dueños de negocio que temen a la tecnología. Solo trabajamos con organizaciones
-              listas para digitalizar su ADN y convertir el caos en un sistema predecible.
-              Si no es su momento de escalar, por favor no complete el test.{" "}
-              <a href="#diagnostico" className="text-accent hover:underline">Si lo es, empezamos aquí.</a>
+              <span className="text-gray-400 font-bold">P.D.</span>{" "}
+              Si eres el tipo de líder que prefiere culpar al mercado en lugar de construir sistemas predecibles,{" "}
+              <span className="text-white">este sistema no es para ti</span>.
+              Solo trabajamos con empresas listas para ejecutar un roadmap de alto impacto.{" "}
+              <a href="#diagnostico" className="text-accent hover:underline">Si eso eres tú, empieza aquí.</a>
             </p>
           </div>
         </section>
@@ -391,9 +336,7 @@ export default function Home() {
 
 // ─── Helper components ─────────────────────────────────────────────────────────
 
-function TechProtocolCard({
-  title, lines, className,
-}: {
+function TechProtocolCard({ title, lines, className }: {
   title: string;
   lines: { label: string; value: string; status: "ok" | "pulse" | "accent" }[];
   className?: string;
@@ -408,9 +351,9 @@ function TechProtocolCard({
         {lines.map((line, i) => (
           <div key={i} className="flex items-center justify-between gap-2 md:gap-4">
             <span className="text-gray-400 uppercase tracking-tighter">{line.label}</span>
-            <span className={cn(
-              "font-bold",
-              line.status === "ok" ? "text-green-500" : line.status === "pulse" ? "text-accent animate-pulse" : "text-accent"
+            <span className={cn("font-bold",
+              line.status === "ok" ? "text-green-500" :
+              line.status === "pulse" ? "text-accent animate-pulse" : "text-accent"
             )}>{line.value}</span>
           </div>
         ))}
@@ -419,7 +362,9 @@ function TechProtocolCard({
   );
 }
 
-function Stat({ label, value, sub, suffix = "" }: { label: string; value: string | number; sub: string; suffix?: string }) {
+function Stat({ label, value, sub, suffix = "" }: {
+  label: string; value: string | number; sub: string; suffix?: string;
+}) {
   return (
     <div className="text-center min-w-[200px] md:min-w-[300px]">
       <div className="text-[10px] md:text-xs font-mono text-gray-500 mb-4 uppercase tracking-widest">{label}</div>
@@ -435,47 +380,36 @@ function Stat({ label, value, sub, suffix = "" }: { label: string; value: string
   );
 }
 
-function BoutiqueCard({
-  id, activeId, isMobile, title, subtitle, bullets, Icon, num, href,
-}: {
+function BoutiqueCard({ id, activeId, isMobile, title, subtitle, bullets, Icon, num, href }: {
   id: string; activeId: string | null; isMobile: boolean;
   title: string; subtitle: string; bullets: string[];
   Icon: React.ElementType; num: string; href: string;
 }) {
   const isActive = isMobile && activeId === id;
   return (
-    <a
-      href={href}
-      data-scroll-item
-      data-scroll-id={id}
+    <a href={href} data-scroll-item data-scroll-id={id}
       className={cn(
         "group relative flex flex-col p-8 md:p-10 overflow-hidden transition-all duration-500",
-        isActive
-          ? "bg-white/[0.05] opacity-100"
-          : isMobile
-            ? "opacity-30"
-            : "hover:bg-white/[0.03] opacity-100"
-      )}
-    >
+        isActive ? "bg-white/[0.05] opacity-100" : isMobile ? "opacity-30" : "hover:bg-white/[0.03] opacity-100"
+      )}>
       <div className="flex items-center justify-between mb-8">
         <span className="font-mono text-xs text-gray-700">{num}</span>
-        <Icon className={cn("w-5 h-5 transition-colors duration-300", isActive ? "text-accent" : "text-gray-700 group-hover:text-accent")} />
+        <Icon className={cn("w-5 h-5 transition-colors duration-300",
+          isActive ? "text-accent" : "text-gray-700 group-hover:text-accent")} />
       </div>
-
-      <p className={cn("text-[10px] font-mono mb-3 uppercase tracking-widest transition-colors duration-300", isActive ? "text-accent" : "text-gray-600 group-hover:text-accent")}>
+      <p className={cn("text-[10px] font-mono mb-3 uppercase tracking-widest transition-colors duration-300",
+        isActive ? "text-accent" : "text-gray-600 group-hover:text-accent")}>
         {subtitle}
       </p>
       <h3 className="text-xl md:text-2xl font-bold font-display mb-5 text-white">{title}</h3>
-
-      <ul className="flex-1 mb-8 space-y-2">
+      <ul className="flex-1 mb-8 space-y-3">
         {bullets.map((b) => (
           <li key={b} className="flex items-start gap-2 text-gray-500 text-sm leading-relaxed">
-            <span className="text-accent mt-1 shrink-0 text-xs">—</span>
+            <span className="text-accent mt-[3px] shrink-0 text-xs font-bold">—</span>
             {b}
           </li>
         ))}
       </ul>
-
       <div className={cn(
         "flex items-center gap-2 text-[11px] font-mono tracking-wider text-accent transition-all duration-300",
         isActive ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0"
@@ -486,30 +420,23 @@ function BoutiqueCard({
   );
 }
 
-function StepItem({ id, activeId, isMobile, num, title, desc }: { id: string; activeId: string | null; isMobile: boolean; num: string; title: string; desc: string }) {
+function StepItem({ id, activeId, isMobile, num, title, desc }: {
+  id: string; activeId: string | null; isMobile: boolean; num: string; title: string; desc: string;
+}) {
   const isActive = isMobile && activeId === id;
   return (
-    <div
-      data-scroll-item
-      data-scroll-id={id}
-      className={cn(
-        "flex gap-6 group transition-all duration-700 relative pb-12 last:pb-0",
-        isActive ? "opacity-100" : isMobile ? "opacity-30" : "opacity-100"
-      )}
-    >
+    <div data-scroll-item data-scroll-id={id}
+      className={cn("flex gap-6 group transition-all duration-700 relative pb-12 last:pb-0",
+        isActive ? "opacity-100" : isMobile ? "opacity-30" : "opacity-100")}>
       <div className="flex-shrink-0 z-10">
         <div className={cn(
           "w-8 h-8 rounded-full border-2 flex items-center justify-center text-[10px] font-mono font-bold transition-all duration-500 bg-[#060606]",
           isActive ? "border-accent text-accent" : "border-gray-700 text-gray-600 group-hover:border-accent group-hover:text-accent"
-        )}>
-          {num}
-        </div>
+        )}>{num}</div>
       </div>
       <div>
-        <h3 className={cn(
-          "text-lg md:text-xl font-bold text-white mb-3 transition-colors duration-300",
-          isActive ? "text-accent" : "group-hover:text-accent"
-        )}>{title}</h3>
+        <h3 className={cn("text-lg md:text-xl font-bold text-white mb-3 transition-colors duration-300",
+          isActive ? "text-accent" : "group-hover:text-accent")}>{title}</h3>
         <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
       </div>
     </div>

@@ -7,25 +7,25 @@ import { cn } from "@/lib/utils";
 const WEBHOOK_URL =
   "https://n8n-n8n.d4s5yj.easypanel.host/webhook/1ae503d6-4f94-4cb6-ac0e-88b50c666eef";
 
-// ── Question data ─────────────────────────────────────────────────────────────
+// ── Data ──────────────────────────────────────────────────────────────────────
 
-interface YesNoQuestion {
+interface YNQuestion {
   id: string;
   text: string;
-  category: "automation" | "seo" | "legal" | "strategy";
+  category: "automation" | "seo" | "legal" | "strategy" | "ux";
 }
 
-const YES_NO_QUESTIONS: YesNoQuestion[] = [
-  { id: "q1", text: "¿Su sistema de ventas funciona hoy sin que usted intervenga directamente?", category: "automation" },
-  { id: "q2", text: "¿Están sus herramientas de software conectadas entre sí automáticamente?", category: "automation" },
-  { id: "q3", text: "¿Utiliza IA para responder o filtrar consultas de clientes potenciales?", category: "automation" },
-  { id: "q4", text: "¿Su contenido en redes genera reuniones de venta de forma predecible?", category: "seo" },
-  { id: "q5", text: "¿Conoce su CAC (Coste de Adquisición) exacto por cada canal?", category: "seo" },
-  { id: "q6", text: "¿Está su estructura legal optimizada para su nivel de facturación actual?", category: "legal" },
-  { id: "q7", text: "¿Tiene un plan documentado de escalado para los próximos 6 meses?", category: "strategy" },
-  { id: "q8", text: "¿Sus procesos operativos clave están automatizados en un 80%?", category: "automation" },
-  { id: "q9", text: "¿Su sitio web convierte más del 15% del tráfico en contactos reales?", category: "seo" },
-  { id: "q10", text: "¿Podría doblar su inversión en marketing mañana sin colapsar su operativa?", category: "automation" },
+const YN_QUESTIONS: YNQuestion[] = [
+  { id: "q1",  text: "¿Auditas tus Unit Economics mensualmente para detectar fugas de capital?",                                              category: "strategy"    },
+  { id: "q2",  text: "¿Utilizas un ICE Score (Impacto, Confianza, Esfuerzo) para priorizar tus hipótesis de crecimiento?",                 category: "strategy"    },
+  { id: "q3",  text: "¿Ejecutas tus ciclos de mejora en Sprints cortos de máximo 4 semanas?",                                              category: "strategy"    },
+  { id: "q4",  text: "¿Tus sistemas operativos están interconectados o funcionan como islas de datos aisladas?",                           category: "automation"  },
+  { id: "q5",  text: "¿Mides el Time-to-Market de tus innovaciones en menos de 2 semanas?",                                               category: "automation"  },
+  { id: "q6",  text: "¿Tu estrategia de posicionamiento está enfocada en términos de intención de compra real?",                          category: "seo"         },
+  { id: "q7",  text: "¿Tu contenido aporta datos únicos (Information Gain) o es un resumen de lo que ya hace la competencia?",            category: "seo"         },
+  { id: "q8",  text: "¿Tu interfaz de usuario está optimizada para la conversión directa por encima de la estética pura?",                category: "ux"          },
+  { id: "q9",  text: "¿Tu estructura fiscal ha sido revisada para el volumen de facturación de los últimos 12 meses?",                    category: "legal"       },
+  { id: "q10", text: "¿Produces activos de contenido vertical específicamente diseñados para retener la atención de C-Levels?",           category: "automation"  },
 ];
 
 type QualType = "select" | "text" | "textarea";
@@ -41,33 +41,33 @@ interface QualQuestion {
 const QUAL_QUESTIONS: QualQuestion[] = [
   {
     id: "q11",
-    text: "¿Cuál describe mejor su situación actual?",
+    text: "¿Cuál es tu facturación anual actual?",
     type: "select",
-    options: ["Saturado por la operativa", "Estable sin crecimiento", "Escalando rápido"],
+    options: ["Menos de 300k€", "300k€ – 1M€", "1M€ – 5M€", "Más de 5M€"],
   },
   {
     id: "q12",
-    text: "¿Qué cifra de facturación desea alcanzar en los próximos 90 días?",
+    text: "¿Cuál es tu objetivo de crecimiento a 90 días?",
     type: "text",
-    placeholder: "Ej: 500.000 €",
+    placeholder: "Ej: llegar a 500k€ de facturación",
   },
   {
     id: "q13",
-    text: "¿Qué le impide escalar hoy?",
+    text: "¿Cuál es tu principal obstáculo para escalar?",
     type: "select",
-    options: ["Falta de leads cualificados", "Caos operativo", "Estructura fiscal/legal", "Imagen de marca débil"],
+    options: ["Falta de leads cualificados", "Falta de sistema operativo", "Falta de margen neto", "Los tres a la vez"],
   },
   {
     id: "q14",
-    text: "¿Qué tipo de solución busca?",
+    text: "¿Qué tipo de solución prefieres?",
     type: "select",
-    options: ["Consultoría estratégica", "Software/automatización", "Solución llave en mano (Done-for-you)"],
+    options: ["Implementación total externa (Done-for-you)", "Consultoría estratégica", "Formación y acompañamiento"],
   },
   {
     id: "q15",
-    text: "¿Algún detalle crítico que debamos conocer para personalizar su informe?",
+    text: "¿Hay algún insight clave sobre tu negocio que debamos conocer para el roadmap?",
     type: "textarea",
-    placeholder: "Cuéntenos su situación con el mayor detalle posible…",
+    placeholder: "Cuéntanos con el mayor detalle posible…",
   },
 ];
 
@@ -78,29 +78,43 @@ const SERVICE_MAP = {
     num: "02",
     name: "AI & Operations",
     href: "/ecosistema/hyper-automation",
-    insight: "Su operativa es un cuello de botella que frena el escalado. Necesita sistematizar con IA antes de poder crecer.",
+    insight: "Tu operativa funciona como islas de datos. Necesitas un Neural Link que conecte tus sistemas y libere +20h semanales al equipo C-Level.",
   },
   seo: {
     num: "03",
     name: "Market Authority",
     href: "/ecosistema/market-authority",
-    insight: "Su autoridad de mercado es invisible. Está perdiendo leads cualificados cada día sin un sistema de captación orgánica.",
+    insight: "Tu autoridad de mercado es invisible. Estás perdiendo leads de alto valor cada día sin una arquitectura de captación orgánica de intención de compra.",
   },
   legal: {
     num: "05",
     name: "Smart Structure",
     href: "/ecosistema/smart-structure",
-    insight: "Está dejando dinero en la mesa. Su estructura fiscal no está optimizada para el nivel de facturación que busca.",
+    insight: "Estás dejando dinero en la mesa. Tu estructura fiscal no está optimizada para el nivel de facturación que buscas generar.",
   },
   strategy: {
     num: "01",
     name: "Growth Machines",
     href: "/ecosistema/estrategia-consultoria",
-    insight: "Sin un roadmap documentado, el crecimiento es accidental. Necesita un plan de ataque con prioridades claras.",
+    insight: "Sin un ICE Score y un roadmap documentado, tu crecimiento es accidental. Necesitas un sistema de priorización para escalar sin caos.",
+  },
+  ux: {
+    num: "04",
+    name: "Product Boutique",
+    href: "/ecosistema/product-boutique",
+    insight: "Tu interfaz genera fricción de compra. Un rediseño orientado a conversión puede multiplicar tus contactos sin aumentar el tráfico.",
   },
 } as const;
 
-// ── Speedometer ────────────────────────────────────────────────────────────────
+// ── Result tiers ───────────────────────────────────────────────────────────────
+
+function getTier(score: number): "low" | "mid" | "high" {
+  if (score <= 40) return "low";
+  if (score <= 75) return "mid";
+  return "high";
+}
+
+// ── Speedometer SVG ───────────────────────────────────────────────────────────
 
 function Speedometer({ score }: { score: number }) {
   const cx = 100, cy = 100, r = 78;
@@ -110,28 +124,26 @@ function Speedometer({ score }: { score: number }) {
     return { x: cx + r * Math.cos(phi), y: cy - r * Math.sin(phi) };
   };
 
-  const left = toPoint(0);   // (22, 100)
-  const right = toPoint(100); // (178, 100)
-  const score_pt = toPoint(score);
+  const left  = toPoint(0);
+  const right = toPoint(100);
+  const pt    = toPoint(score);
 
-  const bgPath = `M ${left.x} ${left.y} A ${r} ${r} 0 0 0 ${right.x} ${right.y}`;
-  const scorePath =
-    score > 0 && score < 100
-      ? `M ${left.x} ${left.y} A ${r} ${r} 0 0 0 ${score_pt.x.toFixed(2)} ${score_pt.y.toFixed(2)}`
-      : score >= 100
-      ? bgPath
-      : "";
+  const bgPath    = `M ${left.x} ${left.y} A ${r} ${r} 0 0 0 ${right.x} ${right.y}`;
+  const scorePath = score > 0 && score < 100
+    ? `M ${left.x} ${left.y} A ${r} ${r} 0 0 0 ${pt.x.toFixed(2)} ${pt.y.toFixed(2)}`
+    : score >= 100 ? bgPath : "";
 
   const needleR = 62;
-  const phi = (180 - score * 1.8) * (Math.PI / 180);
-  const nX = (cx + needleR * Math.cos(phi)).toFixed(2);
-  const nY = (cy - needleR * Math.sin(phi)).toFixed(2);
+  const phi   = (180 - score * 1.8) * (Math.PI / 180);
+  const nX    = (cx + needleR * Math.cos(phi)).toFixed(2);
+  const nY    = (cy - needleR * Math.sin(phi)).toFixed(2);
 
-  const color = score >= 70 ? "#22c55e" : score >= 40 ? "#FFC600" : "#ef4444";
-  const label = score >= 70 ? "SISTEMA ESCALABLE" : score >= 40 ? "OPTIMIZACIÓN NECESARIA" : "FUNDAMENTOS CRÍTICOS";
+  const tier  = getTier(score);
+  const color = tier === "high" ? "#22c55e" : tier === "mid" ? "#FFC600" : "#ef4444";
+  const label = tier === "high" ? "SISTEMA ESCALABLE" : tier === "mid" ? "OPTIMIZACIÓN NECESARIA" : "FUNDAMENTOS CRÍTICOS";
 
   return (
-    <div className="flex flex-col items-center gap-2">
+    <div className="flex flex-col items-center">
       <svg viewBox="0 0 200 118" className="w-72 max-w-full">
         <path d={bgPath} fill="none" stroke="#1f2937" strokeWidth="10" strokeLinecap="round" />
         {scorePath && (
@@ -145,7 +157,7 @@ function Speedometer({ score }: { score: number }) {
         <text x={cx} y="108" textAnchor="middle" fill="#6b7280" fontSize="6" fontFamily="monospace" letterSpacing="1.5">
           {label}
         </text>
-        <text x="18" y="113" textAnchor="middle" fill="#374151" fontSize="7">0%</text>
+        <text x="18"  y="113" textAnchor="middle" fill="#374151" fontSize="7">0%</text>
         <text x="182" y="113" textAnchor="middle" fill="#374151" fontSize="7">100%</text>
       </svg>
     </div>
@@ -154,109 +166,86 @@ function Speedometer({ score }: { score: number }) {
 
 // ── Progress bar ───────────────────────────────────────────────────────────────
 
-function ProgressBar({ current, total }: { current: number; total: number }) {
+function ProgressBar({ current, total, label }: { current: number; total: number; label?: string }) {
   return (
     <div className="w-full mb-8">
       <div className="flex justify-between text-[10px] font-mono text-gray-600 mb-2 uppercase tracking-widest">
-        <span>Pregunta {current} de {total}</span>
+        <span>{label ?? `Pregunta ${current} de ${total}`}</span>
         <span>{Math.round((current / total) * 100)}%</span>
       </div>
       <div className="h-px bg-gray-800 w-full">
-        <div
-          className="h-px bg-accent transition-all duration-500"
-          style={{ width: `${(current / total) * 100}%` }}
-        />
+        <div className="h-px bg-accent transition-all duration-500" style={{ width: `${(current / total) * 100}%` }} />
       </div>
     </div>
   );
 }
-
-// ── Input styles ───────────────────────────────────────────────────────────────
 
 const inputCls =
   "w-full bg-white/5 border border-gray-800 focus:border-accent text-white px-4 py-3 rounded-sm outline-none transition-all placeholder-gray-600 text-sm";
 
 // ── Main component ─────────────────────────────────────────────────────────────
 
-type Phase = "yesno" | "qualify" | "contact" | "results";
+type Phase = "gate" | "yesno" | "qualify" | "results";
 
 export default function Scorecard() {
-  const [phase, setPhase] = useState<Phase>("yesno");
-  const [currentQ, setCurrentQ] = useState(0);
+  const [phase,       setPhase]       = useState<Phase>("gate");
+  const [gate,        setGate]        = useState({ nombre: "", email: "" });
+  const [currentQ,    setCurrentQ]    = useState(0);
   const [currentQual, setCurrentQual] = useState(0);
-  const [yesNoAnswers, setYesNoAnswers] = useState<Record<string, boolean>>({});
+  const [ynAnswers,   setYnAnswers]   = useState<Record<string, boolean>>({});
   const [qualAnswers, setQualAnswers] = useState<Record<string, string>>({});
-  const [contact, setContact] = useState({ nombre: "", empresa: "", email: "", telefono: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const yesCount = Object.values(yesNoAnswers).filter(Boolean).length;
-  const score = Math.round((yesCount / YES_NO_QUESTIONS.length) * 100);
+  const yesCount = Object.values(ynAnswers).filter(Boolean).length;
+  const score    = Math.round((yesCount / YN_QUESTIONS.length) * 100);
 
   const failedCategories = [
     ...new Set(
-      YES_NO_QUESTIONS.filter((q) => yesNoAnswers[q.id] === false).map((q) => q.category)
+      YN_QUESTIONS.filter((q) => ynAnswers[q.id] === false).map((q) => q.category)
     ),
   ] as (keyof typeof SERVICE_MAP)[];
 
-  // ── YesNo phase handlers
-
-  const handleYesNo = (answer: boolean) => {
-    const q = YES_NO_QUESTIONS[currentQ];
-    setYesNoAnswers((prev) => ({ ...prev, [q.id]: answer }));
-    if (currentQ < YES_NO_QUESTIONS.length - 1) {
-      setCurrentQ((prev) => prev + 1);
-    } else {
-      setPhase("qualify");
-    }
+  // Gate submit
+  const handleGate = () => {
+    if (gate.nombre.trim() && gate.email.trim()) setPhase("yesno");
   };
 
-  // ── Qualify phase handlers
+  // Yes/No
+  const handleYN = (answer: boolean) => {
+    const q = YN_QUESTIONS[currentQ];
+    setYnAnswers((prev) => ({ ...prev, [q.id]: answer }));
+    if (currentQ < YN_QUESTIONS.length - 1) setCurrentQ((p) => p + 1);
+    else setPhase("qualify");
+  };
 
-  const handleQualNext = () => {
+  // Qualification
+  const handleQualNext = async () => {
     if (currentQual < QUAL_QUESTIONS.length - 1) {
-      setCurrentQual((prev) => prev + 1);
+      setCurrentQual((p) => p + 1);
     } else {
-      setPhase("contact");
+      setIsSubmitting(true);
+      try {
+        await fetch(WEBHOOK_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            ...gate,
+            score,
+            tier: getTier(score),
+            ynAnswers,
+            qualAnswers,
+            failedCategories,
+            source: "scorecard-vg-2026",
+          }),
+        });
+      } catch {}
+      setPhase("results");
+      setIsSubmitting(false);
     }
   };
-
-  // ── Contact + submit
-
-  const handleSubmit = async () => {
-    setIsSubmitting(true);
-    try {
-      await fetch(WEBHOOK_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...contact,
-          score,
-          yesNoAnswers,
-          qualAnswers,
-          failedCategories,
-          source: "scorecard-2026",
-        }),
-      });
-    } catch {}
-    setPhase("results");
-    setIsSubmitting(false);
-  };
-
-  // ── Render phases
 
   if (phase === "results") {
-    return <ResultsView score={score} failedCategories={failedCategories} />;
-  }
-
-  if (phase === "contact") {
-    return (
-      <ContactPhase
-        contact={contact}
-        setContact={setContact}
-        onSubmit={handleSubmit}
-        isSubmitting={isSubmitting}
-      />
-    );
+    return <ResultsView score={score} failedCategories={failedCategories} nombre={gate.nombre} />;
   }
 
   if (phase === "qualify") {
@@ -265,38 +254,85 @@ export default function Scorecard() {
       <QualifyPhase
         question={q}
         answer={qualAnswers[q.id] ?? ""}
-        setAnswer={(val) => setQualAnswers((prev) => ({ ...prev, [q.id]: val }))}
+        setAnswer={(v) => setQualAnswers((p) => ({ ...p, [q.id]: v }))}
         onNext={handleQualNext}
         step={currentQual + 1}
         total={QUAL_QUESTIONS.length}
+        isSubmitting={isSubmitting}
       />
     );
   }
 
-  // YesNo phase
-  const q = YES_NO_QUESTIONS[currentQ];
-  return (
-    <div className="max-w-2xl mx-auto">
-      <ProgressBar current={currentQ + 1} total={YES_NO_QUESTIONS.length} />
-      <p className="text-white text-xl md:text-2xl font-display font-bold leading-snug mb-10 min-h-[80px]">
-        {q.text}
-      </p>
-      <div className="grid grid-cols-2 gap-4">
-        <button
-          onClick={() => handleYesNo(true)}
-          className="group flex items-center justify-center gap-3 p-6 border border-gray-800 hover:border-accent hover:bg-accent/5 text-white font-bold font-mono uppercase tracking-widest transition-all duration-300 rounded-sm text-sm"
-        >
-          <CheckCircle className="w-5 h-5 text-green-500 group-hover:scale-110 transition-transform" />
-          Sí
-        </button>
-        <button
-          onClick={() => handleYesNo(false)}
-          className="group flex items-center justify-center gap-3 p-6 border border-gray-800 hover:border-red-500/50 hover:bg-red-500/5 text-white font-bold font-mono uppercase tracking-widest transition-all duration-300 rounded-sm text-sm"
-        >
-          <XCircle className="w-5 h-5 text-red-500 group-hover:scale-110 transition-transform" />
-          No
-        </button>
+  if (phase === "yesno") {
+    const q = YN_QUESTIONS[currentQ];
+    return (
+      <div className="max-w-2xl mx-auto">
+        <ProgressBar current={currentQ + 1} total={YN_QUESTIONS.length} />
+        <p className="text-white text-xl md:text-2xl font-display font-bold leading-snug mb-10 min-h-[80px]">
+          {q.text}
+        </p>
+        <div className="grid grid-cols-2 gap-4">
+          <button
+            onClick={() => handleYN(true)}
+            className="group flex items-center justify-center gap-3 p-6 border border-gray-800 hover:border-accent hover:bg-accent/5 text-white font-bold font-mono uppercase tracking-widest transition-all duration-300 rounded-sm text-sm"
+          >
+            <CheckCircle className="w-5 h-5 text-green-500 group-hover:scale-110 transition-transform" />
+            Sí
+          </button>
+          <button
+            onClick={() => handleYN(false)}
+            className="group flex items-center justify-center gap-3 p-6 border border-gray-800 hover:border-red-500/50 hover:bg-red-500/5 text-white font-bold font-mono uppercase tracking-widest transition-all duration-300 rounded-sm text-sm"
+          >
+            <XCircle className="w-5 h-5 text-red-500 group-hover:scale-110 transition-transform" />
+            No
+          </button>
+        </div>
       </div>
+    );
+  }
+
+  // Gate phase
+  return (
+    <div className="max-w-xl mx-auto">
+      <p className="text-accent font-mono text-xs uppercase tracking-widest mb-4">Paso 1 de 3 · Acceso</p>
+      <h3 className="text-white text-2xl font-display font-bold mb-2">
+        Desbloquea tu diagnóstico
+      </h3>
+      <p className="text-gray-500 text-sm mb-8">
+        Introduce tus datos para acceder a las 15 preguntas y recibir tu roadmap personalizado.
+      </p>
+      <div className="space-y-4">
+        <div>
+          <label className="block text-xs font-mono text-gray-400 mb-2 uppercase tracking-wider">Nombre *</label>
+          <input
+            type="text"
+            value={gate.nombre}
+            onChange={(e) => setGate((p) => ({ ...p, nombre: e.target.value }))}
+            placeholder="Tu nombre"
+            className={inputCls}
+          />
+        </div>
+        <div>
+          <label className="block text-xs font-mono text-gray-400 mb-2 uppercase tracking-wider">Email corporativo *</label>
+          <input
+            type="email"
+            value={gate.email}
+            onChange={(e) => setGate((p) => ({ ...p, email: e.target.value }))}
+            placeholder="tu@empresa.com"
+            className={inputCls}
+          />
+        </div>
+      </div>
+      <button
+        onClick={handleGate}
+        disabled={!gate.nombre.trim() || !gate.email.trim()}
+        className="mt-6 w-full flex items-center justify-center gap-2 bg-accent text-black font-bold font-mono uppercase tracking-widest py-4 rounded-sm hover:bg-white transition-colors disabled:opacity-40 disabled:cursor-not-allowed text-sm"
+      >
+        Iniciar diagnóstico <ArrowRight className="w-4 h-4" />
+      </button>
+      <p className="text-[10px] text-gray-700 font-mono text-center mt-4 uppercase tracking-wider">
+        Sin spam · Solo tu roadmap personalizado
+      </p>
     </div>
   );
 }
@@ -304,7 +340,7 @@ export default function Scorecard() {
 // ── Qualify phase ──────────────────────────────────────────────────────────────
 
 function QualifyPhase({
-  question, answer, setAnswer, onNext, step, total,
+  question, answer, setAnswer, onNext, step, total, isSubmitting,
 }: {
   question: QualQuestion;
   answer: string;
@@ -312,12 +348,14 @@ function QualifyPhase({
   onNext: () => void;
   step: number;
   total: number;
+  isSubmitting: boolean;
 }) {
   const canContinue = answer.trim().length > 0;
+  const isLast = step === total;
 
   return (
     <div className="max-w-2xl mx-auto">
-      <ProgressBar current={step} total={total} />
+      <ProgressBar current={step} total={total} label={`Cualificación ${step} de ${total}`} />
       <p className="text-white text-xl md:text-2xl font-display font-bold leading-snug mb-8">
         {question.text}
       </p>
@@ -363,109 +401,70 @@ function QualifyPhase({
 
       <button
         onClick={onNext}
-        disabled={!canContinue}
+        disabled={!canContinue || isSubmitting}
         className="mt-8 flex items-center gap-2 bg-accent text-black font-bold font-mono uppercase tracking-widest px-8 py-4 rounded-sm hover:bg-white transition-colors disabled:opacity-40 disabled:cursor-not-allowed text-sm"
       >
-        {step === total ? "Ver mi resultado" : "Continuar"}
+        {isSubmitting ? "Calculando…" : isLast ? "Ver mi diagnóstico" : "Continuar"}
         <ChevronRight className="w-4 h-4" />
       </button>
     </div>
   );
 }
 
-// ── Contact phase ──────────────────────────────────────────────────────────────
-
-function ContactPhase({
-  contact, setContact, onSubmit, isSubmitting,
-}: {
-  contact: { nombre: string; empresa: string; email: string; telefono: string };
-  setContact: (c: typeof contact) => void;
-  onSubmit: () => void;
-  isSubmitting: boolean;
-}) {
-  const set = (key: keyof typeof contact) => (e: React.ChangeEvent<HTMLInputElement>) =>
-    setContact({ ...contact, [key]: e.target.value });
-
-  const isValid = contact.nombre && contact.empresa && contact.email;
-
-  return (
-    <div className="max-w-2xl mx-auto">
-      <p className="text-accent font-mono text-xs uppercase tracking-widest mb-4">Último paso</p>
-      <h3 className="text-white text-2xl font-display font-bold mb-2">
-        Su informe personalizado está listo.
-      </h3>
-      <p className="text-gray-500 text-sm mb-8">
-        Déjenos sus datos para enviárselo y programar su sesión estratégica.
-      </p>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
-          <label className="block text-xs font-mono text-gray-400 mb-2 uppercase tracking-wider">Nombre *</label>
-          <input type="text" value={contact.nombre} onChange={set("nombre")} required className={inputCls} />
-        </div>
-        <div>
-          <label className="block text-xs font-mono text-gray-400 mb-2 uppercase tracking-wider">Empresa *</label>
-          <input type="text" value={contact.empresa} onChange={set("empresa")} required className={inputCls} />
-        </div>
-        <div>
-          <label className="block text-xs font-mono text-gray-400 mb-2 uppercase tracking-wider">Email *</label>
-          <input type="email" value={contact.email} onChange={set("email")} required className={inputCls} />
-        </div>
-        <div>
-          <label className="block text-xs font-mono text-gray-400 mb-2 uppercase tracking-wider">Teléfono</label>
-          <input type="tel" value={contact.telefono} onChange={set("telefono")} className={inputCls} />
-        </div>
-      </div>
-
-      <button
-        onClick={onSubmit}
-        disabled={!isValid || isSubmitting}
-        className="mt-8 w-full bg-accent text-black font-bold text-lg py-4 rounded-sm hover:bg-white transition-colors disabled:opacity-40 disabled:cursor-not-allowed uppercase tracking-wide"
-      >
-        {isSubmitting ? "Generando informe…" : "Ver mi Diagnóstico →"}
-      </button>
-    </div>
-  );
-}
-
-// ── Results view ───────────────────────────────────────────────────────────────
+// ── Results ────────────────────────────────────────────────────────────────────
 
 function ResultsView({
-  score, failedCategories,
+  score, failedCategories, nombre,
 }: {
   score: number;
   failedCategories: (keyof typeof SERVICE_MAP)[];
+  nombre: string;
 }) {
-  const isHigh = score >= 70;
+  const tier = getTier(score);
+
+  const tierConfig = {
+    low: {
+      headline: "Tus fundamentos necesitan trabajo antes de escalar.",
+      sub: "Con estas brechas activas, más inversión solo amplifica el problema. Empieza por los cimientos.",
+      ctaLabel: "Acceder a contenido educativo gratuito",
+      ctaHref: "#ecosistema",
+      ctaSecondary: "Ver el ecosistema V&G",
+      ctaSecondaryHref: "#ecosistema",
+      color: "#ef4444",
+    },
+    mid: {
+      headline: "Tienes base sólida, pero hay fricciones críticas que frenan tu crecimiento.",
+      sub: "Estás a pocas decisiones estratégicas de multiplicar tu facturación. Únete a nuestra Masterclass exclusiva.",
+      ctaLabel: "Reservar plaza en la Masterclass",
+      ctaHref: "https://calendar.app.google/JefBW2JRGWa85rFf9",
+      ctaSecondary: "Ver servicios relacionados",
+      ctaSecondaryHref: "#ecosistema",
+      color: "#FFC600",
+    },
+    high: {
+      headline: "Tu empresa está lista para el escalado avanzado.",
+      sub: "Tienes los sistemas en orden. Agenda una sesión 1:1 de diagnóstico para diseñar tu roadmap de alto impacto.",
+      ctaLabel: "Agendar sesión 1:1 de diagnóstico",
+      ctaHref: "https://calendar.app.google/JefBW2JRGWa85rFf9",
+      ctaSecondary: "Explorar el ecosistema",
+      ctaSecondaryHref: "#ecosistema",
+      color: "#22c55e",
+    },
+  }[tier];
 
   return (
     <div className="max-w-2xl mx-auto">
       <p className="text-accent font-mono text-xs uppercase tracking-widest mb-6 text-center">
-        Su Diagnóstico V&G 2026
+        Diagnóstico V&G 2026 · {nombre && `${nombre} · `}Resultado
       </p>
 
       <Speedometer score={score} />
 
       <div className="mt-8 text-center">
-        {isHigh ? (
-          <>
-            <p className="text-white font-display font-bold text-xl mb-2">
-              Su empresa está lista para el escalado avanzado.
-            </p>
-            <p className="text-gray-500 text-sm">
-              Tiene los fundamentos en orden. Agende una sesión estratégica para desplegar el siguiente nivel.
-            </p>
-          </>
-        ) : (
-          <>
-            <p className="text-white font-display font-bold text-xl mb-2">
-              Hay fricciones críticas que frenan su crecimiento.
-            </p>
-            <p className="text-gray-500 text-sm">
-              Descargue nuestro Roadmap de Fundamentos y empiece a sistematizar desde hoy.
-            </p>
-          </>
-        )}
+        <p className="text-white font-display font-bold text-xl mb-2 leading-snug">
+          {tierConfig.headline}
+        </p>
+        <p className="text-gray-500 text-sm">{tierConfig.sub}</p>
       </div>
 
       {failedCategories.length > 0 && (
@@ -496,30 +495,24 @@ function ResultsView({
       )}
 
       <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-4">
-        {isHigh ? (
-          <a
-            href="https://calendar.app.google/JefBW2JRGWa85rFf9"
-            target="_blank"
-            className="flex-1 bg-accent text-black font-bold text-sm py-4 px-6 rounded-sm hover:bg-white transition-colors uppercase tracking-wide text-center"
-          >
-            Agendar Sesión Estratégica
-          </a>
-        ) : (
-          <a
-            href="#ecosistema"
-            className="flex-1 bg-accent text-black font-bold text-sm py-4 px-6 rounded-sm hover:bg-white transition-colors uppercase tracking-wide text-center"
-          >
-            Ver Roadmap de Fundamentos
-          </a>
-        )}
         <a
-          href="https://calendar.app.google/JefBW2JRGWa85rFf9"
-          target="_blank"
-          className="flex-1 border border-gray-700 hover:border-white text-white font-bold text-sm py-4 px-6 rounded-sm hover:bg-white/5 transition-colors uppercase tracking-wide text-center"
+          href={tierConfig.ctaHref}
+          target={tierConfig.ctaHref.startsWith("http") ? "_blank" : undefined}
+          className="flex items-center justify-center gap-2 bg-accent text-black font-bold text-sm py-4 px-6 rounded-sm hover:bg-white transition-colors uppercase tracking-wide"
         >
-          Agendar Reunión
+          {tierConfig.ctaLabel} <ArrowRight className="w-4 h-4" />
+        </a>
+        <a
+          href={tierConfig.ctaSecondaryHref}
+          className="flex items-center justify-center border border-gray-700 hover:border-white text-white font-bold text-sm py-4 px-6 rounded-sm hover:bg-white/5 transition-colors uppercase tracking-wide"
+        >
+          {tierConfig.ctaSecondary}
         </a>
       </div>
+
+      <p className="text-[10px] text-gray-700 font-mono text-center mt-6 uppercase tracking-wider">
+        Obtén tu diagnóstico gratuito en 3 minutos con recomendaciones inmediatas.
+      </p>
     </div>
   );
 }
