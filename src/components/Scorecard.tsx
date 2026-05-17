@@ -5,7 +5,7 @@ import { ArrowRight, CheckCircle, XCircle, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const WEBHOOK_URL =
-  "https://n8n-n8n.d4s5yj.easypanel.host/webhook/1ae503d6-4f94-4cb6-ac0e-88b50c666eef";
+  "https://n8n-n8n.d4s5yj.easypanel.host/webhook/0476a722-17ff-48ec-9777-93f17a2ad46b";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function pushEvent(event: string, params?: Record<string, any>) {
