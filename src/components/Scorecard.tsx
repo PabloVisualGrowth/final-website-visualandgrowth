@@ -26,16 +26,16 @@ interface YNQuestion {
 }
 
 const YN_QUESTIONS: YNQuestion[] = [
-  { id: "q1",  text: "¿Auditas tus Unit Economics mensualmente para detectar fugas de capital?",                                           category: "strategy"   },
-  { id: "q2",  text: "¿Utilizas un ICE Score (Impacto, Confianza, Esfuerzo) para priorizar tus hipótesis de crecimiento?",                category: "strategy"   },
-  { id: "q3",  text: "¿Ejecutas tus ciclos de mejora en Sprints cortos de máximo 4 semanas?",                                             category: "strategy"   },
-  { id: "q4",  text: "¿Tus sistemas operativos están interconectados o funcionan como islas de datos aisladas?",                          category: "automation" },
-  { id: "q5",  text: "¿Mides el Time-to-Market de tus innovaciones en menos de 2 semanas?",                                              category: "automation" },
-  { id: "q6",  text: "¿Tu estrategia de posicionamiento está enfocada en términos de intención de compra real?",                         category: "seo"        },
-  { id: "q7",  text: "¿Tu contenido aporta datos únicos (Information Gain) o resume lo que ya hace la competencia?",                     category: "seo"        },
-  { id: "q8",  text: "¿Tu interfaz de usuario está optimizada para la conversión directa por encima de la estética pura?",               category: "ux"         },
-  { id: "q9",  text: "¿Tu estructura fiscal ha sido revisada para el volumen de facturación de los últimos 12 meses?",                   category: "legal"      },
-  { id: "q10", text: "¿Produces activos de contenido vertical específicamente diseñados para retener la atención de C-Levels?",          category: "automation" },
+  { id: "q1",  text: "¿Revisas tus Unit Economics cada mes para detectar dónde se escapan márgenes?",                                     category: "strategy"   },
+  { id: "q2",  text: "¿Tienes un sistema para priorizar qué iniciativas atacar primero según impacto y esfuerzo real?",                   category: "strategy"   },
+  { id: "q3",  text: "¿Tus proyectos de mejora tienen fechas de cierre definidas de menos de 4 semanas?",                                category: "strategy"   },
+  { id: "q4",  text: "¿Tus herramientas de gestión (CRM, ERP, facturación…) comparten datos automáticamente sin exportar Excel?",        category: "automation" },
+  { id: "q5",  text: "¿Tienes automatizaciones activas que sustituyen tareas repetitivas de tu equipo hoy mismo?",                       category: "automation" },
+  { id: "q6",  text: "¿Tu web aparece en Google cuando alguien busca el problema exacto que tú resuelves?",                              category: "seo"        },
+  { id: "q7",  text: "¿Tu contenido incluye datos propios o perspectivas que no se pueden encontrar en ningún competidor?",              category: "seo"        },
+  { id: "q8",  text: "¿Tu web convierte visitas en leads cualificados sin que tengas que explicar nada por teléfono primero?",           category: "ux"         },
+  { id: "q9",  text: "¿Tu estructura fiscal y societaria está optimizada para el nivel de ingresos actual de tu empresa?",               category: "legal"      },
+  { id: "q10", text: "¿Produces contenido de autoridad (casos, informes, vídeos) dirigido específicamente a quien toma la decisión de compra?", category: "automation" },
 ];
 
 type QualType = "select" | "text" | "textarea";
