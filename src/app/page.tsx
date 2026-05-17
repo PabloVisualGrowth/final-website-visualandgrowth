@@ -14,6 +14,16 @@ import { VelocityScroll } from "@/components/VelocityScroll";
 import { AuroraText } from "@/components/AuroraText";
 import { cn } from "@/lib/utils";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function pushEvent(event: string, params?: Record<string, any>) {
+  if (typeof window !== "undefined") {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (window as any).dataLayer = (window as any).dataLayer || [];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (window as any).dataLayer.push({ event, ...params });
+  }
+}
+
 export default function Home() {
   const [activeId, setActiveId] = useState<string | null>(null);
   const [isMobile, setIsMobile] = useState(false);
@@ -113,11 +123,13 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row items-center gap-4 animate-fade-in-up"
               style={{ animationDelay: "0.3s" }}>
               <a href="#diagnostico"
+                onClick={() => pushEvent("cta_click", { label: "hero_diagnostico" })}
                 className="inline-flex items-center gap-2 bg-accent text-black font-bold text-sm md:text-base px-8 py-4 rounded-sm hover:bg-white transition-colors uppercase tracking-widest font-mono">
                 Obtén tu diagnóstico gratuito (3 min)
                 <ArrowRight className="w-4 h-4" />
               </a>
               <a href="#ecosistema"
+                onClick={() => pushEvent("cta_click", { label: "hero_ecosistema" })}
                 className="text-gray-500 hover:text-white text-sm font-mono uppercase tracking-widest transition-colors">
                 Ver el ecosistema →
               </a>
@@ -228,7 +240,9 @@ export default function Home() {
                   Construido para convertir tu empresa en una máquina de crecimiento predecible.
                 </TextAnimate>
               </div>
-              <a href="#diagnostico" className="hidden md:flex items-center gap-2 text-sm text-white border-b border-accent pb-1 hover:text-accent transition-colors font-mono tracking-wide">
+              <a href="#diagnostico"
+                onClick={() => pushEvent("cta_click", { label: "ecosistema_diagnostico" })}
+                className="hidden md:flex items-center gap-2 text-sm text-white border-b border-accent pb-1 hover:text-accent transition-colors font-mono tracking-wide">
                 INICIAR DIAGNÓSTICO <ArrowRight className="w-4 h-4" />
               </a>
             </div>

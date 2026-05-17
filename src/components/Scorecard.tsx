@@ -7,6 +7,16 @@ import { cn } from "@/lib/utils";
 const WEBHOOK_URL =
   "https://n8n-n8n.d4s5yj.easypanel.host/webhook/1ae503d6-4f94-4cb6-ac0e-88b50c666eef";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function pushEvent(event: string, params?: Record<string, any>) {
+  if (typeof window !== "undefined") {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (window as any).dataLayer = (window as any).dataLayer || [];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (window as any).dataLayer.push({ event, ...params });
+  }
+}
+
 // ── Question data ──────────────────────────────────────────────────────────────
 
 interface YNQuestion {
@@ -201,11 +211,15 @@ export default function Scorecard() {
   ] as (keyof typeof SERVICE_MAP)[];
 
   const handleGate = () => {
-    if (gate.nombre.trim() && gate.email.trim()) setPhase("yesno");
+    if (gate.nombre.trim() && gate.email.trim()) {
+      pushEvent("assessment_start", { email: gate.email });
+      setPhase("yesno");
+    }
   };
 
   const handleYN = (answer: boolean) => {
     const q = YN_QUESTIONS[currentQ];
+    pushEvent("assessment_answer", { question: q.id, answer: answer ? "yes" : "no", category: q.category });
     setYnAnswers((prev) => ({ ...prev, [q.id]: answer }));
     if (currentQ < YN_QUESTIONS.length - 1) setCurrentQ((p) => p + 1);
     else setPhase("qualify");
@@ -217,6 +231,8 @@ export default function Scorecard() {
     } else {
       setIsSubmitting(true);
       const budgetAnswer = qualAnswers["q14"] ?? "";
+      const tier = getTier(score, budgetAnswer);
+      pushEvent("assessment_completed", { score, tier, failed_categories: failedCategories.join(",") });
       try {
         await fetch(WEBHOOK_URL, {
           method: "POST",
@@ -224,7 +240,7 @@ export default function Scorecard() {
           body: JSON.stringify({
             ...gate,
             score,
-            tier: getTier(score, budgetAnswer),
+            tier,
             ynAnswers,
             qualAnswers,
             failedCategories,
@@ -475,10 +491,12 @@ function ResultsView({ score, failedCategories, nombre, budgetAnswer }: {
       <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-4">
         <a href={cfg.ctaHref}
           target={cfg.ctaHref.startsWith("http") ? "_blank" : undefined}
+          onClick={() => pushEvent("cta_click", { label: "results_primary", tier, score })}
           className="flex items-center justify-center gap-2 bg-accent text-black font-bold text-sm py-4 px-6 rounded-sm hover:bg-white transition-colors uppercase tracking-wide">
           {cfg.ctaLabel} <ArrowRight className="w-4 h-4" />
         </a>
         <a href={cfg.ctaSecondaryHref}
+          onClick={() => pushEvent("cta_click", { label: "results_secondary", tier, score })}
           className="flex items-center justify-center border border-gray-700 hover:border-white text-white font-bold text-sm py-4 px-6 rounded-sm hover:bg-white/5 transition-colors uppercase tracking-wide">
           {cfg.ctaSecondaryLabel}
         </a>
