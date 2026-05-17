@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import CookieConsent from "@/components/CookieConsent";
 import Navbar from "@/components/Navbar";
-import ContactForm from "@/components/ContactForm";
+import Scorecard from "@/components/Scorecard";
 import { NumberTicker } from "@/components/NumberTicker";
 import { TextAnimate } from "@/components/TextAnimate";
 import { InteractiveGridPattern } from "@/components/InteractiveGridPattern";
@@ -62,7 +62,7 @@ export default function Home() {
 
       <main className="relative z-10 w-full">
 
-        {/* HERO */}
+        {/* ── HERO ─────────────────────────────────────────────────────────── */}
         <section className="min-h-screen flex flex-col items-center justify-center px-6 py-20 relative text-center overflow-hidden">
           <InteractiveGridPattern
             width={120}
@@ -73,95 +73,237 @@ export default function Home() {
               "inset-x-0 inset-y-[-30%] h-[200%] md:skew-y-12 z-0 hidden md:block"
             )}
           />
+
+          {/* Decorative tech cards */}
           <div className="absolute inset-0 z-10 pointer-events-none md:skew-y-12 hidden md:block">
             <div className="relative w-full h-full max-w-7xl mx-auto overflow-visible">
-              <TechProtocolCard title="SYSTEM_READY" className="top-[5%] md:top-[15%] right-[2%] md:right-[10%]" lines={[{ label: "STATUS", value: "ONLINE", status: "ok" }, { label: "UPTIME", value: "99.9%", status: "ok" }]} />
-              <TechProtocolCard title="REVENUE_TRACKER" className="bottom-[5%] md:bottom-[20%] left-[2%] md:left-[8%]" lines={[{ label: "RUN_RATE", value: "$2.4M", status: "accent" }, { label: "GROWTH", value: "+12%", status: "ok" }]} />
-              <TechProtocolCard title="INIT_PROTOCOL" className="top-[12%] md:top-[25%] left-[2%] md:left-[10%]" lines={[{ label: "AGENTS", value: "CONNECTED", status: "ok" }, { label: "SYNC", value: "PENDING", status: "pulse" }]} />
-              <TechProtocolCard title="SCALE_VELOCITY" className="bottom-[10%] md:bottom-[15%] right-[2%] md:right-[12%]" lines={[{ label: "LOAD", value: "OPTIMAL", status: "ok" }, { label: "OPS", value: "SCALING", status: "accent" }]} />
-              <TechProtocolCard title="NEURAL_LINK" className="top-[10%] left-[25%] opacity-40 scale-75 hidden md:block" lines={[{ label: "CORE", value: "ACTIVE", status: "ok" }]} />
-              <TechProtocolCard title="CLOUD_SYNC" className="top-[45%] right-[5%] opacity-30 scale-90 hidden lg:block" lines={[{ label: "DATA", value: "STREAMING", status: "pulse" }]} />
-              <TechProtocolCard title="SECURITY_H" className="bottom-[40%] left-[15%] opacity-40 scale-75 hidden xl:block" lines={[{ label: "ENC", value: "AES-256", status: "ok" }]} />
-              <TechProtocolCard title="ANALYTICS_V4" className="bottom-[10%] left-[30%] opacity-30 scale-90 hidden md:block" lines={[{ label: "VARS", value: "TRACKED", status: "accent" }]} />
-              <TechProtocolCard title="CORE_ENGINE" className="top-[40%] left-[0%] opacity-20 scale-110 hidden 2xl:block" lines={[{ label: "MOD", value: "V2.1.0", status: "ok" }]} />
+              <TechProtocolCard
+                title="REVENUE_TRACKER"
+                className="top-[15%] right-[10%]"
+                lines={[
+                  { label: "RUN_RATE", value: "$2.4M", status: "accent" },
+                  { label: "GROWTH", value: "+12%", status: "ok" },
+                ]}
+              />
+              <TechProtocolCard
+                title="LEADS_SYSTEM"
+                className="bottom-[20%] left-[8%]"
+                lines={[
+                  { label: "CAPTACIÓN", value: "ACTIVA", status: "ok" },
+                  { label: "CAC", value: "−38%", status: "accent" },
+                ]}
+              />
+              <TechProtocolCard
+                title="INIT_PROTOCOL"
+                className="top-[25%] left-[10%]"
+                lines={[
+                  { label: "AGENTS", value: "CONNECTED", status: "ok" },
+                  { label: "SYNC", value: "PENDING", status: "pulse" },
+                ]}
+              />
+              <TechProtocolCard
+                title="SCALE_VELOCITY"
+                className="bottom-[15%] right-[12%]"
+                lines={[
+                  { label: "LOAD", value: "OPTIMAL", status: "ok" },
+                  { label: "OPS", value: "SCALING", status: "accent" },
+                ]}
+              />
+              <TechProtocolCard
+                title="OPS_AUTOMATOR"
+                className="top-[10%] left-[25%] opacity-40 scale-75 hidden md:block"
+                lines={[{ label: "AHORRO", value: "15H/SEM", status: "ok" }]}
+              />
+              <TechProtocolCard
+                title="CLOUD_SYNC"
+                className="top-[45%] right-[5%] opacity-30 scale-90 hidden lg:block"
+                lines={[{ label: "DATA", value: "STREAMING", status: "pulse" }]}
+              />
+              <TechProtocolCard
+                title="ACTIVOS_BLINDADOS"
+                className="bottom-[40%] left-[15%] opacity-40 scale-75 hidden xl:block"
+                lines={[{ label: "STRUCT", value: "SMART", status: "ok" }]}
+              />
+              <TechProtocolCard
+                title="ANALYTICS_V4"
+                className="bottom-[10%] left-[30%] opacity-30 scale-90 hidden md:block"
+                lines={[{ label: "VARS", value: "TRACKED", status: "accent" }]}
+              />
             </div>
           </div>
-          <div className="relative w-full max-w-[85vw] md:max-w-3xl h-16 sm:h-28 md:h-40 animate-fade-in-up z-20">
-            <Image src="/logo-full.png" fill alt="Visual & Growth" className="object-contain drop-shadow-[0_0_15px_rgba(255,198,0,0.4)] md:drop-shadow-[0_0_25px_rgba(255,198,0,0.5)]" priority />
+
+          {/* Hero content */}
+          <div className="relative z-20 flex flex-col items-center gap-8 max-w-4xl">
+            {/* Logo */}
+            <div className="relative w-[70vw] md:w-80 h-12 md:h-16 animate-fade-in-up">
+              <Image
+                src="/logo-full.png"
+                fill
+                alt="Visual & Growth"
+                className="object-contain drop-shadow-[0_0_15px_rgba(255,198,0,0.4)]"
+                priority
+              />
+            </div>
+
+            {/* Frustration hook headline */}
+            <div className="animate-fade-in-up" style={{ animationDelay: "0.15s" }}>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white leading-tight tracking-tight">
+                ¿Frustrado porque su marketing atrae{" "}
+                <span className="text-gray-500">clics</span> pero no{" "}
+                <AuroraText>clientes</AuroraText>?
+              </h1>
+            </div>
+
+            {/* Subheadline */}
+            <p
+              className="text-gray-400 text-lg md:text-xl max-w-2xl leading-relaxed animate-fade-in-up"
+              style={{ animationDelay: "0.3s" }}
+            >
+              Mida y mejore 3 áreas clave de su negocio:{" "}
+              <span className="text-white font-medium">Eficiencia Operativa (IA)</span>,{" "}
+              <span className="text-white font-medium">Autoridad de Mercado (SEO)</span> y{" "}
+              <span className="text-white font-medium">Estructura Fiscal (Legal)</span>.
+            </p>
+
+            {/* CTA */}
+            <div
+              className="flex flex-col sm:flex-row items-center gap-4 animate-fade-in-up"
+              style={{ animationDelay: "0.45s" }}
+            >
+              <a
+                href="#diagnostico"
+                className="inline-flex items-center gap-2 bg-accent text-black font-bold text-sm md:text-base px-8 py-4 rounded-sm hover:bg-white transition-colors uppercase tracking-widest font-mono"
+              >
+                Iniciar Diagnóstico Gratuito (3 min)
+                <ArrowRight className="w-4 h-4" />
+              </a>
+              <a
+                href="#ecosistema"
+                className="text-gray-500 hover:text-white text-sm font-mono uppercase tracking-widest transition-colors"
+              >
+                Ver el ecosistema →
+              </a>
+            </div>
+
+            {/* Trust badges */}
+            <div
+              className="flex flex-wrap justify-center gap-6 animate-fade-in-up"
+              style={{ animationDelay: "0.6s" }}
+            >
+              {["Sin compromiso", "Respuesta en 24h", "Hoja de ruta personalizada"].map((b) => (
+                <div key={b} className="flex items-center gap-2 text-[10px] font-mono text-gray-600 uppercase tracking-wider">
+                  <span className="w-1 h-1 rounded-full bg-accent inline-block" />
+                  {b}
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
-        {/* VELOCITY STRIP */}
+        {/* ── VELOCITY STRIP ───────────────────────────────────────────────── */}
         <section className="py-20 bg-bg-secondary/30 backdrop-blur-sm relative z-20 overflow-hidden">
           <VelocityScroll default_velocity={3} numRows={1}>
-            <Stat label="Enfoque Growth" value={100} suffix="%" sub="Negocio 360" />
+            <Stat label="Horas recuperadas/semana" value={15} suffix="+" sub="Automatización IA" />
             <Stat label="Time to Market" value={2} suffix=" Sem" sub="Validación Rápida" />
-            <Stat label="Integración IA" value="Nativa" sub="Automatización" />
+            <Stat label="Reducción de CAC" value={38} suffix="%" sub="Captación Orgánica" />
             <Stat label="Diseño" value="A+" sub="Calidad Boutique" />
           </VelocityScroll>
           <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-bg-primary to-transparent z-10" />
           <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-bg-primary to-transparent z-10" />
         </section>
 
-        {/* ECOSISTEMA */}
+        {/* ── ECOSISTEMA ───────────────────────────────────────────────────── */}
         <section id="ecosistema" className="py-24 md:py-36 px-6">
           <div className="max-w-7xl mx-auto">
 
-            {/* Header */}
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-6">
               <div className="max-w-2xl">
                 <span className="text-accent font-mono text-xs mb-4 block uppercase tracking-widest">El Ecosistema</span>
                 <div className="pb-2 overflow-hidden">
                   <TextAnimate animation="blurInUp" by="word" as="h2" className="text-4xl md:text-6xl font-display font-bold mb-6">
-                    Ingeniería de Crecimiento.
+                    Sistemas de captación y escalado.
                   </TextAnimate>
                 </div>
                 <TextAnimate animation="fadeIn" by="line" delay={0.3} className="text-gray-500 text-xl md:text-2xl font-display">
-                  No hacemos acciones sueltas. Construimos sistemas interconectados.
+                  Para PYMES que facturan +1M€ y quieren crecer de forma predecible.
                 </TextAnimate>
               </div>
-              <a href="#audit" className="hidden md:flex items-center gap-2 text-sm text-white border-b border-accent pb-1 hover:text-accent transition-colors font-mono tracking-wide">
-                SOLICITAR DIAGNÓSTICO <ArrowRight className="w-4 h-4" />
+              <a href="#diagnostico" className="hidden md:flex items-center gap-2 text-sm text-white border-b border-accent pb-1 hover:text-accent transition-colors font-mono tracking-wide">
+                INICIAR DIAGNÓSTICO <ArrowRight className="w-4 h-4" />
               </a>
             </div>
 
-            {/* Cards grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-              <BoutiqueCard id="eco-1" activeId={activeId} isMobile={isMobile} num="01" Icon={Rocket} href="/ecosistema/estrategia-consultoria"
-                title="Estrategia & Consultoría" subtitle="Growth Machines"
-                desc="Olvídate del marketing tradicional. Como consultora estratégica, analizamos tu modelo y diseñamos la hoja de ruta para escalar tu facturación."
+              <BoutiqueCard
+                id="eco-1" activeId={activeId} isMobile={isMobile}
+                num="01" Icon={Rocket} href="/ecosistema/estrategia-consultoria"
+                title="Su Hoja de Ruta al Escalamiento" subtitle="Growth Machines"
+                bullets={[
+                  "Identifique fugas de dinero en sus unit economics",
+                  "Priorice acciones por impacto real (ICE Score)",
+                  "Diseñe un sistema predecible, no acciones sueltas",
+                ]}
               />
-              <BoutiqueCard id="eco-2" activeId={activeId} isMobile={isMobile} num="02" Icon={Bot} href="/ecosistema/hyper-automation"
-                title="Hyper-Automation" subtitle="AI & Operations"
-                desc="Automatización inteligente para mejorar la eficiencia operativa. Conectamos sistemas, optimizamos flujos de trabajo y digitalizamos procesos."
+              <BoutiqueCard
+                id="eco-2" activeId={activeId} isMobile={isMobile}
+                num="02" Icon={Bot} href="/ecosistema/hyper-automation"
+                title="Operativa en Piloto Automático" subtitle="AI & Operations"
+                bullets={[
+                  "Recupere 15+ horas semanales de gestión",
+                  "Elimine el error humano en su CRM",
+                  "Conecte todos sus procesos en un panel centralizado",
+                ]}
               />
-              <BoutiqueCard id="eco-3" activeId={activeId} isMobile={isMobile} num="03" Icon={BarChart3} href="/ecosistema/market-authority"
-                title="Market Authority" subtitle="SEO & Positioning"
-                desc="No buscamos visitas, buscamos intención de compra. Posicionamiento quirúrgico para dominar los términos que realmente convierten."
+              <BoutiqueCard
+                id="eco-3" activeId={activeId} isMobile={isMobile}
+                num="03" Icon={BarChart3} href="/ecosistema/market-authority"
+                title="Captación Quirúrgica de Leads" subtitle="Market Authority"
+                bullets={[
+                  "Capture tráfico con alta intención de compra",
+                  "Elimine la dependencia de anuncios caros",
+                  "Posicione su marca como autoridad líder en su nicho",
+                ]}
               />
-              <BoutiqueCard id="eco-4" activeId={activeId} isMobile={isMobile} num="04" Icon={Layout} href="/ecosistema/product-boutique"
-                title="Product Boutique" subtitle="UI/UX & Branding"
-                desc="Diseños que venden solos. Estética 'Mendesaltaren' con conversión 'Amazon'. Elevamos tu percepción de valor al infinito."
+              <BoutiqueCard
+                id="eco-4" activeId={activeId} isMobile={isMobile}
+                num="04" Icon={Layout} href="/ecosistema/product-boutique"
+                title="Interfaz de Alta Conversión" subtitle="Product Boutique"
+                bullets={[
+                  "Eleve su percepción de valor al instante",
+                  "Diseño de nivel boutique con usabilidad de Amazon",
+                  "Reduzca la tasa de rebote con carga ultrarrápida",
+                ]}
               />
-              <BoutiqueCard id="eco-5" activeId={activeId} isMobile={isMobile} num="05" Icon={Zap} href="/ecosistema/smart-structure"
-                title="Smart Structure" subtitle="Legal & Tax"
-                desc="El crecimiento trae complejidad. Optimizamos tu estructura fiscal y legal para que cada euro generado se maximice."
+              <BoutiqueCard
+                id="eco-5" activeId={activeId} isMobile={isMobile}
+                num="05" Icon={Zap} href="/ecosistema/smart-structure"
+                title="Blindaje de Beneficios" subtitle="Smart Structure"
+                bullets={[
+                  "Maximice cada euro generado legalmente",
+                  "Proteja su patrimonio personal y empresarial",
+                  "Reduzca la carga administrativa del crecimiento",
+                ]}
               />
-              <BoutiqueCard id="eco-6" activeId={activeId} isMobile={isMobile} num="06" Icon={Activity} href="/ecosistema/content-studio"
-                title="Content Studio" subtitle="Media Production"
-                desc="Tu marca es una productora de medios. Creamos contenido vertical y narrativas visuales que atrapan a la Gen-Z y C-Levels por igual."
+              <BoutiqueCard
+                id="eco-6" activeId={activeId} isMobile={isMobile}
+                num="06" Icon={Activity} href="/ecosistema/content-studio"
+                title="Su Marca como Autoridad Visual" subtitle="Content Studio"
+                bullets={[
+                  "Contenido vertical que atrapa a C-Levels",
+                  "Narrativas que convierten seguidores en clientes",
+                  "Producción de alta fidelidad con enfoque en ventas",
+                ]}
               />
             </div>
 
           </div>
         </section>
 
-        {/* METHODOLOGY */}
+        {/* ── METHODOLOGY ──────────────────────────────────────────────────── */}
         <section id="metodologia" className="py-24 md:py-36 px-6 bg-[#060606] border-t border-gray-900/60">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24">
 
-              {/* Left sticky */}
               <div>
                 <div className="sticky top-32">
                   <span className="text-accent font-mono text-xs mb-6 block uppercase tracking-widest">El Método V&amp;G</span>
@@ -171,7 +313,7 @@ export default function Home() {
                     </TextAnimate>
                   </div>
                   <TextAnimate animation="fadeIn" by="word" delay={0.3} className="text-gray-500 text-xl md:text-2xl font-display">
-                    Cuatro fases para convertir tu empresa en una máquina de crecimiento predecible.
+                    Cuatro fases para convertir su empresa en una máquina de crecimiento predecible.
                   </TextAnimate>
 
                   <div className="mt-12 relative h-64 md:h-80 w-full rounded-sm overflow-hidden border border-gray-800/50 hidden lg:block shadow-2xl">
@@ -182,12 +324,10 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Right timeline */}
               <div className="relative">
-                {/* Vertical line */}
                 <div className="absolute left-4 top-4 bottom-4 w-px bg-gradient-to-b from-accent/40 via-gray-800 to-transparent hidden md:block" />
                 <div className="space-y-0">
-                  <StepItem id="step-1" activeId={activeId} isMobile={isMobile} num="01" title="Discovery & Audit" desc="Radiografía total. No tocamos una línea de código sin entender tus unit economics. Auditamos tus fugas de dinero y tiempo." />
+                  <StepItem id="step-1" activeId={activeId} isMobile={isMobile} num="01" title="Discovery & Audit" desc="Radiografía total. No tocamos una línea de código sin entender sus unit economics. Auditamos sus fugas de dinero y tiempo." />
                   <StepItem id="step-2" activeId={activeId} isMobile={isMobile} num="02" title="Hypothesis & Roadmap" desc="Diseñamos el plan de ataque. Priorizamos acciones por 'Impacto vs Esfuerzo' (ICE Score). Nada de paja, solo tracción." />
                   <StepItem id="step-3" activeId={activeId} isMobile={isMobile} num="03" title="Sprint Execution" desc="Despliegue rápido. Lanzamos, medimos y ajustamos en ciclos cortos. Velocidad de startup para validar resultados en semanas." />
                   <StepItem id="step-4" activeId={activeId} isMobile={isMobile} num="04" title="Scale Up" desc="Cuando algo funciona, echamos gasolina. Automatizamos lo validado y escalamos la inversión publicitaria y operativa." />
@@ -198,38 +338,43 @@ export default function Home() {
           </div>
         </section>
 
-        {/* CTA */}
-        <section id="audit" className="py-24 md:py-36 px-6 relative overflow-hidden border-t border-gray-900/60">
-          {/* Background accents */}
+        {/* ── SCORECARD / DIAGNÓSTICO ───────────────────────────────────────── */}
+        <section id="diagnostico" className="py-24 md:py-36 px-6 relative overflow-hidden border-t border-gray-900/60">
           <div className="absolute inset-0 bg-gradient-to-b from-[#060606] to-black" />
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
 
           <div className="max-w-4xl mx-auto relative z-10">
             <div className="text-center mb-14">
-              <span className="text-accent font-mono text-xs mb-6 block uppercase tracking-widest">Diagnóstico Gratuito</span>
+              <span className="text-accent font-mono text-xs mb-6 block uppercase tracking-widest">Diagnóstico Gratuito · 3 minutos</span>
               <h2 className="text-4xl md:text-6xl font-display font-bold mb-6 text-white leading-tight">
-                ¿Tu empresa <AuroraText>escala</AuroraText> o{" "}
+                ¿Su empresa <AuroraText>escala</AuroraText> o{" "}
                 <span className="text-gray-600">sobrevive</span>?
               </h2>
               <p className="text-gray-500 text-lg md:text-xl font-display max-w-2xl mx-auto">
-                Rellena este diagnóstico. Analizaremos tu caso y te propondremos un roadmap de crecimiento sin coste.
+                Responda 15 preguntas y obtenga su índice de capacidad de escalamiento con una hoja de ruta personalizada.
               </p>
             </div>
 
-            {/* Trust badges */}
-            <div className="flex flex-wrap justify-center gap-6 mb-14">
-              {["Sin compromiso", "Respuesta en 24h", "Análisis real, no plantilla"].map((badge) => (
-                <div key={badge} className="flex items-center gap-2 text-xs font-mono text-gray-500 uppercase tracking-wider">
-                  <span className="w-1 h-1 rounded-full bg-accent inline-block" />
-                  {badge}
-                </div>
-              ))}
-            </div>
-
-            <ContactForm />
+            <Scorecard />
           </div>
         </section>
 
+        {/* ── PS STATEMENT ─────────────────────────────────────────────────── */}
+        <section className="py-16 px-6 border-t border-gray-900/40 bg-black">
+          <div className="max-w-3xl mx-auto text-center">
+            <p className="text-gray-600 text-sm font-mono leading-relaxed">
+              <span className="text-gray-400 font-bold">PS:</span>{" "}
+              Este diagnóstico y nuestro ecosistema{" "}
+              <span className="text-white">NO</span> son para empresas que buscan resultados sin inversión,
+              ni para dueños de negocio que temen a la tecnología. Solo trabajamos con organizaciones
+              listas para digitalizar su ADN y convertir el caos en un sistema predecible.
+              Si no es su momento de escalar, por favor no complete el test.{" "}
+              <a href="#diagnostico" className="text-accent hover:underline">Si lo es, empezamos aquí.</a>
+            </p>
+          </div>
+        </section>
+
+        {/* ── FOOTER ───────────────────────────────────────────────────────── */}
         <footer className="py-12 border-t border-gray-900/60 bg-black text-center text-gray-600 text-xs">
           <div className="flex justify-center mb-6">
             <div className="relative w-24 h-8 md:w-28 md:h-9 opacity-40 grayscale hover:grayscale-0 hover:opacity-80 transition-all duration-500">
@@ -244,17 +389,29 @@ export default function Home() {
   );
 }
 
-// ─── Helper components ────────────────────────────────────────────────────────
+// ─── Helper components ─────────────────────────────────────────────────────────
 
-function TechProtocolCard({ title, lines, className }: { title: string; lines: { label: string; value: string; status: "ok" | "pulse" | "accent" }[]; className?: string }) {
+function TechProtocolCard({
+  title, lines, className,
+}: {
+  title: string;
+  lines: { label: string; value: string; status: "ok" | "pulse" | "accent" }[];
+  className?: string;
+}) {
   return (
-    <div className={cn("absolute border border-gray-800 bg-[#0A0A0A]/80 p-3 md:p-4 rounded-lg backdrop-blur-sm hover:border-accent/40 transition-all duration-500 shadow-xl pointer-events-auto scale-90 md:scale-100", className)}>
+    <div className={cn(
+      "absolute border border-gray-800 bg-[#0A0A0A]/80 p-3 md:p-4 rounded-lg backdrop-blur-sm hover:border-accent/40 transition-all duration-500 shadow-xl pointer-events-auto scale-90 md:scale-100",
+      className
+    )}>
       <div className="text-[8px] md:text-[10px] font-mono text-gray-500 border-b border-gray-800 pb-1 mb-2 tracking-widest uppercase">{title}</div>
       <div className="font-mono text-[7px] md:text-[10px] text-left space-y-1 md:space-y-1.5 min-w-[100px] md:min-w-[120px]">
         {lines.map((line, i) => (
           <div key={i} className="flex items-center justify-between gap-2 md:gap-4">
             <span className="text-gray-400 uppercase tracking-tighter">{line.label}</span>
-            <span className={cn("font-bold", line.status === "ok" ? "text-green-500" : line.status === "pulse" ? "text-accent animate-pulse" : "text-accent")}>{line.value}</span>
+            <span className={cn(
+              "font-bold",
+              line.status === "ok" ? "text-green-500" : line.status === "pulse" ? "text-accent animate-pulse" : "text-accent"
+            )}>{line.value}</span>
           </div>
         ))}
       </div>
@@ -279,10 +436,10 @@ function Stat({ label, value, sub, suffix = "" }: { label: string; value: string
 }
 
 function BoutiqueCard({
-  id, activeId, isMobile, title, subtitle, desc, Icon, num, href,
+  id, activeId, isMobile, title, subtitle, bullets, Icon, num, href,
 }: {
   id: string; activeId: string | null; isMobile: boolean;
-  title: string; subtitle: string; desc: string;
+  title: string; subtitle: string; bullets: string[];
   Icon: React.ElementType; num: string; href: string;
 }) {
   const isActive = isMobile && activeId === id;
@@ -308,8 +465,16 @@ function BoutiqueCard({
       <p className={cn("text-[10px] font-mono mb-3 uppercase tracking-widest transition-colors duration-300", isActive ? "text-accent" : "text-gray-600 group-hover:text-accent")}>
         {subtitle}
       </p>
-      <h3 className="text-xl md:text-2xl font-bold font-display mb-4 text-white">{title}</h3>
-      <p className="text-gray-500 text-sm leading-relaxed flex-1 mb-8">{desc}</p>
+      <h3 className="text-xl md:text-2xl font-bold font-display mb-5 text-white">{title}</h3>
+
+      <ul className="flex-1 mb-8 space-y-2">
+        {bullets.map((b) => (
+          <li key={b} className="flex items-start gap-2 text-gray-500 text-sm leading-relaxed">
+            <span className="text-accent mt-1 shrink-0 text-xs">—</span>
+            {b}
+          </li>
+        ))}
+      </ul>
 
       <div className={cn(
         "flex items-center gap-2 text-[11px] font-mono tracking-wider text-accent transition-all duration-300",
@@ -332,7 +497,6 @@ function StepItem({ id, activeId, isMobile, num, title, desc }: { id: string; ac
         isActive ? "opacity-100" : isMobile ? "opacity-30" : "opacity-100"
       )}
     >
-      {/* Circle */}
       <div className="flex-shrink-0 z-10">
         <div className={cn(
           "w-8 h-8 rounded-full border-2 flex items-center justify-center text-[10px] font-mono font-bold transition-all duration-500 bg-[#060606]",
@@ -341,7 +505,6 @@ function StepItem({ id, activeId, isMobile, num, title, desc }: { id: string; ac
           {num}
         </div>
       </div>
-
       <div>
         <h3 className={cn(
           "text-lg md:text-xl font-bold text-white mb-3 transition-colors duration-300",
