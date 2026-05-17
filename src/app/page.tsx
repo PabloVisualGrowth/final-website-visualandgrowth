@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { ArrowRight, BarChart3, Bot, Layout, Rocket, Zap, Activity } from "lucide-react";
+import { ArrowRight, BarChart3, Bot, Layout, Rocket, Zap, Activity, TrendingUp, Clock, Shield } from "lucide-react";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import CookieConsent from "@/components/CookieConsent";
@@ -56,7 +56,7 @@ export default function Home() {
 
       <main className="relative z-10 w-full">
 
-        {/* ── HERO (logo only) ─────────────────────────────────────────────── */}
+        {/* ── PÁGINA 1: HERO — logo only ────────────────────────────────────── */}
         <section className="min-h-screen flex flex-col items-center justify-center px-6 py-20 relative text-center overflow-hidden">
           <InteractiveGridPattern
             width={120} height={120} squares={[20, 20]}
@@ -93,22 +93,22 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── HOOK + CTA ───────────────────────────────────────────────────── */}
+        {/* ── PÁGINA 2: HOOK + CTA ──────────────────────────────────────────── */}
         <section className="min-h-screen flex flex-col items-center justify-center px-6 py-24 relative text-center overflow-hidden border-t border-gray-900/60">
           <div className="absolute inset-0 bg-gradient-to-b from-[#060606] to-black pointer-events-none" />
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
           <div className="relative z-10 flex flex-col items-center gap-8 max-w-4xl">
             <div className="animate-fade-in-up">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.4rem] font-display font-bold text-white leading-tight tracking-tight">
-                ¿Frustrado por no escalar tu facturación pese a invertir en{" "}
-                <AuroraText>sistemas y marketing</AuroraText> de alto nivel?
+                ¿Te sientes frustrado porque tu empresa se ha estancado en facturación a pesar de que inviertes constantemente en{" "}
+                <AuroraText>marketing y operaciones</AuroraText>?
               </h1>
             </div>
             <p className="text-gray-400 text-lg md:text-xl max-w-2xl leading-relaxed animate-fade-in-up"
               style={{ animationDelay: "0.15s" }}>
-              Responde 15 preguntas clave para descubrir{" "}
-              <span className="text-white font-medium">por qué tu empresa no escala</span>{" "}
-              y obtén un roadmap personalizado de qué hacer al respecto.
+              Responde a nuestro Assessment de 15 preguntas para obtener un{" "}
+              <span className="text-white font-medium">Roadmap de Ingeniería de Crecimiento personalizado</span>.
+              Gratis. Resultados en 3 minutos.
             </p>
             <div className="flex flex-col sm:flex-row items-center gap-4 animate-fade-in-up"
               style={{ animationDelay: "0.3s" }}>
@@ -133,19 +133,87 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ── AUTORIDAD DEL SISTEMA (Priestley Gap) ────────────────────────── */}
+        <section className="py-24 px-6 border-t border-gray-900/60 bg-[#060606]">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <span className="text-accent font-mono text-xs uppercase tracking-widest mb-4 block">Autoridad del Sistema</span>
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">
+                El sistema funciona porque lo usamos nosotros primero.
+              </h2>
+              <p className="text-gray-500 max-w-xl mx-auto text-base">
+                No vendemos estrategias de pizarra. Cada metodología está operativa en nuestra propia infraestructura antes de desplegarse en la tuya.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-gray-900/60">
+              {/* Bio */}
+              <div className="bg-[#060606] p-8 md:p-10">
+                <span className="text-accent font-mono text-[10px] uppercase tracking-widest mb-4 block">El Arquitecto</span>
+                <p className="text-white font-bold text-lg font-display mb-3 leading-snug">
+                  Ingeniería de crecimiento aplicada a ingresos de $2.4M anuales.
+                </p>
+                <p className="text-gray-500 text-sm leading-relaxed">
+                  Visual &amp; Growth nació de la necesidad de escalar empresas reales sin los atajos del marketing de vanidad. Cada vertical del ecosistema resuelve un cuello de botella específico, medible y auditable.
+                </p>
+              </div>
+
+              {/* Stats */}
+              <div className="bg-[#060606] p-8 md:p-10">
+                <span className="text-accent font-mono text-[10px] uppercase tracking-widest mb-4 block">Datos Internos 2025</span>
+                <div className="space-y-5">
+                  {[
+                    { stat: "−40%", desc: "Reducción de fricción operativa en empresas con sistemas interconectados vs. acciones de marketing aisladas." },
+                    { stat: "< 4 sem", desc: "Time-to-Market medio para implementación de un sistema de captación orgánica operativo." },
+                    { stat: "×3.1", desc: "Multiplicador de ROI medio en empresas que combinan SEO de intención con automatización de operativa." },
+                  ].map((s) => (
+                    <div key={s.stat} className="flex items-start gap-4">
+                      <span className="text-accent font-mono font-bold text-lg shrink-0 w-16">{s.stat}</span>
+                      <p className="text-gray-500 text-xs leading-relaxed">{s.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Proof */}
+              <div className="bg-[#060606] p-8 md:p-10">
+                <span className="text-accent font-mono text-[10px] uppercase tracking-widest mb-4 block">Prueba de Concepto</span>
+                <div className="space-y-4">
+                  {[
+                    { label: "UPTIME", value: "99.9%", desc: "Infraestructura V&G en producción continua", status: "ok" as const },
+                    { label: "RUN_RATE", value: "$2.4M", desc: "Revenue Tracker en tiempo real del sistema", status: "accent" as const },
+                    { label: "AGENTS", value: "ONLINE", desc: "Neural Link activo con sincronización completa", status: "pulse" as const },
+                  ].map((p) => (
+                    <div key={p.label} className="flex items-center gap-4 py-3 border-b border-gray-900 last:border-0">
+                      <div className={cn(
+                        "font-mono font-bold text-sm shrink-0 w-20",
+                        p.status === "ok" ? "text-green-500" : p.status === "pulse" ? "text-accent animate-pulse" : "text-accent"
+                      )}>{p.value}</div>
+                      <div>
+                        <div className="text-[9px] font-mono text-gray-600 uppercase tracking-widest">{p.label}</div>
+                        <div className="text-gray-500 text-xs">{p.desc}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* ── VELOCITY STRIP ───────────────────────────────────────────────── */}
         <section className="py-20 bg-bg-secondary/30 backdrop-blur-sm relative z-20 overflow-hidden">
           <VelocityScroll default_velocity={3} numRows={1}>
-            <Stat label="Horas liberadas/semana" value={20} suffix="+"  sub="AI & Operations"    />
-            <Stat label="Time to Market"          value={2}  suffix=" Sem" sub="Validación rápida" />
-            <Stat label="Reducción de CAC"        value={38} suffix="%"  sub="Captación orgánica" />
-            <Stat label="Diseño"                  value="A+"             sub="Calidad boutique"   />
+            <Stat label="Horas liberadas/semana" value={20} suffix="+" sub="AI & Operations" />
+            <Stat label="Time to Market" value={2} suffix=" Sem" sub="Validación rápida" />
+            <Stat label="Reducción fricción ops" value={40} suffix="%" sub="Sistemas interconectados" />
+            <Stat label="Diseño" value="A+" sub="Calidad boutique" />
           </VelocityScroll>
           <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-bg-primary to-transparent z-10" />
           <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-bg-primary to-transparent z-10" />
         </section>
 
-        {/* ── ECOSISTEMA ───────────────────────────────────────────────────── */}
+        {/* ── ECOSISTEMA — 6 VERTICALES ─────────────────────────────────────── */}
         <section id="ecosistema" className="py-24 md:py-36 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-6">
@@ -169,52 +237,114 @@ export default function Home() {
               <BoutiqueCard id="eco-1" activeId={activeId} isMobile={isMobile}
                 num="01" Icon={Rocket} href="/ecosistema/estrategia-consultoria"
                 title="Growth Machines" subtitle="Estrategia & Consultoría"
+                entregable="Hoja de Ruta ICE Score con prioridades de inversión auditadas"
+                contraria="El marketing no escala empresas; los unit economics saludables sí."
                 bullets={[
-                  "Roadmap 90 días: identifica fugas en tus Unit Economics y desbloquea el cuello de botella principal",
-                  "Auditoría de tracción real: elimina métricas de vanidad y analiza rentabilidad por canal",
-                  "Ingeniería de procesos para una facturación predecible, no acciones sueltas",
+                  { Icon: TrendingUp, text: "Auditoría de tracción real: elimina métricas de vanidad, analiza rentabilidad por canal" },
+                  { Icon: Clock,      text: "Implementación de sistemas en menos de 4 semanas" },
+                  { Icon: Shield,     text: "Decisiones basadas en datos del Revenue Tracker, no en intuición" },
                 ]} />
               <BoutiqueCard id="eco-2" activeId={activeId} isMobile={isMobile}
                 num="02" Icon={Bot} href="/ecosistema/hyper-automation"
                 title="AI & Operations" subtitle="Hyper-Automation"
+                entregable="Dashboard de automatización personalizado y Mapa de Procesos PDF"
+                contraria="La automatización no es para ahorrar tiempo, sino para eliminar la variabilidad humana."
                 bullets={[
-                  "Arquitectura Neural Link: flujos multi-agente y rastreadores de ingresos automatizados",
-                  "Ops Scaling: automatización de procesos críticos para liberar +20h semanales al equipo C-Level",
-                  "Dashboards V4 en tiempo real con sincronización completa de todos tus sistemas",
+                  { Icon: TrendingUp, text: "Arquitectura Neural Link: flujos multi-agente y rastreadores de ingresos automáticos" },
+                  { Icon: Clock,      text: "Libera +20h semanales al equipo C-Level con Ops Scaling" },
+                  { Icon: Shield,     text: "Dashboards V4 en tiempo real con sincronización completa de todos tus sistemas" },
                 ]} />
               <BoutiqueCard id="eco-3" activeId={activeId} isMobile={isMobile}
                 num="03" Icon={BarChart3} href="/ecosistema/market-authority"
                 title="Market Authority" subtitle="SEO & Posicionamiento"
+                entregable="Market Authority Blueprint con 50 intenciones de compra detectadas"
+                contraria="Las keywords han muerto; el SEO 2026 solo reconoce la ganancia de información única."
                 bullets={[
-                  "Arquitectura de Silos 2026: estructura técnica citada por IA Overviews y motores generativos",
-                  "Dominio de intención de compra: términos que generan transacciones, no solo tráfico",
-                  "Author Score Entity: vincula cada activo de contenido con entidades autoritativas para Google",
+                  { Icon: TrendingUp, text: "Arquitectura de Silos 2026 citada por AI Overviews y motores generativos" },
+                  { Icon: Clock,      text: "Dominio de intención de compra: términos que generan transacciones, no solo tráfico" },
+                  { Icon: Shield,     text: "Author Score Entity vinculado a entidades autoritativas para Google" },
                 ]} />
               <BoutiqueCard id="eco-4" activeId={activeId} isMobile={isMobile}
                 num="04" Icon={Layout} href="/ecosistema/product-boutique"
                 title="Product Boutique" subtitle="UI/UX & Branding"
+                entregable="Prototipo de alta fidelidad con tasa de conversión proyectada"
+                contraria="Un diseño bonito que no convierte es un gasto, no un activo de marca."
                 bullets={[
-                  "Conversión Amazon-Style: interfaces de baja carga cognitiva que eliminan la fricción de compra",
-                  "Time-to-Market: prototipado funcional en 0 semanas para testear hipótesis de mercado de inmediato",
-                  "Estética boutique A+ que eleva la percepción de valor del producto al nivel premium",
+                  { Icon: TrendingUp, text: "Conversión Amazon-Style: interfaces de baja carga cognitiva que eliminan la fricción de compra" },
+                  { Icon: Clock,      text: "Time-to-Market: prototipado funcional en menos de 2 semanas para testear hipótesis" },
+                  { Icon: Shield,     text: "Estética boutique A+ que eleva la percepción de valor al nivel premium" },
                 ]} />
               <BoutiqueCard id="eco-5" activeId={activeId} isMobile={isMobile}
                 num="05" Icon={Zap} href="/ecosistema/smart-structure"
                 title="Smart Structure" subtitle="Legal & Tax"
+                entregable="Estructura de Smart Holding optimizada para reinversión de beneficios"
+                contraria="La optimización fiscal es la forma más rápida de generar flujo de caja para marketing."
                 bullets={[
-                  "Roadmap de eficiencia fiscal: optimiza tu estructura corporativa para maximizar el beneficio neto",
-                  "Protección de activos digitales: blindaje legal de propiedad intelectual y estructuras de datos",
-                  "Compliance de crecimiento: gestiona la complejidad legal del escalado internacional",
+                  { Icon: TrendingUp, text: "Roadmap de eficiencia fiscal: maximiza el beneficio neto por cada euro generado" },
+                  { Icon: Clock,      text: "Protección de activos digitales: blindaje legal de propiedad intelectual" },
+                  { Icon: Shield,     text: "Compliance de crecimiento para escalar sin exposición legal innecesaria" },
                 ]} />
               <BoutiqueCard id="eco-6" activeId={activeId} isMobile={isMobile}
                 num="06" Icon={Activity} href="/ecosistema/content-studio"
                 title="Content Studio" subtitle="Media Production"
+                entregable="Pack de 12 contenidos verticales con ganchos de retención para C-Levels"
+                contraria="El contenido viral es ruido; la narrativa de autoridad es la que genera leads calificados."
                 bullets={[
-                  "Narrativa vertical C-Level: contenido de alta retención diseñado para capturar decisores",
-                  "Indexación de momentos clave: Google extrae fragmentos directos de tu vídeo en los resultados de búsqueda",
-                  "Content Factory: activos visuales que posicionan tu marca como líder de opinión en 24h",
+                  { Icon: TrendingUp, text: "Narrativa vertical C-Level con Key Moments indexados directamente en las SERPs" },
+                  { Icon: Clock,      text: "Content Factory operativa en 24h: activos que posicionan tu marca como líder de opinión" },
+                  { Icon: Shield,     text: "Sinergia YouTube-Web para maximizar Time on Page como señal de ranking" },
                 ]} />
             </div>
+          </div>
+        </section>
+
+        {/* ── TABLA COMPARATIVA — Information Gain SEO ─────────────────────── */}
+        <section className="py-24 px-6 bg-[#060606] border-t border-gray-900/60">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+              <span className="text-accent font-mono text-xs uppercase tracking-widest mb-4 block">Information Gain · SEO 2026</span>
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">
+                Sistemas V&G vs. Agencias Tradicionales
+              </h2>
+              <p className="text-gray-500 text-base max-w-xl mx-auto">
+                Datos de auditorías internas 2025. Fuente: Visual &amp; Growth Revenue Tracker.
+              </p>
+            </div>
+
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm font-mono border-collapse">
+                <thead>
+                  <tr className="border-b border-gray-800">
+                    <th className="text-left py-4 px-4 text-gray-600 uppercase tracking-widest text-[10px] font-normal">Parámetro</th>
+                    <th className="text-center py-4 px-4 text-accent uppercase tracking-widest text-[10px] font-bold">Ecosistema V&G</th>
+                    <th className="text-center py-4 px-4 text-gray-600 uppercase tracking-widest text-[10px] font-normal">Agencia Tradicional</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    ["Time-to-Market",          "< 4 semanas",     "3–6 meses"],
+                    ["Decisiones basadas en",   "Revenue Tracker", "Informes mensuales"],
+                    ["Modelo de ejecución",     "Done-for-you sistémico", "Entrega por proyecto"],
+                    ["SEO approach",            "Intención de compra + GEO", "Keywords de volumen"],
+                    ["Automatización",          "Nativa (Neural Link)", "Opcional / extra"],
+                    ["Estructura legal/fiscal", "Integrada (Smart Structure)", "Externalizada"],
+                    ["Fricción operativa",      "−40% vs. base", "Sin medición"],
+                    ["Reporting",               "Tiempo real · Dashboard V4", "PDF mensual"],
+                    ["Escalabilidad",           "Sistema interconectado",  "Equipo lineal"],
+                    ["Garantía de uptime",      "99.9% SLA",       "Sin SLA"],
+                  ].map(([param, vg, trad], i) => (
+                    <tr key={i} className={cn("border-b border-gray-900/80", i % 2 === 0 ? "bg-white/[0.01]" : "")}>
+                      <td className="py-3 px-4 text-gray-400">{param}</td>
+                      <td className="py-3 px-4 text-center text-green-500 font-bold">{vg}</td>
+                      <td className="py-3 px-4 text-center text-gray-600">{trad}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="text-[10px] font-mono text-gray-700 text-center mt-4 uppercase tracking-wider">
+              Fuente: Visual &amp; Growth · Auditorías internas · Datos 2025
+            </p>
           </div>
         </section>
 
@@ -244,33 +374,32 @@ export default function Home() {
                 <div className="absolute left-4 top-4 bottom-4 w-px bg-gradient-to-b from-accent/40 via-gray-800 to-transparent hidden md:block" />
                 <div className="space-y-0">
                   <StepItem id="step-1" activeId={activeId} isMobile={isMobile} num="01" title="Discovery & Audit"
-                    desc="Radiografía total. No tocamos una línea de código sin entender tus unit economics. Auditamos tus fugas de dinero y tiempo." />
+                    desc="Radiografía total de tus unit economics. Auditamos fugas de dinero y tiempo antes de tocar una sola línea de ejecución." />
                   <StepItem id="step-2" activeId={activeId} isMobile={isMobile} num="02" title="Hypothesis & Roadmap"
-                    desc="Diseñamos el plan de ataque. Priorizamos acciones por ICE Score (Impacto, Confianza, Esfuerzo). Nada de paja, solo tracción." />
+                    desc="Diseñamos el plan de ataque con ICE Score (Impacto, Confianza, Esfuerzo). Priorizamos lo que genera tracción real, no ruido." />
                   <StepItem id="step-3" activeId={activeId} isMobile={isMobile} num="03" title="Sprint Execution"
-                    desc="Despliegue rápido. Lanzamos, medimos y ajustamos en ciclos cortos de máximo 4 semanas. Velocidad de startup para validar resultados de inmediato." />
+                    desc="Ciclos de máximo 4 semanas. Lanzamos, medimos y ajustamos. Velocidad de startup para validar resultados antes de escalar." />
                   <StepItem id="step-4" activeId={activeId} isMobile={isMobile} num="04" title="Scale Up"
-                    desc="Cuando algo funciona, echamos gasolina. Automatizamos lo validado y escalamos la inversión publicitaria y operativa." />
+                    desc="Cuando algo funciona, echamos gasolina. Automatizamos lo validado y escalamos inversión publicitaria y operativa." />
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* ── DIAGNÓSTICO / SCORECARD ───────────────────────────────────────── */}
+        {/* ── ASSESSMENT / DIAGNÓSTICO ─────────────────────────────────────── */}
         <section id="diagnostico" className="py-24 md:py-36 px-6 relative overflow-hidden border-t border-gray-900/60">
           <div className="absolute inset-0 bg-gradient-to-b from-[#060606] to-black" />
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
-
           <div className="max-w-4xl mx-auto relative z-10">
             <div className="text-center mb-14">
-              <span className="text-accent font-mono text-xs mb-6 block uppercase tracking-widest">Diagnóstico Gratuito · 3 minutos</span>
+              <span className="text-accent font-mono text-xs mb-6 block uppercase tracking-widest">Assessment · Score de Salud de Crecimiento</span>
               <h2 className="text-4xl md:text-6xl font-display font-bold mb-6 text-white leading-tight">
-                ¿Tu empresa <AuroraText>escala</AuroraText> o{" "}
-                <span className="text-gray-600">sobrevive</span>?
+                ¿Tu infraestructura está lista para un{" "}
+                <AuroraText>300% de crecimiento</AuroraText>?
               </h2>
               <p className="text-gray-500 text-lg md:text-xl font-display max-w-2xl mx-auto">
-                Responde 15 preguntas basadas en el Método V&G y descubre exactamente qué está bloqueando tu crecimiento.
+                15 preguntas. 3 minutos. Roadmap personalizado con 3 insights accionables inmediatos.
               </p>
             </div>
             <Scorecard />
@@ -351,9 +480,14 @@ function Stat({ label, value, sub, suffix = "" }: {
   );
 }
 
-function BoutiqueCard({ id, activeId, isMobile, title, subtitle, bullets, Icon, num, href }: {
+interface BulletItem { Icon: React.ElementType; text: string; }
+
+function BoutiqueCard({ id, activeId, isMobile, title, subtitle, bullets, entregable, contraria, Icon, num, href }: {
   id: string; activeId: string | null; isMobile: boolean;
-  title: string; subtitle: string; bullets: string[];
+  title: string; subtitle: string;
+  bullets: BulletItem[];
+  entregable: string;
+  contraria: string;
   Icon: React.ElementType; num: string; href: string;
 }) {
   const isActive = isMobile && activeId === id;
@@ -363,24 +497,40 @@ function BoutiqueCard({ id, activeId, isMobile, title, subtitle, bullets, Icon, 
         "group relative flex flex-col p-8 md:p-10 overflow-hidden transition-all duration-500",
         isActive ? "bg-white/[0.05] opacity-100" : isMobile ? "opacity-30" : "hover:bg-white/[0.03] opacity-100"
       )}>
-      <div className="flex items-center justify-between mb-8">
+
+      <div className="flex items-center justify-between mb-6">
         <span className="font-mono text-xs text-gray-700">{num}</span>
         <Icon className={cn("w-5 h-5 transition-colors duration-300",
           isActive ? "text-accent" : "text-gray-700 group-hover:text-accent")} />
       </div>
-      <p className={cn("text-[10px] font-mono mb-3 uppercase tracking-widest transition-colors duration-300",
+
+      <p className={cn("text-[10px] font-mono mb-2 uppercase tracking-widest transition-colors duration-300",
         isActive ? "text-accent" : "text-gray-600 group-hover:text-accent")}>
         {subtitle}
       </p>
-      <h3 className="text-xl md:text-2xl font-bold font-display mb-5 text-white">{title}</h3>
-      <ul className="flex-1 mb-8 space-y-3">
-        {bullets.map((b) => (
-          <li key={b} className="flex items-start gap-2 text-gray-500 text-sm leading-relaxed">
-            <span className="text-accent mt-[3px] shrink-0 text-xs font-bold">—</span>
-            {b}
+      <h3 className="text-xl md:text-2xl font-bold font-display mb-4 text-white">{title}</h3>
+
+      {/* Entregable */}
+      <div className="mb-5 px-3 py-2 border border-accent/20 bg-accent/5 rounded-sm">
+        <p className="text-[9px] font-mono text-accent uppercase tracking-widest mb-1">Entregable</p>
+        <p className="text-gray-300 text-xs leading-relaxed">{entregable}</p>
+      </div>
+
+      {/* Bullets */}
+      <ul className="flex-1 mb-5 space-y-3">
+        {bullets.map(({ Icon: BIcon, text }, i) => (
+          <li key={i} className="flex items-start gap-2 text-gray-500 text-sm leading-relaxed">
+            <BIcon className="w-3.5 h-3.5 text-accent shrink-0 mt-[2px]" />
+            {text}
           </li>
         ))}
       </ul>
+
+      {/* Contrarian perspective */}
+      <p className="text-[10px] text-gray-700 italic leading-relaxed border-t border-gray-900 pt-4 mb-5">
+        &ldquo;{contraria}&rdquo;
+      </p>
+
       <div className={cn(
         "flex items-center gap-2 text-[11px] font-mono tracking-wider text-accent transition-all duration-300",
         isActive ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0"
