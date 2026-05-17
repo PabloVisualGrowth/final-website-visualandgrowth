@@ -26,16 +26,16 @@ interface YNQuestion {
 }
 
 const YN_QUESTIONS: YNQuestion[] = [
-  { id: "q1",  text: "¿Revisas tus Unit Economics cada mes para detectar dónde se escapan márgenes?",                                     category: "strategy"   },
-  { id: "q2",  text: "¿Tienes un sistema para priorizar qué iniciativas atacar primero según impacto y esfuerzo real?",                   category: "strategy"   },
-  { id: "q3",  text: "¿Tus proyectos de mejora tienen fechas de cierre definidas de menos de 4 semanas?",                                category: "strategy"   },
-  { id: "q4",  text: "¿Tus herramientas de gestión (CRM, ERP, facturación…) comparten datos automáticamente sin exportar Excel?",        category: "automation" },
-  { id: "q5",  text: "¿Tienes automatizaciones activas que sustituyen tareas repetitivas de tu equipo hoy mismo?",                       category: "automation" },
-  { id: "q6",  text: "¿Tu web aparece en Google cuando alguien busca el problema exacto que tú resuelves?",                              category: "seo"        },
-  { id: "q7",  text: "¿Tu contenido incluye datos propios o perspectivas que no se pueden encontrar en ningún competidor?",              category: "seo"        },
-  { id: "q8",  text: "¿Tu web convierte visitas en leads cualificados sin que tengas que explicar nada por teléfono primero?",           category: "ux"         },
-  { id: "q9",  text: "¿Tu estructura fiscal y societaria está optimizada para el nivel de ingresos actual de tu empresa?",               category: "legal"      },
-  { id: "q10", text: "¿Produces contenido de autoridad (casos, informes, vídeos) dirigido específicamente a quien toma la decisión de compra?", category: "automation" },
+  { id: "q1",  text: "¿Sabes exactamente cuánto te cuesta conseguir un cliente nuevo?",                                                  category: "strategy"   },
+  { id: "q2",  text: "¿Tienes un proceso de ventas documentado que tu equipo sigue de forma consistente?",                               category: "strategy"   },
+  { id: "q3",  text: "¿Tu CRM, facturación y comunicación están conectados sin necesidad de copiar datos a mano?",                       category: "automation" },
+  { id: "q4",  text: "¿Has automatizado alguna tarea repetitiva que tu equipo hacía manualmente?",                                       category: "automation" },
+  { id: "q5",  text: "¿Cuando alguien busca en Google lo que tú vendes, apareces tú antes que tu competencia?",                         category: "seo"        },
+  { id: "q6",  text: "¿Tu web genera solicitudes de contacto de forma regular sin que hagas ninguna acción activa?",                     category: "seo"        },
+  { id: "q7",  text: "¿Un desconocido que entra en tu web entiende en 10 segundos qué haces y por qué debería elegirte?",               category: "ux"         },
+  { id: "q8",  text: "¿Tu imagen de marca transmite el mismo nivel de calidad que el servicio que realmente ofreces?",                  category: "ux"         },
+  { id: "q9",  text: "¿Has revisado con un especialista fiscal cuánto podrías ahorrarte legalmente este año?",                           category: "legal"      },
+  { id: "q10", text: "¿Tienes documentado quién es tu cliente ideal y qué le preocupa antes de tomar una decisión de compra?",           category: "strategy"   },
 ];
 
 type QualType = "select" | "text" | "textarea";
@@ -51,37 +51,47 @@ interface QualQuestion {
 const QUAL_QUESTIONS: QualQuestion[] = [
   {
     id: "q11",
-    text: "¿Cuál es tu situación actual?",
+    text: "¿Cuántas personas trabajan en tu empresa?",
     type: "select",
-    options: ["Founder / CEO", "CMO / Director de Marketing", "Inversor / Socio"],
+    options: ["Solo yo o menos de 5", "Entre 5 y 20", "Entre 20 y 100", "Más de 100"],
   },
   {
     id: "q12",
-    text: "¿Cuál es tu objetivo principal a 90 días?",
+    text: "¿Cuál es tu mayor problema ahora mismo?",
     type: "select",
-    options: ["Aumentar ingresos de forma predecible", "Reducir costes operativos", "Salida al mercado de un nuevo producto"],
+    options: [
+      "No llegan suficientes clientes buenos",
+      "El equipo pierde demasiado tiempo en tareas manuales",
+      "No me diferencio bien de la competencia",
+      "Los tres a la vez",
+    ],
   },
   {
     id: "q13",
-    text: "¿Cuál es tu obstáculo principal para escalar?",
+    text: "¿Has trabajado antes con una agencia o consultoría externa?",
     type: "select",
-    options: ["Falta de sistema y procesos", "Equipo o talento ineficiente", "Tecnología obsoleta o desconectada", "Los tres a la vez"],
+    options: [
+      "No, nunca",
+      "Sí, pero no quedé satisfecho/a",
+      "Sí, con buenos resultados",
+    ],
   },
   {
     id: "q14",
-    text: "¿Qué tipo de solución estás buscando?",
+    text: "¿Cuánto inviertes al mes en marketing, tecnología o crecimiento?",
     type: "select",
     options: [
-      "A — Quiero aprender (libros / cursos)",
-      "B — Quiero acompañamiento (consultoría)",
-      "C — Quiero que lo hagáis por mí (Done For Me)",
+      "Menos de 1.000€",
+      "Entre 1.000€ y 3.000€",
+      "Entre 3.000€ y 7.000€",
+      "Más de 7.000€",
     ],
   },
   {
     id: "q15",
-    text: "¿Qué dato crítico sobre tu negocio debería saber nuestro equipo antes de hablar?",
+    text: "¿Qué debería saber nuestro equipo antes de hablar contigo?",
     type: "textarea",
-    placeholder: "Cuéntanos con el mayor detalle posible…",
+    placeholder: "Cuéntanos tu situación, qué has probado ya y qué quieres conseguir…",
   },
 ];
 
@@ -92,31 +102,31 @@ const SERVICE_MAP = {
     num: "02",
     name: "AI & Operations",
     href: "/ecosistema/hyper-automation",
-    insight: "Tus sistemas funcionan como islas de datos. Necesitas un Neural Link que los conecte y libere +20h semanales al equipo C-Level.",
+    insight: "Tu equipo está perdiendo horas cada semana en tareas que un sistema haría en segundos. Te ayudamos a automatizarlas sin necesidad de un equipo técnico propio.",
   },
   seo: {
     num: "03",
     name: "Market Authority",
     href: "/ecosistema/market-authority",
-    insight: "Tu autoridad de mercado es invisible. Estás perdiendo leads de alto valor cada día sin una arquitectura de captación de intención de compra.",
+    insight: "Tu competencia se lleva clientes que deberían ser tuyos porque aparecen antes en Google. Te ponemos donde tiene que estar tu empresa.",
   },
   legal: {
     num: "05",
     name: "Smart Structure",
     href: "/ecosistema/smart-structure",
-    insight: "Estás dejando dinero en la mesa. Tu estructura fiscal no está optimizada para el nivel de facturación que buscas generar.",
+    insight: "Probablemente estás pagando más impuestos de los necesarios. Una buena estructura fiscal y societaria puede cambiar eso este mismo año.",
   },
   strategy: {
     num: "01",
     name: "Growth Machines",
     href: "/ecosistema/estrategia-consultoria",
-    insight: "Sin ICE Score ni roadmap documentado tu crecimiento es accidental. Necesitas un sistema de priorización para escalar sin caos.",
+    insight: "Sin un proceso claro de ventas y priorización, el crecimiento depende de la suerte. Te ayudamos a construir el sistema para que sea predecible.",
   },
   ux: {
     num: "04",
     name: "Product Boutique",
     href: "/ecosistema/product-boutique",
-    insight: "Tu interfaz genera fricción de compra. Un rediseño orientado a conversión puede multiplicar tus contactos sin aumentar el tráfico.",
+    insight: "Si un desconocido no entiende tu propuesta en 10 segundos, ya lo perdiste. Rediseñamos tu web y marca para que trabajen solos.",
   },
 } as const;
 
