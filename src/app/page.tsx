@@ -104,7 +104,7 @@ export default function Home() {
         </section>
 
         {/* ── PÁGINA 2: HOOK + CTA ──────────────────────────────────────────── */}
-        <section className="min-h-screen flex flex-col items-center justify-center px-6 py-24 relative text-center overflow-hidden border-t border-gray-900/60">
+        <section className="min-h-screen flex flex-col items-center justify-center px-6 py-24 relative text-center overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-[#060606] to-black pointer-events-none" />
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
           <div className="relative z-10 flex flex-col items-center gap-8 max-w-4xl">
