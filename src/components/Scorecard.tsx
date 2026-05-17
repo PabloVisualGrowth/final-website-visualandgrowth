@@ -292,11 +292,45 @@ export default function Scorecard() {
 
   if (phase === "results") {
     return (
-      <ResultsView
-        score={score}
-        failedCategories={failedCategories}
-        nombre={gate.nombre}
-      />
+      <div className="max-w-xl mx-auto text-center py-8">
+        {/* Icon */}
+        <div className="w-20 h-20 rounded-full border border-accent/40 bg-accent/5 flex items-center justify-center mx-auto mb-8">
+          <svg className="w-9 h-9 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25H4.5a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5H4.5a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+          </svg>
+        </div>
+
+        {/* Headline */}
+        <p className="text-accent font-mono text-xs uppercase tracking-widest mb-4">Diagnóstico completado</p>
+        <h3 className="text-white text-2xl md:text-3xl font-display font-bold mb-4 leading-tight">
+          Tu informe está en camino,<br />{gate.nombre.split(" ")[0]}.
+        </h3>
+        <p className="text-gray-400 text-sm leading-relaxed mb-2">
+          Hemos enviado tu diagnóstico personalizado a
+        </p>
+        <p className="text-white font-mono text-sm mb-8">{gate.email}</p>
+        <p className="text-gray-600 text-xs mb-10">
+          Revisa también la carpeta de spam si no lo ves en unos minutos.
+        </p>
+
+        {/* CTAs */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href={CALENDAR_URL}
+            target="_blank"
+            onClick={() => pushEvent("cta_click", { label: "results_book_call", score, tier: getTier(score) })}
+            className="flex-1 bg-accent text-black font-bold text-sm py-4 px-6 rounded-sm hover:bg-white transition-colors uppercase tracking-widest text-center"
+          >
+            Agendar reunión →
+          </a>
+          <a
+            href="#ecosistema"
+            className="flex-1 border border-gray-800 hover:border-gray-600 text-white font-bold text-sm py-4 px-6 rounded-sm hover:bg-white/5 transition-colors uppercase tracking-widest text-center"
+          >
+            Ver el ecosistema
+          </a>
+        </div>
+      </div>
     );
   }
 
