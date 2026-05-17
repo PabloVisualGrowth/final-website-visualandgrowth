@@ -110,8 +110,8 @@ export default function Home() {
           <div className="relative z-10 flex flex-col items-center gap-8 max-w-4xl">
             <div className="animate-fade-in-up">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.4rem] font-display font-bold text-white leading-tight tracking-tight">
-                ¿Te sientes frustrado porque tu empresa se ha estancado en facturación a pesar de que inviertes constantemente en{" "}
-                <AuroraText>marketing y operaciones</AuroraText>?
+                ¿Te has planteado alguna vez qué potencial tiene tu empresa{" "}
+                <AuroraText>realmente</AuroraText>?
               </h1>
             </div>
             <p className="text-gray-400 text-lg md:text-xl max-w-2xl leading-relaxed animate-fade-in-up"
@@ -145,74 +145,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── AUTORIDAD DEL SISTEMA (Priestley Gap) ────────────────────────── */}
-        <section className="py-24 px-6 border-t border-gray-900/60 bg-[#060606]">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16">
-              <span className="text-accent font-mono text-xs uppercase tracking-widest mb-4 block">Autoridad del Sistema</span>
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">
-                El sistema funciona porque lo usamos nosotros primero.
-              </h2>
-              <p className="text-gray-500 max-w-xl mx-auto text-base">
-                No vendemos estrategias de pizarra. Cada metodología está operativa en nuestra propia infraestructura antes de desplegarse en la tuya.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-gray-900/60">
-              {/* Bio */}
-              <div className="bg-[#060606] p-8 md:p-10">
-                <span className="text-accent font-mono text-[10px] uppercase tracking-widest mb-4 block">El Arquitecto</span>
-                <p className="text-white font-bold text-lg font-display mb-3 leading-snug">
-                  Ingeniería de crecimiento aplicada a ingresos de $2.4M anuales.
-                </p>
-                <p className="text-gray-500 text-sm leading-relaxed">
-                  Visual &amp; Growth nació de la necesidad de escalar empresas reales sin los atajos del marketing de vanidad. Cada vertical del ecosistema resuelve un cuello de botella específico, medible y auditable.
-                </p>
-              </div>
-
-              {/* Stats */}
-              <div className="bg-[#060606] p-8 md:p-10">
-                <span className="text-accent font-mono text-[10px] uppercase tracking-widest mb-4 block">Datos Internos 2025</span>
-                <div className="space-y-5">
-                  {[
-                    { stat: "−40%", desc: "Reducción de fricción operativa en empresas con sistemas interconectados vs. acciones de marketing aisladas." },
-                    { stat: "< 4 sem", desc: "Time-to-Market medio para implementación de un sistema de captación orgánica operativo." },
-                    { stat: "×3.1", desc: "Multiplicador de ROI medio en empresas que combinan SEO de intención con automatización de operativa." },
-                  ].map((s) => (
-                    <div key={s.stat} className="flex items-start gap-4">
-                      <span className="text-accent font-mono font-bold text-lg shrink-0 w-16">{s.stat}</span>
-                      <p className="text-gray-500 text-xs leading-relaxed">{s.desc}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Proof */}
-              <div className="bg-[#060606] p-8 md:p-10">
-                <span className="text-accent font-mono text-[10px] uppercase tracking-widest mb-4 block">Prueba de Concepto</span>
-                <div className="space-y-4">
-                  {[
-                    { label: "UPTIME", value: "99.9%", desc: "Infraestructura V&G en producción continua", status: "ok" as const },
-                    { label: "RUN_RATE", value: "$2.4M", desc: "Revenue Tracker en tiempo real del sistema", status: "accent" as const },
-                    { label: "AGENTS", value: "ONLINE", desc: "Neural Link activo con sincronización completa", status: "pulse" as const },
-                  ].map((p) => (
-                    <div key={p.label} className="flex items-center gap-4 py-3 border-b border-gray-900 last:border-0">
-                      <div className={cn(
-                        "font-mono font-bold text-sm shrink-0 w-20",
-                        p.status === "ok" ? "text-green-500" : p.status === "pulse" ? "text-accent animate-pulse" : "text-accent"
-                      )}>{p.value}</div>
-                      <div>
-                        <div className="text-[9px] font-mono text-gray-600 uppercase tracking-widest">{p.label}</div>
-                        <div className="text-gray-500 text-xs">{p.desc}</div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* ── VELOCITY STRIP ───────────────────────────────────────────────── */}
         <section className="py-20 bg-bg-secondary/30 backdrop-blur-sm relative z-20 overflow-hidden">
           <VelocityScroll default_velocity={3} numRows={1}>
@@ -225,88 +157,88 @@ export default function Home() {
           <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-bg-primary to-transparent z-10" />
         </section>
 
-        {/* ── ECOSISTEMA — 6 VERTICALES ─────────────────────────────────────── */}
+        {/* ── SERVICIOS — QUÉ HACEMOS ───────────────────────────────────────── */}
         <section id="ecosistema" className="py-24 md:py-36 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-6">
               <div className="max-w-2xl">
-                <span className="text-accent font-mono text-xs mb-4 block uppercase tracking-widest">El Ecosistema</span>
+                <span className="text-accent font-mono text-xs mb-4 block uppercase tracking-widest">Lo que hacemos</span>
                 <div className="pb-2 overflow-hidden">
                   <TextAnimate animation="blurInUp" by="word" as="h2" className="text-4xl md:text-6xl font-display font-bold mb-6">
-                    6 verticales. Un sistema.
+                    6 problemas reales. 6 soluciones concretas.
                   </TextAnimate>
                 </div>
                 <TextAnimate animation="fadeIn" by="line" delay={0.3} className="text-gray-500 text-xl md:text-2xl font-display">
-                  Construido para convertir tu empresa en una máquina de crecimiento predecible.
+                  Puedes empezar por uno o trabajar todo a la vez. Cada área ataca un cuello de botella distinto de tu negocio.
                 </TextAnimate>
               </div>
               <a href="#diagnostico"
                 onClick={() => pushEvent("cta_click", { label: "ecosistema_diagnostico" })}
                 className="hidden md:flex items-center gap-2 text-sm text-white border-b border-accent pb-1 hover:text-accent transition-colors font-mono tracking-wide">
-                INICIAR DIAGNÓSTICO <ArrowRight className="w-4 h-4" />
+                HACER EL DIAGNÓSTICO <ArrowRight className="w-4 h-4" />
               </a>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
               <BoutiqueCard id="eco-1" activeId={activeId} isMobile={isMobile}
                 num="01" Icon={Rocket} href="/ecosistema/estrategia-consultoria"
-                title="Growth Machines" subtitle="Estrategia & Consultoría"
-                entregable="Hoja de Ruta ICE Score con prioridades de inversión auditadas"
-                contraria="El marketing no escala empresas; los unit economics saludables sí."
+                title="Estrategia de Ventas" subtitle="¿Cómo crecer de forma predecible?"
+                entregable="Plan de acción a 90 días con prioridades claras y métricas de seguimiento"
+                contraria="No necesitas más marketing. Necesitas saber qué te da dinero y qué te lo quita."
                 bullets={[
-                  { Icon: TrendingUp, text: "Auditoría de tracción real: elimina métricas de vanidad, analiza rentabilidad por canal" },
-                  { Icon: Clock,      text: "Implementación de sistemas en menos de 4 semanas" },
-                  { Icon: Shield,     text: "Decisiones basadas en datos del Revenue Tracker, no en intuición" },
+                  { Icon: TrendingUp, text: "Analizamos tu negocio y te decimos exactamente dónde está el cuello de botella" },
+                  { Icon: Clock,      text: "Diseñamos un proceso de ventas que funciona aunque no estés tú presente" },
+                  { Icon: Shield,     text: "Tomamos decisiones con datos reales, no con intuición ni modas del momento" },
                 ]} />
               <BoutiqueCard id="eco-2" activeId={activeId} isMobile={isMobile}
                 num="02" Icon={Bot} href="/ecosistema/hyper-automation"
-                title="AI & Operations" subtitle="Hyper-Automation"
-                entregable="Dashboard de automatización personalizado y Mapa de Procesos PDF"
-                contraria="La automatización no es para ahorrar tiempo, sino para eliminar la variabilidad humana."
+                title="Automatización" subtitle="¿Cuántas horas pierde tu equipo en tareas manuales?"
+                entregable="Automatizaciones activas con ahorro de horas medible desde el primer mes"
+                contraria="La tecnología no reemplaza a tu equipo. Le devuelve tiempo para hacer lo que solo ellos pueden hacer."
                 bullets={[
-                  { Icon: TrendingUp, text: "Arquitectura Neural Link: flujos multi-agente y rastreadores de ingresos automáticos" },
-                  { Icon: Clock,      text: "Libera +20h semanales al equipo C-Level con Ops Scaling" },
-                  { Icon: Shield,     text: "Dashboards V4 en tiempo real con sincronización completa de todos tus sistemas" },
+                  { Icon: TrendingUp, text: "Identificamos qué tareas manuales frenan a tu equipo y las automatizamos" },
+                  { Icon: Clock,      text: "Conectamos tus herramientas (CRM, email, facturación) para que no haya silos" },
+                  { Icon: Shield,     text: "Tu equipo recupera horas cada semana para trabajar en lo que realmente importa" },
                 ]} />
               <BoutiqueCard id="eco-3" activeId={activeId} isMobile={isMobile}
                 num="03" Icon={BarChart3} href="/ecosistema/market-authority"
-                title="Market Authority" subtitle="SEO & Posicionamiento"
-                entregable="Market Authority Blueprint con 50 intenciones de compra detectadas"
-                contraria="Las keywords han muerto; el SEO 2026 solo reconoce la ganancia de información única."
+                title="SEO y Presencia en Google" subtitle="¿Te encuentran cuando buscan lo que tú vendes?"
+                entregable="Estrategia de posicionamiento con las palabras clave que buscan tus clientes reales"
+                contraria="No necesitas más visitas. Necesitas que los que llegan ya quieran comprarte."
                 bullets={[
-                  { Icon: TrendingUp, text: "Arquitectura de Silos 2026 citada por AI Overviews y motores generativos" },
-                  { Icon: Clock,      text: "Dominio de intención de compra: términos que generan transacciones, no solo tráfico" },
-                  { Icon: Shield,     text: "Author Score Entity vinculado a entidades autoritativas para Google" },
+                  { Icon: TrendingUp, text: "Apareces en Google cuando alguien busca lo que tú vendes, no solo cuando busca tu nombre" },
+                  { Icon: Clock,      text: "Generamos tráfico cualificado que llega listo para comprar, sin pagar por cada clic" },
+                  { Icon: Shield,     text: "Construimos autoridad de marca que dura, no campañas que se apagan solas" },
                 ]} />
               <BoutiqueCard id="eco-4" activeId={activeId} isMobile={isMobile}
                 num="04" Icon={Layout} href="/ecosistema/product-boutique"
-                title="Product Boutique" subtitle="UI/UX & Branding"
-                entregable="Prototipo de alta fidelidad con tasa de conversión proyectada"
-                contraria="Un diseño bonito que no convierte es un gasto, no un activo de marca."
+                title="Web y Marca" subtitle="¿Tu imagen refleja lo que realmente vales?"
+                entregable="Web y marca rediseñadas para convertir, con prototipo validado antes de desarrollar"
+                contraria="Una web bonita que no convierte es un gasto. Una web que convierte es una máquina de ventas."
                 bullets={[
-                  { Icon: TrendingUp, text: "Conversión Amazon-Style: interfaces de baja carga cognitiva que eliminan la fricción de compra" },
-                  { Icon: Clock,      text: "Time-to-Market: prototipado funcional en menos de 2 semanas para testear hipótesis" },
-                  { Icon: Shield,     text: "Estética boutique A+ que eleva la percepción de valor al nivel premium" },
+                  { Icon: TrendingUp, text: "Tu web explica en 10 segundos qué haces y por qué eres la mejor opción" },
+                  { Icon: Clock,      text: "Diseñamos para convertir visitas en contactos, no solo para que se vea bien" },
+                  { Icon: Shield,     text: "Tu imagen de marca transmite el nivel de calidad que realmente tienes" },
                 ]} />
               <BoutiqueCard id="eco-5" activeId={activeId} isMobile={isMobile}
                 num="05" Icon={Zap} href="/ecosistema/smart-structure"
-                title="Smart Structure" subtitle="Legal & Tax"
-                entregable="Estructura de Smart Holding optimizada para reinversión de beneficios"
-                contraria="La optimización fiscal es la forma más rápida de generar flujo de caja para marketing."
+                title="Estructura Legal y Fiscal" subtitle="¿Estás pagando más impuestos de los que deberías?"
+                entregable="Análisis de tu estructura actual y propuesta de optimización fiscal y societaria"
+                contraria="No es evasión. Es hacer lo que la ley permite y que muchos empresarios no saben aprovechar."
                 bullets={[
-                  { Icon: TrendingUp, text: "Roadmap de eficiencia fiscal: maximiza el beneficio neto por cada euro generado" },
-                  { Icon: Clock,      text: "Protección de activos digitales: blindaje legal de propiedad intelectual" },
-                  { Icon: Shield,     text: "Compliance de crecimiento para escalar sin exposición legal innecesaria" },
+                  { Icon: TrendingUp, text: "Optimizamos tu estructura societaria para que pagues solo lo que toca, nada más" },
+                  { Icon: Clock,      text: "Protegemos tu empresa ante el crecimiento: contratos, propiedad intelectual, compliance" },
+                  { Icon: Shield,     text: "Un buen asesor fiscal paga con creces lo que cuesta — te lo demostramos" },
                 ]} />
               <BoutiqueCard id="eco-6" activeId={activeId} isMobile={isMobile}
                 num="06" Icon={Activity} href="/ecosistema/content-studio"
-                title="Content Studio" subtitle="Media Production"
-                entregable="Pack de 12 contenidos verticales con ganchos de retención para C-Levels"
-                contraria="El contenido viral es ruido; la narrativa de autoridad es la que genera leads calificados."
+                title="Contenido y Comunicación" subtitle="¿Confían en ti antes de llamarte?"
+                entregable="Calendario editorial y primeras piezas listas para publicar en menos de 2 semanas"
+                contraria="El contenido no es para likes. Es para que quien te vea piense: esto es exactamente lo que necesito."
                 bullets={[
-                  { Icon: TrendingUp, text: "Narrativa vertical C-Level con Key Moments indexados directamente en las SERPs" },
-                  { Icon: Clock,      text: "Content Factory operativa en 24h: activos que posicionan tu marca como líder de opinión" },
-                  { Icon: Shield,     text: "Sinergia YouTube-Web para maximizar Time on Page como señal de ranking" },
+                  { Icon: TrendingUp, text: "Te posicionamos como referente en tu sector ante quienes toman la decisión de compra" },
+                  { Icon: Clock,      text: "Generamos leads que ya confían en ti antes de la primera llamada" },
+                  { Icon: Shield,     text: "Creamos piezas que funcionan en web, redes y email a la vez, sin duplicar esfuerzo" },
                 ]} />
             </div>
           </div>
