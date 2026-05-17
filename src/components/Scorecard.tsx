@@ -122,48 +122,75 @@ const SERVICE_MAP = {
 
 // ── Result tier logic ──────────────────────────────────────────────────────────
 
+const CALENDAR_URL = "https://calendar.app.google/mMtccB3pCZfNpHTB6";
+
 type Tier = "low" | "mid" | "high";
 
-function getTier(score: number, budgetAnswer: string): Tier {
-  const isDFM = budgetAnswer.startsWith("C");
-  const isMid = budgetAnswer.startsWith("B");
-
-  if (isDFM && score >= 50) return "high";
-  if ((isDFM && score < 50) || isMid || score >= 75) return "mid";
+function getTier(score: number): Tier {
+  if (score >= 70) return "high";
+  if (score >= 40) return "mid";
   return "low";
 }
 
 // ── Speedometer SVG ───────────────────────────────────────────────────────────
 
 function Speedometer({ score }: { score: number }) {
-  const cx = 100, cy = 100, r = 78;
-  const toPoint = (pct: number) => {
-    const phi = (180 - pct * 1.8) * (Math.PI / 180);
-    return { x: cx + r * Math.cos(phi), y: cy - r * Math.sin(phi) };
+  // Semi-circle: center (160,140), radius 120
+  // Arc from 180° (left) to 0° (right) through top (270° visual)
+  const cx = 160, cy = 140, r = 120;
+
+  const toRad = (deg: number) => (deg * Math.PI) / 180;
+  const pt = (pct: number) => {
+    const angle = 180 - pct * 1.8; // 180° at 0%, 0° at 100%
+    return {
+      x: cx + r * Math.cos(toRad(angle)),
+      y: cy - r * Math.sin(toRad(angle)),
+    };
   };
-  const left  = toPoint(0);
-  const right = toPoint(100);
-  const pt    = toPoint(score);
-  const bgPath    = `M ${left.x} ${left.y} A ${r} ${r} 0 0 0 ${right.x} ${right.y}`;
-  const scorePath = score > 0 && score < 100
-    ? `M ${left.x} ${left.y} A ${r} ${r} 0 0 0 ${pt.x.toFixed(2)} ${pt.y.toFixed(2)}`
-    : score >= 100 ? bgPath : "";
-  const phi  = (180 - score * 1.8) * (Math.PI / 180);
-  const nX   = (cx + 62 * Math.cos(phi)).toFixed(2);
-  const nY   = (cy - 62 * Math.sin(phi)).toFixed(2);
+
+  const left  = pt(0);   // (40, 140)
+  const right = pt(100); // (280, 140)
+  const score_pt = pt(score);
+
+  const bgPath = `M ${left.x} ${left.y} A ${r} ${r} 0 0 0 ${right.x} ${right.y}`;
+  const scorePath =
+    score > 0 && score < 100
+      ? `M ${left.x} ${left.y} A ${r} ${r} 0 ${score > 50 ? 1 : 0} 0 ${score_pt.x.toFixed(2)} ${score_pt.y.toFixed(2)}`
+      : score >= 100 ? bgPath : "";
+
+  // Needle
+  const needleR = 100;
+  const needleAngle = 180 - score * 1.8;
+  const nX = (cx + needleR * Math.cos(toRad(needleAngle))).toFixed(2);
+  const nY = (cy - needleR * Math.sin(toRad(needleAngle))).toFixed(2);
+
   const color = score >= 70 ? "#22c55e" : score >= 40 ? "#FFC600" : "#ef4444";
   const label = score >= 70 ? "SISTEMA ESCALABLE" : score >= 40 ? "OPTIMIZACIÓN NECESARIA" : "FUNDAMENTOS CRÍTICOS";
+
   return (
     <div className="flex flex-col items-center">
-      <svg viewBox="0 0 200 118" className="w-72 max-w-full">
-        <path d={bgPath} fill="none" stroke="#1f2937" strokeWidth="10" strokeLinecap="round" />
-        {scorePath && <path d={scorePath} fill="none" stroke={color} strokeWidth="10" strokeLinecap="round" />}
-        <line x1={cx} y1={cy} x2={nX} y2={nY} stroke="white" strokeWidth="2.5" strokeLinecap="round" />
-        <circle cx={cx} cy={cy} r="5" fill="white" />
-        <text x={cx} y="90" textAnchor="middle" fill={color} fontSize="22" fontWeight="bold" fontFamily="monospace">{score}%</text>
-        <text x={cx} y="108" textAnchor="middle" fill="#6b7280" fontSize="6" fontFamily="monospace" letterSpacing="1.5">{label}</text>
-        <text x="18"  y="113" textAnchor="middle" fill="#374151" fontSize="7">0%</text>
-        <text x="182" y="113" textAnchor="middle" fill="#374151" fontSize="7">100%</text>
+      <svg viewBox="0 0 320 160" className="w-80 max-w-full">
+        {/* Background track */}
+        <path d={bgPath} fill="none" stroke="#1f2937" strokeWidth="14" strokeLinecap="round" />
+        {/* Score track */}
+        {scorePath && (
+          <path d={scorePath} fill="none" stroke={color} strokeWidth="14" strokeLinecap="round" />
+        )}
+        {/* Needle */}
+        <line x1={cx} y1={cy} x2={nX} y2={nY} stroke="white" strokeWidth="3" strokeLinecap="round" />
+        <circle cx={cx} cy={cy} r="7" fill="white" />
+        {/* Score value */}
+        <text x={cx} y={cy - 20} textAnchor="middle" fill={color} fontSize="28" fontWeight="bold" fontFamily="monospace">
+          {score}%
+        </text>
+        {/* Label */}
+        <text x={cx} y={cy - 4} textAnchor="middle" fill="#6b7280" fontSize="8" fontFamily="monospace" letterSpacing="1">
+          {label}
+        </text>
+        {/* Scale labels */}
+        <text x={left.x + 4}  y={cy + 18} textAnchor="middle" fill="#374151" fontSize="9">0%</text>
+        <text x={right.x - 4} y={cy + 18} textAnchor="middle" fill="#374151" fontSize="9">100%</text>
+        <text x={cx}           y="16"      textAnchor="middle" fill="#374151" fontSize="9">50%</text>
       </svg>
     </div>
   );
@@ -231,7 +258,7 @@ export default function Scorecard() {
     } else {
       setIsSubmitting(true);
       const budgetAnswer = qualAnswers["q14"] ?? "";
-      const tier = getTier(score, budgetAnswer);
+      const tier = getTier(score);
       pushEvent("assessment_completed", { score, tier, failed_categories: failedCategories.join(",") });
       try {
         await fetch(WEBHOOK_URL, {
@@ -259,7 +286,6 @@ export default function Scorecard() {
         score={score}
         failedCategories={failedCategories}
         nombre={gate.nombre}
-        budgetAnswer={qualAnswers["q14"] ?? ""}
       />
     );
   }
@@ -341,6 +367,19 @@ export default function Scorecard() {
       <p className="text-[10px] text-gray-700 font-mono text-center mt-4 uppercase tracking-wider">
         Sin spam · Solo tu roadmap de crecimiento personalizado
       </p>
+
+      {/* Skip CTA */}
+      <div className="mt-8 pt-6 border-t border-gray-900 text-center">
+        <p className="text-gray-600 text-xs mb-3">¿Prefieres hablar directamente?</p>
+        <a
+          href={CALENDAR_URL}
+          target="_blank"
+          onClick={() => pushEvent("cta_click", { label: "skip_to_calendar" })}
+          className="inline-flex items-center gap-2 border border-gray-700 hover:border-accent text-gray-400 hover:text-white text-xs font-mono uppercase tracking-widest px-6 py-3 rounded-sm transition-colors"
+        >
+          Saltar y agendar reunión directamente <ArrowRight className="w-3 h-3" />
+        </a>
+      </div>
     </div>
   );
 }
@@ -395,13 +434,12 @@ function QualifyPhase({ question, answer, setAnswer, onNext, step, total, isSubm
 
 // ── Results view ───────────────────────────────────────────────────────────────
 
-function ResultsView({ score, failedCategories, nombre, budgetAnswer }: {
+function ResultsView({ score, failedCategories, nombre }: {
   score: number;
   failedCategories: (keyof typeof SERVICE_MAP)[];
   nombre: string;
-  budgetAnswer: string;
 }) {
-  const tier = getTier(score, budgetAnswer);
+  const tier = getTier(score);
 
   const TIER_CONFIG: Record<Tier, {
     headline: string; sub: string;
@@ -410,29 +448,29 @@ function ResultsView({ score, failedCategories, nombre, budgetAnswer }: {
     badge: string;
   }> = {
     low: {
-      badge: "Contenido Educativo",
-      headline: "Tus fundamentos necesitan trabajo antes de poder escalar.",
-      sub: "Con estas brechas activas, más inversión solo amplifica el problema. Empieza por los cimientos con nuestros recursos gratuitos.",
-      ctaLabel: "Acceder al Blog de Ingeniería",
-      ctaHref: "#ecosistema",
+      badge: "Diagnóstico Prioritario",
+      headline: "Hay brechas críticas que están bloqueando tu crecimiento.",
+      sub: "Con estas fricciones activas, más inversión solo amplifica el problema. Agenda una reunión y diseñamos el plan de ataque.",
+      ctaLabel: "Agendar reunión ahora",
+      ctaHref: CALENDAR_URL,
       ctaSecondaryLabel: "Ver el ecosistema",
       ctaSecondaryHref: "#ecosistema",
     },
     mid: {
-      badge: "Masterclass Exclusiva",
+      badge: "Sesión Estratégica",
       headline: "Tienes base sólida, pero hay fricciones críticas que frenan tu crecimiento.",
-      sub: "Estás a pocas decisiones de multiplicar tu facturación. Únete a nuestra Masterclass grupal de Ingeniería de Crecimiento.",
-      ctaLabel: "Reservar plaza en la Masterclass",
-      ctaHref: "https://calendar.app.google/JefBW2JRGWa85rFf9",
+      sub: "Estás a pocas decisiones de multiplicar tu facturación. Agenda una sesión y lo desbloqueamos juntos.",
+      ctaLabel: "Agendar reunión",
+      ctaHref: CALENDAR_URL,
       ctaSecondaryLabel: "Ver el ecosistema",
       ctaSecondaryHref: "#ecosistema",
     },
     high: {
-      badge: "Sesión 1:1 de Diagnóstico",
+      badge: "Sesión 1:1 de Escalado",
       headline: "Tu infraestructura está lista para un escalado de alto impacto.",
-      sub: "Tienes los sistemas en orden y la mentalidad correcta. Agenda una sesión 1-to-1 para diseñar tu roadmap de crecimiento del 300%.",
-      ctaLabel: "Agendar Reunión 1-to-1",
-      ctaHref: "https://calendar.app.google/JefBW2JRGWa85rFf9",
+      sub: "Tienes los sistemas en orden. Agenda una sesión 1:1 para diseñar tu roadmap de crecimiento del 300%.",
+      ctaLabel: "Agendar reunión 1:1",
+      ctaHref: CALENDAR_URL,
       ctaSecondaryLabel: "Explorar el ecosistema",
       ctaSecondaryHref: "#ecosistema",
     },
