@@ -341,8 +341,8 @@ export default function Home() {
             <div className="text-center mb-14">
               <span className="text-accent font-mono text-xs mb-6 block uppercase tracking-widest">Assessment · Score de Salud de Crecimiento</span>
               <h2 className="text-4xl md:text-6xl font-display font-bold mb-6 text-white leading-tight">
-                ¿Tu infraestructura está lista para un{" "}
-                <AuroraText>300% de crecimiento</AuroraText>?
+                ¿Sabes qué está frenando el{" "}
+                <AuroraText>crecimiento de tu empresa</AuroraText>?
               </h2>
               <p className="text-gray-500 text-lg md:text-xl font-display max-w-2xl mx-auto">
                 15 preguntas. 3 minutos. Roadmap personalizado con 3 insights accionables inmediatos.
