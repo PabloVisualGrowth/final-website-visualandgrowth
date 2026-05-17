@@ -165,7 +165,7 @@ export default function Home() {
                 <span className="text-accent font-mono text-xs mb-4 block uppercase tracking-widest">Lo que hacemos</span>
                 <div className="pb-2 overflow-hidden">
                   <TextAnimate animation="blurInUp" by="word" as="h2" className="text-4xl md:text-6xl font-display font-bold mb-6">
-                    6 problemas reales. 6 soluciones concretas.
+                    Problemas reales. Soluciones concretas.
                   </TextAnimate>
                 </div>
                 <TextAnimate animation="fadeIn" by="line" delay={0.3} className="text-gray-500 text-xl md:text-2xl font-display">
