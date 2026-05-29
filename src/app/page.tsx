@@ -118,8 +118,8 @@ export default function Home() {
           {/* Logo — center stage */}
           <div className="relative z-20 flex flex-col items-center gap-6">
             {/* Halo ring behind logo */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] h-[180px] bg-accent/10 rounded-full blur-[50px] pointer-events-none" />
-            <div className="relative w-full max-w-[85vw] md:max-w-3xl h-16 sm:h-28 md:h-40 animate-fade-in-up">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[280px] bg-accent/10 rounded-full blur-[60px] pointer-events-none" />
+            <div className="relative w-[80vw] sm:w-[65vw] md:w-[55vw] lg:w-[48vw] xl:w-[42vw] h-20 sm:h-32 md:h-44 lg:h-52 animate-fade-in-up">
               <Image src="/logo-full.png" fill alt="Visual & Growth"
                 className="object-contain drop-shadow-[0_0_40px_rgba(255,198,0,0.5)] md:drop-shadow-[0_0_60px_rgba(255,198,0,0.6)]" priority />
             </div>
