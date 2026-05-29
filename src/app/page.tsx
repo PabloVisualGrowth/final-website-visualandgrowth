@@ -241,10 +241,10 @@ export default function Home() {
             </div>
 
             {/* Cards grid — hairline borders */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border border-white/[0.05] divide-y divide-white/[0.05] md:divide-none">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
               {/* Row 1 */}
               <div className="contents md:flex md:flex-col">
-                <div className="md:border md:border-white/[0.05] md:border-r md:border-b">
+                <div>
                   <BoutiqueCard id="eco-1" activeId={activeId} isMobile={isMobile}
                     num="01" Icon={Rocket} href="/ecosistema/estrategia-consultoria"
                     title="Estrategia de Ventas" subtitle="¿Cómo crecer de forma predecible?"
@@ -257,7 +257,7 @@ export default function Home() {
                     ]} />
                 </div>
               </div>
-              <div className="md:border md:border-white/[0.05] md:border-r md:border-b">
+              <div>
                 <BoutiqueCard id="eco-2" activeId={activeId} isMobile={isMobile}
                   num="02" Icon={Bot} href="/ecosistema/hyper-automation"
                   title="Automatización" subtitle="¿Cuántas horas pierde tu equipo en tareas manuales?"
@@ -269,7 +269,7 @@ export default function Home() {
                     { Icon: Shield,     text: "Tu equipo recupera horas cada semana para trabajar en lo que realmente importa" },
                   ]} />
               </div>
-              <div className="md:border md:border-white/[0.05] md:border-b">
+              <div>
                 <BoutiqueCard id="eco-3" activeId={activeId} isMobile={isMobile}
                   num="03" Icon={BarChart3} href="/ecosistema/market-authority"
                   title="SEO y Presencia en Google" subtitle="¿Te encuentran cuando buscan lo que tú vendes?"
@@ -281,7 +281,7 @@ export default function Home() {
                     { Icon: Shield,     text: "Construimos autoridad de marca que dura, no campañas que se apagan solas" },
                   ]} />
               </div>
-              <div className="md:border md:border-white/[0.05] md:border-r">
+              <div>
                 <BoutiqueCard id="eco-4" activeId={activeId} isMobile={isMobile}
                   num="04" Icon={Layout} href="/ecosistema/product-boutique"
                   title="Web y Marca" subtitle="¿Tu imagen refleja lo que realmente vales?"
@@ -293,7 +293,7 @@ export default function Home() {
                     { Icon: Shield,     text: "Tu imagen de marca transmite el nivel de calidad que realmente tienes" },
                   ]} />
               </div>
-              <div className="md:border md:border-white/[0.05] md:border-r">
+              <div>
                 <BoutiqueCard id="eco-5" activeId={activeId} isMobile={isMobile}
                   num="05" Icon={Zap} href="/ecosistema/smart-structure"
                   title="Estructura Legal y Fiscal" subtitle="¿Estás pagando más impuestos de los que deberías?"
@@ -305,7 +305,7 @@ export default function Home() {
                     { Icon: Shield,     text: "Un buen asesor fiscal paga con creces lo que cuesta — te lo demostramos" },
                   ]} />
               </div>
-              <div className="md:border md:border-white/[0.05]">
+              <div>
                 <BoutiqueCard id="eco-6" activeId={activeId} isMobile={isMobile}
                   num="06" Icon={Activity} href="/ecosistema/content-studio"
                   title="Contenido y Comunicación" subtitle="¿Confían en ti antes de llamarte?"
