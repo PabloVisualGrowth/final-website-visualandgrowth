@@ -25,6 +25,19 @@
     [8.0, 47, 24],
     [10.0,46, 20]
   ];
+  // engine fire / plume focus point (VIDEO-FRAME %) during ignition
+  const fireTrack=[
+    [3.30, 60.5, 82.0],
+    [3.50, 59.5, 80.5],
+    [3.90, 57.4, 78.0],
+    [4.20, 56.0, 76.0],
+    [4.60, 54.5, 73.5]
+  ];
+  function fireAt(vt){
+    for(let i=0;i<fireTrack.length-1;i++){ const [t0,x0,y0]=fireTrack[i],[t1,x1,y1]=fireTrack[i+1];
+      if(vt<=t1){ const k=clamp((vt-t0)/(t1-t0)); return {x:x0+(x1-x0)*k, y:y0+(y1-y0)*k}; } }
+    const l=fireTrack[fireTrack.length-1]; return {x:l[1], y:l[2]};
+  }
   const vid=document.getElementById("video");
   function cover(fx,fy){
     const W=innerWidth,H=innerHeight;
@@ -43,6 +56,7 @@
   // phase config: scroll range, text-anchor (% of viewport), label, kind
   const phases=[
     { a:0.135, b:0.300, tx:26, ty:60, label:"Escaneando · Audit",  kind:"scan",  off:-7, offx:0   },
+    { a:0.300, b:0.398, tx:24, ty:50, label:"Ignición · T-00:00",  kind:"fire",  off:0,  offx:0   },
     { a:0.405, b:0.560, tx:72, ty:42, label:"Trayectoria · ICE",   kind:"path",  off:0,  offx:3 },
     { a:0.565, b:0.720, tx:26, ty:62, label:"Sprint · 4 sem",      kind:"pulse", off:0,  offx:0 },
     { a:0.730, b:0.885, tx:72, ty:60, label:"Órbita alcanzada",    kind:"orbit", off:0,  offx:3 }
@@ -77,11 +91,11 @@
     const W=innerWidth, H=innerHeight;
     anno.setAttribute("viewBox",`0 0 ${W} ${H}`);
 
-    const r=rocketAt(vt);
+    const r = act.kind==="fire" ? fireAt(vt) : rocketAt(vt);
     const [rx,ry]=cover(r.x + (act.offx||0), r.y+act.off);
     const tx=act.tx/100*W, ty=act.ty/100*H;
     const ang=Math.atan2(ry-ty,rx-tx);
-    const gap = act.kind==="orbit"?40 : act.kind==="scan"?30 : 24;
+    const gap = act.kind==="orbit"?40 : act.kind==="scan"?30 : act.kind==="fire"?34 : 24;
     const ex=rx-Math.cos(ang)*gap, ey=ry-Math.sin(ang)*gap;
     const Pc=[(tx+ex)/2,(ty+ey)/2-26];
     line.setAttribute("d",`M ${tx} ${ty} Q ${Pc[0]} ${Pc[1]} ${ex} ${ey}`);
@@ -90,8 +104,9 @@
     // target reticle
     let R = 13;
     if(act.kind==="scan"){ R = 16 + (1-clamp((vt-1.6)/1.7))*22; }   // tightens as camera nears
+    if(act.kind==="fire"){ R = 20; }
     ring.setAttribute("cx",rx); ring.setAttribute("cy",ry); ring.setAttribute("r",R);
-    ring.setAttribute("stroke-dasharray", act.kind==="scan" ? "3 4" : "none");
+    ring.setAttribute("stroke-dasharray", (act.kind==="scan"||act.kind==="fire") ? "3 4" : "none");
     cH.setAttribute("x1",rx-R-6); cH.setAttribute("x2",rx+R+6); cH.setAttribute("y1",ry); cH.setAttribute("y2",ry);
     cV.setAttribute("x1",rx); cV.setAttribute("x2",rx); cV.setAttribute("y1",ry-R-6); cV.setAttribute("y2",ry+R+6);
 
