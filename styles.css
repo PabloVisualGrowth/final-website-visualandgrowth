@@ -282,11 +282,23 @@ html{scrollbar-width:thin;scrollbar-color:rgba(255,196,10,.28) transparent}
   .rail{display:none}
   .chrome .nav a:not(.cta-mini){display:none}
   .hud.br{display:none}
-  .beat.lower-left,.beat.lower-right{bottom:16vh;text-align:left;left:24px;right:24px;width:auto}
+  .hud.bl{font-size:10px;bottom:18px}
+  .chrome{padding:18px 20px}
+  .beat.lower-left,.beat.lower-right{bottom:17vh;text-align:left;left:22px;right:22px;width:auto}
   .beat.lower-right .eyebrow{flex-direction:row;justify-content:flex-start}
   .beat.lower-right .metrics{justify-content:flex-start}
   .beat.lower-right p.lede{margin-left:0}
+  .beat .ptitle{font-size:clamp(30px,9vw,46px)}
+  .beat p.lede{font-size:15px;max-width:34ch}
   .frame{inset:10px}
+  /* hero + final impact sizing */
+  #b-hero .line{font-size:clamp(30px,8.5vw,50px)}
+  #b-hero .tag{margin-top:22px}
+  #b-final h2{font-size:clamp(34px,9vw,56px)}
+  #b-final .sub{font-size:16px}
+  /* stacked, full-width tap targets */
+  .cta-row{flex-direction:column;gap:12px;width:100%;margin-top:30px}
+  .cta-row .btn{width:100%;justify-content:center;padding:16px 24px}
 }
 @media (prefers-reduced-motion:reduce){
   #grain,.scroll-cue .bar::after{animation:none}
