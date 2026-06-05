@@ -280,7 +280,9 @@ html{scrollbar-width:thin;scrollbar-color:rgba(255,196,10,.28) transparent}
 
 @media (max-width:720px){
   .rail{display:none}
-  .chrome .nav a:not(.cta-mini){display:none}
+  /* logo already links home → hide redundant "Inicio", keep "Servicios" reachable */
+  .chrome .nav a:not(.cta-mini):first-child{display:none}
+  .chrome .nav a:not(.cta-mini){color:var(--star);padding:7px 10px}
   .hud.br{display:none}
   .hud.bl{font-size:10px;bottom:18px}
   .chrome{padding:18px 20px}
