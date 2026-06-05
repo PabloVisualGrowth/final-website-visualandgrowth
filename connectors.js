@@ -16,9 +16,9 @@
   // Converted to screen px with the same object-fit:cover math as the bg,
   // so the marker lands on the rocket on any viewport aspect ratio.
   const track=[
-    [0.0, 67, 71],
-    [2.6, 67, 71],
-    [3.4, 63, 64],
+    [0.0, 64, 71],
+    [2.6, 64, 71],
+    [3.4, 61, 64],
     [4.2, 50, 44],
     [5.0, 49, 38],
     [6.5, 48, 30],
