@@ -10,7 +10,11 @@
   const reduce = window.matchMedia("(prefers-reduced-motion:reduce)").matches;
 
   // ---- elements ----
-  const video   = document.getElementById("video");
+  // frame sequence (replaces scrubbed video → buttery scroll, full-res)
+  const FRAME_COUNT = 240;
+  const framePath = i => `assets/frames/f${String(i+1).padStart(4,"0")}.webp`;
+  const frames = new Array(FRAME_COUNT);
+  let framesReady = 0, drawnIdx = -1;
   const bgCanvas= document.getElementById("bg-canvas");
   const bgCtx   = bgCanvas.getContext("2d");
   const spaceCanvas = document.getElementById("space-canvas");
@@ -184,15 +188,33 @@
     bgCanvas.width = Math.round(innerWidth*dpr);
     bgCanvas.height= Math.round(innerHeight*dpr);
   }
-  function drawVideo(){
-    const vw=video.videoWidth, vh=video.videoHeight;
-    if(!vw||!vh) return;
+  function frameIndexFor(p){
+    const t = videoTimeFor(p);                 // keep original non-linear pacing
+    return clamp(Math.round(t*24), 0, FRAME_COUNT-1);
+  }
+  function blitFrame(idx){
+    const img=frames[idx];
+    if(!img||!img.complete||!img.naturalWidth) return false;
+    const vw=img.naturalWidth, vh=img.naturalHeight;
     const cw=bgCanvas.width, ch=bgCanvas.height;
     const scale=Math.max(cw/vw, ch/vh)*BG_SCALE;
     const dw=vw*scale, dh=vh*scale;
     const dx=(cw-dw)/2, dy=(ch-dh)/2;
-    try{ bgCtx.drawImage(video,dx,dy,dw,dh); }catch(e){}
+    try{ bgCtx.drawImage(img,dx,dy,dw,dh); }catch(e){ return false; }
+    return true;
   }
+  // draw frame for progress p; if exact frame not loaded yet, use nearest loaded
+  function drawAt(p){
+    const idx=frameIndexFor(p);
+    if(idx===drawnIdx) return;
+    if(blitFrame(idx)){ drawnIdx=idx; return; }
+    for(let d=1; d<FRAME_COUNT; d++){
+      if(idx-d>=0 && blitFrame(idx-d)){ drawnIdx=idx-d; return; }
+      if(idx+d<FRAME_COUNT && blitFrame(idx+d)){ drawnIdx=idx+d; return; }
+    }
+  }
+  // back-compat alias used by resize/reveal: draw the current progress
+  function drawVideo(){ drawnIdx=-1; drawAt(rafAlive?progress:getRawProgress()); }
 
   // ---- DOM painting (driven by scroll AND raf; idempotent) ----
   function paintDOM(p){
@@ -241,15 +263,11 @@
   function onScroll(){
     target=getRawProgress();
     paintDOM(rafAlive?progress:target);
-    if(!rafAlive && video.readyState>=2 && !video.seeking){
-      try{ video.currentTime=Math.min(videoTimeFor(target),(video.duration||10)-0.05); }catch(e){}
-    }
+    if(!rafAlive) drawAt(target);
   }
 
   let rafAlive=false;
   // repaint bg whenever a seek completes (covers throttled-raf case)
-  video.addEventListener("seeked", drawVideo);
-  video.addEventListener("loadeddata", ()=>{ sizeBg(); drawVideo(); });
   function frame(time){
     requestAnimationFrame(frame);
     rafAlive=true;
@@ -258,16 +276,8 @@
     progress=lerp(progress,target,0.10);
     vel=lerp(vel, Math.abs(progress-prev)*60, 0.2);
 
-    // ---- video scrub ----
-    if(video.readyState>=2){
-      vTarget=videoTimeFor(progress);
-      const cur=video.currentTime;
-      const nt=lerp(cur,vTarget,0.18);
-      if(Math.abs(nt-cur)>0.012 && !video.seeking){
-        try{ video.currentTime=Math.min(nt, (video.duration||10)-0.05); }catch(e){}
-      }
-      drawVideo();
-    }
+    // ---- frame draw ----
+    drawAt(progress);
 
     paintDOM(progress);
 
@@ -316,8 +326,7 @@
     setTimeout(()=>{ loader.style.display="none"; }, 950);
     document.body.classList.add("ready");
     paintDOM(getRawProgress());
-    // play+pause to prime video frames, then keep paused for scrubbing
-    video.play().then(()=>{ video.pause(); video.currentTime=0.05; setTimeout(drawVideo,80); }).catch(()=>{ try{video.pause();video.currentTime=0.05;setTimeout(drawVideo,80);}catch(e){} });
+    drawAt(getRawProgress());
   }
 
   function boot(){
@@ -354,22 +363,24 @@
       addEventListener("scroll",()=>{ if(snapping) return; clearTimeout(timer); timer=setTimeout(snap,200); },{passive:true});
     }
 
-    // fake-but-real loader tied to video buffering
-    let fake=0;
-    const tick=setInterval(()=>{
-      const buffered = video.readyState>=3 ? 100 : video.readyState>=1 ? 70 : 0;
-      fake=Math.min(fake+ (buffered>fake?6:2), buffered>=70?92:60);
-      setLoad(fake);
-    },120);
-
-    const done=()=>{ clearInterval(tick); reveal(); };
-    if(video.readyState>=3){ done(); }
-    else {
-      video.addEventListener("canplaythrough",done,{once:true});
-      video.addEventListener("loadeddata",()=>{ if(video.readyState>=2) setLoad(80); });
-      setTimeout(()=>{ if(!loader.classList.contains("hide")) done(); },6000); // safety
+    // preload the frame sequence — real loader bar
+    let revealed=false;
+    const finish=()=>{ if(revealed) return; revealed=true; reveal(); };
+    let loaded=0;
+    for(let i=0;i<FRAME_COUNT;i++){
+      const img=new Image();
+      img.decoding="async";
+      const onone=()=>{
+        loaded++; framesReady=loaded;
+        if(i===0){ sizeBg(); drawnIdx=-1; drawAt(getRawProgress()); }
+        setLoad(Math.round(loaded/FRAME_COUNT*100));
+        if(loaded>=FRAME_COUNT) finish();
+      };
+      img.onload=onone; img.onerror=onone;
+      img.src=framePath(i);
+      frames[i]=img;
     }
-    video.load();
+    setTimeout(finish, 15000); // safety: reveal even if a frame stalls
   }
 
   // smooth anchor for CTA
