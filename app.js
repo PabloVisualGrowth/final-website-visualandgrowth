@@ -8,14 +8,11 @@
   const clamp = (v,a=0,b=1)=>Math.min(b,Math.max(a,v));
   const smooth = t=>t*t*(3-2*t);
   const reduce = window.matchMedia("(prefers-reduced-motion:reduce)").matches;
-  // mobile / low-power detection → lighter assets + fewer particles
-  const isMobile = window.matchMedia("(max-width:720px)").matches || window.matchMedia("(pointer:coarse)").matches;
 
   // ---- elements ----
-  // frame sequence (replaces scrubbed video → buttery scroll)
+  // frame sequence (replaces scrubbed video → buttery scroll, full-res on every device)
   const FRAME_COUNT = 240;
-  const FRAME_DIR = isMobile ? "assets/frames-m" : "assets/frames";   // mobile = 1280x720 (~11MB vs ~31MB)
-  const framePath = i => `${FRAME_DIR}/f${String(i+1).padStart(4,"0")}.webp`;
+  const framePath = i => `assets/frames/f${String(i+1).padStart(4,"0")}.webp`;
   const frames = new Array(FRAME_COUNT);
   let framesReady = 0, drawnIdx = -1;
   const bgCanvas= document.getElementById("bg-canvas");
@@ -104,17 +101,17 @@
     if(typeof THREE==="undefined") return false;
     const canvas=document.getElementById("space-canvas");
     try{
-      renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:!isMobile,preserveDrawingBuffer:true});
+      renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true,preserveDrawingBuffer:true});
     }catch(e){ return false; }
     renderer.setClearColor(0x000000,0);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile?1.5:2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
     scene=new THREE.Scene();
     camera=new THREE.PerspectiveCamera(62,innerWidth/innerHeight,0.1,3000);
     camera.position.set(0,0,0);
     sprite=makeSprite();
 
     // --- distant starfield (rotating dome) ---
-    const N=isMobile?900:2600, g=new THREE.BufferGeometry(), pos=new Float32Array(N*3), col=new Float32Array(N*3);
+    const N=2600, g=new THREE.BufferGeometry(), pos=new Float32Array(N*3), col=new Float32Array(N*3);
     const cWhite=new THREE.Color(0xf6f8ff), cBlue=new THREE.Color(0x9fb8ff), cGold=new THREE.Color(0xffc40a);
     for(let i=0;i<N;i++){
       const r=600+Math.random()*1400;
@@ -135,7 +132,7 @@
     scene.add(stars);
 
     // --- flight particles streaming past camera ---
-    flightCount=isMobile?180:550;
+    flightCount=550;
     flightPos=new Float32Array(flightCount*3);
     const fcol=new Float32Array(flightCount*3);
     for(let i=0;i<flightCount;i++) resetFlight(i,true,fcol);
@@ -187,7 +184,7 @@
   // ---- draw current video frame into bg-canvas (object-fit: cover) ----
   const BG_SCALE = 1.06;            // subtle push
   function sizeBg(){
-    const dpr=Math.min(window.devicePixelRatio||1, isMobile?1.5:2);
+    const dpr=Math.min(window.devicePixelRatio||1,2);
     bgCanvas.width = Math.round(innerWidth*dpr);
     bgCanvas.height= Math.round(innerHeight*dpr);
   }
