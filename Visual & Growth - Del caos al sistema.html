@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Visual &amp; Growth — Del caos al sistema</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=14">
+</head>
+<body>
+
+  <!-- ============ LOADER ============ -->
+  <div id="loader">
+    <img class="lg" src="assets/logo.png" alt="Visual &amp; Growth">
+    <div class="track"><i></i></div>
+    <div class="pct">000 / 100</div>
+  </div>
+
+  <!-- ============ FIXED CINEMATIC STAGE ============ -->
+  <div id="stage">
+    <video id="video" src="assets/rocket-v2.mp4" muted playsinline preload="auto" disablepictureinpicture></video>
+    <canvas id="bg-canvas"></canvas>
+    <canvas id="space-canvas"></canvas>
+    <div id="tint"></div>
+    <div id="vignette"></div>
+    <div id="grain"></div>
+  </div>
+
+  <!-- horizon occluder: lets the logo rise from behind the mountains -->
+  <div id="horizon"></div>
+
+  <!-- corner frame -->
+  <div class="frame"><span class="c tl"></span><span class="c tr"></span><span class="c bl"></span><span class="c br"></span></div>
+
+  <!-- ============ TOP CHROME ============ -->
+  <header class="chrome">
+    <a class="brand" href="#top"><img src="assets/logo.png" alt="Visual &amp; Growth"></a>
+    <nav class="nav">
+      <a href="Ecosistema.html">Ecosistema</a>
+      <a href="#metodo">Método</a>
+      <a class="cta-mini" href="#diagnostico">Diagnóstico</a>
+    </nav>
+  </header>
+
+  <!-- ============ HUD TELEMETRY (synced) ============ -->
+  <div class="hud bl">
+    <div><span class="dot"></span>MISIÓN V&amp;G·26</div>
+    <div>SECUENCIA <span class="v" id="hud-seq">T+00.0s</span></div>
+  </div>
+  <div class="hud br">
+    <div>ALTITUD <span class="v" id="hud-alt">0 KM</span></div>
+    <div>ESTADO <span class="v" id="hud-state">EN TIERRA</span></div>
+  </div>
+
+  <!-- ============ PHASE RAIL (synced) ============ -->
+  <div class="rail">
+    <span class="line"></span><span class="fill"></span>
+    <div class="step"></div>
+    <div class="step"></div>
+    <div class="step"></div>
+    <div class="step"></div>
+  </div>
+
+  <!-- ============ LIVE ANNOTATIONS (track the rocket) ============ -->
+  <svg id="anno" preserveAspectRatio="none" aria-hidden="true"></svg>
+
+  <!-- ============ CHOREOGRAPHED BEATS ============ -->
+  <div id="beats">
+
+    <!-- HERO -->
+    <div class="beat" id="b-hero" data-base="translate(-50%,-50%)">
+      <img class="logo" src="assets/logo.png" alt="Visual &amp; Growth">
+      <div class="tag">Growth Engineering · España 2026</div>
+      <div class="line">Del caos al <b>sistema</b>.</div>
+    </div>
+
+    <!-- 01 -->
+    <div class="beat lower-left" id="b-01">
+      <span class="pnum">01</span>
+      <div class="eyebrow">Fase 01 · Discovery &amp; Audit</div>
+      <h2 class="ptitle">Radiografía total.</h2>
+      <p class="lede">Antes de despegar, auditamos cada fuga de tiempo y dinero. No tocamos una sola línea de ejecución hasta saber exactamente dónde está el cuello de botella.</p>
+      <div class="metrics">
+        <div class="metric"><div class="n">−40<span class="u">%</span></div><div class="k">Fricción operativa</div></div>
+      </div>
+    </div>
+
+    <!-- IGNITION + arrow pointing to the engine -->
+    <div class="beat ignite" id="b-ign" data-base="">
+      <div class="eyebrow">T-00:00 · Ignición</div>
+      <h2>Encendemos <span class="serif">los motores</span>.</h2>
+      <p class="lede">El plan deja de ser una idea. Empieza a moverse.</p>
+    </div>
+    <svg id="ign-arrow" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+      <path class="ap" d="M 6 8 C 45 30, 70 45, 92 92" fill="none" vector-effect="non-scaling-stroke"/>
+      <path class="ah" d="M 92 92 L 74 84 M 92 92 L 86 72" fill="none" vector-effect="non-scaling-stroke"/>
+    </svg>
+
+    <!-- 02 -->
+    <div class="beat lower-right" id="b-02">
+      <span class="pnum">02</span>
+      <div class="eyebrow">Fase 02 · Hypothesis &amp; Roadmap</div>
+      <h2 class="ptitle">La trayectoria.</h2>
+      <p class="lede">Diseñamos el plan con ICE Score —impacto, confianza, esfuerzo—. Priorizamos lo que genera tracción real, no ruido.</p>
+      <div class="metrics">
+        <div class="metric"><div class="n">90<span class="u">d</span></div><div class="k">Roadmap accionable</div></div>
+        <div class="metric"><div class="n">ICE</div><div class="k">Priorización por impacto</div></div>
+      </div>
+    </div>
+
+    <!-- 03 -->
+    <div class="beat lower-left" id="b-03">
+      <span class="pnum">03</span>
+      <div class="eyebrow">Fase 03 · Sprint Execution</div>
+      <h2 class="ptitle">El impulso.</h2>
+      <p class="lede">Ciclos de máximo cuatro semanas. Lanzamos, medimos y ajustamos. Velocidad de startup para validar resultados antes de escalar.</p>
+      <div class="metrics">
+        <div class="metric"><div class="n">&lt;4<span class="u">sem</span></div><div class="k">Time-to-market</div></div>
+        <div class="metric"><div class="n">+20<span class="u">h</span></div><div class="k">Liberadas / semana</div></div>
+      </div>
+    </div>
+
+    <!-- 04 -->
+    <div class="beat lower-right" id="b-04">
+      <span class="pnum">04</span>
+      <div class="eyebrow">Fase 04 · Scale Up</div>
+      <h2 class="ptitle">La órbita.</h2>
+      <p class="lede">Cuando algo funciona, echamos gasolina. Automatizamos lo validado y escalamos inversión y operación sin perder el control.</p>
+      <div class="metrics">
+        <div class="metric"><div class="n">99.9<span class="u">%</span></div><div class="k">Uptime · SLA</div></div>
+        <div class="metric"><div class="n">+12<span class="u">%</span></div><div class="k">Growth sostenido</div></div>
+      </div>
+    </div>
+
+    <!-- FINAL CTA -->
+    <div class="beat" id="b-final" data-base="translate(-50%,-50%)">
+      <div class="kicker">Fin de la secuencia · Inicio del sistema</div>
+      <h2>Pon tu empresa <br><span class="serif">en órbita</span>.</h2>
+      <p class="sub">15 preguntas. 3 minutos. Un roadmap de crecimiento personalizado con 3 insights accionables inmediatos.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="https://visualandgrowth.com/#diagnostico" target="_blank" rel="noopener">
+          Obtén tu diagnóstico gratuito
+          <svg class="star" viewBox="0 0 24 24" fill="none"><path d="M12 2l2 8 8 2-8 2-2 8-2-8-8-2 8-2 2-8z" fill="currentColor"/></svg>
+        </a>
+        <a class="btn ghost" href="#top">Volver al inicio</a>
+      </div>
+      <div class="micro">Sin compromiso · Respuesta en 24h</div>
+    </div>
+
+  </div>
+
+  <!-- scroll cue -->
+  <div class="scroll-cue"><span>Desliza para despegar</span><span class="bar"></span></div>
+
+  <!-- ============ SCROLL DRIVER ============ -->
+  <div id="scroll-driver" style="height:760vh"></div>
+
+  <!-- libs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="connectors.js?v=4"></script>
+  <script src="app.js?v=21"></script>
+
+  <script src="cookies.js"></script>
+</body>
+</html>
