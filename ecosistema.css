@@ -234,11 +234,22 @@ body:not(.ready) #stage{opacity:0}
 @media (max-width:680px){
   .rail{display:none}
   .hud.br{display:none}
-  .sbeat{width:auto;left:22px;right:22px}
+  .hud.bl{font-size:10px;bottom:18px}
+  .sbeat{width:auto;left:22px;right:22px;top:52%}
+  /* all cards read fully left-aligned on phones */
   .sbeat.al-right{text-align:left}
   .sbeat.al-right .q{flex-direction:row;justify-content:flex-start}
   .sbeat.al-right .pts li{flex-direction:row;text-align:left}
-  .sbeat.al-right .entregable,.sbeat.al-right .pts,.sbeat.al-right .quote{margin-left:0}
-  .sbeat .huge-num{font-size:130px}
+  .sbeat.al-right .price,
+  .sbeat.al-right .entregable,
+  .sbeat.al-right .pts,
+  .sbeat.al-right .quote,
+  .sbeat.al-right .more{margin-left:0;margin-right:auto}
+  .sbeat.al-right .huge-num{right:auto;left:-.04em}
+  /* watermark number + headline tuned for small screens */
+  .sbeat .huge-num{font-size:108px;top:-.02em}
+  .sbeat h2{font-size:clamp(27px,8vw,40px)}
+  .sbeat .pts{gap:8px}
+  .sbeat .more{padding-bottom:7px}
 }
 @media (prefers-reduced-motion:reduce){ .cue .bar::after{animation:none} }
