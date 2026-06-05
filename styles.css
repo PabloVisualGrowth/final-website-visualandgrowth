@@ -98,15 +98,58 @@ html{scrollbar-width:thin;scrollbar-color:rgba(255,196,10,.28) transparent}
 .chrome .brand{display:flex;align-items:center;gap:12px;opacity:0;transform:translateY(-8px);transition:opacity .6s,transform .6s}
 .chrome.show .brand{opacity:1;transform:none}
 .chrome .brand img{height:20px;width:auto}
-.chrome .nav{display:flex;align-items:center;gap:26px;font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase}
-.chrome .nav a{color:var(--dim);text-decoration:none;transition:color .3s}
-.chrome .nav a:hover{color:var(--star)}
-.chrome .cta-mini{
-  color:var(--void);background:var(--gold);
-  padding:9px 16px;border-radius:100px;
-  transition:transform .3s, box-shadow .3s;
+.chrome .nav{display:flex;align-items:center;gap:14px;font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+
+/* --- mission-control capsule buttons (rocket/space HUD) --- */
+.chrome .nav a{
+  position:relative;
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 16px;
+  color:var(--dim);text-decoration:none;
+  border:1px solid rgba(255,196,10,.22);
+  border-radius:100px;
+  background:rgba(255,255,255,.03);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  transition:color .3s,border-color .3s,background .3s,box-shadow .3s,transform .3s;
 }
-.chrome .cta-mini:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,196,10,.35);color:var(--void)}
+/* status LED */
+.chrome .nav a:not(.cta-mini)::before{
+  content:"";width:5px;height:5px;border-radius:50%;
+  background:var(--gold);box-shadow:0 0 6px rgba(255,196,10,.7);
+  opacity:.45;transition:opacity .3s,box-shadow .3s;
+}
+.chrome .nav a:not(.cta-mini):hover{
+  color:var(--star);
+  border-color:rgba(255,196,10,.6);
+  background:rgba(255,196,10,.08);
+  box-shadow:0 0 18px rgba(255,196,10,.22), inset 0 0 12px rgba(255,196,10,.07);
+  transform:translateY(-1px);
+}
+.chrome .nav a:not(.cta-mini):hover::before{opacity:1;box-shadow:0 0 10px rgba(255,196,10,1)}
+
+/* launch / ignite CTA */
+.chrome .nav a.cta-mini{
+  color:var(--void);
+  background:linear-gradient(180deg,#ffd23a,#ffb400);
+  border:1px solid rgba(255,196,10,.55);
+  padding:8px 18px;
+  font-weight:600;
+  box-shadow:0 0 16px rgba(255,196,10,.30), inset 0 1px 0 rgba(255,255,255,.45);
+  transition:transform .3s,box-shadow .3s,filter .3s;
+}
+.chrome .nav a.cta-mini::before{
+  content:"▲";width:auto;height:auto;
+  font-size:8px;line-height:1;color:var(--void);background:none;box-shadow:none;opacity:1;
+  transform:translateY(-.5px);
+  filter:drop-shadow(0 0 2px rgba(0,0,0,.25));
+}
+.chrome .nav a.cta-mini:hover{
+  transform:translateY(-2px);
+  color:var(--void);
+  background:linear-gradient(180deg,#ffd23a,#ffb400);
+  box-shadow:0 0 28px rgba(255,196,10,.6), 0 8px 30px rgba(255,196,10,.35), inset 0 1px 0 rgba(255,255,255,.55);
+  filter:brightness(1.05);
+}
 
 /* ---------- HUD corners (synced telemetry) ---------- */
 .hud{
