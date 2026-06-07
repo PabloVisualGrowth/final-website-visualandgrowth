@@ -80,14 +80,14 @@ body{
   color:var(--gold);display:inline-flex;align-items:center;gap:10px;margin-bottom:14px}
 .eyebrow::before,.eyebrow::after{content:"";width:24px;height:1px;background:var(--gold);opacity:.6}
 h1{font-family:var(--grotesk);font-weight:500;letter-spacing:-.02em;line-height:1.0;
-  font-size:clamp(30px,5vw,52px)}
+  font-size:clamp(28px,4.6vw,46px)}
 h1 .serif{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--gold)}
-.sub{color:var(--dim);font-weight:300;font-size:clamp(13px,1.3vw,16px);line-height:1.5;margin:12px auto 0;max-width:42ch}
+.sub{color:var(--dim);font-weight:300;font-size:clamp(13px,1.3vw,16px);line-height:1.45;margin:10px auto 0;max-width:42ch}
 
 /* form */
-form{margin-top:clamp(18px,3vh,30px);text-align:left}
+form{margin-top:clamp(12px,2vh,22px);text-align:left}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.field{margin-top:12px}
+.field{margin-top:10px}
 .field.full{grid-column:1 / -1}
 label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
   color:var(--faint);margin-bottom:7px}
@@ -100,14 +100,28 @@ input:focus{border-color:rgba(255,196,10,.55);background:rgba(255,196,10,.05);
   box-shadow:0 0 0 3px rgba(255,196,10,.10)}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 
-.submit{width:100%;margin-top:18px;background:var(--gold);color:#0a0a0a;border:none;border-radius:100px;
+.submit{width:100%;margin-top:16px;background:var(--gold);color:#0a0a0a;border:none;border-radius:100px;
   font-family:var(--grotesk);font-weight:600;font-size:15px;letter-spacing:.01em;padding:15px 24px;cursor:pointer;
   display:inline-flex;align-items:center;justify-content:center;gap:10px;
   transition:transform .25s,box-shadow .25s,filter .25s}
 .submit:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(255,196,10,.35);filter:brightness(1.04)}
 .submit:disabled{opacity:.7;cursor:default;transform:none;box-shadow:none}
-.micro{margin-top:12px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--faint);text-align:center}
+
+/* consent (RGPD opt-in, required) */
+.consent{display:flex;gap:10px;align-items:flex-start;margin-top:16px;text-align:left;cursor:pointer;
+  text-transform:none;letter-spacing:normal}
+.consent input{appearance:none;-webkit-appearance:none;flex:none;width:18px;height:18px;margin-top:1px;
+  border:1px solid var(--line);border-radius:5px;background:rgba(255,255,255,.035);cursor:pointer;position:relative;
+  transition:border-color .2s,background .2s}
+.consent input:hover{border-color:rgba(255,196,10,.55)}
+.consent input:checked{background:var(--gold);border-color:var(--gold)}
+.consent input:checked::after{content:"✓";position:absolute;inset:0;display:grid;place-items:center;color:#0a0a0a;font-size:12px;font-weight:700}
+.consent input:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(255,196,10,.18)}
+.consent span{font-size:12px;line-height:1.45;color:var(--dim);text-transform:none;letter-spacing:normal;font-family:var(--grotesk)}
+.consent a{color:var(--gold);text-decoration:underline;text-underline-offset:2px}
+.legal{margin-top:11px;font-size:9.5px;line-height:1.5;color:var(--faint);text-align:left}
+.legal b{color:var(--dim);font-weight:500}
+.legal a{color:rgba(255,196,10,.7);text-decoration:underline}
 
 /* success state */
 .done{display:none;text-align:center}
@@ -181,8 +195,15 @@ input:focus{border-color:rgba(255,196,10,.55);background:rgba(255,196,10,.05);
         </div>
         <!-- honeypot anti-spam -->
         <input class="hp" type="text" name="company_hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <label class="consent">
+          <input type="checkbox" id="consent" name="consent" value="accepted" required>
+          <span>He leído y acepto la <a href="/privacidad" target="_blank" rel="noopener">Política de Privacidad</a> y <b>consiento</b> el tratamiento de mis datos para recibir comunicaciones comerciales de Visual&nbsp;&amp;&nbsp;Growth.</span>
+        </label>
+
         <button class="submit" type="submit">Unirme a la newsletter</button>
-        <p class="micro">Sin spam · Baja cuando quieras</p>
+
+        <p class="legal"><b>Responsable:</b> Visual &amp; Growth · <b>Finalidad:</b> gestión de tu suscripción y envío de comunicaciones · <b>Legitimación:</b> tu consentimiento · <b>Derechos:</b> acceso, rectificación, supresión y oposición escribiendo a <a href="mailto:hola@visualandgrowth.com">hola@visualandgrowth.com</a>. Más información en la <a href="/privacidad" target="_blank" rel="noopener">Política de Privacidad</a>.</p>
       </form>
     </div>
 
@@ -211,8 +232,12 @@ input:focus{border-color:rgba(255,196,10,.55);background:rgba(255,196,10,.05);
 
     btn.disabled=true; btn.textContent="Enviando…";
 
+    const CONSENT_TEXT="He leído y acepto la Política de Privacidad y consiento el tratamiento de mis datos para recibir comunicaciones comerciales de Visual & Growth.";
     const params=new URLSearchParams();
     ["nombre","apellidos","email","cargo","web"].forEach(k=>params.append(k, (form[k].value||"").trim()));
+    params.append("consent", form.consent.checked ? "accepted" : "");
+    params.append("consent_text", CONSENT_TEXT);
+    params.append("consent_timestamp", new Date().toISOString());
     params.append("source","visualandgrowth.com/newsletter");
     params.append("submitted_at", new Date().toISOString());
 
