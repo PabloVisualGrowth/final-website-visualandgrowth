@@ -166,7 +166,6 @@ input:focus{border-color:rgba(255,196,10,.55);background:rgba(255,196,10,.05);
     <div id="panel">
       <div class="eyebrow">Visual &amp; Growth · Newsletter</div>
       <h1>Súbete a la <span class="serif">órbita</span>.</h1>
-      <p class="sub">Sistema, automatización y growth para PYMES. Sin ruido, directo a tu bandeja.</p>
 
       <form id="nl" novalidate>
         <div class="row">
@@ -198,12 +197,10 @@ input:focus{border-color:rgba(255,196,10,.55);background:rgba(255,196,10,.05);
 
         <label class="consent">
           <input type="checkbox" id="consent" name="consent" value="accepted" required>
-          <span>He leído y acepto la <a href="/privacidad" target="_blank" rel="noopener">Política de Privacidad</a> y <b>consiento</b> el tratamiento de mis datos para recibir comunicaciones comerciales de Visual&nbsp;&amp;&nbsp;Growth.</span>
+          <span>Acepto el tratamiento de mis datos con la finalidad de recibir comunicaciones.</span>
         </label>
 
         <button class="submit" type="submit">Unirme a la newsletter</button>
-
-        <p class="legal"><b>Responsable:</b> Visual &amp; Growth · <b>Finalidad:</b> gestión de tu suscripción y envío de comunicaciones · <b>Legitimación:</b> tu consentimiento · <b>Derechos:</b> acceso, rectificación, supresión y oposición escribiendo a <a href="mailto:hola@visualandgrowth.com">hola@visualandgrowth.com</a>. Más información en la <a href="/privacidad" target="_blank" rel="noopener">Política de Privacidad</a>.</p>
       </form>
     </div>
 
@@ -232,7 +229,7 @@ input:focus{border-color:rgba(255,196,10,.55);background:rgba(255,196,10,.05);
 
     btn.disabled=true; btn.textContent="Enviando…";
 
-    const CONSENT_TEXT="He leído y acepto la Política de Privacidad y consiento el tratamiento de mis datos para recibir comunicaciones comerciales de Visual & Growth.";
+    const CONSENT_TEXT="Acepto el tratamiento de mis datos con la finalidad de recibir comunicaciones.";
     const params=new URLSearchParams();
     ["nombre","apellidos","email","cargo","web"].forEach(k=>params.append(k, (form[k].value||"").trim()));
     params.append("consent", form.consent.checked ? "accepted" : "");
