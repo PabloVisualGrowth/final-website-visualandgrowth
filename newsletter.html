@@ -135,6 +135,32 @@ input:focus{border-color:rgba(255,196,10,.55);background:rgba(255,196,10,.05);
   text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(255,196,10,.4);padding-bottom:5px}
 @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
+/* intro CTA card (shown on load) */
+.intro-ov{position:fixed;inset:0;z-index:20;display:grid;place-items:center;padding:20px;
+  background:rgba(3,5,11,.74);-webkit-backdrop-filter:blur(9px);backdrop-filter:blur(9px);
+  animation:fade .45s ease both}
+.intro-ov.hide{display:none}
+.intro{position:relative;width:min(640px,100%);max-height:92svh;overflow:auto;
+  background:linear-gradient(180deg, rgba(17,21,34,.97), rgba(8,11,20,.97));
+  border:1px solid rgba(255,196,10,.18);border-radius:16px;padding:clamp(24px,4vw,40px);
+  box-shadow:0 30px 90px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.05)}
+.intro .x{position:absolute;top:12px;right:14px;width:30px;height:30px;border:none;background:transparent;
+  color:var(--faint);font-size:20px;line-height:1;cursor:pointer;border-radius:8px;transition:color .2s,background .2s}
+.intro .x:hover{color:var(--star);background:rgba(255,255,255,.06)}
+.intro .eyebrow{margin-bottom:14px}
+.intro h2{font-family:var(--grotesk);font-weight:500;letter-spacing:-.02em;line-height:1.12;
+  font-size:clamp(22px,3vw,31px)}
+.intro h2 .serif{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--gold)}
+.intro p{color:var(--dim);font-weight:300;font-size:clamp(13px,1.15vw,14.5px);line-height:1.6;margin-top:13px}
+.intro p b{color:var(--star);font-weight:500}
+.intro .sign{margin-top:18px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.intro .sign span{color:var(--faint);letter-spacing:.1em}
+.intro .go{display:inline-flex;align-items:center;justify-content:center;gap:10px;width:100%;margin-top:22px;
+  background:var(--gold);color:#0a0a0a;border:none;border-radius:100px;cursor:pointer;
+  font-family:var(--grotesk);font-weight:600;font-size:15px;padding:15px 24px;
+  transition:transform .25s,box-shadow .25s,filter .25s}
+.intro .go:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(255,196,10,.35);filter:brightness(1.04)}
+
 @media (max-width:560px){
   .row{grid-template-columns:1fr}
   .wrap{padding:70px 18px 24px}
@@ -159,6 +185,21 @@ input:focus{border-color:rgba(255,196,10,.55);background:rgba(255,196,10,.05);
   <a class="brand" href="/" aria-label="Inicio"><img src="assets/logo.png" alt="Visual &amp; Growth"></a>
   <a class="home" href="/">Volver al inicio</a>
 </header>
+
+<!-- intro CTA card (appears on load) -->
+<div class="intro-ov" id="intro">
+  <div class="intro" role="dialog" aria-modal="true" aria-label="Por qué suscribirte">
+    <button class="x" id="introClose" aria-label="Cerrar">×</button>
+    <div class="eyebrow">Visual &amp; Growth · Newsletter</div>
+    <h2>La mayoría de los consejos de crecimiento son ruido. Aquí tienes la <span class="serif">señal</span>.</h2>
+    <p><b>¿Por qué deberías leerme?</b> He pasado años trabajando para gigantes como Google y Monday.com. Allí aprendí que el éxito no depende de tener mil opciones, sino de tomar la opción correcta. Mi misión ahora es sacar ese conocimiento y aterrizarlo directamente en tu bandeja de entrada.</p>
+    <p><b>Lo que vas a recibir:</b> un consejo diario, 100% gratuito y estrictamente accionable para escalar tu negocio. Sin relleno corporativo, sin clichés y sin "soluciones integrales" que no significan nada.</p>
+    <p><b>Mis reglas del juego:</b> no escribo para curiosos ni para quienes buscan fórmulas mágicas. Mi contenido es para dueños de negocio que están cansados de perder el tiempo y están decididos a dominar su mercado con seguridad.</p>
+    <p>Si estás listo para dejar de "marear la perdiz" y empezar a escalar con estrategia, suscríbete abajo.</p>
+    <div class="sign">Pablo Pérez <span>— Founder &amp; CEO</span></div>
+    <button class="go" id="introGo">Suscríbete &nbsp;→</button>
+  </div>
+</div>
 
 <main class="wrap">
   <div class="card">
@@ -216,6 +257,13 @@ input:focus{border-color:rgba(255,196,10,.55);background:rgba(255,196,10,.05);
 
 <script>
 (function(){
+  // intro CTA card
+  const intro=document.getElementById("intro");
+  function closeIntro(){ intro.classList.add("hide"); const n=document.getElementById("nombre"); if(n) n.focus({preventScroll:true}); }
+  document.getElementById("introGo").addEventListener("click", closeIntro);
+  document.getElementById("introClose").addEventListener("click", closeIntro);
+  document.addEventListener("keydown", e=>{ if(e.key==="Escape" && !intro.classList.contains("hide")) closeIntro(); });
+
   const WEBHOOK="https://n8n-n8n.d4s5yj.easypanel.host/webhook/a9591090-a341-472e-b6fc-381c4c2be9b4";
   const form=document.getElementById("nl");
   const panel=document.getElementById("panel");
