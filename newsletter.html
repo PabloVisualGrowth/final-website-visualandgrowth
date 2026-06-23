@@ -140,10 +140,15 @@ input:focus{border-color:rgba(255,196,10,.55);background:rgba(255,196,10,.05);
   background:rgba(3,5,11,.74);-webkit-backdrop-filter:blur(9px);backdrop-filter:blur(9px);
   animation:fade .45s ease both}
 .intro-ov.hide{display:none}
-.intro{position:relative;width:min(640px,100%);max-height:92svh;overflow:auto;
+.intro{position:relative;width:min(620px,100%);max-height:92svh;overflow:auto;
   background:linear-gradient(180deg, rgba(17,21,34,.97), rgba(8,11,20,.97));
-  border:1px solid rgba(255,196,10,.18);border-radius:16px;padding:clamp(24px,4vw,40px);
-  box-shadow:0 30px 90px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.05)}
+  border:1px solid rgba(255,196,10,.18);border-radius:16px;padding:clamp(22px,3.4vw,34px);
+  box-shadow:0 30px 90px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.05);
+  scrollbar-width:thin;scrollbar-color:rgba(255,196,10,.35) transparent}
+.intro::-webkit-scrollbar{width:6px}
+.intro::-webkit-scrollbar-track{background:transparent}
+.intro::-webkit-scrollbar-thumb{background:rgba(255,196,10,.32);border-radius:10px}
+.intro::-webkit-scrollbar-thumb:hover{background:rgba(255,196,10,.55)}
 .intro .x{position:absolute;top:12px;right:14px;width:30px;height:30px;border:none;background:transparent;
   color:var(--faint);font-size:20px;line-height:1;cursor:pointer;border-radius:8px;transition:color .2s,background .2s}
 .intro .x:hover{color:var(--star);background:rgba(255,255,255,.06)}
@@ -151,7 +156,7 @@ input:focus{border-color:rgba(255,196,10,.55);background:rgba(255,196,10,.05);
 .intro h2{font-family:var(--grotesk);font-weight:500;letter-spacing:-.02em;line-height:1.12;
   font-size:clamp(22px,3vw,31px)}
 .intro h2 .serif{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--gold)}
-.intro p{color:var(--dim);font-weight:300;font-size:clamp(13px,1.15vw,14.5px);line-height:1.6;margin-top:13px}
+.intro p{color:var(--dim);font-weight:300;font-size:clamp(12.5px,1.1vw,14px);line-height:1.55;margin-top:11px}
 .intro p b{color:var(--star);font-weight:500}
 .intro .sign{margin-top:18px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
 .intro .sign span{color:var(--faint);letter-spacing:.1em}
@@ -302,5 +307,6 @@ input:focus{border-color:rgba(255,196,10,.55);background:rgba(255,196,10,.05);
   });
 })();
 </script>
+<script src="cookies.js" defer></script>
 </body>
 </html>
