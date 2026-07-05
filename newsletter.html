@@ -173,10 +173,14 @@ input:focus{border-color:rgba(255,196,10,.55);background:rgba(255,196,10,.05);
 .gift-box b{color:var(--star);font-weight:500}
 .gift-icon{color:var(--gold);font-size:15px;flex:none;margin-top:1px}
 /* gift note below form title */
-.gift-note{display:flex;align-items:center;gap:8px;justify-content:center;
-  margin-top:8px;font-size:12px;color:rgba(255,196,10,.75);font-family:var(--mono);
-  letter-spacing:.06em}
-.gift-note::before{content:"✦";font-size:11px}
+.gift-note{display:inline-flex;align-items:center;gap:9px;
+  margin-top:12px;padding:8px 18px 8px 14px;
+  background:linear-gradient(135deg,rgba(255,196,10,.07),rgba(255,196,10,.03));
+  border:1px solid rgba(255,196,10,.22);border-radius:100px;
+  font-size:12px;font-weight:400;color:rgba(244,246,252,.6);
+  font-family:var(--grotesk);letter-spacing:.01em;white-space:nowrap}
+.gift-note .gn-icon{color:var(--gold);font-size:13px;line-height:1}
+.gift-note strong{color:rgba(255,196,10,.85);font-weight:500}
 
 @media (max-width:560px){
   .row{grid-template-columns:1fr}
@@ -228,7 +232,9 @@ input:focus{border-color:rgba(255,196,10,.55);background:rgba(255,196,10,.05);
     <div id="panel">
       <div class="eyebrow">Visual &amp; Growth · Newsletter</div>
       <h1>Súbete a la <span class="serif">órbita</span>.</h1>
-      <p class="gift-note">Recibirás un regalo en tu primer email para empezar a escalar mañana</p>
+      <div style="text-align:center">
+        <span class="gift-note"><span class="gn-icon">✦</span> <strong>Regalo incluido</strong> — lo recibirás en tu primer email</span>
+      </div>
 
       <form id="nl" novalidate>
         <div class="row">
