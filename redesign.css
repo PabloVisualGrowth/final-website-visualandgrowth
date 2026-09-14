@@ -53,13 +53,12 @@ h1,h2,h3,h4{
   margin:0;
 }
 .eyebrow{
-  display:inline-flex;align-items:center;gap:8px;
-  font-size:12px;font-weight:600;letter-spacing:.02em;
-  padding:8px 16px;border-radius:var(--radius-pill);
-  background:var(--gold-soft);color:#8a6a00;
-  border:1px solid var(--gold-line);
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:#8a6a00;
 }
-section.on-dark .eyebrow{background:rgba(255,198,0,.10);color:var(--gold);border-color:rgba(255,198,0,.28)}
+.eyebrow::before{content:"";width:18px;height:1px;background:currentColor;opacity:.7}
+.services .eyebrow,.faq .eyebrow{color:var(--gold)}
 
 /* ---------- dot pattern (dark sections) ---------- */
 .dots{
@@ -108,7 +107,7 @@ section.on-dark .eyebrow{background:rgba(255,198,0,.10);color:var(--gold);border
 .nav-logo .logo-icon{height:100%;width:auto;flex:none}
 .nav-logo .logo-long{height:100%;width:0;opacity:0;flex:none;object-fit:contain;object-position:left center;
   margin-left:0;transition:width .4s var(--ease),opacity .3s var(--ease),margin-left .4s var(--ease)}
-.nav-logo:hover .logo-long{width:150px;opacity:1;margin-left:14px}
+.nav-logo:hover .logo-long{width:270px;opacity:1;margin-left:12px}
 .nav-links{display:flex;align-items:center;gap:6px}
 .nav-links a{
   padding:10px 16px;border-radius:var(--radius-pill);
@@ -141,14 +140,27 @@ section.on-dark .eyebrow{background:rgba(255,198,0,.10);color:var(--gold);border
 .hero h1 em{font-style:normal;color:var(--gold);-webkit-text-stroke:0}
 .hero p.lead{font-size:clamp(16px,1.4vw,19px);color:var(--dim);max-width:52ch;margin-top:22px;line-height:1.6}
 .hero-ctas{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
-.hero-visual{position:relative;border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:4/5;background:linear-gradient(160deg,#1a1a1a,#050505)}
+.hero-visual{position:relative;overflow:hidden;aspect-ratio:4/5;background:linear-gradient(160deg,#1a1a1a,#050505)}
+
+/* bleeds the visual off the right edge of the viewport, no border, faded edges */
+.hero-bleed{
+  margin-right:calc(-1 * (max(0px, (100vw - 1280px) / 2) + clamp(20px,4vw,56px)));
+  border-radius:var(--radius-lg) 0 0 var(--radius-lg);
+  -webkit-mask-image:linear-gradient(to right, black 0%, black 78%, transparent 100%),
+                      linear-gradient(to bottom, transparent 0%, black 6%, black 94%, transparent 100%);
+  -webkit-mask-composite:source-in;
+  mask-image:linear-gradient(to right, black 0%, black 78%, transparent 100%),
+             linear-gradient(to bottom, transparent 0%, black 6%, black 94%, transparent 100%);
+  mask-composite:intersect;
+}
+
 .ph{ /* placeholder */
   position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
   color:rgba(255,255,255,.35);font-family:var(--font-body);text-align:center;padding:24px;
   background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.035) 0 12px,transparent 12px 24px);
-  border:1px dashed rgba(255,255,255,.18);
+  filter:blur(.4px);
 }
-.ph.light{color:rgba(20,20,20,.35);background-image:repeating-linear-gradient(45deg,rgba(20,20,20,.04) 0 12px,transparent 12px 24px);border-color:rgba(20,20,20,.15)}
+.ph.light{color:rgba(20,20,20,.35);background-image:repeating-linear-gradient(45deg,rgba(20,20,20,.04) 0 12px,transparent 12px 24px)}
 .ph svg{width:34px;height:34px;opacity:.6}
 .ph span.tag{font-size:10px;letter-spacing:.14em;text-transform:uppercase;background:rgba(255,198,0,.16);color:var(--gold);padding:5px 12px;border-radius:100px;margin-top:6px}
 .ph.light span.tag{color:#8a6a00;background:rgba(255,198,0,.18)}
