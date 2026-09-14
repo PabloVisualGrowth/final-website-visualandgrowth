@@ -1,9 +1,14 @@
 (function () {
   "use strict";
 
+  // tells the <head> failsafe that reveal animations are wired up
+  window.vgReady = true;
+  var root = document.documentElement;
+
   var CONTACT_EMAIL = "pabloperez@visualandgrowth.com";
   // Set to an n8n (or similar) webhook URL to receive the contact form as JSON.
-  // While empty, the form opens the visitor's email client with the message prefilled.
+  // While empty, the form opens the visitor's email client with the message prefilled
+  // and says so, instead of claiming the message was received.
   var CONTACT_ENDPOINT = "";
 
   var nav = document.querySelector(".nav");
@@ -61,14 +66,8 @@
   });
 
   // reveal on scroll
-  var reveals = document.querySelectorAll("[data-reveal]");
-  document.querySelectorAll("[data-stagger]").forEach(function (group) {
-    Array.prototype.forEach.call(group.children, function (child, i) {
-      child.setAttribute("data-reveal", "");
-      child.style.setProperty("--d", (i * 0.08) + "s");
-    });
-  });
-  reveals = document.querySelectorAll("[data-reveal]");
+  // stagger delays come from CSS (nth-child), so nothing is written to the DOM before observing
+  var reveals = document.querySelectorAll("[data-reveal], [data-stagger] > *");
   if ("IntersectionObserver" in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
@@ -97,8 +96,9 @@
   try { stored = localStorage.getItem(KEY); } catch (e) {}
   if (banner) {
     var show = function () { banner.classList.add("show"); };
-    var hide = function () { banner.classList.remove("show"); };
-    if (!stored) setTimeout(show, 600);
+    var hide = function () { banner.classList.remove("show"); root.classList.remove("cc"); };
+    // the <head> script adds .cc before first paint so the banner is not a late LCP candidate
+    if (!stored && !root.classList.contains("cc")) show();
     banner.querySelector("[data-cookie-ok]").addEventListener("click", function () {
       try { localStorage.setItem(KEY, "granted"); } catch (e) {}
       grant(); hide();
@@ -113,6 +113,27 @@
   // contact form
   var form = document.querySelector("[data-contact]");
   if (form) {
+    var card = form.closest(".form-card");
+    var msg = form.querySelector("[data-form-msg]");
+    var btn = form.querySelector("button[type=submit]");
+    var mailLink = '<a href="mailto:' + CONTACT_EMAIL + '">' + CONTACT_EMAIL + "</a>";
+    var say = function (html, isError) {
+      msg.innerHTML = html;
+      msg.classList.toggle("is-error", !!isError);
+      msg.hidden = false;
+    };
+
+    // service CTAs link to /contacto?servicio=<slug>
+    try {
+      var wanted = new URLSearchParams(window.location.search).get("servicio");
+      if (wanted) {
+        var opts = form.querySelectorAll("#f-servicio option[data-slug]");
+        for (var i = 0; i < opts.length; i++) {
+          if (opts[i].getAttribute("data-slug") === wanted) { opts[i].selected = true; break; }
+        }
+      }
+    } catch (err) {}
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       if (form.querySelector("[name=website]").value) return;
@@ -121,16 +142,22 @@
       new FormData(form).forEach(function (v, k) { if (k !== "website") data[k] = String(v).trim(); });
       data.source = "visualandgrowth.com/contacto";
       data.sent_at = new Date().toISOString();
-      var card = form.closest(".form-card");
-      var done = function () {
-        card.classList.add("sent");
-        try { (window.dataLayer = window.dataLayer || []).push({ event: "contact_submit" }); } catch (err) {}
+      var track = function (name) {
+        try { (window.dataLayer = window.dataLayer || []).push({ event: name, servicio: data.servicio || "" }); } catch (err) {}
       };
       if (CONTACT_ENDPOINT) {
-        var btn = form.querySelector("button[type=submit]");
         btn.disabled = true;
+        msg.hidden = true;
         fetch(CONTACT_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) })
-          .then(done).catch(done);
+          .then(function (res) {
+            if (!res.ok) throw new Error("HTTP " + res.status);
+            card.classList.add("sent");
+            track("contact_submit");
+          })
+          .catch(function () {
+            btn.disabled = false;
+            say("No hemos podido enviar tu mensaje. Inténtalo de nuevo o escríbenos a " + mailLink + ".", true);
+          });
       } else {
         var body = [
           "Nombre: " + (data.nombre || ""),
@@ -143,7 +170,8 @@
           data.mensaje || ""
         ].join("\n");
         window.location.href = "mailto:" + CONTACT_EMAIL + "?subject=" + encodeURIComponent("Contacto web: " + (data.empresa || data.nombre || "")) + "&body=" + encodeURIComponent(body);
-        done();
+        track("contact_mailto");
+        say("Hemos abierto tu programa de correo con el mensaje preparado: solo tienes que enviarlo. Si no se ha abierto, escríbenos a " + mailLink + ".");
       }
     });
   }

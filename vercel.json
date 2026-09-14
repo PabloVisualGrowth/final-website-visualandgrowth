@@ -2,5 +2,52 @@
   "cleanUrls": true,
   "framework": null,
   "buildCommand": "echo \"static site - no build\"",
-  "outputDirectory": "."
+  "outputDirectory": ".",
+  "redirects": [
+    {
+      "source": "/servicios/clinicas-salud",
+      "destination": "/servicios/",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/construccion",
+      "destination": "/servicios/",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/inmobiliarias",
+      "destination": "/servicios/",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/industria-manufactura",
+      "destination": "/servicios/",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/marketing-comunicacion",
+      "destination": "/servicios/growth-marketing",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/estrategia-consultoria/growth-marketing-b2b",
+      "destination": "/servicios/growth-marketing",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/marketing-comunicacion/captacion-leads-b2b",
+      "destination": "/servicios/prospeccion-b2b",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/hyper-automation/automatizacion-ventas",
+      "destination": "/servicios/ventas-crm",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/asesorias-legal-logistica",
+      "destination": "/servicios/legal-fiscal",
+      "permanent": true
+    }
+  ]
 }
