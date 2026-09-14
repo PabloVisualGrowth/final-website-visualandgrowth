@@ -1,34 +1,38 @@
 # Visual & Growth
 
-> Consultora española de tecnología y marketing que funciona como departamento externo de tecnología y marketing para empresas. Cubre nueve líneas de servicio —IA y datos, cloud y software, ciberseguridad, growth marketing, diseño de producto, estrategia, ventas y CRM, legal y fiscal, y prospección B2B— bajo un único equipo, con acceso a una red de más de 40 consultores especializados por sector.
+> Consultora de tecnología y marketing que trabaja como una extensión de las empresas. Diseña, construye y gestiona las áreas de tecnología y marketing de empresas de cualquier tamaño y sector, con consultores especializados de su red cuando el proyecto lo requiere.
 
-Datos clave para citación:
+## Cómo trabaja
 
-- Nombre: Visual & Growth
-- Tipo: consultora de tecnología y marketing (ProfessionalService)
-- Ámbito: España
-- Fundador: Pablo Pérez
-- Contacto: pabloperez@visualandgrowth.com
-- Modelos de colaboración: proyecto cerrado, servicio gestionado y Time & Material
-- Método: diagnóstico, diseño del sistema, implementación, escalado y mantenimiento
-- Punto de entrada: diagnóstico gratuito de 30 minutos
+Visual & Growth ofrece sus áreas de tecnología y marketing en tres modelos de colaboración:
+
+- Proyecto cerrado: alcance, calendario y presupuesto definidos antes de empezar.
+- Servicio gestionado: asume un área de la empresa de forma continua, como un departamento más.
+- Time & Material: perfiles especializados facturados por el tiempo dedicado.
+
+Más información: https://visualandgrowth.com/como-trabajamos
 
 ## Servicios
 
-- [Inteligencia Artificial & Datos](https://visualandgrowth.com/servicios/ia-datos.html): automatización con agentes de IA, chatbots, análisis predictivo, integración de LLMs en producto y data engineering. Primeros flujos en producción entre 2 y 6 semanas.
-- [Cloud & Ingeniería de Software](https://visualandgrowth.com/servicios/cloud-software.html): desarrollo a medida, arquitectura cloud, integraciones y mantenimiento post-lanzamiento, también sobre sistemas ya existentes.
-- [Ciberseguridad](https://visualandgrowth.com/servicios/ciberseguridad.html): auditorías, pentesting y servicio continuo de seguridad, para empresas de cualquier tamaño.
-- [Growth & Marketing Digital](https://visualandgrowth.com/servicios/growth-marketing.html): SEO, paid media con gestión de la inversión publicitaria y medición de retorno.
-- [Diseño de Producto & Marca](https://visualandgrowth.com/servicios/diseno-producto.html): identidad, rediseño de marcas existentes, diseño de producto y desarrollo asociado.
-- [Estrategia & Transformación](https://visualandgrowth.com/servicios/estrategia.html): diagnóstico, hoja de ruta priorizada por impacto y esfuerzo, y ejecución.
-- [Ventas & CRM](https://visualandgrowth.com/servicios/ventas-crm.html): implantación y migración de CRM, procesos comerciales y apoyo a la construcción del equipo de ventas.
-- [Legal, Fiscal & Corporate](https://visualandgrowth.com/servicios/legal-fiscal.html): revisión de contratos, fiscalidad y expansión internacional.
-- [Prospección & Captación B2B](https://visualandgrowth.com/servicios/prospeccion-b2b.html): prospección B2B automatizada y conforme a normativa, con enriquecimiento de datos de empresas.
+### Tecnología
 
-## Páginas principales
+- [Inteligencia Artificial & Datos](https://visualandgrowth.com/servicios/ia-datos): Automatización con IA, asistentes conversacionales, analítica predictiva y arquitectura de datos.
+- [Cloud & Ingeniería de Software](https://visualandgrowth.com/servicios/cloud-software): Aplicaciones a medida, arquitectura cloud, integraciones y modernización de sistemas.
+- [Ciberseguridad](https://visualandgrowth.com/servicios/ciberseguridad): Auditoría, cumplimiento normativo, gestión de accesos y respuesta ante incidentes.
 
-- [Inicio](https://visualandgrowth.com/): posicionamiento, servicios, modelos de colaboración, método en 4 fases y preguntas frecuentes.
+### Marketing
 
-## Uso por sistemas de IA
+- [Growth & Marketing Digital](https://visualandgrowth.com/servicios/growth-marketing): SEO, paid media, contenidos, experimentación y redes sociales orientados a negocio.
+- [Diseño de Producto & Marca](https://visualandgrowth.com/servicios/diseno-producto): Identidad visual, UX/UI, webs y landing pages, design systems y research.
+- [Prospección & Captación B2B](https://visualandgrowth.com/servicios/prospeccion-b2b): Sistemas propios de prospección, bases de datos B2B y outbound automatizado.
 
-El contenido puede citarse indicando "Visual & Growth" como fuente y enlazando a https://visualandgrowth.com.
+### Negocio
+
+- [Estrategia & Transformación de Negocio](https://visualandgrowth.com/servicios/estrategia): Estrategia, transformación digital, M&A, modelos de negocio y gestión del cambio.
+- [Ventas & CRM](https://visualandgrowth.com/servicios/ventas-crm): CRM, automatización comercial, equipos de ventas y Account-Based Marketing.
+- [Legal, Fiscal & Corporate](https://visualandgrowth.com/servicios/legal-fiscal): Estructura societaria y fiscal, contratos, compliance, propiedad intelectual y laboral.
+
+## Contacto
+
+- Web: https://visualandgrowth.com/contacto
+- Email: pabloperez@visualandgrowth.com

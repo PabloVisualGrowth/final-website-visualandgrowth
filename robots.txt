@@ -1,102 +1,54 @@
-# robots.txt — visualandgrowth.com
-
+# visualandgrowth.com
 User-agent: *
 Allow: /
-Disallow: /api/
-Disallow: /uploads/
-Disallow: /scraps/
-Disallow: /index-legacy.html
-Disallow: /Ecosistema.html
-Disallow: /_sol_template.html
 
-# ---------------------------------------------------------------
-# AI SEARCH CRAWLERS — permitidos explícitamente
-# Son los que permiten que la web sea CITADA en respuestas de IA.
-# ---------------------------------------------------------------
-
-# OpenAI / ChatGPT Search (el que da citabilidad en ChatGPT)
+# Buscadores y asistentes de IA: permitidos para que la web pueda ser citada
 User-agent: OAI-SearchBot
 Allow: /
 
-# OpenAI — fetch en vivo cuando un usuario pega/pide una URL
 User-agent: ChatGPT-User
 Allow: /
 
-# Anthropic / Claude Search (el que da citabilidad en Claude)
+User-agent: GPTBot
+Allow: /
+
 User-agent: Claude-SearchBot
 Allow: /
 
-# Anthropic — fetch en vivo a petición del usuario
 User-agent: Claude-User
 Allow: /
 
-# Perplexity — indexación y citación
+User-agent: ClaudeBot
+Allow: /
+
 User-agent: PerplexityBot
 Allow: /
 
 User-agent: Perplexity-User
 Allow: /
 
-# Microsoft Bing / Copilot
-User-agent: bingbot
-Allow: /
-
-# Apple — Siri, Spotlight y Safari (descubrimiento, NO entrenamiento)
-User-agent: Applebot
-Allow: /
-
-# Meta AI
-User-agent: Meta-ExternalAgent
-Allow: /
-
-# Amazon / Alexa
-User-agent: Amazonbot
-Allow: /
-
-# Mistral
-User-agent: MistralAI-User
-Allow: /
-
-# ---------------------------------------------------------------
-# CRAWLERS DE ENTRENAMIENTO — permitidos (aumentan la probabilidad
-# de que la marca quede en el conocimiento base de los modelos).
-# Si en el futuro se quiere bloquear el entrenamiento sin perder
-# citabilidad, basta con cambiar "Allow: /" por "Disallow: /" aquí
-# abajo: NO afecta a los search bots de arriba.
-# ---------------------------------------------------------------
-
-User-agent: GPTBot
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
 User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
 Allow: /
 
 User-agent: Applebot-Extended
 Allow: /
 
+User-agent: bingbot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: MistralAI-User
+Allow: /
+
 User-agent: CCBot
 Allow: /
-
-User-agent: cohere-ai
-Allow: /
-
-User-agent: Bytespider
-Allow: /
-
-# ---------------------------------------------------------------
-# Bots de SEO de terceros — ralentizados / bloqueados
-# ---------------------------------------------------------------
-
-User-agent: AhrefsBot
-Crawl-delay: 10
-
-User-agent: SemrushBot
-Crawl-delay: 10
-
-User-agent: MJ12bot
-Disallow: /
 
 Sitemap: https://visualandgrowth.com/sitemap.xml
