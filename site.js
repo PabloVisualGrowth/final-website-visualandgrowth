@@ -66,6 +66,86 @@
   });
 
   // reveal on scroll
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // wrap each word of an element in spans, keeping inner elements (strong, a, span.mark) intact.
+  // The text stays in the DOM, so crawlers and screen readers read it as before.
+  var splitWords = function (el, make) {
+    var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    var nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    var n = 0;
+    nodes.forEach(function (node) {
+      var frag = document.createDocumentFragment();
+      node.nodeValue.split(/(\s+)/).forEach(function (part) {
+        if (!part) return;
+        if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+        frag.appendChild(make(part, n++));
+      });
+      node.parentNode.replaceChild(frag, node);
+    });
+    return n;
+  };
+
+  if (!reduceMotion) {
+    // section titles: words rise into place when their block is revealed
+    document.querySelectorAll("[data-reveal] .h-sec").forEach(function (h) {
+      splitWords(h, function (word, i) {
+        var outer = document.createElement("span");
+        outer.className = "w";
+        var inner = document.createElement("span");
+        inner.className = "wi";
+        inner.style.setProperty("--i", i);
+        inner.textContent = word;
+        outer.appendChild(inner);
+        return outer;
+      });
+    });
+    // intro paragraphs: prepared for the scroll-linked word lighting
+    document.querySelectorAll("[data-scrub]").forEach(function (box) {
+      var total = splitWords(box, function (word, i) {
+        var span = document.createElement("span");
+        span.className = "rw";
+        span.style.setProperty("--i", i);
+        span.textContent = word;
+        return span;
+      });
+      box.style.setProperty("--n", total);
+      box.classList.add("scrub");
+    });
+  }
+
+  // scroll-linked effects share one rAF-throttled handler
+  var scrubs = Array.prototype.slice.call(document.querySelectorAll(".scrub"));
+  var hero = document.querySelector(".hero");
+  var ticking = false;
+  var frame = function () {
+    ticking = false;
+    var vh = window.innerHeight;
+    scrubs.forEach(function (box) {
+      var r = box.getBoundingClientRect();
+      if (r.bottom < -vh || r.top > vh * 2) return;
+      // 0 when the text top reaches 90% of the viewport, 1 when its bottom reaches 60%
+      var p = (vh * 0.9 - r.top) / (r.height + vh * 0.3);
+      box.style.setProperty("--p", Math.max(0, Math.min(1, p)).toFixed(3));
+    });
+    if (hero && window.scrollY < vh * 1.2) hero.style.setProperty("--py", (window.scrollY * 0.12).toFixed(1));
+  };
+  var requestFrame = function () { if (!ticking) { ticking = true; window.requestAnimationFrame(frame); } };
+  if (!reduceMotion) {
+    window.addEventListener("scroll", requestFrame, { passive: true });
+    window.addEventListener("resize", requestFrame);
+    frame();
+  }
+
+  // decorative loops only run while their section is on screen
+  if ("IntersectionObserver" in window) {
+    var loopIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { en.target.classList.toggle("inview", en.isIntersecting); });
+    });
+    document.querySelectorAll(".lines, .chips").forEach(function (el) { loopIO.observe(el.closest(".sec")); });
+  }
+
   // stagger delays come from CSS (nth-child), so nothing is written to the DOM before observing
   var reveals = document.querySelectorAll("[data-reveal], [data-stagger] > *");
   if ("IntersectionObserver" in window) {
