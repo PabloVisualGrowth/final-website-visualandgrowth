@@ -150,7 +150,7 @@ module.exports = async function handler(req, res) {
     privacidad: b.privacidad === "aceptada",
     comunicaciones: b.comunicaciones === "si",
   };
-  if (d.nombre.length < 2 || !d.empresa || !EMAIL_RE.test(d.email) || d.mensaje.length < 2 || !d.privacidad) {
+  if (!d.nombre || !d.empresa || !EMAIL_RE.test(d.email) || !d.mensaje || !d.privacidad) {
     return res.status(422).json({ ok: false, error: "fields" });
   }
 
