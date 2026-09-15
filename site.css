@@ -227,6 +227,13 @@ body.menu-open{overflow:hidden}
 .group-head h3{font-size:22px;font-weight:600;letter-spacing:-.015em}
 .group-head p{font-size:14.5px;color:var(--gray);margin-top:4px;line-height:1.5}
 .group-list{display:grid;gap:12px}
+/* desktop: the three columns share row tracks, so headers and each row of cards line up */
+@media (min-width:961px){
+  .groups{row-gap:12px}
+  .group{display:grid;grid-row:span 4;grid-template-rows:subgrid;row-gap:12px}
+  .group-head{margin-bottom:2px}
+  .group-list{display:contents}
+}
 .svc{position:relative;display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:start;padding:22px 44px 22px 20px;
   background:var(--white);border:1px solid var(--line);border-radius:var(--r-card);
   transition:transform .35s var(--ease-out),box-shadow .35s,border-color .35s}
