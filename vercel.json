@@ -48,6 +48,11 @@
       "source": "/servicios/asesorias-legal-logistica",
       "destination": "/servicios/legal-fiscal",
       "permanent": true
+    },
+    {
+      "source": "/newsletter",
+      "destination": "/",
+      "permanent": true
     }
   ],
   "headers": [
