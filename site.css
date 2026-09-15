@@ -399,16 +399,12 @@ body.menu-open{overflow:hidden}
 
 /* ---------- contact ---------- */
 .contact{position:relative;min-height:100vh;padding:132px 0 88px}
-.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;grid-template-areas:"copy form" "more form";column-gap:clamp(36px,5vw,72px);align-items:start}
+.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;grid-template-rows:auto 1fr;grid-template-areas:"copy form" "more form";column-gap:clamp(36px,5vw,72px);align-items:start}
 .contact-copy{grid-area:copy}
 .contact-more{grid-area:more}
 .form-card{grid-area:form}
 .contact-copy .h-hero{color:var(--white);font-size:clamp(38px,4.4vw,58px)}
 .contact-copy .lead{margin-top:22px}
-.c-mail{display:inline-flex;align-items:center;gap:12px;margin-top:32px;font-size:17px;font-weight:500;color:var(--white);border-bottom:1px solid var(--line-inv);padding-bottom:6px;transition:color .2s,border-color .2s}
-.c-mail svg{width:20px;height:20px;flex:none;color:var(--gold)}
-.c-mail{overflow-wrap:anywhere}
-.c-mail:hover{color:var(--gold);border-color:var(--gold)}
 .c-next{margin-top:44px;display:grid;gap:16px}
 .c-next li{display:grid;grid-template-columns:34px 1fr;gap:14px;font-size:15px;color:var(--gray-inv)}
 .c-next li span{width:34px;height:34px;border-radius:50%;border:1px solid var(--line-inv);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:var(--gold)}
@@ -432,7 +428,6 @@ body.menu-open{overflow:hidden}
 .form-note{font-size:13px;color:var(--gray)}
 .form-legal{grid-column:1/-1;font-size:12.5px;line-height:1.55;color:var(--gray)}
 .form-legal strong{color:var(--ink);font-weight:600}
-.c-addr{margin-top:16px;font-size:14.5px;line-height:1.6;color:var(--gray-inv-2)}
 .form-msg{grid-column:1/-1;font-size:14.5px;line-height:1.55;padding:14px 16px;border-radius:var(--r-sm);background:var(--white);border:1px solid rgba(30,30,30,.16);color:var(--ink)}
 .form-msg.is-error{border-color:#b3261e;color:#8c1d18}
 .form-ok{display:none;text-align:center;padding:36px 12px}
@@ -469,7 +464,6 @@ body.menu-open{overflow:hidden}
 .foot-grid{display:grid;grid-template-columns:1.7fr repeat(4,1fr);gap:40px}
 .foot-brand .logo .logo-wm{max-width:190px;opacity:1;margin-left:10px}
 .foot-brand p{font-size:14.5px;line-height:1.6;margin-top:18px;max-width:300px}
-.foot-brand .c-mail{font-size:15px;margin-top:22px}
 .foot-label{font-size:14px;font-weight:600;color:var(--white);margin-bottom:14px}
 .foot-col a{display:block;font-size:14px;padding:6px 0;transition:color .2s}
 .foot-col a:hover{color:var(--gold)}
@@ -520,8 +514,8 @@ main>.sec{content-visibility:auto;contain-intrinsic-size:auto 800px}
     mask-image:linear-gradient(to bottom,transparent 0%,#000 22%,#000 78%,transparent 100%);-webkit-mask-composite:source-over;mask-composite:add}
   .groups,.areas,.models,.steps{grid-template-columns:1fr}
   .split,.intro,.contact-grid,.sec-head.split{grid-template-columns:1fr}
-  .contact-grid{grid-template-areas:"copy" "form" "more";row-gap:36px}
-  .contact-more .c-mail{margin-top:0}
+  .contact-grid{grid-template-rows:auto;grid-template-areas:"copy" "form" "more";row-gap:36px}
+  .contact-more .c-next{margin-top:0}
   .paths{grid-template-columns:1fr}
   .intro{gap:18px}
   .related{grid-template-columns:1fr}

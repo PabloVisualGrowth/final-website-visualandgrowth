@@ -6,8 +6,7 @@
 
 - Nombre de la marca: Visual & Growth (se escribe con &)
 - Categoría: consultora de tecnología y marketing
-- País: España (sede social en Barcelona)
-- Razón social: Mediterráneo Business S.L. (NIF B60916509)
+- País: España
 - Fundador y CEO: Pablo Pérez
 - Idiomas de trabajo: español e inglés
 - Web oficial: https://visualandgrowth.com/
@@ -43,7 +42,6 @@ Visual & Growth ofrece sus áreas de tecnología y marketing en tres modelos de 
 ## Contacto
 
 - Formulario: https://visualandgrowth.com/contacto
-- Email: pabloperez@visualandgrowth.com (Pablo Pérez, fundador y CEO)
 
 ## Optional
 

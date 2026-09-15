@@ -5,7 +5,7 @@
   window.vgReady = true;
   var root = document.documentElement;
 
-  var CONTACT_EMAIL = "pabloperez@visualandgrowth.com";
+  var CONTACT_EMAIL = "info@visualandgrowth.com";
   // Set to an n8n (or similar) webhook URL to receive the contact form as JSON.
   // While empty, the form opens the visitor's email client with the message prefilled
   // and says so, instead of claiming the message was received.
@@ -119,7 +119,6 @@
     var card = form.closest(".form-card");
     var msg = form.querySelector("[data-form-msg]");
     var btn = form.querySelector("button[type=submit]");
-    var mailLink = '<a href="mailto:' + CONTACT_EMAIL + '">' + CONTACT_EMAIL + "</a>";
     var say = function (html, isError) {
       msg.innerHTML = html;
       msg.classList.toggle("is-error", !!isError);
@@ -162,7 +161,7 @@
           })
           .catch(function () {
             btn.disabled = false;
-            say("No hemos podido enviar tu mensaje. Inténtalo de nuevo o escríbenos a " + mailLink + ".", true);
+            say("No hemos podido enviar tu mensaje. Inténtalo de nuevo en unos minutos.", true);
           });
       } else {
         var body = [
@@ -178,7 +177,7 @@
         ].join("\n");
         window.location.href = "mailto:" + CONTACT_EMAIL + "?subject=" + encodeURIComponent("Contacto web: " + (data.empresa || data.nombre || "")) + "&body=" + encodeURIComponent(body);
         track("contact_mailto");
-        say("Hemos abierto tu programa de correo con el mensaje preparado: solo tienes que enviarlo. Si no se ha abierto, escríbenos a " + mailLink + ".");
+        say("Hemos abierto tu programa de correo con el mensaje preparado: solo tienes que enviarlo.");
       }
     });
   }
