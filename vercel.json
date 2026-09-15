@@ -6,22 +6,22 @@
   "redirects": [
     {
       "source": "/servicios/clinicas-salud",
-      "destination": "/servicios/",
+      "destination": "/sectores/salud",
       "permanent": true
     },
     {
       "source": "/servicios/construccion",
-      "destination": "/servicios/",
+      "destination": "/sectores/construccion",
       "permanent": true
     },
     {
       "source": "/servicios/inmobiliarias",
-      "destination": "/servicios/",
+      "destination": "/sectores/inmobiliario",
       "permanent": true
     },
     {
       "source": "/servicios/industria-manufactura",
-      "destination": "/servicios/",
+      "destination": "/sectores/industria",
       "permanent": true
     },
     {
@@ -48,6 +48,26 @@
       "source": "/servicios/asesorias-legal-logistica",
       "destination": "/servicios/legal-fiscal",
       "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=2592000"
+        }
+      ]
+    },
+    {
+      "source": "/site.(min.css|js)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     }
   ]
 }

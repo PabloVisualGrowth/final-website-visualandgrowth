@@ -12,11 +12,6 @@
   var CONTACT_ENDPOINT = "";
 
   var nav = document.querySelector(".nav");
-  if (nav) {
-    var onScroll = function () { nav.classList.toggle("scrolled", window.scrollY > 10); };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-  }
 
   // services dropdown
   var ddBtn = document.querySelector("[data-dd-btn]");
@@ -79,7 +74,7 @@
       var frag = document.createDocumentFragment();
       node.nodeValue.split(/(\s+)/).forEach(function (part) {
         if (!part) return;
-        if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+        if (/^\s+$/.test(part) || /^[.,:;!?¿¡)»"]+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
         frag.appendChild(make(part, n++));
       });
       node.parentNode.replaceChild(frag, node);
@@ -87,9 +82,7 @@
     return n;
   };
 
-  if (!reduceMotion) {
-    // section titles: words rise into place when their block is revealed
-    document.querySelectorAll("[data-reveal] .h-sec").forEach(function (h) {
+  var splitTitle = function (h) {
       splitWords(h, function (word, i) {
         var outer = document.createElement("span");
         outer.className = "w";
@@ -100,9 +93,8 @@
         outer.appendChild(inner);
         return outer;
       });
-    });
-    // intro paragraphs: prepared for the scroll-linked word lighting
-    document.querySelectorAll("[data-scrub]").forEach(function (box) {
+  };
+  var prepareScrub = function (box) {
       var total = splitWords(box, function (word, i) {
         var span = document.createElement("span");
         span.className = "rw";
@@ -112,16 +104,18 @@
       });
       box.style.setProperty("--n", total);
       box.classList.add("scrub");
-    });
-  }
+      scrubs.push(box);
+      requestFrame();
+  };
 
   // scroll-linked effects share one rAF-throttled handler
-  var scrubs = Array.prototype.slice.call(document.querySelectorAll(".scrub"));
+  var scrubs = [];
   var hero = document.querySelector(".hero");
   var ticking = false;
   var frame = function () {
     ticking = false;
     var vh = window.innerHeight;
+    if (nav) nav.classList.toggle("scrolled", window.scrollY > 10);
     scrubs.forEach(function (box) {
       var r = box.getBoundingClientRect();
       if (r.bottom < -vh || r.top > vh * 2) return;
@@ -129,13 +123,24 @@
       var p = (vh * 0.9 - r.top) / (r.height + vh * 0.3);
       box.style.setProperty("--p", Math.max(0, Math.min(1, p)).toFixed(3));
     });
-    if (hero && window.scrollY < vh * 1.2) hero.style.setProperty("--py", (window.scrollY * 0.12).toFixed(1));
+    if (hero && !reduceMotion && window.scrollY < vh * 1.2) hero.style.setProperty("--py", (window.scrollY * 0.12).toFixed(1));
   };
   var requestFrame = function () { if (!ticking) { ticking = true; window.requestAnimationFrame(frame); } };
-  if (!reduceMotion) {
-    window.addEventListener("scroll", requestFrame, { passive: true });
-    window.addEventListener("resize", requestFrame);
-    frame();
+  window.addEventListener("scroll", requestFrame, { passive: true });
+  window.addEventListener("resize", requestFrame);
+  requestFrame();
+
+  if (!reduceMotion && "IntersectionObserver" in window) {
+    // titles are split only when they are about to enter the screen; those already visible stay as they are
+    var splitIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        splitIO.unobserve(en.target);
+        if (en.target.hasAttribute("data-scrub")) prepareScrub(en.target);
+        else if (en.boundingClientRect.top > window.innerHeight * 0.92) splitTitle(en.target);
+      });
+    }, { rootMargin: "0px 0px 60% 0px" });
+    document.querySelectorAll("[data-reveal] .h-sec, [data-scrub]").forEach(function (el) { splitIO.observe(el); });
   }
 
   // decorative loops only run while their section is on screen
@@ -205,7 +210,12 @@
       msg.hidden = false;
     };
 
-    // service CTAs link to /contacto?servicio=<slug>
+    // service CTAs link to /contacto?servicio=<slug>, sector pages to /contacto?sector=<slug>
+    try {
+      var sectorSlug = new URLSearchParams(window.location.search).get("sector");
+      var sectorNames = JSON.parse(form.getAttribute("data-sectors") || "{}");
+      if (sectorSlug && sectorNames[sectorSlug]) form.querySelector("#f-sector").value = sectorNames[sectorSlug];
+    } catch (err) {}
     try {
       var wanted = new URLSearchParams(window.location.search).get("servicio");
       if (wanted) {
@@ -250,6 +260,7 @@
           "Email: " + (data.email || ""),
           "Teléfono: " + (data.telefono || ""),
           "Servicio de interés: " + (data.servicio || ""),
+          "Sector: " + (data.sector || ""),
           "Modelo de colaboración: " + (data.modelo || ""),
           "Acepta recibir información comercial: " + data.comunicaciones,
           "",
