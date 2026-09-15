@@ -104,7 +104,7 @@ main p a:not([class]):hover{text-decoration-color:currentColor}
 .nav.scrolled{box-shadow:0 14px 30px rgba(0,0,0,.14)}
 .logo{display:flex;align-items:center;height:44px;flex:none}
 .logo .logo-ic{height:30px;width:auto}
-.logo .logo-wm{height:38px;width:auto;max-width:0;opacity:0;margin-left:0;
+.logo .logo-wm{height:30px;width:auto;max-width:0;opacity:0;margin-left:0;
   transition:max-width .45s var(--ease),opacity .3s,margin-left .45s var(--ease)}
 .logo:hover .logo-wm,.logo:focus-visible .logo-wm{max-width:190px;opacity:1;margin-left:10px}
 .nav-links{display:flex;align-items:center;gap:4px}
