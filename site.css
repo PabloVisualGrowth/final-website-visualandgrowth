@@ -746,7 +746,7 @@ main>.sec{content-visibility:auto;contain-intrinsic-size:auto 800px}
   .scrub .rw{opacity:1}
   .marquee-track{width:auto;justify-content:center}
   .marquee-list{flex-wrap:wrap;justify-content:center;row-gap:28px;padding-inline:var(--gutter)}
-  .marquee-list[aria-hidden]{display:none}
+  .marquee-list+.marquee-list{display:none}
 }
 
 /* Keep the authentic CRM screenshot intact and identify demonstration data. */
