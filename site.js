@@ -79,33 +79,36 @@
     reveals.forEach(function (el) { el.classList.add("in"); });
   }
 
-  // cookie consent (Google Consent Mode v2)
+  // cookie consent: Google Tag Manager only loads after the visitor accepts analytics cookies.
+  // The <head> script reads the stored choice, loads GTM if granted and adds .cc to show the banner if unset.
   var KEY = "vg-consent";
   var banner = document.querySelector("[data-cookie]");
-  var grant = function () {
-    if (typeof window.gtag === "function") {
-      window.gtag("consent", "update", { ad_storage: "granted", ad_user_data: "granted", ad_personalization: "granted", analytics_storage: "granted" });
-    }
+  var save = function (v) { try { localStorage.setItem(KEY, JSON.stringify({ v: v, t: Date.now() })); } catch (e) {} };
+  var clearAnalyticsCookies = function () {
+    var host = window.location.hostname;
+    var base = host.split(".").slice(-2).join(".");
+    document.cookie.split(";").forEach(function (c) {
+      var name = c.split("=")[0].trim();
+      if (!/^(_ga|_gid|_gat)/.test(name)) return;
+      ["", host, "." + host, "." + base].forEach(function (d) {
+        document.cookie = name + "=; Max-Age=0; path=/" + (d ? "; domain=" + d : "");
+      });
+    });
   };
-  var deny = function () {
-    if (typeof window.gtag === "function") {
-      window.gtag("consent", "update", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "denied" });
-    }
-  };
-  var stored = null;
-  try { stored = localStorage.getItem(KEY); } catch (e) {}
   if (banner) {
     var show = function () { banner.classList.add("show"); };
     var hide = function () { banner.classList.remove("show"); root.classList.remove("cc"); };
-    // the <head> script adds .cc before first paint so the banner is not a late LCP candidate
-    if (!stored && !root.classList.contains("cc")) show();
+    if (window.vgConsent && !window.vgConsent() && !root.classList.contains("cc")) show();
     banner.querySelector("[data-cookie-ok]").addEventListener("click", function () {
-      try { localStorage.setItem(KEY, "granted"); } catch (e) {}
-      grant(); hide();
+      save("granted");
+      if (typeof window.vgLoadGTM === "function") window.vgLoadGTM();
+      hide();
     });
     banner.querySelector("[data-cookie-no]").addEventListener("click", function () {
-      try { localStorage.setItem(KEY, "denied"); } catch (e) {}
-      deny(); hide();
+      save("denied");
+      if (typeof window.gtag === "function") window.gtag("consent", "update", { analytics_storage: "denied" });
+      clearAnalyticsCookies();
+      hide();
     });
     document.querySelectorAll("[data-cookie-open]").forEach(function (b) { b.addEventListener("click", show); });
   }
@@ -142,6 +145,9 @@
       new FormData(form).forEach(function (v, k) { if (k !== "website") data[k] = String(v).trim(); });
       data.source = "visualandgrowth.com/contacto";
       data.sent_at = new Date().toISOString();
+      // proof of consent, stored with the request
+      data.privacidad_texto = "He leído y acepto la política de privacidad.";
+      data.comunicaciones = data.comunicaciones ? "si" : "no";
       var track = function (name) {
         try { (window.dataLayer = window.dataLayer || []).push({ event: name, servicio: data.servicio || "" }); } catch (err) {}
       };
@@ -166,6 +172,7 @@
           "Teléfono: " + (data.telefono || ""),
           "Servicio de interés: " + (data.servicio || ""),
           "Modelo de colaboración: " + (data.modelo || ""),
+          "Acepta recibir información comercial: " + data.comunicaciones,
           "",
           data.mensaje || ""
         ].join("\n");

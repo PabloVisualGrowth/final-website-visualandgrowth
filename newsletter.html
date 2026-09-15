@@ -1,13 +1,14 @@
 <!doctype html>
 <html lang="es">
 <head>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KZHVX73Q');</script>
-<!-- End Google Tag Manager -->
-<!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-8J4T5MP25N"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:(function(){try{return localStorage.getItem('vg-consent')==='granted'?'granted':'denied'}catch(e){return 'denied'}})()});gtag('js',new Date());gtag('config','G-8J4T5MP25N');</script>
-<!-- End Google Analytics 4 -->
+<!-- Google Tag Manager and Google Analytics load only after the visitor accepts analytics cookies -->
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag("consent","default",{ad_storage:"denied",ad_user_data:"denied",ad_personalization:"denied",analytics_storage:"denied"});
+window.vgConsent=function(){try{var c=JSON.parse(localStorage.getItem("vg-consent"));if(c&&(c.v==="granted"||c.v==="denied")&&Date.now()-c.t<31536000000)return c.v;}catch(e){}return null;};
+window.vgLoadGTM=function(){if(window.vgGTM)return;window.vgGTM=1;gtag("consent","update",{analytics_storage:"granted"});dataLayer.push({"gtm.start":Date.now(),event:"gtm.js"});var j=document.createElement("script");j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id=GTM-KZHVX73Q";document.head.appendChild(j);var g=document.createElement("script");g.async=true;g.src="https://www.googletagmanager.com/gtag/js?id=G-8J4T5MP25N";document.head.appendChild(g);gtag("js",new Date());gtag("config","G-8J4T5MP25N");};
+if(vgConsent()==="granted")vgLoadGTM();
+</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, follow">
@@ -121,6 +122,10 @@ input:focus{border-color:rgba(255,196,10,.55);background:rgba(255,196,10,.05);
 .consent input:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(255,196,10,.18)}
 .consent span{font-size:12px;line-height:1.45;color:var(--dim);text-transform:none;letter-spacing:normal;font-family:var(--grotesk)}
 .consent a{color:var(--gold);text-decoration:underline;text-underline-offset:2px}
+.nl-legal{margin:12px 0 0;font-size:11.5px;line-height:1.5;color:var(--dim);text-align:left;font-family:var(--grotesk)}
+.nl-legal a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+.nl-foot{margin:28px auto 0;text-align:center;font-size:12px;color:var(--dim);font-family:var(--grotesk)}
+.nl-foot a,.nl-foot button{color:inherit;background:none;border:0;padding:0;font:inherit;text-decoration:underline;text-underline-offset:2px;cursor:pointer}
 .legal{margin-top:11px;font-size:9.5px;line-height:1.5;color:var(--faint);text-align:left}
 .legal b{color:var(--dim);font-weight:500}
 .legal a{color:rgba(255,196,10,.7);text-decoration:underline}
@@ -197,7 +202,6 @@ input:focus{border-color:rgba(255,196,10,.55);background:rgba(255,196,10,.05);
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KZHVX73Q" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
 <div class="bg"><div class="glow"></div><div class="stars"></div></div>
@@ -268,9 +272,10 @@ input:focus{border-color:rgba(255,196,10,.55);background:rgba(255,196,10,.05);
 
         <label class="consent">
           <input type="checkbox" id="consent" name="consent" value="accepted" required>
-          <span>Acepto el tratamiento de mis datos con la finalidad de recibir comunicaciones.</span>
+          <span>He leído la <a href="/privacidad">política de privacidad</a> y acepto recibir la newsletter de Visual &amp; Growth por email.</span>
         </label>
 
+        <p class="nl-legal">Responsable: Mediterráneo Business S.L. (Visual &amp; Growth). Finalidad: enviarte la newsletter. Legitimación: tu consentimiento. Destinatarios: no cedemos tus datos a terceros, salvo obligación legal. Derechos: acceso, rectificación, supresión, oposición, limitación y portabilidad, y darte de baja en cualquier momento. Más información en la <a href="/privacidad">política de privacidad</a>.</p>
         <button class="submit" type="submit">Unirme a la newsletter</button>
       </form>
     </div>
@@ -307,7 +312,7 @@ input:focus{border-color:rgba(255,196,10,.55);background:rgba(255,196,10,.05);
 
     btn.disabled=true; btn.textContent="Enviando…";
 
-    const CONSENT_TEXT="Acepto el tratamiento de mis datos con la finalidad de recibir comunicaciones.";
+    const CONSENT_TEXT="He leído la política de privacidad y acepto recibir la newsletter de Visual & Growth por email.";
     const params=new URLSearchParams();
     ["nombre","apellidos","email","cargo","web"].forEach(k=>params.append(k, (form[k].value||"").trim()));
     params.append("consent", form.consent.checked ? "accepted" : "");
@@ -332,6 +337,7 @@ input:focus{border-color:rgba(255,196,10,.55);background:rgba(255,196,10,.05);
   });
 })();
 </script>
+<p class="nl-foot"><a href="/aviso-legal">Aviso legal</a> · <a href="/privacidad">Privacidad</a> · <a href="/cookies">Cookies</a> · <button type="button" data-cookie-open>Configurar cookies</button></p>
 <script src="cookies.js" defer></script>
 </body>
 </html>

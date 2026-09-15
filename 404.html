@@ -31,16 +31,16 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,700&amp;display=swap"></noscript>
 <link rel="stylesheet" href="/site.css">
 <script>
-(function(h){h.classList.add("js");setTimeout(function(){if(!window.vgReady)h.classList.remove("js");},2500);try{if(!localStorage.getItem("vg-consent"))h.classList.add("cc");}catch(e){h.classList.add("cc");}})(document.documentElement);
+(function(h){h.classList.add("js");setTimeout(function(){if(!window.vgReady)h.classList.remove("js");},2500);})(document.documentElement);
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-gtag("consent","default",{ad_storage:"denied",ad_user_data:"denied",ad_personalization:"denied",analytics_storage:"denied",wait_for_update:500});
-try{if(localStorage.getItem("vg-consent")==="granted"){gtag("consent","update",{ad_storage:"granted",ad_user_data:"granted",ad_personalization:"granted",analytics_storage:"granted"});}}catch(e){}
+gtag("consent","default",{ad_storage:"denied",ad_user_data:"denied",ad_personalization:"denied",analytics_storage:"denied"});
+window.vgConsent=function(){try{var c=JSON.parse(localStorage.getItem("vg-consent"));if(c&&(c.v==="granted"||c.v==="denied")&&Date.now()-c.t<31536000000)return c.v;}catch(e){}return null;};
+window.vgLoadGTM=function(){if(window.vgGTM)return;window.vgGTM=1;gtag("consent","update",{analytics_storage:"granted"});dataLayer.push({"gtm.start":Date.now(),event:"gtm.js"});var j=document.createElement("script");j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id=GTM-KZHVX73Q";document.head.appendChild(j);};
+(function(c){if(c==="granted")vgLoadGTM();else if(!c)document.documentElement.classList.add("cc");})(vgConsent());
 </script>
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KZHVX73Q');</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Organization","ProfessionalService"],"@id":"https://visualandgrowth.com/#organization","name":"Visual & Growth","url":"https://visualandgrowth.com/","logo":"https://visualandgrowth.com/assets/brand/vg-logo-512.png"},{"@type":"WebSite","@id":"https://visualandgrowth.com/#website","url":"https://visualandgrowth.com/","name":"Visual & Growth","inLanguage":"es-ES","publisher":{"@id":"https://visualandgrowth.com/#organization"}}]}</script>
 </head>
 <body>
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KZHVX73Q" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <a class="skip" href="#main">Saltar al contenido</a>
 <header>
   <nav class="nav" aria-label="Principal">
@@ -149,7 +149,7 @@ try{if(localStorage.getItem("vg-consent")==="granted"){gtag("consent","update",{
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© <span data-year>2026</span> Visual &amp; Growth</span>
+      <span>© <span data-year>2026</span> Visual &amp; Growth · Mediterráneo Business S.L. · Barcelona</span>
       <nav aria-label="Legal">
         <a href="/aviso-legal">Aviso legal</a>
         <a href="/privacidad">Privacidad</a>
@@ -160,7 +160,7 @@ try{if(localStorage.getItem("vg-consent")==="granted"){gtag("consent","update",{
   </div>
 </footer>
 <div class="cookie" data-cookie role="region" aria-label="Aviso de cookies">
-  <p>Usamos cookies propias y de terceros para analizar el uso de la web y mejorarla. Puedes aceptarlas o rechazarlas. Más información en la <a href="/cookies">política de cookies</a>.</p>
+  <p>Con tu permiso, usamos cookies analíticas de Google para saber cómo se usa la web y mejorarla. Puedes aceptarlas o rechazarlas, y cambiar tu elección cuando quieras en «Configurar cookies», al pie de la página. Más información en la <a href="/cookies">política de cookies</a>.</p>
   <div class="cookie-btns"><button type="button" data-cookie-no>Rechazar</button><button type="button" class="ok" data-cookie-ok>Aceptar</button></div>
 </div>
 <script src="/site.js" defer></script>

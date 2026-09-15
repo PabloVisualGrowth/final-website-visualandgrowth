@@ -430,6 +430,9 @@ body.menu-open{overflow:hidden}
 .check a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
 .form-foot{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:6px}
 .form-note{font-size:13px;color:var(--gray)}
+.form-legal{grid-column:1/-1;font-size:12.5px;line-height:1.55;color:var(--gray)}
+.form-legal strong{color:var(--ink);font-weight:600}
+.c-addr{margin-top:16px;font-size:14.5px;line-height:1.6;color:var(--gray-inv-2)}
 .form-msg{grid-column:1/-1;font-size:14.5px;line-height:1.55;padding:14px 16px;border-radius:var(--r-sm);background:var(--white);border:1px solid rgba(30,30,30,.16);color:var(--ink)}
 .form-msg.is-error{border-color:#b3261e;color:#8c1d18}
 .form-ok{display:none;text-align:center;padding:36px 12px}
@@ -449,6 +452,17 @@ body.menu-open{overflow:hidden}
 .doc li+li{margin-top:6px}
 .doc a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
 .doc .fill{background:rgba(255,198,0,.25);padding:0 4px;border-radius:4px;color:var(--ink)}
+.doc-date{margin-top:12px;font-size:14px;color:var(--gray-2)}
+.doc .tbl{margin-top:14px;overflow-x:auto;border:1px solid var(--line);border-radius:12px}
+.doc table{width:100%;min-width:560px;border-collapse:collapse}
+.doc th,.doc td{padding:12px 14px;text-align:left;vertical-align:top;font-size:14.5px;line-height:1.55;color:var(--gray);border-bottom:1px solid var(--line)}
+.doc th{font-weight:600;color:var(--ink);background:var(--light-2)}
+.doc tr:last-child td{border-bottom:0}
+.doc strong{color:var(--ink)}
+.doc ul+p,.doc .tbl+p{margin-top:14px}
+.doc button.btn-line{display:inline;background:none;border:0;border-bottom:1.5px solid var(--gold);padding:0;font:inherit;font-weight:600;color:var(--ink);cursor:pointer}
+/* the form card is light inside a dark section */
+.on-dark .form-card p a:not([class]){color:var(--ink)}
 
 /* ---------- footer ---------- */
 .footer{background:var(--ink);color:var(--gray-inv-2);padding:76px 0 36px}
@@ -472,10 +486,9 @@ body.menu-open{overflow:hidden}
 .cookie p{font-size:13.5px;line-height:1.55;flex:1}
 .cookie a{color:var(--white);text-decoration:underline;text-underline-offset:3px}
 .cookie .cookie-btns{display:flex;gap:8px;flex:none}
-.cookie button{height:40px;padding:0 16px;border-radius:var(--r-sm);font-size:13.5px;font-weight:600;border:1px solid rgba(255,255,255,.35);background:none;color:var(--white);transition:background .2s,color .2s,border-color .2s}
-.cookie button.ok{background:var(--gold);border-color:var(--gold);color:var(--black)}
-.cookie button:hover{border-color:var(--white)}
-.cookie button.ok:hover{background:var(--white);border-color:var(--white)}
+/* accept and reject share the same style: neither option is highlighted over the other */
+.cookie button{height:40px;padding:0 18px;border-radius:var(--r-sm);font-size:13.5px;font-weight:600;border:1px solid var(--white);background:var(--white);color:var(--black);transition:background .2s,border-color .2s}
+.cookie button:hover{background:var(--gold);border-color:var(--gold)}
 
 /* ---------- reveal on scroll ---------- */
 .js [data-reveal]:not(.in),.js [data-stagger]>:not(.in){opacity:0}

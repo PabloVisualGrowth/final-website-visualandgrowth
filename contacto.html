@@ -31,16 +31,16 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,700&amp;display=swap"></noscript>
 <link rel="stylesheet" href="/site.css">
 <script>
-(function(h){h.classList.add("js");setTimeout(function(){if(!window.vgReady)h.classList.remove("js");},2500);try{if(!localStorage.getItem("vg-consent"))h.classList.add("cc");}catch(e){h.classList.add("cc");}})(document.documentElement);
+(function(h){h.classList.add("js");setTimeout(function(){if(!window.vgReady)h.classList.remove("js");},2500);})(document.documentElement);
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-gtag("consent","default",{ad_storage:"denied",ad_user_data:"denied",ad_personalization:"denied",analytics_storage:"denied",wait_for_update:500});
-try{if(localStorage.getItem("vg-consent")==="granted"){gtag("consent","update",{ad_storage:"granted",ad_user_data:"granted",ad_personalization:"granted",analytics_storage:"granted"});}}catch(e){}
+gtag("consent","default",{ad_storage:"denied",ad_user_data:"denied",ad_personalization:"denied",analytics_storage:"denied"});
+window.vgConsent=function(){try{var c=JSON.parse(localStorage.getItem("vg-consent"));if(c&&(c.v==="granted"||c.v==="denied")&&Date.now()-c.t<31536000000)return c.v;}catch(e){}return null;};
+window.vgLoadGTM=function(){if(window.vgGTM)return;window.vgGTM=1;gtag("consent","update",{analytics_storage:"granted"});dataLayer.push({"gtm.start":Date.now(),event:"gtm.js"});var j=document.createElement("script");j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id=GTM-KZHVX73Q";document.head.appendChild(j);};
+(function(c){if(c==="granted")vgLoadGTM();else if(!c)document.documentElement.classList.add("cc");})(vgConsent());
 </script>
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KZHVX73Q');</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Organization","ProfessionalService"],"@id":"https://visualandgrowth.com/#organization","name":"Visual & Growth","url":"https://visualandgrowth.com/","logo":"https://visualandgrowth.com/assets/brand/vg-logo-512.png"},{"@type":"WebSite","@id":"https://visualandgrowth.com/#website","url":"https://visualandgrowth.com/","name":"Visual & Growth","inLanguage":"es-ES","publisher":{"@id":"https://visualandgrowth.com/#organization"}},{"@type":"ContactPage","@id":"https://visualandgrowth.com/contacto#webpage","url":"https://visualandgrowth.com/contacto","name":"Contacto | Visual & Growth","description":"Cuéntanos qué necesita tu empresa en tecnología o marketing. Te respondemos para entender tu situación y proponerte cómo podemos ayudarte.","inLanguage":"es-ES","isPartOf":{"@id":"https://visualandgrowth.com/#website"},"about":{"@id":"https://visualandgrowth.com/#organization"},"primaryImageOfPage":"https://visualandgrowth.com/assets/brand/og-image.png","datePublished":"2026-09-15","dateModified":"2026-09-15"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://visualandgrowth.com/"},{"@type":"ListItem","position":2,"name":"Contacto","item":"https://visualandgrowth.com/contacto"}]}]}</script>
 </head>
 <body>
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KZHVX73Q" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <a class="skip" href="#main">Saltar al contenido</a>
 <header>
   <nav class="nav" aria-label="Principal">
@@ -120,6 +120,8 @@ try{if(localStorage.getItem("vg-consent")==="granted"){gtag("consent","update",{
           <div class="field full"><label for="f-msg">¿En qué podemos ayudarte?</label><textarea id="f-msg" name="mensaje" required></textarea></div>
           <input type="text" name="website" tabindex="-1" autocomplete="off" class="sr-only" aria-hidden="true">
           <label class="check"><input type="checkbox" name="privacidad" value="aceptada" required><span>He leído y acepto la <a href="/privacidad">política de privacidad</a>.</span></label>
+          <label class="check"><input type="checkbox" name="comunicaciones" value="si"><span>Quiero recibir información sobre los servicios de Visual &amp; Growth por email <em>(opcional)</em>.</span></label>
+          <p class="form-legal"><strong>Información básica sobre protección de datos.</strong> Responsable: Mediterráneo Business S.L. (Visual &amp; Growth). Finalidad: atender tu solicitud y, si lo marcas, enviarte información sobre nuestros servicios. Legitimación: tu consentimiento y la aplicación de medidas precontractuales. Destinatarios: no cedemos tus datos a terceros, salvo obligación legal. Derechos: acceso, rectificación, supresión, oposición, limitación y portabilidad. Más información en la <a href="/privacidad">política de privacidad</a>.</p>
           <div class="form-foot"><button class="btn-fill" type="submit"><span>Enviar mensaje</span><span class="btn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg></span></button></div>
           <p class="form-msg" data-form-msg role="status" hidden></p>
         </div>
@@ -132,6 +134,7 @@ try{if(localStorage.getItem("vg-consent")==="granted"){gtag("consent","update",{
     </div>
     <div class="contact-more hero-in">
       <a class="c-mail" href="mailto:pabloperez@visualandgrowth.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> pabloperez@visualandgrowth.com</a>
+      <p class="c-addr">Mediterráneo Business S.L.<br>C/ Muntaner 261, 1º 1ª, 08021 Barcelona</p>
       <ol class="c-next">
         <li><span>1</span><div><strong>Recibimos tu mensaje</strong>Lo revisa directamente nuestro equipo.</div></li>
         <li><span>2</span><div><strong>Hablamos contigo</strong>Para entender el contexto y tus objetivos.</div></li>
@@ -177,7 +180,7 @@ try{if(localStorage.getItem("vg-consent")==="granted"){gtag("consent","update",{
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© <span data-year>2026</span> Visual &amp; Growth</span>
+      <span>© <span data-year>2026</span> Visual &amp; Growth · Mediterráneo Business S.L. · Barcelona</span>
       <nav aria-label="Legal">
         <a href="/aviso-legal">Aviso legal</a>
         <a href="/privacidad">Privacidad</a>
@@ -188,7 +191,7 @@ try{if(localStorage.getItem("vg-consent")==="granted"){gtag("consent","update",{
   </div>
 </footer>
 <div class="cookie" data-cookie role="region" aria-label="Aviso de cookies">
-  <p>Usamos cookies propias y de terceros para analizar el uso de la web y mejorarla. Puedes aceptarlas o rechazarlas. Más información en la <a href="/cookies">política de cookies</a>.</p>
+  <p>Con tu permiso, usamos cookies analíticas de Google para saber cómo se usa la web y mejorarla. Puedes aceptarlas o rechazarlas, y cambiar tu elección cuando quieras en «Configurar cookies», al pie de la página. Más información en la <a href="/cookies">política de cookies</a>.</p>
   <div class="cookie-btns"><button type="button" data-cookie-no>Rechazar</button><button type="button" class="ok" data-cookie-ok>Aceptar</button></div>
 </div>
 <script src="/site.js" defer></script>
