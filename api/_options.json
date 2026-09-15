@@ -1,0 +1,21 @@
+{
+  "services": [
+    "Inteligencia Artificial & Datos",
+    "Cloud & Ingeniería de Software",
+    "Ciberseguridad",
+    "Growth & Marketing Digital",
+    "Diseño de Producto & Marca",
+    "Prospección & Captación B2B",
+    "Estrategia & Transformación de Negocio",
+    "Ventas & CRM",
+    "Legal, Fiscal & Corporate",
+    "Varios servicios",
+    "Todavía no lo sé"
+  ],
+  "models": [
+    "Proyecto cerrado",
+    "Servicio gestionado",
+    "Time & Material",
+    "Todavía no lo sé"
+  ]
+}

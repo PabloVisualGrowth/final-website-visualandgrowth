@@ -142,6 +142,7 @@ input:focus{border-color:rgba(255,196,10,.55);background:rgba(255,196,10,.05);
   text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(255,196,10,.4);padding-bottom:5px}
 @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
+.nl-intro{margin:14px auto 0;max-width:470px;color:var(--dim);font-size:14px;line-height:1.6;text-align:center}
 /* intro CTA card (shown on load) */
 .intro-ov{position:fixed;inset:0;z-index:20;display:grid;place-items:center;padding:20px;
   background:rgba(3,5,11,.74);-webkit-backdrop-filter:blur(9px);backdrop-filter:blur(9px);
@@ -213,34 +214,13 @@ input:focus{border-color:rgba(255,196,10,.55);background:rgba(255,196,10,.05);
   <a class="home" href="/">Volver al inicio</a>
 </header>
 
-<!-- intro CTA card (appears on load) -->
-<div class="intro-ov" id="intro">
-  <div class="intro" role="dialog" aria-modal="true" aria-label="Por qué suscribirte">
-    <button class="x" id="introClose" aria-label="Cerrar">×</button>
-    <div class="eyebrow">Visual &amp; Growth · Newsletter</div>
-    <h2>La mayoría de los consejos de crecimiento son ruido. Aquí tienes la <span class="serif">señal</span>.</h2>
-    <p><b>¿Por qué deberías leerme?</b> He pasado años trabajando para gigantes como Google y Monday.com. Allí aprendí que el éxito no depende de tener mil opciones, sino de tomar la opción correcta. Mi misión ahora es sacar ese conocimiento y aterrizarlo directamente en tu bandeja de entrada.</p>
-    <p><b>Lo que vas a recibir:</b> un consejo diario, 100% gratuito y estrictamente accionable para escalar tu negocio. Sin relleno corporativo, sin clichés y sin "soluciones integrales" que no significan nada.</p>
-    <p><b>Mis reglas del juego:</b> no escribo para curiosos ni para quienes buscan fórmulas mágicas. Mi contenido es para dueños de negocio que están cansados de perder el tiempo y están decididos a dominar su mercado con seguridad.</p>
-    <p>Si estás listo para dejar de "marear la perdiz" y empezar a escalar con estrategia, suscríbete abajo.</p>
-    <div class="gift-box">
-      <span class="gift-icon">✦</span>
-      <span><b>Regalo de bienvenida:</b> en tu primer email recibirás una herramienta que podrás aplicar mañana mismo para empezar a escalar.</span>
-    </div>
-    <div class="sign">Visual &amp; Growth</div>
-    <button class="go" id="introGo">Quiero mi regalo &nbsp;→</button>
-  </div>
-</div>
-
 <main class="wrap">
   <div class="card">
     <!-- FORM -->
     <div id="panel">
       <div class="eyebrow">Visual &amp; Growth · Newsletter</div>
-      <h1>Súbete a la <span class="serif">órbita</span>.</h1>
-      <div style="text-align:center">
-        <span class="gift-note"><span class="gn-icon">✦</span> <strong>Regalo incluido:</strong> lo recibirás en tu primer email</span>
-      </div>
+      <h1>Ideas prácticas de tecnología y <span class="serif">marketing</span> para empresas.</h1>
+      <p class="nl-intro">Compartimos por email lo que aprendemos en nuestros proyectos: cómo aplicar la IA a procesos reales, cómo ordenar el marketing y las ventas, y qué cambios normativos pueden afectar a tu empresa. Es gratuita y puedes darte de baja en cualquier momento.</p>
 
       <form id="nl" novalidate>
         <div class="row">
@@ -276,15 +256,15 @@ input:focus{border-color:rgba(255,196,10,.55);background:rgba(255,196,10,.05);
         </label>
 
         <p class="nl-legal">Responsable: Visual &amp; Growth. Finalidad: enviarte la newsletter. Legitimación: tu consentimiento. Destinatarios: no cedemos tus datos a terceros, salvo obligación legal. Derechos: acceso, rectificación, supresión, oposición, limitación y portabilidad, y darte de baja en cualquier momento. Más información en la <a href="/privacidad">política de privacidad</a>.</p>
-        <button class="submit" type="submit">Unirme a la newsletter</button>
+        <button class="submit" type="submit">Suscribirme</button>
       </form>
     </div>
 
     <!-- SUCCESS -->
     <div class="done" id="done">
       <div class="tick">✦</div>
-      <h2>¡Estás dentro!</h2>
-      <p>Gracias por unirte. Pronto recibirás novedades de Visual &amp; Growth.</p>
+      <h2>Gracias por suscribirte</h2>
+      <p>Te escribiremos cuando tengamos algo útil que contarte.</p>
       <a href="/">Volver al inicio</a>
     </div>
   </div>
@@ -292,12 +272,6 @@ input:focus{border-color:rgba(255,196,10,.55);background:rgba(255,196,10,.05);
 
 <script>
 (function(){
-  // intro CTA card
-  const intro=document.getElementById("intro");
-  function closeIntro(){ intro.classList.add("hide"); const n=document.getElementById("nombre"); if(n) n.focus({preventScroll:true}); }
-  document.getElementById("introGo").addEventListener("click", closeIntro);
-  document.getElementById("introClose").addEventListener("click", closeIntro);
-  document.addEventListener("keydown", e=>{ if(e.key==="Escape" && !intro.classList.contains("hide")) closeIntro(); });
 
   const WEBHOOK="https://n8n-n8n.d4s5yj.easypanel.host/webhook/a9591090-a341-472e-b6fc-381c4c2be9b4";
   const form=document.getElementById("nl");

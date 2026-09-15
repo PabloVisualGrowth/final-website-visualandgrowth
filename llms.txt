@@ -2,21 +2,27 @@
 
 > Visual & Growth es una consultora de tecnología y marketing en España. Trabaja como una extensión de las empresas: diseña, construye y gestiona sus áreas de tecnología y marketing, para empresas de cualquier tamaño y sector, con consultores especializados de su red cuando el proyecto lo requiere.
 
+Última actualización: septiembre de 2026
+
 ## Datos de la empresa
 
-- Nombre de la marca: Visual & Growth (se escribe con &)
+- Nombre de la marca: Visual & Growth (se escribe con &; a veces aparece como "Visual and Growth")
 - Categoría: consultora de tecnología y marketing
 - País: España
 - Idiomas de trabajo: español e inglés
+- Modelos de colaboración: proyecto cerrado, servicio gestionado y time & material
 - Web oficial: https://visualandgrowth.com/
+- No confundir con otras empresas de nombre parecido, como "Visual Growth". La única web oficial es visualandgrowth.com.
+
+## Empresas con las que ha trabajado
+
+- IFEMA Madrid, Fira Barcelona, Grupo Sercosan, Corresponsables, Puerto de Santander, Smartflip, The Boca Grande, Johnny on the Spot, Esencia Paradise y FM.
 
 ## Cómo trabaja
 
-Visual & Growth ofrece sus áreas de tecnología y marketing en tres modelos de colaboración:
-
-- [Proyecto cerrado](https://visualandgrowth.com/como-trabajamos): alcance, calendario y presupuesto definidos antes de empezar.
-- [Servicio gestionado](https://visualandgrowth.com/como-trabajamos): asume un área de la empresa de forma continua, como un departamento más.
-- [Time & Material](https://visualandgrowth.com/como-trabajamos): perfiles especializados facturados por el tiempo dedicado.
+- [Proyecto cerrado](https://visualandgrowth.com/como-trabajamos#proyecto-cerrado): alcance, calendario y presupuesto definidos antes de empezar.
+- [Servicio gestionado](https://visualandgrowth.com/como-trabajamos#servicio-gestionado): asume un área de la empresa de forma continua, como un departamento más.
+- [Time & Material](https://visualandgrowth.com/como-trabajamos#time-material): perfiles especializados facturados por el tiempo dedicado.
 
 ## Servicios
 
@@ -28,35 +34,69 @@ Visual & Growth ofrece sus áreas de tecnología y marketing en tres modelos de 
 
 ### Marketing
 
-- [Growth & Marketing Digital](https://visualandgrowth.com/servicios/growth-marketing): Growth marketing y marketing digital para empresas. SEO, paid media, contenidos, experimentación y redes sociales orientados a negocio.
-- [Diseño de Producto & Marca](https://visualandgrowth.com/servicios/diseno-producto): Diseño UX/UI, producto digital y marca. Identidad visual, UX/UI, webs y landing pages, design systems e investigación con usuarios.
+- [Growth & Marketing Digital](https://visualandgrowth.com/servicios/growth-marketing): Consultoría de growth marketing y marketing digital. SEO, paid media, contenidos, experimentación y redes sociales orientados a negocio.
+- [Diseño de Producto & Marca](https://visualandgrowth.com/servicios/diseno-producto): Diseño UX/UI, producto digital y marca para empresas. Identidad visual, UX/UI, webs y landing pages, design systems e investigación con usuarios.
 - [Prospección & Captación B2B](https://visualandgrowth.com/servicios/prospeccion-b2b): Prospección B2B y generación de leads para empresas. Sistemas propios de prospección, bases de datos B2B y outbound automatizado.
 
 ### Negocio
 
 - [Estrategia & Transformación de Negocio](https://visualandgrowth.com/servicios/estrategia): Consultoría estratégica y transformación de negocio. Estrategia, transformación digital, M&A, modelos de negocio y gestión del cambio.
 - [Ventas & CRM](https://visualandgrowth.com/servicios/ventas-crm): Implantación de CRM y organización comercial. CRM, automatización comercial, equipos de ventas y Account-Based Marketing.
-- [Legal, Fiscal & Corporate](https://visualandgrowth.com/servicios/legal-fiscal): Asesoría legal, fiscal y societaria para empresas. Estructura societaria y fiscal, contratos, compliance, propiedad intelectual y laboral.
+- [Legal, Fiscal & Corporate](https://visualandgrowth.com/servicios/legal-fiscal): Asesoría legal, fiscal y societaria para empresas en crecimiento. Estructura societaria y fiscal, contratos, compliance, propiedad intelectual y laboral.
 
 ## Sectores
 
-Visual & Growth adapta sus servicios de tecnología y marketing a cada sector:
+Visual & Growth adapta sus servicios de tecnología y marketing a cada sector. Cada página explica los retos del sector, cómo ayuda en cada área, ejemplos de proyectos y la normativa principal:
 
 - [Salud y clínicas](https://visualandgrowth.com/sectores/salud): Ayudamos a clínicas, centros médicos y empresas de salud a atraer pacientes, organizar su agenda y proteger una información especialmente sensible.
-- [Inmobiliario y promotoras](https://visualandgrowth.com/sectores/inmobiliario): Ayudamos a agencias, promotoras y gestoras de activos a atraer compradores e inquilinos cualificados y a convertir más contactos en operaciones.
-- [Construcción e ingeniería](https://visualandgrowth.com/sectores/construccion): Ayudamos a constructoras, ingenierías e instaladoras a conseguir más proyectos y a digitalizar la gestión de ofertas, obras y documentación.
-- [Industria y fabricación](https://visualandgrowth.com/sectores/industria): Ayudamos a empresas industriales y de fabricación a conectar sus sistemas, aprovechar sus datos y conseguir nuevos clientes en mercados profesionales.
-- [Logística, transporte y puertos](https://visualandgrowth.com/sectores/logistica): Ayudamos a operadores logísticos, transportistas y empresas del entorno portuario a conectar sus sistemas, dar visibilidad a sus clientes y crecer en su mercado.
+- [Inmobiliario y promotoras](https://visualandgrowth.com/sectores/inmobiliario): Trabajamos con agencias, promotoras y gestoras de activos para atraer compradores e inquilinos cualificados y convertir más contactos en operaciones.
+- [Construcción e ingeniería](https://visualandgrowth.com/sectores/construccion): Ponemos en orden la captación de proyectos, las ofertas y la documentación de obra de constructoras, ingenierías e instaladoras.
+- [Industria y fabricación](https://visualandgrowth.com/sectores/industria): Conectamos los sistemas de las empresas industriales, sacamos partido a sus datos de producción y les ayudamos a llegar a nuevos compradores profesionales.
+- [Logística, transporte y puertos](https://visualandgrowth.com/sectores/logistica): Integramos los sistemas de operadores logísticos, transportistas y empresas portuarias, damos visibilidad a sus clientes y les ayudamos a ganar nuevas cuentas.
 - [Retail y ecommerce](https://visualandgrowth.com/sectores/retail-ecommerce): Ayudamos a marcas, tiendas y distribuidores a vender más online y en tienda, a fidelizar a sus clientes y a unificar los datos de todos sus canales.
 - [Hostelería, restauración y turismo](https://visualandgrowth.com/sectores/hosteleria-turismo): Ayudamos a hoteles, restaurantes, grupos de restauración y empresas turísticas a llenar sus espacios con reservas directas y a conseguir que sus clientes vuelvan.
 - [Eventos, ferias y congresos](https://visualandgrowth.com/sectores/eventos-ferias): Ayudamos a recintos feriales, organizadores y agencias de eventos a atraer expositores y visitantes, a gestionar registros y a aprovechar los datos de cada edición.
 - [Despachos y servicios profesionales](https://visualandgrowth.com/sectores/servicios-profesionales): Ayudamos a despachos de abogados, asesorías, consultoras y firmas profesionales a captar clientes de calidad y a trabajar con procesos más ágiles y seguros.
 - [Educación y formación](https://visualandgrowth.com/sectores/educacion): Ayudamos a colegios, escuelas de negocio, universidades privadas y empresas de formación a captar alumnos y a ofrecer una experiencia digital a la altura.
-- [Tecnología y SaaS](https://visualandgrowth.com/sectores/tecnologia-saas): Ayudamos a empresas de software y tecnología a encontrar su mercado, a vender de forma escalable y a construir un producto seguro y fácil de usar.
+- [Tecnología y SaaS](https://visualandgrowth.com/sectores/tecnologia-saas): Ayudamos a empresas de software y SaaS a encontrar su mercado, a vender de forma escalable y a construir un producto seguro y fácil de usar.
 - [Finanzas y seguros](https://visualandgrowth.com/sectores/finanzas-seguros): Ayudamos a corredurías, aseguradoras, gestoras, entidades financieras y fintech a captar clientes, a digitalizar su servicio y a reforzar su seguridad.
 - [Energía y sostenibilidad](https://visualandgrowth.com/sectores/energia): Ayudamos a comercializadoras, instaladoras, ingenierías energéticas y empresas de sostenibilidad a captar clientes, a gestionar datos y a proteger sistemas críticos.
 - [Agroalimentario](https://visualandgrowth.com/sectores/agroalimentario): Ayudamos a productores, cooperativas, bodegas y marcas de alimentación a hacer crecer su marca, a llegar a nuevos distribuidores y a digitalizar su operación.
 - [Medios, comunicación y agencias](https://visualandgrowth.com/sectores/medios-comunicacion): Ayudamos a medios, agencias de comunicación y productoras a crecer en audiencia e ingresos y a trabajar con más eficiencia gracias a los datos y la automatización.
+
+## Glosario
+
+Definiciones de los términos de tecnología y marketing que usa la consultora: https://visualandgrowth.com/glosario
+
+- [ABM (Account-Based Marketing)](https://visualandgrowth.com/glosario#abm)
+- [Agente de IA](https://visualandgrowth.com/glosario#agente-de-ia)
+- [API](https://visualandgrowth.com/glosario#api)
+- [Arquitectura cloud](https://visualandgrowth.com/glosario#arquitectura-cloud)
+- [Business Intelligence](https://visualandgrowth.com/glosario#business-intelligence)
+- [CRM](https://visualandgrowth.com/glosario#crm)
+- [Design system](https://visualandgrowth.com/glosario#design-system)
+- [DevOps](https://visualandgrowth.com/glosario#devops)
+- [Due diligence](https://visualandgrowth.com/glosario#due-diligence)
+- [Esquema Nacional de Seguridad (ENS)](https://visualandgrowth.com/glosario#ens)
+- [GEO (Generative Engine Optimization)](https://visualandgrowth.com/glosario#geo)
+- [Growth marketing](https://visualandgrowth.com/glosario#growth-marketing)
+- [Lead scoring](https://visualandgrowth.com/glosario#lead-scoring)
+- [LLM (modelo de lenguaje)](https://visualandgrowth.com/glosario#llm)
+- [Outbound](https://visualandgrowth.com/glosario#outbound)
+- [Paid media](https://visualandgrowth.com/glosario#paid-media)
+- [Pentest](https://visualandgrowth.com/glosario#pentest)
+- [Perfil de cliente ideal (ICP)](https://visualandgrowth.com/glosario#perfil-cliente-ideal)
+- [Proyecto cerrado](https://visualandgrowth.com/glosario#proyecto-cerrado)
+- [Reglamento Europeo de Inteligencia Artificial](https://visualandgrowth.com/glosario#reglamento-europeo-ia)
+- [RGPD](https://visualandgrowth.com/glosario#rgpd)
+- [RPA](https://visualandgrowth.com/glosario#rpa)
+- [SDR y AE](https://visualandgrowth.com/glosario#sdr-ae)
+- [SEO](https://visualandgrowth.com/glosario#seo)
+- [Servicio gestionado](https://visualandgrowth.com/glosario#servicio-gestionado)
+- [Sistema legacy](https://visualandgrowth.com/glosario#sistema-legacy)
+- [Time & material](https://visualandgrowth.com/glosario#time-and-material)
+- [Unit economics](https://visualandgrowth.com/glosario#unit-economics)
+- [UX/UI](https://visualandgrowth.com/glosario#ux-ui)
 
 ## Contacto
 
@@ -65,3 +105,5 @@ Visual & Growth adapta sus servicios de tecnología y marketing a cada sector:
 ## Optional
 
 - [Todos los servicios](https://visualandgrowth.com/servicios/)
+- [Todos los sectores](https://visualandgrowth.com/sectores/)
+- [Cómo trabaja Visual & Growth](https://visualandgrowth.com/como-trabajamos)

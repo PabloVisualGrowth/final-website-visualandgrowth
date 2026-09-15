@@ -5,11 +5,8 @@
   window.vgReady = true;
   var root = document.documentElement;
 
-  var CONTACT_EMAIL = "info@visualandgrowth.com";
-  // Set to an n8n (or similar) webhook URL to receive the contact form as JSON.
-  // While empty, the form opens the visitor's email client with the message prefilled
-  // and says so, instead of claiming the message was received.
-  var CONTACT_ENDPOINT = "";
+  // Vercel function (api/contact.js): notifies the team on Telegram and emails the visitor a confirmation
+  var CONTACT_ENDPOINT = "/api/contact";
 
   var nav = document.querySelector(".nav");
 
@@ -204,6 +201,7 @@
     var card = form.closest(".form-card");
     var msg = form.querySelector("[data-form-msg]");
     var btn = form.querySelector("button[type=submit]");
+    var formReady = Date.now();
     var say = function (html, isError) {
       msg.innerHTML = html;
       msg.classList.toggle("is-error", !!isError);
@@ -238,38 +236,25 @@
       data.privacidad_texto = "He leído y acepto la política de privacidad.";
       data.comunicaciones = data.comunicaciones ? "si" : "no";
       var track = function (name) {
-        try { (window.dataLayer = window.dataLayer || []).push({ event: name, servicio: data.servicio || "" }); } catch (err) {}
+        try { (window.dataLayer = window.dataLayer || []).push({ event: name, servicio: data.servicio || "", sector: data.sector || "" }); } catch (err) {}
       };
-      if (CONTACT_ENDPOINT) {
-        btn.disabled = true;
-        msg.hidden = true;
-        fetch(CONTACT_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) })
-          .then(function (res) {
-            if (!res.ok) throw new Error("HTTP " + res.status);
-            card.classList.add("sent");
-            track("contact_submit");
-          })
-          .catch(function () {
-            btn.disabled = false;
-            say("No hemos podido enviar tu mensaje. Inténtalo de nuevo en unos minutos.", true);
-          });
-      } else {
-        var body = [
-          "Nombre: " + (data.nombre || ""),
-          "Empresa: " + (data.empresa || ""),
-          "Email: " + (data.email || ""),
-          "Teléfono: " + (data.telefono || ""),
-          "Servicio de interés: " + (data.servicio || ""),
-          "Sector: " + (data.sector || ""),
-          "Modelo de colaboración: " + (data.modelo || ""),
-          "Acepta recibir información comercial: " + data.comunicaciones,
-          "",
-          data.mensaje || ""
-        ].join("\n");
-        window.location.href = "mailto:" + CONTACT_EMAIL + "?subject=" + encodeURIComponent("Contacto web: " + (data.empresa || data.nombre || "")) + "&body=" + encodeURIComponent(body);
-        track("contact_mailto");
-        say("Hemos abierto tu programa de correo con el mensaje preparado: solo tienes que enviarlo.");
-      }
+      data.form_ms = Date.now() - formReady;
+      btn.disabled = true;
+      msg.hidden = true;
+      fetch(CONTACT_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) })
+        .then(function (res) {
+          if (!res.ok) { var err = new Error("HTTP " + res.status); err.status = res.status; throw err; }
+          card.classList.add("sent");
+          var ok = card.querySelector(".form-ok");
+          if (ok) ok.hidden = false;
+          track("contact_submit");
+        })
+        .catch(function (err) {
+          btn.disabled = false;
+          if (err && err.status === 429) say("Has enviado varios mensajes seguidos. Espera unos minutos y vuelve a intentarlo.", true);
+          else if (err && err.status === 422) say("Revisa los campos obligatorios: nombre, empresa, un email válido y tu mensaje.", true);
+          else say('No hemos podido enviar tu mensaje. Inténtalo de nuevo en unos minutos o escríbenos a la dirección que figura en el <a href="/aviso-legal">aviso legal</a>.', true);
+        });
     });
   }
 
