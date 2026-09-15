@@ -514,3 +514,9 @@ main>.sec{content-visibility:auto;contain-intrinsic-size:auto 800px}
   *,*::before,*::after{animation:none!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
   .js [data-reveal]:not(.in),.js [data-stagger]>:not(.in){opacity:1}
 }
+
+/* Keep the authentic CRM screenshot intact and identify demonstration data. */
+.hero-media--crm{top:110px;bottom:60px;right:1.5vw;width:43.5vw;display:flex;flex-direction:column;align-items:center;justify-content:center;-webkit-mask-image:none;mask-image:none}
+.hero-media--crm>img{position:static;width:100%;height:auto;object-fit:contain;border:1px solid var(--line);border-radius:10px;box-shadow:0 12px 32px rgba(0,0,0,.08)}
+.crm-image-caption{display:block;margin-top:10px;color:var(--gray);font-size:11px;line-height:1.4;text-align:right;align-self:flex-end}
+@media(max-width:960px){.hero-media--crm{top:auto;bottom:auto;right:auto;width:100%;height:auto;margin:36px 0 0;-webkit-mask-image:none;mask-image:none}.crm-image-caption{margin-right:12px}}
