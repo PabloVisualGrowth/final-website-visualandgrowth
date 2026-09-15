@@ -46,7 +46,7 @@
 
 ## Sectores
 
-Visual & Growth adapta sus servicios de tecnología y marketing a cada sector. Cada página explica los retos del sector, cómo ayuda en cada área, ejemplos de proyectos y la normativa principal:
+Visual & Growth adapta sus servicios de tecnología y marketing a cada sector. Cada página explica los retos del sector, cómo ayuda en cada área y ejemplos de proyectos:
 
 - [Salud y clínicas](https://visualandgrowth.com/sectores/salud): Ayudamos a clínicas, centros médicos y empresas de salud a atraer pacientes, organizar su agenda y proteger una información especialmente sensible.
 - [Inmobiliario y promotoras](https://visualandgrowth.com/sectores/inmobiliario): Trabajamos con agencias, promotoras y gestoras de activos para atraer compradores e inquilinos cualificados y convertir más contactos en operaciones.
