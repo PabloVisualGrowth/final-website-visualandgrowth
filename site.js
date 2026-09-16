@@ -44,6 +44,16 @@
     };
     burger.addEventListener("click", function () { toggle(!mnav.classList.contains("open")); });
     mnav.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", function () { toggle(false); }); });
+    // "Servicios" folds the nine services so the main links and the CTA fit on one screen
+    var svcBtn = mnav.querySelector("[data-mnav-svc]");
+    var svcList = document.getElementById("mnav-svc");
+    if (svcBtn && svcList) {
+      svcBtn.addEventListener("click", function () {
+        var open = svcBtn.getAttribute("aria-expanded") !== "true";
+        svcBtn.setAttribute("aria-expanded", open ? "true" : "false");
+        svcList.hidden = !open;
+      });
+    }
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") toggle(false); });
   }
 

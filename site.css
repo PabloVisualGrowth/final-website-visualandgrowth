@@ -140,10 +140,18 @@ main p a:not([class]):hover{text-decoration-color:currentColor}
   background:var(--ink);color:var(--white);overflow-y:auto;opacity:0;visibility:hidden;transform:translateY(-12px);
   transition:opacity .3s,transform .3s var(--ease),visibility .3s}
 .mnav.open{opacity:1;visibility:visible;transform:none}
-.mnav-label{font-size:13px;font-weight:600;color:var(--gold);margin:18px 0 4px}
-.mnav a{display:block;padding:10px 0;font-size:17px;font-weight:500;border-bottom:1px solid var(--line-inv)}
-.mnav .mnav-main{font-size:22px;padding:14px 0}
-.mnav .btn-gold{margin-top:22px;border:0}
+/* solid band so the list never shows through around the floating nav bar */
+.mnav::before{content:"";position:fixed;top:0;left:0;right:0;height:98px;z-index:1;pointer-events:none;background:linear-gradient(180deg,var(--ink) 80px,rgba(30,30,30,0) 98px)}
+.mnav-list{position:relative;z-index:0;display:flex;flex-direction:column;margin-bottom:28px}
+.mnav .mnav-main{display:flex;justify-content:space-between;align-items:center;width:100%;padding:16px 0;background:none;border:0;border-bottom:1px solid var(--line-inv);
+  font:inherit;font-size:22px;font-weight:500;letter-spacing:-.01em;color:var(--white);text-align:left}
+.mnav-toggle svg{width:20px;height:20px;color:var(--gold);transition:transform .3s var(--ease)}
+.mnav-toggle[aria-expanded="true"] svg{transform:rotate(180deg)}
+.mnav-sub{padding:2px 0 14px;border-bottom:1px solid var(--line-inv)}
+.mnav-label{font-size:13px;font-weight:600;color:var(--gold);margin:14px 0 2px}
+.mnav-sub a{display:block;padding:9px 0;font-size:16px;color:var(--gray-inv)}
+.mnav-sub a.mnav-all{margin-top:10px;color:var(--white);font-weight:600;text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:4px}
+.mnav .mnav-cta{display:flex;justify-content:center;align-items:center;flex:none;width:100%;min-height:54px;margin-top:auto;border:0;font-size:16px}
 body.menu-open{overflow:hidden}
 
 /* ---------- sections ---------- */
@@ -734,7 +742,6 @@ main>.sec{content-visibility:auto;contain-intrinsic-size:auto 800px}
   .feats{gap:28px}
   .foot-bottom nav{gap:14px 18px}
   .cookie button{height:44px}
-  .mnav a{padding:12px 0}
   .rel-sectors{font-size:15px}
 }
 @media (prefers-reduced-motion:reduce){
