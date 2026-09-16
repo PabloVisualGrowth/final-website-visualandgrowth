@@ -39,7 +39,7 @@
 
 - [Estrategia & Transformación de Negocio](https://visualandgrowth.com/servicios/estrategia): Consultoría estratégica y transformación de negocio. Estrategia, transformación digital, M&A, modelos de negocio y gestión del cambio.
 - [Ventas & CRM](https://visualandgrowth.com/servicios/ventas-crm): Implantación de CRM y organización comercial. CRM, automatización comercial, equipos de ventas y Account-Based Marketing.
-- [Administración & Cumplimiento](https://visualandgrowth.com/servicios/administracion-cumplimiento): Contabilidad automatizada, Verifactu y control horario. Facturación con Verifactu, conciliación bancaria, control horario, nóminas e integración con el ERP.
+- [Administración & Cumplimiento](https://visualandgrowth.com/servicios/administracion-cumplimiento): Contabilidad automatizada, Verifactu y control horario. Contabilidad automatizada, Verifactu, control horario y nóminas.
 - [Legal, Fiscal & Corporate](https://visualandgrowth.com/servicios/legal-fiscal): Asesoría legal, fiscal y societaria para empresas en crecimiento. Estructura societaria y fiscal, contratos, compliance, propiedad intelectual y laboral.
 
 ## Sectores
