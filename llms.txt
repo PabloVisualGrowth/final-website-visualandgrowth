@@ -39,6 +39,7 @@
 
 - [Estrategia & Transformación de Negocio](https://visualandgrowth.com/servicios/estrategia): Consultoría estratégica y transformación de negocio. Estrategia, transformación digital, M&A, modelos de negocio y gestión del cambio.
 - [Ventas & CRM](https://visualandgrowth.com/servicios/ventas-crm): Implantación de CRM y organización comercial. CRM, automatización comercial, equipos de ventas y Account-Based Marketing.
+- [Administración & Cumplimiento](https://visualandgrowth.com/servicios/administracion-cumplimiento): Contabilidad automatizada, Verifactu y control horario. Facturación con Verifactu, conciliación bancaria, control horario, nóminas e integración con el ERP.
 - [Legal, Fiscal & Corporate](https://visualandgrowth.com/servicios/legal-fiscal): Asesoría legal, fiscal y societaria para empresas en crecimiento. Estructura societaria y fiscal, contratos, compliance, propiedad intelectual y laboral.
 
 ## Sectores
@@ -84,6 +85,7 @@ Definiciones de los términos de tecnología y marketing que usa la consultora: 
 - [Pentest](https://visualandgrowth.com/glosario#pentest)
 - [Perfil de cliente ideal (ICP)](https://visualandgrowth.com/glosario#perfil-cliente-ideal)
 - [Proyecto cerrado](https://visualandgrowth.com/glosario#proyecto-cerrado)
+- [Registro de jornada](https://visualandgrowth.com/glosario#registro-de-jornada)
 - [Reglamento Europeo de Inteligencia Artificial](https://visualandgrowth.com/glosario#reglamento-europeo-ia)
 - [RGPD](https://visualandgrowth.com/glosario#rgpd)
 - [RPA](https://visualandgrowth.com/glosario#rpa)
@@ -94,6 +96,7 @@ Definiciones de los términos de tecnología y marketing que usa la consultora: 
 - [Time & material](https://visualandgrowth.com/glosario#time-and-material)
 - [Unit economics](https://visualandgrowth.com/glosario#unit-economics)
 - [UX/UI](https://visualandgrowth.com/glosario#ux-ui)
+- [Verifactu](https://visualandgrowth.com/glosario#verifactu)
 
 ## Contacto
 
