@@ -62,6 +62,9 @@ Visual & Growth adapta sus servicios de tecnología y marketing a cada sector. C
 - [Energía y sostenibilidad](https://visualandgrowth.com/sectores/energia): Ayudamos a comercializadoras, instaladoras, ingenierías energéticas y empresas de sostenibilidad a captar clientes, a gestionar datos y a proteger sistemas críticos.
 - [Agroalimentario](https://visualandgrowth.com/sectores/agroalimentario): Ayudamos a productores, cooperativas, bodegas y marcas de alimentación a hacer crecer su marca, a llegar a nuevos distribuidores y a digitalizar su operación.
 - [Medios, comunicación y agencias](https://visualandgrowth.com/sectores/medios-comunicacion): Ayudamos a medios, agencias de comunicación y productoras a crecer en audiencia e ingresos y a trabajar con más eficiencia gracias a los datos y la automatización.
+- [Automoción y posventa](https://visualandgrowth.com/sectores/automocion): Ayudamos a talleres y concesionarios a llenar la agenda, a recuperar al cliente que solo aparece cuando se le rompe algo y a ordenar la gestión de la posventa.
+- [Facility services y mantenimiento](https://visualandgrowth.com/sectores/facility-services): Ayudamos a empresas de limpieza, seguridad y mantenimiento a digitalizar el parte de trabajo, controlar el coste de cada contrato y vender fuera del concurso.
+- [Franquicias y cadenas](https://visualandgrowth.com/sectores/franquicias-cadenas): Ayudamos a franquiciadores y cadenas a que cada local venda en su barrio, a ver la red entera en un mismo sitio y a captar franquiciados que encajen de verdad.
 
 ## Glosario
 
