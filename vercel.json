@@ -46,7 +46,12 @@
     },
     {
       "source": "/servicios/asesorias-legal-logistica",
-      "destination": "/servicios/legal-fiscal",
+      "destination": "/servicios/administracion-cumplimiento",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/legal-fiscal",
+      "destination": "/servicios/administracion-cumplimiento",
       "permanent": true
     },
     {

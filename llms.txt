@@ -2,7 +2,7 @@
 
 > Visual & Growth es una consultora de tecnología y marketing en España. Trabaja como una extensión de las empresas: diseña, construye y gestiona sus áreas de tecnología y marketing, para empresas de cualquier tamaño y sector, con consultores especializados de su red cuando el proyecto lo requiere.
 
-Última actualización: septiembre de 2026
+Última actualización: noviembre de 2026
 
 ## Datos de la empresa
 
@@ -30,7 +30,7 @@
 - [Cloud & Ingeniería de Software](https://visualandgrowth.com/servicios/cloud-software): Desarrollo de software a medida y cloud. Aplicaciones a medida, arquitectura cloud, integraciones y modernización de sistemas.
 - [Ciberseguridad](https://visualandgrowth.com/servicios/ciberseguridad): Consultoría de ciberseguridad para empresas. Auditoría, cumplimiento normativo, gestión de accesos y respuesta ante incidentes.
 
-### Marketing
+### Marketing Digital
 
 - [Growth & Marketing Digital](https://visualandgrowth.com/servicios/growth-marketing): Consultoría de growth marketing y marketing digital. SEO, paid media, contenidos, experimentación y redes sociales orientados a negocio.
 - [Diseño de Producto & Marca](https://visualandgrowth.com/servicios/diseno-producto): Diseño UX/UI, producto digital y marca para empresas. Identidad visual, UX/UI, webs y landing pages, design systems e investigación con usuarios.
@@ -41,7 +41,6 @@
 - [Estrategia & Transformación de Negocio](https://visualandgrowth.com/servicios/estrategia): Consultoría estratégica y transformación de negocio. Estrategia, transformación digital, M&A, modelos de negocio y gestión del cambio.
 - [Ventas & CRM](https://visualandgrowth.com/servicios/ventas-crm): Implantación de CRM y organización comercial. CRM, automatización comercial, equipos de ventas y Account-Based Marketing.
 - [Administración & Cumplimiento](https://visualandgrowth.com/servicios/administracion-cumplimiento): Contabilidad automatizada, Verifactu y control horario. Contabilidad automatizada, Verifactu, control horario y nóminas.
-- [Legal, Fiscal & Corporate](https://visualandgrowth.com/servicios/legal-fiscal): Asesoría legal, fiscal y societaria para empresas en crecimiento. Estructura societaria y fiscal, contratos, compliance, propiedad intelectual y laboral.
 
 ## Sectores
 
